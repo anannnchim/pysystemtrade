@@ -170,5 +170,5 @@ def write_prices_for_contract_at_frequency(
 if __name__ == "__main__":
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # modify flags as required
-    datapath = "*** NEED TO DEFINE A DATAPATH***"
+    datapath = "/Users/nanthawat/PycharmProjects/bc-utils/data"
     init_db_with_split_freq_csv_prices(datapath)
