@@ -14,3 +14,5 @@
 4. Add `project_env.sh` for automation
 
 5. Add `sysproduction/mac` for automation
+
+6. Add `project.script` in `pyproject.toml` 
