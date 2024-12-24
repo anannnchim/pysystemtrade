@@ -220,4 +220,7 @@ def update_with_new_prices(
 
 
 if __name__ == "__main__":
+    """
+    This will update multiple price, adjusted price in parquet.
+    """
     update_multiple_adjusted_prices()
