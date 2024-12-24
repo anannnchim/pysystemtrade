@@ -1,3 +1,0 @@
-#!/bin/bash
-source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh
-python3 -m sysproduction.update_fx_prices.update_fx_prices

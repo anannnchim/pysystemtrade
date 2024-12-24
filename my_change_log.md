@@ -13,6 +13,8 @@
 
 4. Add `project_env.sh` for automation
 
-5. Add `sysproduction/mac` for automation
+5. Add `sysproduction/linux/my_crontab` for automation
 
 6. Add `project.script` in `pyproject.toml` 
+
+7. Setup `private-pysystemtrade` repo. 
