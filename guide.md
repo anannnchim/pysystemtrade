@@ -1,8 +1,21 @@
 # Notebook
 
+# Data
+
+1. Parquet
+- FX price
+- contract price
+- multiple price 
+- adjusted price
+
+2. CSV
+- Roll calenders
+
+3. Database
+- spread_costs
 
 
-## Process
+# Process
 
 
 1. Run all day
@@ -14,19 +27,53 @@
  run_daily_price_updates, run_systems, run_strategy_order_generator, run_cleaners, run_backups, run_reports
  
 
+
+
+
+# Example of  how to execute 
+python3 -m sysproduction.run_stack_handler
+
+# Test one 
+#!/bin/bash
+source /Users/nanthawat/PycharmProjects/AnanCapitalFund/project_env.sh
+python3 -m sysproduction.run_stack_handler.run_stack_handler
+
+
+# Run this in terminal 
+source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh
+/bin/bash /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/mac/scripts/update_fx_prices
+
+
 # Overview 
 startup()   
-run_stack_handler: 00:01
-run_capital_update: 01:00
 
 run_daily_fx_and_contract_updates: 07:00
+- update_fx_prices
+- update_sampled_contracts
+
 run_daily_prices_updates: 20:00
+- update_historical_prices
+
+run_daily_update_multiple_adjusted_prices: 23:00
+- update_multiple_adjusted_prices
+
+run_capital_update: 01:00
+- update_total_capital
+- update_strategy_capital
+
 run_systems: 20:05
-run_strategy_order_generator: 20:10
+- update_system_backtests
+
+run_strategy_order_generator: 20:10 *** RUN ALL DAY
+- update_strategy_orders
+
+run_stack_handler: 00:01 *** RUN ALL DAY
+- many 
+
 run_backups: 20:15
 run_cleaners: 20:20
 run_reports: 20:25
-run_daily_update_multiple_adjusted_prices: 23:00
+
 
 # More details 
 process_configuration_methods:
@@ -99,3 +146,9 @@ process_configuration_methods:
     clean_log_files:
       max_executions: 1
 
+
+# Backtest 
+
+- Live production backtest:
+    - Create a yaml config file to run the live production 'backtest'. For speed I recommend you do not estimate parameters, but use fixed parameters, using the [yaml_config_with_estimated_parameters method of systemDiag](/systems/diagoutput.py) function to output these to a .yaml file.
+- Scheduling:
