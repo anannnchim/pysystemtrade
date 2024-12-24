@@ -12,7 +12,8 @@ from sysobjects.instruments import (
 from syslogging.logger import *
 import pandas as pd
 
-INSTRUMENT_CONFIG_PATH = "data.futures.csvconfig"
+# INSTRUMENT_CONFIG_PATH = "data.futures.csvconfig" # Remove and add below
+INSTRUMENT_CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/csvconfig"
 CONFIG_FILE_NAME = "instrumentconfig.csv"
 
 
