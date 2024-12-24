@@ -18,3 +18,7 @@
 6. Add `project.script` in `pyproject.toml` 
 
 7. Setup `private-pysystemtrade` repo. 
+
+Modified
+
+1 . Change path in `sysdata/csv/csv_roll_parameters.py`
