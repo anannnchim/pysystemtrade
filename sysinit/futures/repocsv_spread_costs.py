@@ -9,6 +9,9 @@ from sysdata.csv.csv_spread_costs import csvSpreadCostData
 from sysdata.futures.spread_costs import spreadCostData
 from sysdata.data_blob import dataBlob
 
+"""
+This will copy csv to mongoDB.
+"""
 
 def copy_spread_costs_from_csv_to_mongo(data: dataBlob):
     data_out = mongoSpreadCostData(data.mongo_db)
