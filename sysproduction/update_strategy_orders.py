@@ -28,3 +28,9 @@ def update_strategy_orders():
                 data, strategy_name, process_name, name_of_main_generator_method
             )
             strategy_order_generator.run_strategy_method()
+
+if __name__ == '__main__':
+    """
+    This will...
+    """
+    update_strategy_orders()
