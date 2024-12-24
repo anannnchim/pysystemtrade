@@ -29,10 +29,10 @@ if __name__ == '__main__':
     datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
 
     # Note 1. Convert single instrument
-    # Import prices for a single instrument (CORN)
+    # # Import prices for a single instrument (CORN)
     init_db_with_split_freq_csv_prices_for_code("CORN_mini", datapath=datapath, csv_config=BARCHART_CONFIG)
 
-    # Note 2. Convert the whole folder
+    # Note 2. Convert the whole folder (Not working)
     # csv_prices = csvFuturesContractPriceData(datapath)
     # instrument_codes = csv_prices.get_list_of_instrument_codes_with_merged_price_data()
     # instrument_codes.sort()
@@ -44,4 +44,3 @@ if __name__ == '__main__':
     #         csv_config=BARCHART_CONFIG,
     #         ignore_duplication=True,  # if True, we overwrite existing prices
     #     )
-
