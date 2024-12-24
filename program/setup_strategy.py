@@ -12,12 +12,16 @@ if __name__ == '__main__':
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/strategy_1.parquet")
     # print(a)
 
-    # b = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/strategy_1.parquet")
-    # print(b)
+    b = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/strategy_1.parquet")
+    print(b)
+
+    # C = pd.read_parquet(
+    #     "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/strategy_2.parquet")
+    # print(C)
 
     # Position
-    a = pd.read_parquet( "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN_mini.parquet")
-    print(a)
+    # a = pd.read_parquet( "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN_mini.parquet")
+    # print(a)
 
 
     """
