@@ -4,7 +4,8 @@
 #
 #
 #
-17 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates.sh  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
+00 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
 #
 # Note: $MONGO_DATA must be accessible at boot; this won't work if it's in an encrypted home folder
 @reboot          source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/startup  >> $ECHO_PATH/startup.txt 2>&1
+# Apply this after change: crontab /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/linux/my_crontab
