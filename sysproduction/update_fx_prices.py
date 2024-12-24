@@ -81,4 +81,7 @@ def report_fx_data_spike(data: dataBlob, fx_code: str):
 
 
 if __name__ == "__main__":
+    """
+    This will update FX price.
+    """
     update_fx_prices()
