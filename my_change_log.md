@@ -22,3 +22,4 @@
 Modified
 
 1 . Change path in `sysdata/csv/csv_roll_parameters.py`
+2 . Change path in `sysinit`
