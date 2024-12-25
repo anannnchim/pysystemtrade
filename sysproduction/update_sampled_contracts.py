@@ -452,5 +452,8 @@ def has_contract_expired(
 if __name__ == "__main__":
     """
     Get instruments from contract prices parquet folder, and sampling only active contract.
+    
+    It will add contract data in mongoDB
+    
     """
     update_sampled_contracts()

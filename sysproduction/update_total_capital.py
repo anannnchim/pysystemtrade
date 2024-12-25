@@ -117,8 +117,9 @@ def _update_capital_with_broker_account_value_if_capital_data_exists(
 if __name__ == "__main__":
     """
     
-    This will append global margin, account value from IB to __global_capital.parquet
-    Also, append global margin in mongoDB.
+    This will append 
+    - (global margin, account value) from IB to __global_capital.parquet
+    - Also, append global margin in mongoDB.
     
     - APPEND each time.
     """

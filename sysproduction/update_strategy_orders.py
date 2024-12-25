@@ -31,6 +31,6 @@ def update_strategy_orders():
 
 if __name__ == '__main__':
     """
-    This will...
+    This will generate order to stack that will be executed by run_stack_handler
     """
     update_strategy_orders()

@@ -57,15 +57,15 @@ run_daily_prices_updates: 20:00
 run_daily_update_multiple_adjusted_prices: 23:00
 - update_multiple_adjusted_prices
 
-run_capital_update: 01:00
+run_capital_update: 01:00 ** RUN ALL DAY
 - update_total_capital
 - update_strategy_capital
 
 run_systems: 20:05
 - update_system_backtests
 
-run_strategy_order_generator: 20:10 *** RUN ALL DAY
-- update_strategy_orders
+run_strategy_order_generator: 20:10 
+- update_strategy_orders 
 
 run_stack_handler: 00:01 *** RUN ALL DAY
 - many 
