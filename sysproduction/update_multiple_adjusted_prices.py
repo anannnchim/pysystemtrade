@@ -222,5 +222,8 @@ def update_with_new_prices(
 if __name__ == "__main__":
     """
     This will update multiple price, adjusted price in parquet.
+    
+    It uses:
+    Roll calendars CSV + Individual contract prices Parquet -> Multiple prices
     """
     update_multiple_adjusted_prices()
