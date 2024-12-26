@@ -19,7 +19,12 @@
 
 7. Setup `private-pysystemtrade` repo. 
 
-Modified
+8. Install `mongodb-compass-readonly`, 
+- run ` brew install --cask mongodb-compass-readonly`
+- add ?
+9. Instsall `mongodb-atlas-cli`
+- Run `brew install mongodb-atlas-cli`
+- location: ` /usr/local/share/zsh/site-functions`
 
 1 . Change path in `sysdata/csv/csv_roll_parameters.py`
 2 . Change path in `sysinit`
