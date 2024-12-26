@@ -37,4 +37,10 @@ def backup_parquet_data_to_remote_with_data(data):
 
 
 if __name__ == "__main__":
+    """
+    Backup Parquet files.
+    
+    This will copy parquet folder into
+    -> private-pysystemtrade/backup/parquet
+    """
     backup_parquet_data_to_remote()
