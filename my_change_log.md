@@ -26,3 +26,5 @@
 - Run `brew install mongodb-atlas-cli`
 - location: ` /usr/local/share/zsh/site-functions`
 
+7. Modified `ib_price_clien.py`
+- change `_ib_get_historical_data_of_duration_and_barSize` function for correctly updating price.

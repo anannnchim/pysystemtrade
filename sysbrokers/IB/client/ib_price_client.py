@@ -283,7 +283,7 @@ class ibPriceClient(ibContractsClient):
             durationStr=durationStr,
             barSizeSetting=barSizeSetting,
             whatToShow=whatToShow,
-            useRTH=True,
+            useRTH=False, # Note - Default: true (For false, we get the correct data)
             formatDate=2,
             timeout=TIMEOUT_SECONDS_ON_HISTORICAL_DATA,
         )
