@@ -8,8 +8,8 @@ if __name__ == '__main__':
     pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
     # Note - FX (daily)
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
-    # print(a)
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
+    print(a)
     """
     2024-12-24 23:00:00  0.624065
     2024-12-26 23:00:00  0.623665
@@ -33,8 +33,8 @@ if __name__ == '__main__':
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@MXP#20250300.parquet")
     # print(a)
 
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
+    # print(a)
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@MXP#20250300.parquet")
     # print(a)
