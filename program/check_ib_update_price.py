@@ -40,9 +40,9 @@ if __name__ == '__main__':
     2024-12-25 01:00:00  0.04889  0.04891  0.04883  0.04885    710.0
     
     """
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@MXP#20250300.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@MXP#20250300.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/CORN_mini#20250300.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN_mini#20250300.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN_mini#20250300.parquet"
     a = pd.read_parquet(path)
     print(a)
 
@@ -50,4 +50,37 @@ if __name__ == '__main__':
     # a = a[:-10]
     # print(a)
     # a.to_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@MXP#20250300.parquet", index=True)
+
+    """
+    FROM MY data (Copehengen) 
+    2024-12-30 14:00:00  0.04849  0.04857  0.04836  0.04839   3018.0
+    2024-12-30 15:00:00  0.04838  0.04841  0.04823  0.04832   5254.0
+    2024-12-30 16:00:00  0.04833  0.04833  0.04806  0.04815   6295.0
+    2024-12-30 17:00:00  0.04815  0.04816  0.04797  0.04801   7119.0
+    
+    2024-12-30 18:00:00  0.04802  0.04811  0.04785  0.04791   5443.0
+    
+    2024-12-30 19:00:00  0.04792  0.04801  0.04788  0.04795   2501.0 (Copehengen) 
+    
+    
+    FROM IB-insync
+    225 2024-12-27 14:00:00-06:00  0.04854  0.04857  0.04849  0.04851   1815.0  0.048530       319
+    226 2024-12-27 15:00:00-06:00  0.04850  0.04854  0.04848  0.04850    750.0  0.048508       165
+    227 2024-12-30 08:30:00-06:00  0.04839  0.04839  0.04823  0.04832   4078.0  0.048297       797
+    228 2024-12-30 09:00:00-06:00  0.04833  0.04833  0.04806  0.04815   6295.0  0.048199      1254
+    229 2024-12-30 10:00:00-06:00  0.04815  0.04816  0.04797  0.04801   7119.0  0.048064      1123
+    
+    230 2024-12-30 11:00:00-06:00  0.04802  0.04811  0.04785  0.04791   5443.0  0.047980       945
+    
+    231 2024-12-30 12:00:00-06:00  0.04792  0.04801  0.04788  0.04790   2677.0  0.047949       541 (centraltime)
+    """
+
+
+
+    """
+    FROM barchart 
+    2024-12-27 20:00:00  0.04854  0.04857  0.04849  0.04851    1815
+    2024-12-27 21:00:00  0.04850  0.04854  0.04848  0.04850     750
+    Need to check ib_price_client
+    """
 
