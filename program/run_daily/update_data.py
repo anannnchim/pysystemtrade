@@ -13,7 +13,7 @@ def run_scripts(scripts):
     for script in scripts:
         try:
             print(f"Running script: {script}")
-            subprocess.run(["python", script], check=True)
+            subprocess.run(["python3", script], check=True)
             print(f"Completed: {script}\n")
         except subprocess.CalledProcessError as e:
             print(f"Error while running script {script}: {e}")
@@ -29,9 +29,9 @@ if __name__ == '__main__':
     4. Update by appending data in Adjusted & Multiple parquet
     """
 
-    # Update futures related data
-
+    # 1. Update futures related data
     scripts = [
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/program/run_daily/run_startup.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_fx_prices.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_sampled_contracts.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_historical_prices.py",
