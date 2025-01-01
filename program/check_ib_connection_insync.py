@@ -18,7 +18,7 @@ if __name__ == '__main__':
     # 2.2 FUTURES
 
     # 2. Define the futures contract
-    mxp_future = Future(symbol='MXP', lastTradeDateOrContractMonth='202503', exchange='CME', currency='USD')
+    mxp_future = Future(symbol='YC', lastTradeDateOrContractMonth='202503', exchange='CBOT', currency='USD')
 
     # 3. Request historical data
     bars = ib.reqHistoricalData(
@@ -45,9 +45,9 @@ if __name__ == '__main__':
     # print(f"Volume: {ticker.volume}")
 
     # Note 2: From Sysbrokers
-    from sysbrokers.IB.ib_connection import connectionIB
-    conn = connectionIB(client_id=1)
-    print(conn)
+    # from sysbrokers.IB.ib_connection import connectionIB
+    # conn = connectionIB(client_id=1)
+    # print(conn)
 
 
     """
