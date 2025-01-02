@@ -32,5 +32,8 @@ def update_strategy_orders():
 if __name__ == '__main__':
     """
     This will generate order to stack that will be executed by run_stack_handler
+    
+    It will append 
+    - INSTRUMENT_ORDER_STACK in mongoDB
     """
     update_strategy_orders()

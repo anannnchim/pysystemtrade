@@ -34,7 +34,7 @@ if __name__ == '__main__':
     This will
     
     1. It will looks for strategy name in private_control_config
-    - Create config and backtest.pck private.backtests.<strategy_name>
+    - Create (config, backtest.pck) in private.backtests.<strategy_name>
     - Append optimal position in parquet/optimal_position
     """
     update_system_backtests()
