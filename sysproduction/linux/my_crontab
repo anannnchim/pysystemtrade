@@ -19,6 +19,9 @@
 # 15 21  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_backups  >> $ECHO_PATH/run_backups.txt 2>&1
 # 30 21  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_reports  >> $ECHO_PATH/run_reports.txt 2>&1
 
+# RUN FOR NOW
+# 36 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
+
 # Note: $MONGO_DATA must be accessible at boot; this won't work if it's in an encrypted home folder
 @reboot          source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/startup  >> $ECHO_PATH/startup.txt 2>&1
 # Apply this after change: crontab /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/linux/my_crontab

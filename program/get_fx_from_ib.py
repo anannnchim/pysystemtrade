@@ -13,14 +13,14 @@ pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lin
 
 if __name__ == '__main__':
 
-    # conn = connectionIB(client_id=1,
-    #                     ib_ipaddress="127.0.0.1",
-    #                     ib_port=4002,  # 7496, 4001 for live, 4002 for sim ,7497 for tws sim
-    #                     account="DU7559791")  #U12379349, U19256092, DU7559791
-    #
-    # # Note 1: Get FX price: This one get the daily data [correct]
-    # a = ibFxPricesData(conn, dataBlob())
-    # print(a.get_fx_prices("AUDUSD"))
+    conn = connectionIB(client_id=1,
+                        ib_ipaddress="127.0.0.1",
+                        ib_port=4002,  # 7496, 4001 for live, 4002 for sim ,7497 for tws sim
+                        account="DU7559791")  #U12379349, U19256092, DU7559791
+
+    # Note 1: Get FX price: This one get the daily data [correct]
+    a = ibFxPricesData(conn, dataBlob())
+    print(a.get_fx_prices("AUDUSD"))
 
 
 
@@ -69,9 +69,9 @@ if __name__ == '__main__':
     """
 
     # Note: 2: My current FX data
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet"
-    df = pd.read_parquet(path)
-    print(df)
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet"
+    # df = pd.read_parquet(path)
+    # print(df)
 
 
     # NOTE Delete 3 row and save
