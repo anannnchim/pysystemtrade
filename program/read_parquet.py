@@ -87,8 +87,8 @@ if __name__ == '__main__':
     print(a)
 
     # 4. Adjusted price
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_adjusted_prices/CORN_mini.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_adjusted_prices/CORN_mini.parquet")
+    # print(a)
 
     # PLOT
     # a.plot()
