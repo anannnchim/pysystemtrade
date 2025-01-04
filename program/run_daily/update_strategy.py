@@ -37,7 +37,7 @@ if __name__ == '__main__':
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_strategy_orders.py",
 
         # Might run separately
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/run_stack_handler.py"
+        # "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/run_stack_handler.py"
     ]
 
     # Run the scripts
