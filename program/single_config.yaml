@@ -58,12 +58,13 @@ forecast_cap: 20.0
 
 ### INPUT -----------------------------------------------------------------
 forecast_weights:
-     CORN_mini:
-        ewmac16_64: 1
-
+     USD:
+        ewmac32_128: 1
+     S50:
+       ewmac32_128: 1
 forecast_div_multiplier:
-     CORN_mini: 1
-
+     USD: 1
+     S50: 1
 #
 # Capital correction
 #
@@ -76,8 +77,8 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    CORN_mini: 1
-
+    USD: .5
+    S50: .5
 
 instrument_div_multiplier: 1
 rule_groups:
