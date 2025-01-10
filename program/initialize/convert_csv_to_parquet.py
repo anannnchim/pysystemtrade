@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     # Note 1. Convert single instrument
     # # Import prices for a single instrument (CORN)
-    init_db_with_split_freq_csv_prices_for_code("CORN_mini", datapath=datapath, csv_config=BARCHART_CONFIG)
+    init_db_with_split_freq_csv_prices_for_code("CORN", datapath=datapath, csv_config=BARCHART_CONFIG)
 
     # Note 2. Convert the whole folder (Not working)
     # csv_prices = csvFuturesContractPriceData(datapath)

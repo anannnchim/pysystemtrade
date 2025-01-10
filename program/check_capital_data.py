@@ -26,6 +26,6 @@ if __name__ == '__main__':
     # print(backtest_data)
 
     print("4. Optimal position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN_mini.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/strategy_1 AUD.parquet")
     print(a)
 

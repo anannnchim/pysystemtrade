@@ -8,11 +8,13 @@ if __name__ == '__main__':
     pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
     # Note - FX (daily)
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
+    # print(a)
     """
-    2024-12-24 23:00:00  0.624065
-    2024-12-26 23:00:00  0.623665
+    2025-01-02 23:00:00  0.621690 , 0.6203
+    2025-01-03 23:00:00  0.620800, 0.6212
+    2025-01-06 23:00:00  0.622820 , 0.6243 
+    2025-01-07 23:00:00  0.626445,  0.6265
     """
 
     # Note - Adjusted price (hourly)
@@ -26,6 +28,12 @@ if __name__ == '__main__':
     # (Day)
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN_mini#20250300.parquet")
     # print(a)
+
+    # AUD_micro
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/AUD_micro#20250300.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Day@AUD_micro#20250300.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@AUD_micro#20250300.parquet")
+    print(a)
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/CORN_mini#20250300.parquet")
     # print(a)

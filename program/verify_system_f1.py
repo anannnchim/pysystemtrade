@@ -45,6 +45,7 @@ if __name__ == '__main__':
     # Note - Config
     s.config.get_element("percentage_vol_target") # Return % risk target (number%)
     s.config.get_element("notional_trading_capital")  # Return initial capital in USD
+    s.get_list_of_duplicate_instruments_to_remove()  # Return market to be removed
 
     # Note 1 - RawData
     s.rawdata.get_daily_prices(c1) # Price
