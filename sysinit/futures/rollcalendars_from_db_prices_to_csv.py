@@ -130,4 +130,4 @@ if __name__ == "__main__":
 
     ## MODIFY DATAPATH IF REQUIRED
     output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
-    build_and_write_roll_calendar("CORN_mini", output_datapath=output_path)
+    build_and_write_roll_calendar("CORN", output_datapath=output_path)
