@@ -15,7 +15,11 @@ if __name__ == '__main__':
     # 1. Convert csv to parquet (overwrite)
     # FIXME : Need to fix format
     datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
-    init_db_with_split_freq_csv_prices_for_code(instrument, datapath=datapath, csv_config=BARCHART_CONFIG)
+    init_db_with_split_freq_csv_prices_for_code(
+        instrument,
+        datapath=datapath,
+        csv_config=BARCHART_CONFIG,
+        ignore_duplication=False)  # Muse be false: since we want to add older data and don't touch current data.
 
     # 2. Build Roll calendars (overwrite)
     output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
