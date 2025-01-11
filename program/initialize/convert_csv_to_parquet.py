@@ -34,7 +34,7 @@ if __name__ == '__main__':
         "CORN_mini",
         datapath=datapath,
         csv_config=BARCHART_CONFIG,
-        ignore_duplication=False)
+        ignore_duplication=False)  # Muse be false: since we want to add older data.
 
     # Note 2. Convert the whole folder (Not working)
     # csv_prices = csvFuturesContractPriceData(datapath)
