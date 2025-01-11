@@ -26,7 +26,7 @@ from sysexecution.tick_data import get_next_n_ticks_from_ticker_object
 
 TIMEOUT_SECONDS_ON_HISTORICAL_DATA = 20
 
-
+from zoneinfo import ZoneInfo
 class tickerWithBS(object):
     def __init__(self, ticker, BorS: str):
         self.ticker = ticker
@@ -245,14 +245,31 @@ class ibPriceClient(ibContractsClient):
 
         return adjusted_ts
 
+    # ORIGINAL
+    # def _adjust_ib_time_to_local(self, timestamp_ib) -> datetime.datetime:
+    #     if getattr(timestamp_ib, "tz_localize", None) is None:
+    #         # daily, nothing to do
+    #         return timestamp_ib
+    #
+    #     # IB timestamp already includes tz
+    #     timestamp_ib_with_tz = timestamp_ib
+    #     local_timestamp_ib_with_tz = timestamp_ib_with_tz.astimezone(tz.tzlocal())
+    #     local_timestamp_ib = strip_timezone_fromdatetime(local_timestamp_ib_with_tz)
+    #
+    #     return local_timestamp_ib
+
+    # MODIFIED
     def _adjust_ib_time_to_local(self, timestamp_ib) -> datetime.datetime:
         if getattr(timestamp_ib, "tz_localize", None) is None:
-            # daily, nothing to do
+            # Daily, nothing to do
             return timestamp_ib
 
-        # IB timestamp already includes tz
-        timestamp_ib_with_tz = timestamp_ib
-        local_timestamp_ib_with_tz = timestamp_ib_with_tz.astimezone(tz.tzlocal())
+        # Check if timestamp is naive (no timezone), assume it's in UTC
+        if timestamp_ib.tzinfo is None:
+            timestamp_ib = timestamp_ib.replace(tzinfo=ZoneInfo("UTC"))
+
+        # Convert to UTC
+        local_timestamp_ib_with_tz = timestamp_ib.astimezone(ZoneInfo("UTC"))
         local_timestamp_ib = strip_timezone_fromdatetime(local_timestamp_ib_with_tz)
 
         return local_timestamp_ib
@@ -283,7 +300,7 @@ class ibPriceClient(ibContractsClient):
             durationStr=durationStr,
             barSizeSetting=barSizeSetting,
             whatToShow=whatToShow,
-            useRTH=False, # Note - Default: true (For false, we get the correct data)
+            useRTH=True,  # Note - Default: true (For false, we get the correct data)
             formatDate=2,
             timeout=TIMEOUT_SECONDS_ON_HISTORICAL_DATA,
         )
