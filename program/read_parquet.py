@@ -29,20 +29,15 @@ if __name__ == '__main__':
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN_mini#20250300.parquet")
     # print(a)
 
-    # AUD_micro
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/AUD_micro#20250300.parquet")
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Day@AUD_micro#20250300.parquet")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@AUD_micro#20250300.parquet")
-    print(a)
-
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/CORN_mini#20250300.parquet")
     # print(a)
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN_mini#20250300.parquet")
     # print(a)
 
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
-    # print(a)
+
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
+    print(a)
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@MXP#20250300.parquet")
     # print(a)

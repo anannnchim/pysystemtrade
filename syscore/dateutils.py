@@ -656,11 +656,15 @@ def check_time_matches_closing_time_to_second(
     else:
         return False
 
+# ORIGINAL
+# def strip_timezone_fromdatetime(timestamp_with_tz_info) -> datetime.datetime:
+#     ts = timestamp_with_tz_info.timestamp()
+#     new_timestamp = datetime.datetime.fromtimestamp(ts)
+#     return new_timestamp
 
+# MODIFIED
 def strip_timezone_fromdatetime(timestamp_with_tz_info) -> datetime.datetime:
-    ts = timestamp_with_tz_info.timestamp()
-    new_timestamp = datetime.datetime.fromtimestamp(ts)
-    return new_timestamp
+    return timestamp_with_tz_info.replace(tzinfo=None)
 
 
 """
