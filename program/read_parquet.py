@@ -36,8 +36,8 @@ if __name__ == '__main__':
     # print(a)
 
 
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/MXP#20250300.parquet")
+    # print(a)
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_contract_prices/Hour@MXP#20250300.parquet")
     # print(a)
@@ -90,8 +90,8 @@ if __name__ == '__main__':
     # print(a)
 
     # 4. Adjusted price
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/futures_adjusted_prices/CORN_mini.parquet")
-    # print(a)
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/spreads/ETHER-micro.parquet")
+    print(a)
 
     # PLOT
     # a.plot()
