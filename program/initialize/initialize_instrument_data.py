@@ -7,14 +7,9 @@ from sysinit.futures.rollcalendars_from_db_prices_to_csv import build_and_write_
 
 if __name__ == '__main__':
 
-    instrument = "XXX"
-    # 0. Clean up folder
-    """
-    TODO: Delete all data in parquet and temp/csv folder 
-    """
+    instrument = "V2X"
 
     # 1. Convert csv to parquet (overwrite)
-    # FIXME : Need to fix format
     datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
     init_db_with_split_freq_csv_prices_for_code(
         instrument,
