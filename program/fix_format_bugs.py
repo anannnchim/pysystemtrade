@@ -8,9 +8,9 @@ from sysdata.data_blob import dataBlob
 from sysproduction.data.broker import dataBroker
 from sysproduction.data.prices import diagPrices
 
-pd.set_option('display.max_columns', None)  # Show all columns
-pd.set_option('display.max_rows', None)  # Show all rows
-pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+# pd.set_option('display.max_columns', None)  # Show all columns
+# pd.set_option('display.max_rows', None)  # Show all rows
+# pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
 # REMOVE 5 rows
 # a = a.iloc[:-3]
@@ -35,8 +35,8 @@ if __name__ == '__main__':
     
     """
     # Contract price - HOUR
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN_mini#20250300.parquet")
-    # print(a)
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN_mini#20250300.parquet")
+    print(a)
 
     """
     2025-01-10 14:00:00  455.750  457.125  455.750  457.125      42
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
 
     # Adjusted price
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/CORN_mini.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@ETHER-micro#20250300.parquet")
     print(a)
     """
     2025-01-10 05:00:00  464.500
@@ -121,3 +121,4 @@ if __name__ == '__main__':
     NEW
     2025-01-10 23:00:00  479.625
     """
+
