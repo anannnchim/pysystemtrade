@@ -16,7 +16,7 @@ if __name__ == '__main__':
     print(a)
 
     print("2. Strategy_1 --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/strategy_1.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/strategy_1.parquet")
     print(a)
 
     # print("3. Backtesting data ------------------------------")
@@ -26,6 +26,14 @@ if __name__ == '__main__':
     # print(backtest_data)
 
     print("4. Optimal position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/strategy_1 AUD.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN.parquet")
+    print(a)
+
+    print("5. Contract position --------------------------------")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/contract_positions/CORN#20251200.parquet")
+    print(a)
+
+    print("5. Strategy position --------------------------------")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/strategy_positions/strategy_1 CORN.parquet")
     print(a)
 

@@ -13,7 +13,7 @@ if __name__ == '__main__':
     # 1. Make connection
     from ib_insync import *
     ib = IB()
-    ib.connect('127.0.0.1', 4002, clientId=2)
+    ib.connect('127.0.0.1', 7497, clientId=2)
 
     # 2.2 FUTURES
 
