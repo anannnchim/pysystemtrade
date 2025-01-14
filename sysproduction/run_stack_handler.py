@@ -30,6 +30,7 @@ def get_list_of_timer_functions_for_stack_handler():
 
 if __name__ == "__main__":
     """
-    This will create CONTRACT_ORDER_STACK in mongoDB
+    This will create CONTRACT_ORDER_STACK, BROKER_ORDER_STACK in mongoDB
+    
     """
     run_stack_handler()
