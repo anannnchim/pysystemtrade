@@ -68,7 +68,7 @@ if __name__ == '__main__':
     # print(a)
 
     # Daily
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/CORN#20251200.parquet")
     # print(a)
 
     # Note - Flow
@@ -90,8 +90,46 @@ if __name__ == '__main__':
     # print(a)
 
     # 4. Adjusted price
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/spreads/ETHER-micro.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/CORN#20251200.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN#20251200.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN#20251200.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/CORN.parquet")
     print(a)
+    """
+    Corn 2025/12 MIXED 
+    2025-01-10 18:00:00  449.25  449.50  447.25  448.50   5856.0
+    2025-01-10 19:00:00  448.50  450.50  448.25  449.50   4002.0
+    2025-01-10 23:00:00  445.75  452.75  445.75  449.50  39574.0
+    """
+
+    """
+    CORN 2025/12 DAY
+    2025-01-08 06:00:00  446.25  447.50  443.50  445.00  21178.0
+    2025-01-09 06:00:00  444.00  447.25  443.50  447.00  21042.0
+    2025-01-10 06:00:00  446.00  452.75  445.75  450.25  80527.0
+    2025-01-10 23:00:00  445.75  452.75  445.75  449.50  39574.0
+    """
+    """
+    HOUR
+    2025-01-10 17:00:00  447.00  452.75  447.00  449.25   21636
+    2025-01-10 18:00:00  449.25  449.50  447.25  448.50    5856
+    2025-01-10 19:00:00  448.50  450.50  448.25  449.50    4002
+    """
+    """
+    Multiple price 
+    2025-01-10 17:00:00  447.50       20250900  449.25       20251200   451.75         20261200
+    2025-01-10 18:00:00  446.75       20250900  448.50       20251200   451.50         20261200
+    2025-01-10 19:00:00  448.25       20250900  449.50       20251200   452.25         20261200
+    2025-01-10 23:00:00  448.25       20250900  449.50       20251200   452.25         20261200
+    
+    Adjusted price
+    2025-01-10 18:00:00  448.50
+    2025-01-10 19:00:00  449.50
+    2025-01-10 23:00:00  449.50
+    """
+
 
     # PLOT
     # a.plot()

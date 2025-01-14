@@ -35,6 +35,5 @@ if __name__ == '__main__':
     
     It will append 
     - INSTRUMENT_ORDER_STACK in mongoDB
-    - CONTRACK_ORDER_STACK in mongoDB
     """
     update_strategy_orders()
