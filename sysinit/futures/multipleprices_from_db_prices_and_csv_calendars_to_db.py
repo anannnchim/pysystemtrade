@@ -195,6 +195,7 @@ if __name__ == "__main__":
     
     Source of data:
     1. csv_roll_data_path: path to roll calendars
+    2. Contract price in parquet. (If we update data, it will update multiple price as well)
     
     Output:
     1. csv_multiple_data_path: path of multiple price csv (optional)

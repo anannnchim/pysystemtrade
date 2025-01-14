@@ -93,8 +93,8 @@ if __name__ == '__main__':
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/CORN#20251200.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN#20251200.parquet")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN#20251200.parquet")
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN#20251200.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/CORN.parquet")
     print(a)
     """
@@ -119,15 +119,34 @@ if __name__ == '__main__':
     """
     """
     Multiple price 
-    2025-01-10 17:00:00  447.50       20250900  449.25       20251200   451.75         20261200
-    2025-01-10 18:00:00  446.75       20250900  448.50       20251200   451.50         20261200
-    2025-01-10 19:00:00  448.25       20250900  449.50       20251200   452.25         20261200
-    2025-01-10 23:00:00  448.25       20250900  449.50       20251200   452.25         20261200
-    
-    Adjusted price
-    2025-01-10 18:00:00  448.50
-    2025-01-10 19:00:00  449.50
-    2025-01-10 23:00:00  449.50
+                      CARRY CARRY_CONTRACT  ...  FORWARD FORWARD_CONTRACT
+index                                       ...                          
+2022-11-28 02:00:00  617.50       20230900  ...      NaN         20241200
+2022-11-28 03:00:00     NaN       20230900  ...      NaN         20241200
+2022-11-28 04:00:00  617.50       20230900  ...      NaN         20241200
+2022-11-28 05:00:00  618.00       20230900  ...      NaN         20241200
+2022-11-28 06:00:00  621.50       20230900  ...      NaN         20241200
+...                     ...            ...  ...      ...              ...
+2025-01-13 16:00:00  453.50       20250900  ...    456.5         20261200
+2025-01-13 17:00:00  454.75       20250900  ...    457.5         20261200
+2025-01-13 18:00:00  456.00       20250900  ...    458.0         20261200
+2025-01-13 19:00:00  456.00       20250900  ...    458.0         20261200
+2025-01-13 23:00:00  456.00       20250900  ...    458.0         20261200
+
+Adjusted price
+                      price
+index                      
+2022-11-28 02:00:00  693.25
+2022-11-28 03:00:00  693.25
+2022-11-28 04:00:00  692.75
+2022-11-28 05:00:00  693.25
+2022-11-28 06:00:00  693.50
+...                     ...
+2025-01-13 16:00:00  455.25
+2025-01-13 17:00:00  456.00
+2025-01-13 18:00:00  456.75
+2025-01-13 19:00:00  456.50
+2025-01-13 23:00:00  456.50
     """
 
 
