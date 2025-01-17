@@ -498,4 +498,11 @@ def write_merged_prices_for_contract(
 
 
 if __name__ == "__main__":
+    """
+    This will update the contract price in parquet folder
+    
+    It uses instrument list from multiple price parquet.
+    
+    - This will append data in contract price data in parquet folder.
+    """
     update_historical_prices()

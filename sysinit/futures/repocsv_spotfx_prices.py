@@ -4,9 +4,22 @@ Get FX prices from csv repo files and write to arctic
 WARNING WILL OVERWRITE EXISTING!
 """
 from sysdata.csv.csv_spot_fx import csvFxPricesData
+from sysdata.parquet.parquet_access import ParquetAccess
+from sysdata.parquet.parquet_spotfx_prices import parquetFxPricesData
 from sysproduction.data.currency_data import fxPricesData
 
-db_fx_price_data = fxPricesData()
+
+"""
+This will copy csv fx price and override into parquet.
+"""
+
+# Note: Add this line
+parquet_access = ParquetAccess("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet")
+db_fx_price_data = parquetFxPricesData(parquet_access)
+
+# Remove this line.
+# db_fx_price_data = fxPricesData()
+
 
 if __name__ == "__main__":
     input("Will overwrite existing prices are you sure?! CTL-C to abort")

@@ -88,3 +88,12 @@ testpaths = [
 line-length = 88
 target-version = ["py310"]
 required-version = "23.11.0"
+
+[project.scripts]
+interactive_controls = "sysproduction.interactive_controls:interactive_controls"
+interactive_diagnostics = "sysproduction.interactive_diagnostics:interactive_diagnostics"
+interactive_manual_check_fx_prices = "sysproduction.interactive_manual_check_fx_prices:interactive_manual_check_fx_prices"
+interactive_manual_check_historical_prices = "sysproduction.interactive_manual_check_historical_prices:interactive_manual_check_historical_prices"
+interactive_order_stack = "sysproduction.interactive_order_stack:interactive_order_stack"
+interactive_update_capital_manual = "sysproduction.interactive_update_capital_manual:interactive_update_capital_manual"
+interactive_update_roll_status = "sysproduction.interactive_update_roll_status:interactive_update_roll_status"

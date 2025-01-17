@@ -36,3 +36,6 @@ data/parquet
 # DS_Store
 .DS_Store
 data/.DS_Store
+
+# Env path
+project_env.sh

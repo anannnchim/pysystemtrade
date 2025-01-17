@@ -126,7 +126,8 @@ def check_saved_roll_calendar(
 
 if __name__ == "__main__":
     input("Will overwrite existing roll calendar are you sure?! CTL-C to abort")
-    instrument_code = get_valid_instrument_code_from_user(source="single")
+    # instrument_code = get_valid_instrument_code_from_user(source="single")
+
     ## MODIFY DATAPATH IF REQUIRED
-    # build_and_write_roll_calendar(instrument_code, output_datapath=arg_not_supplied)
-    build_and_write_roll_calendar(instrument_code, output_datapath="/home/rob/")
+    output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
+    build_and_write_roll_calendar("V2X", output_datapath=output_path)

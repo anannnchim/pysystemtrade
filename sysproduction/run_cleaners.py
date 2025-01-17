@@ -34,4 +34,10 @@ def get_list_of_timer_functions_for_cleaning():
 
 
 if __name__ == "__main__":
+    """
+    Runs
+    [clean_truncate_backtest_states](#delete-old-pickled-backtest-state-objects),
+    [clean_truncate_echo_files](#truncate-echo-files),
+    [clean_truncate_log_files](#clean-up-old-logs): Clean up
+    """
     run_cleaners()

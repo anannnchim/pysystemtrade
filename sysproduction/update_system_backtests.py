@@ -27,3 +27,14 @@ def update_system_backtests():
                 data, strategy_name, process_name, backtest_function
             )
             system_backtest_runner.run_strategy_method()
+
+
+if __name__ == '__main__':
+    """
+    This will
+    
+    1. It will looks for strategy name in private_control_config
+    - Create (config, backtest.pck) in private.backtests.<strategy_name>
+    - Append optimal position in parquet/optimal_position
+    """
+    update_system_backtests()
