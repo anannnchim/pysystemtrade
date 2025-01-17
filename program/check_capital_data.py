@@ -26,14 +26,14 @@ if __name__ == '__main__':
     # print(backtest_data)
 
     print("4. Optimal position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/strategy_1 CORN.parquet")
     print(a)
 
     print("5. Contract position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/contract_positions/CORN#20251200.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/CORN#20251200.parquet")
     print(a)
 
     print("5. Strategy position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/strategy_positions/strategy_1 CORN.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/strategy_1 CORN.parquet")
     print(a)
 

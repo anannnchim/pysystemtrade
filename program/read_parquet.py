@@ -93,11 +93,12 @@ if __name__ == '__main__':
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spotfx_prices/AUDUSD.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/CORN#20251200.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN#20251200.parquet")
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN#20251200.parquet")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Hour@CORN#20251200.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/CORN.parquet")
     print(a)
     """
+    1571.0 + 2077.0 + 1555.0 +  1157.0 +1704.0 +1956.0
     Corn 2025/12 MIXED 
     2025-01-10 18:00:00  449.25  449.50  447.25  448.50   5856.0
     2025-01-10 19:00:00  448.50  450.50  448.25  449.50   4002.0
