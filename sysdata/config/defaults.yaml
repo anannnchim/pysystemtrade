@@ -168,7 +168,7 @@ forecast_weight_ewma_span: 125
 #
 # Set this to 0.13 to enforce the speed limit even for fixed weights or
 #   regardless of what an estimator does
-forecast_post_ceiling_cost_SR: 999
+forecast_post_ceiling_cost_SR: 0.13 # FROM 9999
 #
 forecast_weight_estimate:
    func: sysquant.optimisation.generic_optimiser.genericOptimiser
@@ -176,7 +176,7 @@ forecast_weight_estimate:
    equalise_gross: False
    cost_multiplier: 2.0
    apply_cost_weight: False
-   ceiling_cost_SR: 9999
+   ceiling_cost_SR: 9999 # FROM 9999
    frequency: "W"
    date_method: "expanding"
    rollyears: 20

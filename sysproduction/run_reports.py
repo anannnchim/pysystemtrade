@@ -46,4 +46,10 @@ class runReport(object):
 
 
 if __name__ == "__main__":
+    """
+    This fail
+    
+    slippage_report → combined_df_costs → get_combined_df_of_costs → get_average_half_spread_from_sampling.
+    
+    """
     run_reports()

@@ -33,4 +33,8 @@ def backup_state_files_with_data_object(data):
 
 
 if __name__ == "__main__":
+    """
+    This will copy (pickle, config) files from private/backtests to 
+    offsystem_backup_directory: /Users/nanthawat/PycharmProjects/private-pysystemtrade/backup/statefile
+    """
     backup_state_files()

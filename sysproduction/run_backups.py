@@ -36,4 +36,7 @@ def get_list_of_timer_functions_for_backup():
 
 
 if __name__ == "__main__":
+    """
+    Copy data out of MongoDB and move to offsystem_backup_directory/csv
+    """
     run_backups()

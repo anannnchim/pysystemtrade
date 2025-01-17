@@ -139,4 +139,9 @@ def write_allocated_strategy_margin(data: dataBlob, strategy_margin_dict: dict):
 
 
 if __name__ == "__main__":
+    """
+    This will allocate capital to each strategy
+    - append data in `data/parquet/capital/strategy_1.parquet`
+    - append margin in MongoDB
+    """
     update_strategy_capital()

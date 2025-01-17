@@ -6,7 +6,8 @@ from syslogging.logger import *
 
 import pandas as pd
 
-ROLLS_DATAPATH = "data.futures.csvconfig"
+# ROLLS_DATAPATH = "data.futures.csvconfig" # NOTE: REMOVE AND ADD BELOW
+ROLLS_DATAPATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/csvconfig"
 ROLLS_CONFIG_FILE = "rollconfig.csv"
 
 

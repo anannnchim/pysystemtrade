@@ -70,8 +70,15 @@ def process_adjusted_prices_single_instrument(
 
 
 if __name__ == "__main__":
+    """
+    This will use multiple price to create adjusted price
+    """
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # modify flags and datapath as required
+    # path to adjusted price csv:
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/adjusted_prices"
+
+
     process_adjusted_prices_all_instruments(
-        csv_adj_data_path=arg_not_supplied, ADD_TO_DB=True, ADD_TO_CSV=True
+        csv_adj_data_path=path, ADD_TO_DB=True, ADD_TO_CSV=True
     )

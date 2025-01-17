@@ -190,15 +190,29 @@ def add_phantom_row(
 
 
 if __name__ == "__main__":
+    """
+    This will create multiple prices to DB (optional to CSV)
+    
+    Source of data:
+    1. csv_roll_data_path: path to roll calendars
+    2. Contract price in parquet. (If we update data, it will update multiple price as well)
+    
+    Output:
+    1. csv_multiple_data_path: path of multiple price csv (optional)
+    2. parquet/futures_multiple_prices
+    """
+
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # change if you want to write elsewhere
-    csv_multiple_data_path = arg_not_supplied
+    csv_multiple_data_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/multiple_prices"
 
-    # only change if you have written the files elsewhere
-    csv_roll_data_path = arg_not_supplied
+    # Roll calendars
+    csv_roll_data_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
 
     # modify flags as required
     process_multiple_prices_all_instruments(
         csv_multiple_data_path=csv_multiple_data_path,
         csv_roll_data_path=csv_roll_data_path,
+        ADD_TO_DB=True,
+        ADD_TO_CSV=True,  # IF true it will add csv to temp/multiple path
     )

@@ -28,7 +28,7 @@ from sysdata.csv.csv_spreads import csvSpreadsForInstrumentData
 from sysobjects.contracts import futuresContract
 from sysobjects.production.tradeable_object import instrumentStrategy
 
-from sysproduction.data.directories import get_csv_backup_directory, get_csv_dump_dir
+from sysproduction.data.directories import get_csv_backup_directory, get_csv_dump_dir, get_main_backup_directory
 from sysproduction.data.strategies import get_list_of_strategies
 
 from sysproduction.data.production_data_objects import *
@@ -488,4 +488,8 @@ def backup_csv_dump(data):
 
 
 if __name__ == "__main__":
+    """
+    This will copy data to 
+    csv_backup_directory: "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/backups_csv"
+    """
     backup_db_to_csv()

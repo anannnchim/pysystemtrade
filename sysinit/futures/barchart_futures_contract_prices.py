@@ -98,13 +98,14 @@ barchart_csv_config = ConfigCsvFuturesPrices(
 )
 
 
+
 def transfer_barchart_prices_to_db(datapath):
-    strip_file_names(datapath)
+    # strip_file_names(datapath)
     init_db_with_csv_futures_contract_prices(datapath, csv_config=barchart_csv_config)
 
 
 if __name__ == "__main__":
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # modify flags as required
-    datapath = "*** NEED TO DEFINE A DATAPATH ***"
+    datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
     transfer_barchart_prices_to_db(datapath)
