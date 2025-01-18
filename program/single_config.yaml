@@ -60,25 +60,21 @@ forecast_cap: 20.0
 forecast_weights:
      USD:
         ewmac32_128: 1
-     S50:
-       ewmac32_128: 1
 forecast_div_multiplier:
      USD: 1
-     S50: 1
 #
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 631123.25
+notional_trading_capital: 1000000
 base_currency: "USD"
 capital_multiplier:
-   func: syscore.capital.full_compounding
+   func: syscore.capital.fixed_capital
 #
 # Portfolio creation
 #
 instrument_weights:
-    USD: .5
-    S50: .5
+    USD: 1
 
 instrument_div_multiplier: 1
 rule_groups:
@@ -101,5 +97,8 @@ style_groups:
 
 # Buffer
 buffer_trade_to_edge: True
-buffer_method: "position" #forecast
+#buffer_method: "position" #forecast
 buffer_size: 0.10
+
+vol_normalise_currency_costs: False
+buffer_method: forecast
