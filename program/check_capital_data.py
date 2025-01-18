@@ -10,7 +10,6 @@ pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lin
 
 if __name__ == '__main__':
 
-    # Note - FX (daily)
     print("1. Global Capital--------------------------------")
     a = pd.read_parquet("/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/capital/__global_capital.parquet")
     print(a)
@@ -30,10 +29,10 @@ if __name__ == '__main__':
     print(a)
 
     print("5. Contract position --------------------------------")
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/ETHER-micro#20251200.parquet")
-    # print(a)
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/ETHER-micro#20250200.parquet")
+    print(a)
 
     print("5. Strategy position --------------------------------")
-    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 ETHER-micro.parquet")
-    # print(a)
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 ETHER-micro.parquet")
+    print(a)
 

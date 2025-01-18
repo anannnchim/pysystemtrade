@@ -26,7 +26,7 @@ if __name__ == '__main__':
     1. Update total capital
     2. Update strategy capital
     3. Update system backtest
-    4. Update by appending data in Adjusted & Multiple parquet
+    4. Generate instrument order
     """
 
     # 1. Update futures related data
