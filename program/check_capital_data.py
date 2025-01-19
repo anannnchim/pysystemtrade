@@ -29,10 +29,10 @@ if __name__ == '__main__':
     print(a)
 
     print("5. Contract position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/ETHER-micro#20250200.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/ETHER-micro#20250200.parquet")
+    # print(a)
 
     print("5. Strategy position --------------------------------")
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 ETHER-micro.parquet")
-    print(a)
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 ETHER-micro.parquet")
+    # print(a)
 
