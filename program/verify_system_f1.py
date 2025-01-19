@@ -4,8 +4,6 @@ from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.pyplot as plt
 
-
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_f1/config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/program/single_config.yaml")
 
 data = csvFuturesSimData()
@@ -16,6 +14,9 @@ c1 = "USD"
 pd.set_option('display.max_columns', None)  # Show all columns
 pd.set_option('display.max_rows', None)  # Show all rows
 pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+
+
+# ref: https://docs.google.com/spreadsheets/d/1FfdHbwofm_Admn7Q-9TuHsFCY1Wir_MiakrBDbo3dzE/edit?gid=0#gid=0
 
 # ------------------------------------ Save to csv ----------------------------
 
