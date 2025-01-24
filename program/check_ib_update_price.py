@@ -13,12 +13,12 @@ if __name__ == '__main__':
     from ib_insync import *
 
     ib = IB()
-    ib.connect('127.0.0.1', 7497, clientId=2)
+    ib.connect('127.0.0.1', 7496, clientId=33)
 
     # 2.2 FUTURES
 
     # 2. Define the futures contract
-    mxp_future = Future(symbol='YC', lastTradeDateOrContractMonth='202503', exchange='CBOT', currency='USD')
+    mxp_future = Future(symbol='MET', lastTradeDateOrContractMonth='202502', exchange='CME', currency='USD')
 
     # 3. Request historical data
     bars = ib.reqHistoricalData(

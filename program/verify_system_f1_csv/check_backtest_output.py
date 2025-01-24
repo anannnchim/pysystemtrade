@@ -19,7 +19,7 @@ if __name__ == '__main__':
     print(b)
 
     print("C. Optimal position --------------------------------")
-    c = pd.read_parquet("/data/parquet/optimal_positions/system_01 ETHER-micro.parquet")
+    c = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 ETHER-micro.parquet")
     print(c)
 
     # Save as df in program/verify_system_f1_csv
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/verify_system_f1_csv/df.csv")
 
     print("D. Backtesting data ------------------------------")
-    file_path = '/private/backtests/system_01/20250120_115349_backtest.pck'
+    file_path = '/Users/nanthawat/PycharmProjects/pysystemtrade/private/backtests/system_01/20250123_114939_backtest.pck'
     with open(file_path, 'rb') as file:
         backtest_data = pickle.load(file)
     for i, key in enumerate(backtest_data.keys()):

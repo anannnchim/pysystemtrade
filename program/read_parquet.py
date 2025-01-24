@@ -9,5 +9,4 @@ if __name__ == '__main__':
 
     a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@ETHER-micro#20250200.parquet")
     print(a)
-
     a.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/output_csv/price.csv")

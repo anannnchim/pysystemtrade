@@ -21,7 +21,7 @@ if __name__ == '__main__':
     print(b)
 
     print("3. Optimal position --------------------------------")
-    c = pd.read_parquet("/data/parquet/optimal_positions/system_01 ETHER-micro.parquet")
+    c = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 ETHER-micro.parquet")
     print(c)
     c.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/verify_system_f1_csv/c.csv")
 
