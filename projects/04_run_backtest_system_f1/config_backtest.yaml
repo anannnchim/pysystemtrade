@@ -1,0 +1,123 @@
+trading_rules:
+  ewmac2_8: # name of the rule
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 2
+         Lslow: 8
+     forecast_scalar: 10.6
+  ewmac4_16:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 4
+         Lslow: 16
+     forecast_scalar: 7.5
+  ewmac8_32:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 8
+         Lslow: 32
+     forecast_scalar: 5.3
+  ewmac16_64:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 16
+         Lslow: 64
+     forecast_scalar: 3.75
+  ewmac32_128:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 32
+         Lslow: 128
+     forecast_scalar: 2.65
+  ewmac64_256:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 64
+         Lslow: 256
+     forecast_scalar: 1.87
+
+forecast_cap: 20.0
+
+### INPUT -----------------------------------------------------------------
+forecast_weights:
+     S50:
+        ewmac2_8: 0
+        ewmac8_32: 0.25 # Form this
+        ewmac16_64: 0.25
+        ewmac32_128: 0.25
+        ewmac64_256: 0.25
+     USD:
+        ewmac2_8: 0
+        ewmac8_32: 0
+        ewmac16_64: 0.33 # From this
+        ewmac32_128: 0.33
+        ewmac64_256: 0.33
+     GF10:
+        ewmac2_8: 0
+        ewmac8_32: 0.25 # From this
+        ewmac16_64: 0.25
+        ewmac32_128: 0.25
+        ewmac64_256: 0.25
+forecast_div_multiplier:
+     S50: 1.13
+     USD: 1.08
+     GF10: 1.13
+#
+# Capital correction
+#
+percentage_vol_target: 14
+notional_trading_capital: 600000
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding
+#
+# Portfolio creation
+#
+instrument_weights:
+    S50: 0.33
+    USD: 0.33
+    GF10: 0.33
+
+instrument_div_multiplier: 1.48
+
+rule_groups:
+    ewmac_fast:
+       - ewmac2_8
+       - ewmac4_16
+    ewmac_medium:
+       - ewmac8_32
+       - ewmac16_64
+    ewmac_slow:
+       - ewmac32_128
+       - ewmac64_256
+style_groups:
+    trend:
+        - ewmac_fast
+        - ewmac_medium
+        - ewmac_slow
+
+start_date: "2011-01-01"
+
+# Buffer
+buffer_trade_to_edge: True
+buffer_method: forecast
+buffer_size: 0.10
+vol_normalise_currency_costs: False # Need to set to false for System F1

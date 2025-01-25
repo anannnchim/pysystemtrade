@@ -3,7 +3,7 @@
 if __name__ == '__main__':
     import pandas as pd
     # Load the CSV file
-    file_path = '/Users/nanthawat/PycharmProjects/pysystemtrade/program/others/USDTHB.csv'
+    file_path = '/projects/02_check_currency_investment/USDTHB.csv'
     df = pd.read_csv(file_path)
 
     # Ensure the 'Time' column is a datetime type
@@ -29,5 +29,5 @@ if __name__ == '__main__':
 
     print(result.to_string(index=False))
 
-    result.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/others/data.csv")
+    result.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/02_check_currency_investment")
 
