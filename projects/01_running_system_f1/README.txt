@@ -6,19 +6,13 @@ S50: 2006
 USD: 2001
 GF10: 2010
 
-Priority
-1. Use pysystemtrade structure as much as possible
-2. Automate as much as possible (before cloud level)
-
-
-
-
 Solution
 1. Develop MVP that replicate functionality from googlesheet.
 
-DOING LIST
-1. Run backtest, and verify data.
-- Create run system file.
+Files
+1. update_account_gg: Update account data
+2. run_system: get actual capital and generate order
+3. Input order: input order
 
 2. Find a way to integate data production.
 - Need to store equity.csv or accounting in googlesheet
