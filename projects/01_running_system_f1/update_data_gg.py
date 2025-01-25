@@ -94,9 +94,37 @@ def save_to_csv(df, filename, output_dir):
         # Save the DataFrame to CSV
         df.to_csv(file_path, index=False)
 
-        print(f"Data saved to {file_path}")
     except Exception as e:
         print(f"Error saving data to CSV: {e}")
+
+
+# Function to get the last value of the DATETIME column
+def check_data_validity(files):
+    """
+    Check if the last DATETIME column values in the given CSV files are the same.
+
+    :param files: Dictionary of file names and their paths.
+    :return: None
+    """
+
+    # Function to get the last value of the DATETIME column
+    print(" ")
+    def get_last_datetime(file_path):
+        df = pd.read_csv(file_path)
+        if 'DATETIME' not in df.columns:
+            raise ValueError(f"{file_path} does not have a 'DATETIME' column.")
+        return df['DATETIME'].iloc[-1]
+
+    # Check the last DATETIME values
+    last_datetimes = {name: get_last_datetime(path) for name, path in files.items()}
+
+    # Compare all DATETIME values
+    if len(set(last_datetimes.values())) != 1:
+        print("Error: The last DATETIME values are not the same!")
+        for name, datetime in last_datetimes.items():
+            print(f"{name}: {datetime}")
+    else:
+        print("All last DATETIME values are the same: ", last_datetimes)
 
 
 def main():
@@ -127,5 +155,15 @@ def main():
 
 
 if __name__ == "__main__":
-
+    # Update data from googlesheet
     main()
+
+    # File paths
+    files = {
+        "S50": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/S50.csv",
+        "USD": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/USD.csv",
+        "GF10": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/GF10.csv"
+    }
+
+    # Call the function
+    check_data_validity(files)
