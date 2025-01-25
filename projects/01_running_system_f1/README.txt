@@ -14,11 +14,8 @@ Files
 2. run_system: get actual capital and generate order
 3. Input order: input order
 
-2. Find a way to integate data production.
+TODO LIST
+- Find a way to integate data production.
 - Need to store equity.csv or accounting in googlesheet
 - Might need to init initial data from googlesheet.
 - Be able to input order or exection
-
-THING TO CHECK
-- IF data start not the same date, what does it mean?
--
