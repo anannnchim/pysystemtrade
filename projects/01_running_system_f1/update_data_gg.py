@@ -113,7 +113,7 @@ def main():
     client = authenticate_gspread(json_keyfile_path, scope)
 
     # List of worksheets to process
-    worksheets = ['S50_py', 'USD_py', 'GF10_py']
+    worksheets = ['S50', 'USD', 'GF10']
 
     # Process each worksheet
     for sheet_name in worksheets:
@@ -122,9 +122,9 @@ def main():
         if df is not None:
             df_processed = process_data(df)
             if df_processed is not None:
-                # Remove "_py" from the sheet name for the CSV filename
-                csv_filename = f"{sheet_name.replace('_py', '')}.csv"
+                csv_filename = f"{sheet_name}.csv"
                 save_to_csv(df_processed, csv_filename, output_dir)
+
 
 if __name__ == "__main__":
 
