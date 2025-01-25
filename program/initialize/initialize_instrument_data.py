@@ -7,7 +7,7 @@ from sysinit.futures.rollcalendars_from_db_prices_to_csv import build_and_write_
 
 if __name__ == '__main__':
 
-    instrument = "V2X"
+    instrument = "EUR_micro"
 
     # 1. Convert csv to parquet (overwrite)
     datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
