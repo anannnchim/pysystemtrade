@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
     # Note 1 - Connection
     ib = IB()
-    ib.connect('127.0.0.1', 7497, clientId=13)
+    ib.connect('127.0.0.1', 7496, clientId=13)
 
     # Note 2 - Define future
     mxp_future = Future(symbol='ZC', lastTradeDateOrContractMonth='202512', exchange='CBOT', currency='USD')
