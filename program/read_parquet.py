@@ -7,13 +7,10 @@ if __name__ == '__main__':
     # pd.set_option('display.max_rows', None)  # Show all rows
     pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EUR_micro.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EUR_micro#20250600.parquet")
     # a = pd.read_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/EUR_micro.csv")
+
     print(a)
-    a.plot()
-    plt.show()
-
-
 
 
     # a.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/output_csv/price.csv")
