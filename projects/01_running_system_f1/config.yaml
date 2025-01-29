@@ -57,35 +57,56 @@ trading_rules:
 forecast_cap: 20.0
 
 ### INPUT -----------------------------------------------------------------
+# NEW
+#forecast_weights:
+#     S50:
+#        ewmac2_8: 0
+#        ewmac8_32: 0.25 # Form this
+#        ewmac16_64: 0.25
+#        ewmac32_128: 0.25
+#        ewmac64_256: 0.25
+#     USD:
+#        ewmac2_8: 0
+#        ewmac8_32: 0
+#        ewmac16_64: 0.33 # From this
+#        ewmac32_128: 0.33
+#        ewmac64_256: 0.33
+#     GF10:
+#        ewmac2_8: 0
+#        ewmac8_32: 0.25 # From this
+#        ewmac16_64: 0.25
+#        ewmac32_128: 0.25
+#        ewmac64_256: 0.25
+#forecast_div_multiplier:
+#     S50: 1.13
+#     USD: 1.08
+#     GF10: 1.13
+
+# Current
 forecast_weights:
      S50:
-        ewmac2_8: 0
-        ewmac8_32: 0.25 # Form this
-        ewmac16_64: 0.25
-        ewmac32_128: 0.25
-        ewmac64_256: 0.25
-     USD:
-        ewmac2_8: 0
-        ewmac8_32: 0
-        ewmac16_64: 0.33 # From this
+        ewmac16_64: 0.33
         ewmac32_128: 0.33
         ewmac64_256: 0.33
+     USD:
+        ewmac32_128: 0.50
+        ewmac64_256: 0.50
      GF10:
-        ewmac2_8: 0
-        ewmac8_32: 0.25 # From this
+        ewmac8_32: 0.25
         ewmac16_64: 0.25
         ewmac32_128: 0.25
         ewmac64_256: 0.25
 forecast_div_multiplier:
-     S50: 1.13
-     USD: 1.08
+     S50: 1.08
+     USD: 1.03
      GF10: 1.13
 #
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 600000
+notional_trading_capital: 571585.61
 base_currency: "USD"
+
 capital_multiplier:
    func: syscore.capital.full_compounding
 #
@@ -114,10 +135,10 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "2025-01-01"
+start_date: "2024-10-01"
 
 # Buffer
 buffer_trade_to_edge: True
-buffer_method: forecast
-buffer_size: 0.10
+buffer_method: "position"
+buffer_size: 0.1
 vol_normalise_currency_costs: False # Need to set to false for System F1
