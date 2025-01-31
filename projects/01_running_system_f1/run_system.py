@@ -32,3 +32,5 @@ if __name__ == '__main__':
         "GF10": s.portfolio.get_actual_position("GF10")
     })
     print(df)
+
+    print(s.portfolio.get_buffers_for_position("USD"))
