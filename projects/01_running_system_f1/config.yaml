@@ -135,10 +135,10 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-start_date: "2024-10-01"
-
+#start_date: "2024-10-01"
+#start_date: "2025-01-01"
 # Buffer
 buffer_trade_to_edge: True
-buffer_method: "position"
+buffer_method: forecast
 buffer_size: 0.1
 vol_normalise_currency_costs: False # Need to set to false for System F1

@@ -38,5 +38,10 @@ def get_list_of_timer_functions_for_backup():
 if __name__ == "__main__":
     """
     Copy data out of MongoDB and move to offsystem_backup_directory/csv
+    
+    It adds 
+    1. backup folder in /Users/nanthawat/PycharmProjects/private-pysystemtrade/backup 
+    2. backups_csv and mongo_dump folders in /Users/nanthawat/PycharmProjects/private-pysystemtrade/data/backups_csv
+    and /Users/nanthawat/PycharmProjects/private-pysystemtrade/data/mongo_dump
     """
     run_backups()
