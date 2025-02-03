@@ -116,7 +116,6 @@ class GoogleSheetAccess:
         except Exception as e:
             print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
 
-
 # Usage example
 if __name__ == "__main__":
 
