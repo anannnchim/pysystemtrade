@@ -22,6 +22,11 @@ data = csvFuturesSimData()
 s = futures_system(config=config)
 sheet_access = GoogleSheetAccess()
 
+# Adjust pandas options to display all rows and columns
+pd.set_option('display.max_columns', None)  # Show all columns
+pd.set_option('display.max_rows', None)  # Show all rows
+pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+
 
 def update_market_monitoring():
     """
@@ -58,7 +63,22 @@ def calculate_target_positions():
                 "top_pos": round(s.accounts.get_actual_buffers_for_position(instrument).iloc[:, 0] * cap_multi, 0),
                 "bot_pos": round(s.accounts.get_actual_buffers_for_position(instrument).iloc[:, 1] * cap_multi, 0),
             })
-            df["target"] = df.apply(lambda row: min(max(0, row["bot_pos"]), row["top_pos"]), axis=1)
+
+            # Initialize target column with NaN
+            df["target"] = None
+
+            # Set first row's target to 0
+            df.iloc[0, df.columns.get_loc("target")] = 0
+
+            # Iterate over DataFrame row by row for correct computation
+            for i in range(1, len(df)):
+                prev_target = df.iloc[i - 1]["target"]
+                top_pos = df.iloc[i]["top_pos"]
+                bot_pos = df.iloc[i]["bot_pos"]
+
+                # Apply correct constraint logic
+                df.iloc[i, df.columns.get_loc("target")] = min(max(prev_target, bot_pos), top_pos)
+
             target_positions[instrument] = df["target"]
 
         return pd.DataFrame(target_positions)
@@ -76,17 +96,32 @@ def get_instrument_target_position(instrument_code):
     :return: DataFrame with top_pos, bot_pos, and target columns.
     """
     try:
+        # Retrieve account value and capital multiplier
         equity_list = sheet_access.get_cell_data(SHEET_URL, "Accounting", "C11:C")
         equity_list = convert_to_numeric(equity_list)
         account_value = equity_list[-1]
         backtest_acc_value = s.accounts.get_actual_capital()[-1]
         cap_multi = account_value / backtest_acc_value
 
+        # Fetch top and bottom position values
         df = pd.DataFrame({
             "top_pos": round(s.accounts.get_actual_buffers_for_position(instrument_code).iloc[:, 0] * cap_multi, 0),
             "bot_pos": round(s.accounts.get_actual_buffers_for_position(instrument_code).iloc[:, 1] * cap_multi, 0),
         })
-        df["target"] = df.apply(lambda row: min(max(0, row["bot_pos"]), row["top_pos"]), axis=1)
+
+        # Initialize target column
+        df["target"] = None
+
+        # Set first row's target to 0
+        df.iloc[0, df.columns.get_loc("target")] = 0
+
+        # Compute target positions iteratively
+        for i in range(1, len(df)):
+            prev_target = df.iloc[i - 1]["target"]
+            top_pos = df.iloc[i]["top_pos"]
+            bot_pos = df.iloc[i]["bot_pos"]
+
+            df.iloc[i, df.columns.get_loc("target")] = min(max(prev_target, bot_pos), top_pos)
 
         print(df.tail(5))  # Show the last 5 rows for quick verification
         return df
@@ -94,7 +129,6 @@ def get_instrument_target_position(instrument_code):
     except Exception as e:
         print(f"Error retrieving data for {instrument_code}: {e}")
         return pd.DataFrame()
-
 
 def main():
     """
