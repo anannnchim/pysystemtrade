@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 
 # INPUT
-sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1742643022#gid=1742643022'
+sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1248180211#gid=1248180211'
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
 c1 = "USD"
 
@@ -79,17 +79,13 @@ if __name__ == '__main__':
     # # Net TWR (number%)
     # s.accounts.portfolio().net.percent.curve().plot()
     # plt.show()
-
+    """
+    1. Decomposse: accounts.portfolio 
+    PNL = f(change, number of holding) 
+    
+    """
     # PNL
-    pd.DataFrame({
-        "S50": s.accounts.portfolio()['S50'],
-        "USD": s.accounts.portfolio()['USD'],
-        "GF10": s.accounts.portfolio()['GF10'],
-        "ALL": s.accounts.portfolio()
-    })
-
-    # CHANGE
-    pd.DataFrame({
+    PNL = pd.DataFrame({
         "S50": s.accounts.portfolio()['S50'],
         "USD": s.accounts.portfolio()['USD'],
         "GF10": s.accounts.portfolio()['GF10'],
@@ -99,14 +95,12 @@ if __name__ == '__main__':
 
     # CHECK if it's the same as target position
 
-
-
     # Assume single, fix weight.
     pd.DataFrame({
         "Up": s.portfolio.get_buffers_for_position("S50").iloc[:, 0],
         "Down": s.portfolio.get_buffers_for_position("S50").iloc[:, 1],
         "Pos": s.portfolio.get_notional_position("S50"),
-        "rounded": s.accounts.get_buffered_position("S50")
+        "rounded": s.accounts.get_buffered_position("S50") # This is target hold.
     })
 
     # PENDING
