@@ -51,6 +51,7 @@ def calculate_target_positions():
         equity_list = sheet_access.get_cell_data(SHEET_URL, "Accounting", "C11:C")
         equity_list = convert_to_numeric(equity_list)
         account_value = equity_list[-1]
+        print("Account_value: ", account_value)
 
         # Get backtest capital value
         backtest_acc_value = s.accounts.get_actual_capital()[-1]
