@@ -15,7 +15,7 @@
 
 # RUN THROUGH OUT OPEN NORMAL TRADING HOUR-6H (21:30 to 02:00) but we will set to 22:00 for now.
 # NORAMLLY 21:45 but today I'm hurry, so 21:22
-41 21  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
+00 21  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
 
 # 3) Clean up and backup (RUN MANUAL FOR NOW) 30s,skip, # Need to set end time in order.
 # 55 22  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_cleaners  >> $ECHO_PATH/run_cleaners.txt 2>&1
