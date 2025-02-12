@@ -79,54 +79,87 @@ if __name__ == '__main__':
     # # Net TWR (number%)
     # s.accounts.portfolio().net.percent.curve().plot()
     # plt.show()
-    """
-    1. Decomposse: accounts.portfolio 
-    PNL = f(change, number of holding) 
-    
-    """
-    # PNL
-    PNL = pd.DataFrame({
-        "S50": s.accounts.portfolio()['S50'],
-        "USD": s.accounts.portfolio()['USD'],
-        "GF10": s.accounts.portfolio()['GF10'],
-        "ALL": s.accounts.portfolio()
+
+    # # PNL
+    # PNL = pd.DataFrame({
+    #     "S50": s.accounts.portfolio()['S50'],
+    #     "USD": s.accounts.portfolio()['USD'],
+    #     "GF10": s.accounts.portfolio()['GF10'],
+    #     "ALL": s.accounts.portfolio()
+    # })
+    #
+    # # 1.1 Change
+    # code = "S50"
+    # pd.DataFrame({
+    #     "Price": s.accounts.get_instrument_prices_for_position_or_forecast(code),
+    #     "ChangePerCont": s.accounts.get_instrument_prices_for_position_or_forecast(code).diff(1) * s.accounts.get_value_of_block_price_move(code)
+    # })
+    #
+    # # 1.2 Position
+    # # Assume single, fix weight.
+    # pd.DataFrame({
+    #     "Up": s.portfolio.get_buffers_for_position("S50").iloc[:, 0],
+    #     "Down": s.portfolio.get_buffers_for_position("S50").iloc[:, 1],
+    #     "Pos": s.portfolio.get_notional_position("S50"),
+    #     "rounded": s.accounts.get_buffered_position("S50")  # This is target hold.
+    # })
+
+
+    code = "S50"
+    c = pd.DataFrame({
+
+        # Price
+        "Price": s.accounts.get_instrument_prices_for_position_or_forecast(code),
+        "ChangePerCont": s.accounts.get_instrument_prices_for_position_or_forecast(code).diff(
+            1) * s.accounts.get_value_of_block_price_move(code),
+        # PNL from portfolio
+        "PNL": s.accounts.portfolio()[code],
+        "PNLForInstru": s.accounts.pandl_for_instrument(code),
+
+        # Position
+        "Up": s.portfolio.get_buffers_for_position(code).iloc[:, 0],
+        "Down": s.portfolio.get_buffers_for_position(code).iloc[:, 1],
+        "SubsystemPos": s.accounts.get_buffered_subsystem_position(code),
+        "Pos": s.portfolio.get_notional_position(code),
+        "rounded": s.accounts.get_buffered_position(code),
+        "rounedMulti": s.accounts.get_buffered_position_with_multiplier(code),
+        "CapMultiplier": s.portfolio.capital_multiplier()
+
     })
+    """
+    s.accounts.portfolio_with_multiplier()
+    s.accounts.get_actual_position()
+    s.accounts.get_actual_position()
+    """
+    #
 
+    # Modify
+    c = c.tail(100)
+    c.fillna(0, inplace=True)  # Replace NaN with zero (or another value)
 
-    # CHECK if it's the same as target position
+    # Write to sheet
+    sheet_access.write_dataframe_to_sheet(sheet_url,"XXX", c, "B11", header=False)
 
-    # Assume single, fix weight.
-    pd.DataFrame({
-        "Up": s.portfolio.get_buffers_for_position("S50").iloc[:, 0],
-        "Down": s.portfolio.get_buffers_for_position("S50").iloc[:, 1],
-        "Pos": s.portfolio.get_notional_position("S50"),
-        "rounded": s.accounts.get_buffered_position("S50") # This is target hold.
-    })
-
-    # PENDING
-    s.accounts.get_buffered_position_with_multiplier("S50")
-    s.accounts.get_buffered_subsystem_position("S50")
 
     # Note - use Backtesting data.
-
-    df = pd.DataFrame({
-        "Price": s.rawdata.get_daily_prices(c1),
-        "Change": s.rawdata.daily_returns(c1),
-        "InsRisk": s.positionSize.get_instrument_value_vol(c1),
-        "NotionalCap": s.positionSize.get_notional_trading_capital(),
-        "DailyRiskTarget": s.positionSize.get_daily_cash_vol_target(),
-        "VolScalar": s.positionSize.get_average_position_at_subsystem_level(c1),
-        "CombForecast": s.combForecast.get_combined_forecast(c1),
-        "NotionalPosition": s.portfolio.get_notional_position(c1),
-        "Upper": s.portfolio.get_buffers_for_position(c1).iloc[:, 0],
-        "Lower": s.portfolio.get_buffers_for_position(c1).iloc[:, 1],
-
-        "CAPMULTI": s.accounts.capital_multiplier(),
-        "AC_CAP": s.accounts.get_actual_capital(),
-        "AC_POS": s.accounts.get_actual_position(c1),
-        "Return": s.accounts.portfolio()/s.accounts.get_actual_capital(),
-        "PNL": s.accounts.portfolio()
-    })
+    # df = pd.DataFrame({
+    #     "Price": s.rawdata.get_daily_prices(c1),
+    #     "Change": s.rawdata.daily_returns(c1),
+    #     "InsRisk": s.positionSize.get_instrument_value_vol(c1),
+    #     "NotionalCap": s.positionSize.get_notional_trading_capital(),
+    #     "DailyRiskTarget": s.positionSize.get_daily_cash_vol_target(),
+    #     "VolScalar": s.positionSize.get_average_position_at_subsystem_level(c1),
+    #     "CombForecast": s.combForecast.get_combined_forecast(c1),
+    #     "NotionalPosition": s.portfolio.get_notional_position(c1),
+    #     "Upper": s.portfolio.get_buffers_for_position(c1).iloc[:, 0],
+    #     "Lower": s.portfolio.get_buffers_for_position(c1).iloc[:, 1],
+    #
+    #     "CAPMULTI": s.accounts.capital_multiplier(),
+    #     "AC_CAP": s.accounts.get_actual_capital(),
+    #     "AC_POS": s.accounts.get_actual_position(c1),
+    #     "Return": s.accounts.portfolio()/s.accounts.get_actual_capital(),
+    #     "PNL": s.accounts.portfolio()
+    # })
 
 
 
@@ -136,4 +169,14 @@ if __name__ == '__main__':
 - Get equity of backtest vs live trading, to see the different from execution. 
 - How to get backtest demo? 
     -    Check if different equity level will have different return 
+    
+
+2. Decompose to see cost
+    1. Decomposse: accounts.portfolio 
+    PNL = f(change, number of holding) 
+    
+    
+    
+3. Then decompose actual equity, then check portfolio does it reflect correctly.
+    
 """
