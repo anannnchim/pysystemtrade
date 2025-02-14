@@ -1,5 +1,5 @@
 """
-This file is the backtest result.
+Objective: Access system data.
 
 """
 import pandas as pd
@@ -104,7 +104,6 @@ if __name__ == '__main__':
     #     "rounded": s.accounts.get_buffered_position("S50")  # This is target hold.
     # })
 
-
     code = "S50"
     c = pd.DataFrame({
 
@@ -112,33 +111,66 @@ if __name__ == '__main__':
         "Price": s.accounts.get_instrument_prices_for_position_or_forecast(code),
         "ChangePerCont": s.accounts.get_instrument_prices_for_position_or_forecast(code).diff(
             1) * s.accounts.get_value_of_block_price_move(code),
+
         # PNL from portfolio
         "PNL": s.accounts.portfolio()[code],
         "PNLForInstru": s.accounts.pandl_for_instrument(code),
+        "Gross": s.accounts.pandl_for_instrument(code).gross,
+        "Costs": s.accounts.pandl_for_instrument(code).costs,
+        "Net": s.accounts.pandl_for_instrument(code).net,
 
         # Position
         "Up": s.portfolio.get_buffers_for_position(code).iloc[:, 0],
         "Down": s.portfolio.get_buffers_for_position(code).iloc[:, 1],
-        "SubsystemPos": s.accounts.get_buffered_subsystem_position(code),
         "Pos": s.portfolio.get_notional_position(code),
         "rounded": s.accounts.get_buffered_position(code),
-        "rounedMulti": s.accounts.get_buffered_position_with_multiplier(code),
-        "CapMultiplier": s.portfolio.capital_multiplier()
 
+        # Actaul Capi
+        "CapMulti": s.portfolio.capital_multiplier(),
+        "ActualCapital": s.accounts.get_actual_capital(),
+        "PortfolioMulti":s.accounts.portfolio_with_multiplier(),
+        "Portfolio": s.accounts.portfolio(),
+
+        "Forecast": s.combForecast.get_combined_forecast("S50")
     })
-    """
-    s.accounts.portfolio_with_multiplier()
-    s.accounts.get_actual_position()
-    s.accounts.get_actual_position()
-    """
+
+    # FIX
+    pd.DataFrame({
+        "PNL": s.accounts.portfolio().net,
+        "Cap": s.accounts.get_notional_capital(),
+        "PNLpercent": s.accounts.portfolio().net.percent
+    })
+
+    # Compound
+    pd.DataFrame({
+        "PNL": s.accounts.portfolio_with_multiplier().net,
+        "Cap": s.accounts.get_actual_capital(),
+        "PNLpercent": s.accounts.portfolio_with_multiplier().net.percent
+    })
+
+    #
     #
 
+    """
+    # PNL calculation
+    s.accounts.portfolio().pandl_calculator_with_costs.costs_percentage_pandl()
+    s.accounts.portfolio().pandl_calculator_with_costs._costs_pandl_in_base_currency
+    
+    # Cost
+    s.accounts.portfolio().pandl_calculator_with_costs
+    """
+
     # Modify
-    c = c.tail(100)
+    c = c.tail(300)
     c.fillna(0, inplace=True)  # Replace NaN with zero (or another value)
 
     # Write to sheet
-    sheet_access.write_dataframe_to_sheet(sheet_url,"XXX", c, "B11", header=False)
+    sheet_access.write_dataframe_to_sheet(
+        sheet_url,
+        "03-System-diagnostic",
+        c,
+        "B11",
+        header=False)
 
 
     # Note - use Backtesting data.
@@ -161,22 +193,3 @@ if __name__ == '__main__':
     #     "PNL": s.accounts.portfolio()
     # })
 
-
-
-"""
-1. What I try to achieve?
-
-- Get equity of backtest vs live trading, to see the different from execution. 
-- How to get backtest demo? 
-    -    Check if different equity level will have different return 
-    
-
-2. Decompose to see cost
-    1. Decomposse: accounts.portfolio 
-    PNL = f(change, number of holding) 
-    
-    
-    
-3. Then decompose actual equity, then check portfolio does it reflect correctly.
-    
-"""
