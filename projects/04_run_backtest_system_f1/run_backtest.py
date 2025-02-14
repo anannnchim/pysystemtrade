@@ -13,24 +13,45 @@ s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
 
-    # a = input("Check cheap enough to trade")
-    # s.combForecast.cheap_trading_rules_post_processing(a)
+    # # a = input("Check cheap enough to trade")
+    # # s.combForecast.cheap_trading_rules_post_processing(a)
+    #
+    # input("This is stats")
+    # print(s.accounts.portfolio().stats())
+    #
+    # input("This is cost")
+    # print(s.accounts.portfolio().costs.annual.percent)
+    #
+    # input("This is % cummulative return")
+    # print(s.accounts.portfolio().net.percent.curve())
+    # s.accounts.portfolio().net.percent.curve().plot()
+    # plt.show()
+    #
+    # # Report
+    # daily_returns = s.accounts.portfolio().percent/100
+    # daily_returns = pd.DataFrame({
+    #     "Time": daily_returns.index,
+    #     "returns": daily_returns.values
+    # })
+    # daily_returns.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/04_run_backtest_system_f1/daily_returns.csv", index=False)
 
-    input("This is stats")
-    print(s.accounts.portfolio().stats())
 
-    input("This is cost")
-    print(s.accounts.portfolio().costs.annual.percent)
-
-    input("This is % cummulative return")
-    print(s.accounts.portfolio().net.percent.curve())
+    # Compare return of Fix vs compound
     s.accounts.portfolio().net.percent.curve().plot()
+    s.accounts.portfolio_with_multiplier().net.percent.curve().plot()
     plt.show()
 
-    # Report
-    daily_returns = s.accounts.portfolio().percent/100
-    daily_returns = pd.DataFrame({
-        "Time": daily_returns.index,
-        "returns": daily_returns.values
-    })
-    daily_returns.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/04_run_backtest_system_f1/daily_returns.csv", index=False)
+    # s.accounts.portfolio().net.curve().plot()
+    # s.accounts.portfolio_with_multiplier().net.curve().plot()
+    # plt.show()
+
+    # Compare Gross/Curve/Costs
+    # s.accounts.portfolio().gross.percent.curve().plot()
+    # s.accounts.portfolio().net.percent.curve().plot()
+    # # s.accounts.portfolio().costs.curve().plot()
+    # plt.show()
+
+    # pd.DataFrame({
+    #     "Fix": s.accounts.portfolio().net.percent.curve(),
+    #     "Compound": s.accounts.portfolio().net.percent.curve().plot()
+    # })
