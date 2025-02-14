@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     df = pd.DataFrame({
         "ActualCapital": s.accounts.get_actual_capital(),
-        "PNL":s.accounts.portfolio_with_multiplier(),
+        "PNL": s.accounts.portfolio_with_multiplier(),
     })
 
     df_subset = df.loc[start_date:]
