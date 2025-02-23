@@ -36,6 +36,7 @@ if __name__ == '__main__':
     # daily_returns.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/04_run_backtest_system_f1/daily_returns.csv", index=False)
 
 
+
     # Compare return of Fix vs compound
     s.accounts.portfolio().net.percent.curve().plot()
     s.accounts.portfolio_with_multiplier().net.percent.curve().plot()
@@ -55,3 +56,7 @@ if __name__ == '__main__':
     #     "Fix": s.accounts.portfolio().net.percent.curve(),
     #     "Compound": s.accounts.portfolio().net.percent.curve().plot()
     # })
+
+    # Print stat
+    stat = s.accounts.portfolio().stats()
+    print(stat)
