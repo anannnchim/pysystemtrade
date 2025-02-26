@@ -17,6 +17,8 @@ if __name__ == '__main__':
     for collection in collections:
         print(collection)
 
-    # Note 2. Get specific collection
-    # mongo_conn = mongoConnection("spread_costs") # rep as db
-    # print(mongo_conn.collection)
+    # 5. Access specific collection
+    limit_status_collection = db['limit_status']
+
+    # Select one
+    print(limit_status_collection.find_one())
