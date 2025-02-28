@@ -25,9 +25,7 @@ if __name__ == '__main__':
         Future(symbol='MCL', lastTradeDateOrContractMonth='202504', exchange='NYMEX', currency='USD'),
         Future(symbol='EBM', lastTradeDateOrContractMonth='202503', exchange='MATIF', currency='EUR'),
         Future(symbol='MHG', lastTradeDateOrContractMonth='202503', exchange='COMEX', currency='USD'),
-
-        # False
-        Future(symbol='RS', lastTradeDateOrContractMonth='202512', exchange='ICECA', currency='CAD'),
+        Future(symbol='RS', lastTradeDateOrContractMonth='202503', exchange='NYBOT', currency='CAD'),
 
     ]
 
