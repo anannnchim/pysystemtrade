@@ -26,7 +26,6 @@ if __name__ == '__main__':
         Future(symbol='EBM', lastTradeDateOrContractMonth='202503', exchange='MATIF', currency='EUR'),
         Future(symbol='MHG', lastTradeDateOrContractMonth='202503', exchange='COMEX', currency='USD'),
         Future(symbol='RS', lastTradeDateOrContractMonth='202503', exchange='NYBOT', currency='CAD'),
-
     ]
 
     for contract in futures_contracts:
