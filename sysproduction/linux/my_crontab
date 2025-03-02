@@ -27,6 +27,8 @@
 # Note: RUN THIS AFTER CHANGE
 # crontab /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/linux/my_crontab
 
+# Note: For additional program
+
 # NOTE: NOT USE
 # 1. Run system checking everyday
 # 0,15,30,45 * * * * export DISPLAY=:10 && /bin/bash /Users/nanthawat/Desktop/IBCMacos-3.21.1/twsstartmacos.sh >> ~/ibc/logs/cron.log 2>&1
