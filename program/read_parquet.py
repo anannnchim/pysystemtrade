@@ -16,7 +16,7 @@ if __name__ == '__main__':
     # a = pd.read_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/V2X#20220100.parquet")
 
     a = pd.read_parquet(
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EUR_micro#20250300.parquet")
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/EUR_micro.parquet")
     print(a)
 
 
