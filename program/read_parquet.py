@@ -16,8 +16,19 @@ if __name__ == '__main__':
     # a = pd.read_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/V2X#20220100.parquet")
 
     a = pd.read_parquet(
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/CAD2.parquet")
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EUR_micro#20250300.parquet")
     print(a)
 
+    # a = pd.read_parquet(
+    #     "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EUR_micro#20250300.parquet")
+    # print(a)
 
-    # a.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/output_csv/price.csv")
+
+
+    # # # a.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/output_csv/price.csv")
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 EUR_micro.parquet"
+    # df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
+    # df = df.drop(df.index[-3])
+    # df.to_parquet(file_path, index=True, engine="pyarrow")
+    # print(df)
+

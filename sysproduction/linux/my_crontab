@@ -7,22 +7,22 @@
 
 # Note: B) Program for running tasks: Monday to Friday (09:30 - 10:00)
 # 1) Update Database
-# 30 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
-# 34 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_price_updates  >> $ECHO_PATH/run_daily_price_updates.txt 2>&1
-# 37 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_update_multiple_adjusted_prices  >> $ECHO_PATH/run_daily_update_multiple_adjusted_prices.txt 2>&1
+30 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
+34 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_price_updates  >> $ECHO_PATH/run_daily_price_updates.txt 2>&1
+37 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_update_multiple_adjusted_prices  >> $ECHO_PATH/run_daily_update_multiple_adjusted_prices.txt 2>&1
 
 # 2) Update System
-# 40 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_capital_update  >> $ECHO_PATH/run_capital_update.txt 2>&1
-# 43 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_systems  >> $ECHO_PATH/run_systems.txt 2>&1
-# 47 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_strategy_order_generator  >> $ECHO_PATH/run_strategy_order_generator.txt 2>&1
+40 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_capital_update  >> $ECHO_PATH/run_capital_update.txt 2>&1
+43 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_systems  >> $ECHO_PATH/run_systems.txt 2>&1
+47 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_strategy_order_generator  >> $ECHO_PATH/run_strategy_order_generator.txt 2>&1
 
 # 3) Clean up and report
-# 50 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_cleaners  >> $ECHO_PATH/run_cleaners.txt 2>&1
-# 53 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_backups  >> $ECHO_PATH/run_backups.txt 2>&1
-# 55 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_reports  >> $ECHO_PATH/run_reports.txt 2>&1
+50 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_cleaners  >> $ECHO_PATH/run_cleaners.txt 2>&1
+53 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_backups  >> $ECHO_PATH/run_backups.txt 2>&1
+55 09  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_reports  >> $ECHO_PATH/run_reports.txt 2>&1
 
-# Start execution period
-# 00 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
+# Start execution period: should be 11:00
+# 26 21  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
 
 # Note: RUN THIS AFTER CHANGE
 # crontab /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/linux/my_crontab
