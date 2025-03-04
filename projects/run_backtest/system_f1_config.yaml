@@ -60,18 +60,21 @@ forecast_cap: 20.0
 forecast_weights:
      S50:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0.25 # Form this
         ewmac16_64: 0.25
         ewmac32_128: 0.25
         ewmac64_256: 0.25
      USD:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0
         ewmac16_64: 0.33 # From this
         ewmac32_128: 0.33
         ewmac64_256: 0.33
      GF10:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0.25 # From this
         ewmac16_64: 0.25
         ewmac32_128: 0.25

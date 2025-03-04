@@ -27,6 +27,9 @@ sheet_access = GoogleSheetAccess()
 
 if __name__ == '__main__':
 
+    s.accounts.portfolio().net.percent.curve().plot()
+    plt.show()
+
     #
     # print("Price and multiplier")
     # print(s.rawdata.get_daily_prices(c1))

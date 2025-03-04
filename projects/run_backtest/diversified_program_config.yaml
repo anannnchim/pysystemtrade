@@ -1,0 +1,183 @@
+#
+# >>> INPUT ZONE ---------------------------------
+#
+
+# This will affect capital by portfolio multiplier
+#start_date: '2020-01-01'
+#
+# Capital correction
+#
+percentage_vol_target: 25
+notional_trading_capital: 55000
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding
+#
+# Portfolio creation
+#
+instrument_weights:
+    V2X: 0.111
+    EUR_micro: 0.111
+    CAD2: 0.111
+    MUMMY: 0.111
+    BBCOMM: 0.111
+    CRUDE_W_micro: 0.111
+    MILLWHEAT: 0.111
+    COPPER-micro: 0.111
+    CANOLA: 0.111
+
+instrument_div_multiplier: 2.2
+
+
+forecast_weights:
+     BBCOMM:
+        ewmac32_128: 0.50
+        ewmac64_256: 0.50
+     CAD2:
+        ewmac4_16: 0.2
+        ewmac8_32: 0.2
+        ewmac16_64: 0.2 # From this
+        ewmac32_128: 0.2
+        ewmac64_256: 0.2
+     CANOLA:
+        ewmac4_16: 0.2
+        ewmac8_32: 0.2
+        ewmac16_64: 0.2 # From this
+        ewmac32_128: 0.2
+        ewmac64_256: 0.2
+     COPPER-micro:
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+
+     CRUDE_W_micro:
+        ewmac2_8: 0.167
+        ewmac4_16: 0.167
+        ewmac8_32: 0.167
+        ewmac16_64: 0.167
+        ewmac32_128: 0.167
+        ewmac64_256: 0.167
+     EUR_micro:
+       ewmac2_8: 0.167
+       ewmac4_16: 0.167
+       ewmac8_32: 0.167
+       ewmac16_64: 0.167
+       ewmac32_128: 0.167
+       ewmac64_256: 0.167
+     MILLWHEAT:
+        ewmac8_32: 0.25
+        ewmac16_64: 0.25
+        ewmac32_128: 0.25
+        ewmac64_256: 0.25
+     MUMMY:
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+     V2X:
+        ewmac2_8: 0
+        ewmac4_16: 0
+        ewmac8_32: 0
+        ewmac16_64: 0
+        ewmac32_128: 0
+        ewmac64_256: 0
+
+forecast_div_multiplier:
+      EUR_micro: 1.26
+      CAD2: 1.19
+      MUMMY: 1.13
+      BBCOMM: 1.03
+      CRUDE_W_micro: 1.26
+      MILLWHEAT: 1.13
+      COPPER-micro: 1.19
+      CANOLA: 1.19
+      V2X: 1
+#
+# DEFAULT ZONE ---------------------------------
+#
+
+#
+# Trading rule
+#
+trading_rules:
+  ewmac2_8:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 2
+         Lslow: 8
+     forecast_scalar: 10.6
+  ewmac4_16:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 4
+         Lslow: 16
+     forecast_scalar: 7.5
+  ewmac8_32:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 8
+         Lslow: 32
+     forecast_scalar: 5.3
+  ewmac16_64:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 16
+         Lslow: 64
+     forecast_scalar: 3.75
+  ewmac32_128:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 32
+         Lslow: 128
+     forecast_scalar: 2.65
+  ewmac64_256:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 64
+         Lslow: 256
+     forecast_scalar: 1.87
+
+forecast_cap: 20.0
+
+# Rule grouping
+rule_groups:
+    ewmac_fast:
+       - ewmac2_8
+       - ewmac4_16
+    ewmac_medium:
+       - ewmac8_32
+       - ewmac16_64
+    ewmac_slow:
+       - ewmac32_128
+       - ewmac64_256
+style_groups:
+    trend:
+        - ewmac_fast
+        - ewmac_medium
+        - ewmac_slow
+
+# Buffer
+buffer_trade_to_edge: True
+buffer_method: forecast
+buffer_size: 0.10
+
