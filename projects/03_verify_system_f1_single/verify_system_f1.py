@@ -21,12 +21,12 @@ pd.set_option('display.max_columns', None)  # Show all columns
 pd.set_option('display.max_rows', None)  # Show all rows
 pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
+path = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/03_verify_system_f1_single/output_csv"
+
 
 # ------------------------------------ Save to csv ----------------------------
 
 if __name__ == '__main__':
-
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/03_verify_system_f1_single/output_csv"
 
     # Note 1: Equity and daily return
     a = pd.DataFrame({
