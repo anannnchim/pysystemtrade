@@ -274,3 +274,21 @@ Email stored not sent on 2025-03-02 14:59:56.411282: Price Spike CRUDE_W_micro
 Spike found in prices for CRUDE_W_micro/20250600: need to manually check by running interactive_manual_check_historical_prices
 ********************************************************************************
 
+********************************************************************************
+Email stored not sent on 2025-03-05 12:04:29.184644: Price Spike V2X
+
+Spike found in prices for V2X/20250300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-05 12:06:15.057509: Price Spike CAD2
+
+Spike found in prices for CAD2/20250600: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-06 20:47:28.985676: Price Spike V2X
+
+Spike found in prices for V2X/20250300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+

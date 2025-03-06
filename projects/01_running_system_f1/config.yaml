@@ -97,7 +97,7 @@ instrument_weights:
     USD: 0.33
     GF10: 0.33
 
-instrument_div_multiplier: 1.48
+#instrument_div_multiplier: 1.48
 
 rule_groups:
     ewmac_fast:
@@ -120,3 +120,6 @@ buffer_trade_to_edge: True
 buffer_method: forecast
 buffer_size: 0.1
 vol_normalise_currency_costs: False # Need to set to false for System F1
+
+# IDM
+use_instrument_div_mult_estimates: False

@@ -17,8 +17,15 @@ s = futures_system(config=config, data=data)
 
 
 if __name__ == '__main__':
+    a = input("Check expensive instrument: Cost > 0.01")
+    for instrument in s.get_instrument_list():
+        print(instrument,": ", round(s.accounts.get_SR_cost_per_trade_for_instrument(instrument),4))
+        if s.accounts.get_SR_cost_per_trade_for_instrument(instrument) > 0.01:
+            print("Too expensive. Remove")
+        else:
+            print(instrument, " PASS")
 
-    a = input("Check cheap enough to trade")
+    a = input("Check cheap enough to trade: Cost in SR < 0.13")
     for instrument in s.get_instrument_list():
         print(s.combForecast.cheap_trading_rules_post_processing(instrument))
 

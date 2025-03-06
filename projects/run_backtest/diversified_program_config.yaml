@@ -26,8 +26,8 @@ instrument_weights:
     COPPER-micro: 0.111
     CANOLA: 0.111
 
-instrument_div_multiplier: 2.2
-
+#instrument_div_multiplier: 2.2
+use_instrument_div_mult_estimates: True
 
 forecast_weights:
      BBCOMM:
