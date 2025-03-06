@@ -97,7 +97,7 @@ instrument_weights:
     USD: 0.33
     GF10: 0.33
 
-#instrument_div_multiplier: 1.48
+instrument_div_multiplier: 1.48
 
 rule_groups:
     ewmac_fast:

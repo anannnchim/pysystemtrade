@@ -19,7 +19,7 @@ INSTRUMENTS = ["S50", "USD", "GF10"]
 # Initialize system
 config = Config(CONFIG_PATH)
 data = csvFuturesSimData()
-s = futures_system(config=config)
+s = futures_system(config=config, data=data)
 sheet_access = GoogleSheetAccess()
 
 # Adjust pandas options to display all rows and columns
@@ -53,16 +53,15 @@ def calculate_target_positions():
         account_value = equity_list[-1]
         print("Account_value: ", account_value)
 
-        # Get backtest capital value
-        backtest_acc_value = s.accounts.get_actual_capital()[-1]
-        cap_multi = account_value / backtest_acc_value
+        # Replace notional with my actual current capital
+        config.notional_trading_capital = account_value
 
         # Compute target positions
         target_positions = {}
         for instrument in INSTRUMENTS:
             df = pd.DataFrame({
-                "top_pos": round(s.accounts.get_actual_buffers_for_position(instrument).iloc[:, 0] * cap_multi, 0),
-                "bot_pos": round(s.accounts.get_actual_buffers_for_position(instrument).iloc[:, 1] * cap_multi, 0),
+                "top_pos": round(s.accounts.get_buffers_for_position(instrument).iloc[:, 0] , 0),
+                "bot_pos": round(s.accounts.get_buffers_for_position(instrument).iloc[:, 1], 0),
             })
 
             # Initialize target column with NaN
@@ -101,13 +100,14 @@ def get_instrument_target_position(instrument_code):
         equity_list = sheet_access.get_cell_data(SHEET_URL, "Accounting", "C11:C")
         equity_list = convert_to_numeric(equity_list)
         account_value = equity_list[-1]
-        backtest_acc_value = s.accounts.get_actual_capital()[-1]
-        cap_multi = account_value / backtest_acc_value
+
+        # Replace notional with my actual current capital
+        config.notional_trading_capital = account_value
 
         # Fetch top and bottom position values
         df = pd.DataFrame({
-            "top_pos": round(s.accounts.get_actual_buffers_for_position(instrument_code).iloc[:, 0] * cap_multi, 0),
-            "bot_pos": round(s.accounts.get_actual_buffers_for_position(instrument_code).iloc[:, 1] * cap_multi, 0),
+            "top_pos": round(s.accounts.get_buffers_for_position(instrument_code).iloc[:, 0], 0),
+            "bot_pos": round(s.accounts.get_buffers_for_position(instrument_code).iloc[:, 1], 0),
         })
 
         # Initialize target column

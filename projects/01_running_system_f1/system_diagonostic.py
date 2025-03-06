@@ -28,9 +28,9 @@ sheet_access = GoogleSheetAccess()
 
 
 if __name__ == '__main__':
-    print(s.accounts.portfolio_with_multiplier().capital)
-    s.accounts.portfolio_with_multiplier().capital.plot()
+    s.accounts.portfolio().percent.curve().plot()
     plt.show()
+
     # # Note: Data
     # c = pd.DataFrame({
     #
