@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
 
     # Adjusted price
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@ETHER-micro#20250300.parquet")
+    a = pd.read_parquet("/data/parquet/futures_contract_prices/Day@ETHER-micro#20250300.parquet")
     print(a)
     """
     2025-01-10 05:00:00  464.500
