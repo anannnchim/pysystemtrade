@@ -160,7 +160,6 @@ if __name__ == '__main__':
     # Return all individual daily returns
     s.accounts.portfolio().to_frame()
 
-
     # Individual statatistic
     s.accounts.portfolio().annual.percent.mean()
     s.accounts.portfolio().annual.percent.std()
