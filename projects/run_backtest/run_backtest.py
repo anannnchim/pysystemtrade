@@ -11,12 +11,13 @@ data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
 
 s = futures_system(config=config, data=data)
 
 
 if __name__ == '__main__':
+
     a = input("Check expensive instrument: Cost > 0.01")
     for instrument in s.get_instrument_list():
         print(instrument,": ", round(s.accounts.get_SR_cost_per_trade_for_instrument(instrument),4))
@@ -54,6 +55,19 @@ if __name__ == '__main__':
     }); print(df)
     df.plot()
     plt.show()
+
+    input("This is rolling risk%")
+    print(s.accounts.portfolio().percent.rolling_ann_std())
+    print(s.accounts.portfolio().percent.rolling_ann_std().mean())
+    s.accounts.portfolio().percent.rolling_ann_std().plot()
+    plt.show()
+
+    input("This is example of buffered position.")
+    for instrument in s.get_instrument_list():
+        s.accounts.get_buffered_position(instrument).plot()
+    plt.show()
+    for instrument in s.get_instrument_list():
+        print(s.accounts.get_buffered_position(instrument))
 
     input("Compare return of Fix vs compound")
     df = pd.DataFrame({

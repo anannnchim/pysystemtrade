@@ -292,3 +292,81 @@ Email stored not sent on 2025-03-06 20:47:28.985676: Price Spike V2X
 Spike found in prices for V2X/20250300: need to manually check by running interactive_manual_check_historical_prices
 ********************************************************************************
 
+********************************************************************************
+Email stored not sent on 2025-03-07 11:01:41.912547: Price Spike MILLWHEAT
+
+Spike found in prices for MILLWHEAT/20250300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:09.739920: Price Spike CORN
+
+Spike found in prices for CORN/20250500: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:21.165756: Price Spike CORN
+
+To reduce email load, won't send any more emails with this subject today. Use 'interactive_diagnostics', 'Emails' to see stored messages
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:21.194964: Price Spike CORN
+
+Spike found in prices for CORN/20250700: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:23.590722: Price Spike CORN
+
+Spike found in prices for CORN/20250900: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:26.589212: Price Spike CORN
+
+Spike found in prices for CORN/20251200: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:29.495558: Price Spike CORN
+
+Spike found in prices for CORN/20260300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:32.415932: Price Spike CORN
+
+Spike found in prices for CORN/20260500: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:35.262027: Price Spike CORN
+
+Spike found in prices for CORN/20260700: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:02:56.356050: Price Spike V2X
+
+Spike found in prices for V2X/20250300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:06:16.337826: Price Spike CORN_mini
+
+Spike found in prices for CORN_mini/20250500: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:06:30.601929: Price Spike CORN_mini
+
+To reduce email load, won't send any more emails with this subject today. Use 'interactive_diagnostics', 'Emails' to see stored messages
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-03-07 11:06:30.645737: Price Spike CORN_mini
+
+Spike found in prices for CORN_mini/20250900: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
