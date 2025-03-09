@@ -83,39 +83,7 @@ class GoogleSheetAccess:
             print(f"Error listing worksheets: {e}")
             return []
 
-    # def write_dataframe_to_sheet(self, sheet_url, worksheet_name, df, start_cell='A1', header=False):
-    #     """
-    #     Write a DataFrame to a specific worksheet starting at the specified cell.
-    #
-    #     :param sheet_url: URL of the Google Sheets document.
-    #     :param worksheet_name: Name of the worksheet to write to.
-    #     :param df: DataFrame to write.
-    #     :param start_cell: Starting cell in A1 notation (default: 'A1').
-    #     :param header: Boolean indicating whether to include the DataFrame headers. Default is True.
-    #     """
-    #     try:
-    #         sheet = self.client.open_by_url(sheet_url)
-    #         worksheet = sheet.worksheet(worksheet_name)
-    #
-    #         # Include the index as a column in the DataFrame
-    #         df_with_index = df.reset_index()
-    #
-    #         # Convert datetime or Timestamp columns to string format
-    #         for col in df_with_index.select_dtypes(include=['datetime64[ns]', 'datetimetz']).columns:
-    #             df_with_index[col] = df_with_index[col].dt.strftime('%Y-%m-%d %H:%M:%S')
-    #
-    #         # Convert DataFrame to list of lists
-    #         if header:
-    #             data = [df_with_index.columns.values.tolist()] + df_with_index.astype(str).values.tolist()
-    #         else:
-    #             data = df_with_index.astype(str).values.tolist()
-    #
-    #         # Update the worksheet with the data
-    #         worksheet.update(start_cell, data)
-    #         print(f"DataFrame written successfully to '{worksheet_name}' starting at {start_cell}.")
-    #     except Exception as e:
-    #         print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
-
+    # NEW ONE.
     def write_dataframe_to_sheet(self, sheet_url, worksheet_name, df, start_cell='A1', header=False):
         """
         Write a DataFrame to a Google Sheet, ensuring numbers remain numeric and dates are formatted properly.
@@ -139,6 +107,9 @@ class GoogleSheetAccess:
             for col in df.select_dtypes(include=['datetime64[ns]', 'datetimetz']).columns:
                 df[col] = df[col].dt.strftime('%Y-%m-%d')  # Ensure proper date format
 
+            # Replace NaN values to avoid JSON errors
+            df = df.fillna("")
+
             # Convert DataFrame to list of lists
             data = [df.columns.tolist()] + df.values.tolist() if header else df.values.tolist()
 
@@ -147,6 +118,38 @@ class GoogleSheetAccess:
             print(f"DataFrame written successfully to '{worksheet_name}' starting at {start_cell}.")
         except Exception as e:
             print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
+
+    # def write_dataframe_to_sheet(self, sheet_url, worksheet_name, df, start_cell='A1', header=False):
+    #     """
+    #     Write a DataFrame to a Google Sheet, ensuring numbers remain numeric and dates are formatted properly.
+    #
+    #     :param sheet_url: URL of the Google Sheets document.
+    #     :param worksheet_name: Name of the worksheet.
+    #     :param df: DataFrame to write.
+    #     :param start_cell: Starting cell in A1 notation (default: 'A1').
+    #     :param header: Boolean indicating whether to include the DataFrame headers.
+    #     """
+    #     try:
+    #         sheet = self.client.open_by_url(sheet_url)
+    #         worksheet = sheet.worksheet(worksheet_name)
+    #
+    #         # Ensure the index is included if it's a DatetimeIndex
+    #         if isinstance(df.index, pd.DatetimeIndex):
+    #             df = df.reset_index()
+    #             df.rename(columns={'index': 'Date'}, inplace=True)  # Rename index column
+    #
+    #         # Convert datetime columns explicitly to string format to prevent number conversion
+    #         for col in df.select_dtypes(include=['datetime64[ns]', 'datetimetz']).columns:
+    #             df[col] = df[col].dt.strftime('%Y-%m-%d')  # Ensure proper date format
+    #
+    #         # Convert DataFrame to list of lists
+    #         data = [df.columns.tolist()] + df.values.tolist() if header else df.values.tolist()
+    #
+    #         # Write data to Google Sheets with correct formatting
+    #         worksheet.update(start_cell, data, value_input_option='USER_ENTERED')
+    #         print(f"DataFrame written successfully to '{worksheet_name}' starting at {start_cell}.")
+    #     except Exception as e:
+    #         print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
 
     def get_cell_data(self, sheet_url, worksheet_name, cell_range):
         """

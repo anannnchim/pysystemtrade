@@ -122,7 +122,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "2025-01-01"#"2011-01-01"
+start_date: "2019-01-01"#"2011-01-01"
 
 # Buffer
 buffer_trade_to_edge: True

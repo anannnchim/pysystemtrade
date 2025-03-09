@@ -3,21 +3,21 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # Adjust pandas options to display all rows and columns
-    pd.set_option('display.max_columns', None)  # Show all columns
-    pd.set_option('display.max_rows', None)  # Show all rows
-    pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+    # pd.set_option('display.max_columns', None)  # Show all columns
+    # pd.set_option('display.max_rows', None)  # Show all rows
+    # pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/EUR_micro.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/__global_capital.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/system_01.parquet")
-    a = pd.read_parquet("/data/parquet/futures_contract_prices/Day@EUR_micro#20250300.parquet")
+    # a = pd.read_parquet("/data/parquet/futures_contract_prices/Day@EUR_micro#20250300.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/EUR_micro#20250300.parquet")
     # a = pd.read_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/EUR_micro.csv")
     # a = pd.read_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/V2X#20220100.parquet")
 
-    a = pd.read_parquet(
-        "/data/parquet/capital/__global_capital.parquet")
-    print(a)
+    # a = pd.read_parquet(
+    #     "/data/parquet/capital/__global_capital.parquet")
+    # print(a)
 
 
 
@@ -51,8 +51,7 @@ if __name__ == '__main__':
     2025-03-05 12:21:38.175041        0.002185        0.326655           1.0608           20250300
     2025-03-06 20:52:30.908515        0.687403        0.970098           1.0794           20250300
     """
-    a = pd.read_parquet(
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CORN_mini#20250500.parquet")
+    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/VIX_mini.parquet")
     print(a)
     # a = pd.read_parquet(
     #     "//Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/ETHER-micro#20250600.parquet")

@@ -14,10 +14,10 @@ from systems.risk import Risk
 # INPUT
 
 # 1. System F1
-# sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1248180211#gid=1248180211'
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
-# sheet_name = "03-System-diagnostic"
-# c1 = "USD"
+sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1248180211#gid=1248180211'
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+sheet_name = "03-System-diagnostic"
+c1 = "USD"
 
 # 2. Diversified
 # sheet_url = 'https://docs.google.com/spreadsheets/d/13-e4A7HPIZipIGnpYDSyrtFWX6q9fQLPV3kPzsiIxXQ/edit?gid=1184494980#gid=1184494980'
@@ -29,9 +29,9 @@ from systems.risk import Risk
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
 # c1 = "EUR_micro"
 
-# 4. Seven
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/sample_system/config_seven.yaml")
-c1 = "CAD_micro"
+# 4. System 02
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_02/config.yaml")
+# c1 = "MUMMY"
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
@@ -47,8 +47,14 @@ sheet_access = GoogleSheetAccess()
 
 if __name__ == '__main__':
 
-    s.positionSize.get_average_position_at_subsystem_level(c1).plot()
-    plt.show()
+    for instru in s.get_instrument_list():
+        s.accounts.get_buffered_position(instru).abs().plot()
+        plt.show()
+
+    # for instr in s.get_instrument_list():
+    #     s.accounts.pandl_for_instrument(instr).percent.curve().plot()
+    #     plt.show()
+
 
     # Note: Data
     c = pd.DataFrame({

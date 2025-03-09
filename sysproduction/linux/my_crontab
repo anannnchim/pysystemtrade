@@ -21,8 +21,8 @@
 # 25 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_backups  >> $ECHO_PATH/run_backups.txt 2>&1
 # 28 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_reports  >> $ECHO_PATH/run_reports.txt 2>&1
 
-# Start execution period: should be 11:00
-# 11 40  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
+# Start execution period: bound of 00.01 to 23.23 (trigger at 02:00)
+# 00 02  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_stack_handler  >> $ECHO_PATH/run_stack_handler.txt 2>&1
 
 # Note: RUN THIS AFTER CHANGE
 # crontab /Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/linux/my_crontab
