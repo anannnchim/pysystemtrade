@@ -119,38 +119,6 @@ class GoogleSheetAccess:
         except Exception as e:
             print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
 
-    # def write_dataframe_to_sheet(self, sheet_url, worksheet_name, df, start_cell='A1', header=False):
-    #     """
-    #     Write a DataFrame to a Google Sheet, ensuring numbers remain numeric and dates are formatted properly.
-    #
-    #     :param sheet_url: URL of the Google Sheets document.
-    #     :param worksheet_name: Name of the worksheet.
-    #     :param df: DataFrame to write.
-    #     :param start_cell: Starting cell in A1 notation (default: 'A1').
-    #     :param header: Boolean indicating whether to include the DataFrame headers.
-    #     """
-    #     try:
-    #         sheet = self.client.open_by_url(sheet_url)
-    #         worksheet = sheet.worksheet(worksheet_name)
-    #
-    #         # Ensure the index is included if it's a DatetimeIndex
-    #         if isinstance(df.index, pd.DatetimeIndex):
-    #             df = df.reset_index()
-    #             df.rename(columns={'index': 'Date'}, inplace=True)  # Rename index column
-    #
-    #         # Convert datetime columns explicitly to string format to prevent number conversion
-    #         for col in df.select_dtypes(include=['datetime64[ns]', 'datetimetz']).columns:
-    #             df[col] = df[col].dt.strftime('%Y-%m-%d')  # Ensure proper date format
-    #
-    #         # Convert DataFrame to list of lists
-    #         data = [df.columns.tolist()] + df.values.tolist() if header else df.values.tolist()
-    #
-    #         # Write data to Google Sheets with correct formatting
-    #         worksheet.update(start_cell, data, value_input_option='USER_ENTERED')
-    #         print(f"DataFrame written successfully to '{worksheet_name}' starting at {start_cell}.")
-    #     except Exception as e:
-    #         print(f"Error writing DataFrame to worksheet '{worksheet_name}': {e}")
-
     def get_cell_data(self, sheet_url, worksheet_name, cell_range):
         """
         Retrieve data from a specific cell or range in a Google Sheet.
