@@ -51,11 +51,12 @@ if __name__ == '__main__':
     2025-03-05 12:21:38.175041        0.002185        0.326655           1.0608           20250300
     2025-03-06 20:52:30.908515        0.687403        0.970098           1.0794           20250300
     """
-    a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/VIX_mini.parquet")
-    print(a)
-    # a = pd.read_parquet(
-    #     "//Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/ETHER-micro#20250600.parquet")
+    # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@VIX_mini#20250500.parquet")
     # print(a)
+
+    a = pd.read_parquet(
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/ETHER-micro.parquet")
+    print(a)
 
     # 2256.0/ 16484.0
 

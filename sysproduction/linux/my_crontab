@@ -5,7 +5,7 @@
 # Note: A) Checking and Running TWS: Monday to Friday (every 15 mins)
 # 0,15,30,45 * * * 1-5 export DISPLAY=:10 && /bin/bash /Users/nanthawat/Desktop/IBCMacos-3.21.1/twsstartmacos.sh >> ~/ibc/logs/cron.log 2>&1
 
-# Note: B) Program for running tasks: Monday to Friday (09:30 - 10:00) FIXME: Need to push it further.
+# Note: B) Program for running tasks: Monday to Friday (11 - 11:30).
 # 1) Update Database
 # 00 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
 # 05 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_price_updates  >> $ECHO_PATH/run_daily_price_updates.txt 2>&1

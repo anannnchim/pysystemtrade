@@ -3,8 +3,6 @@ Functionality
 
 1. Show expensive rules
 2. Check liquidity
-3.
-
 """
 import pandas as pd
 from sysdata.config.configdata import Config
@@ -18,32 +16,40 @@ import systems.provided.static_small_system_optimise.optimise_small_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_02/config.yaml")
+# Adjust pandas options to display all rows and columns
+# pd.set_option('display.max_columns', None)  # Show all columns
+# pd.set_option('display.max_rows', None)  # Show all rows
+# pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+
 
 s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
 
     # Note - Plot ----------------------------------------
-    # s.accounts.portfolio().percent.curve().plot()
-    # plt.show()
-    #
-    # print(s.accounts.portfolio().percent.rolling_ann_std())
-    # s.accounts.portfolio().percent.rolling_ann_std().plot()
-    # plt.show()
-    #
-    # for instrument in s.get_instrument_list():
-    #     s.accounts.get_buffered_position(instrument).plot()
-    # plt.show()
+    s.accounts.portfolio().percent.curve().plot()
+    plt.show()
 
+    print(s.accounts.portfolio().percent.rolling_ann_std())
+    s.accounts.portfolio().percent.rolling_ann_std().plot()
+    plt.show()
+
+    for instrument in s.get_instrument_list():
+        s.accounts.get_buffered_position(instrument).plot()
+    plt.show()
+
+    # IDM
+    s.portfolio.get_instrument_diversification_multiplier().plot()
+    plt.show()
+
+    # Correlation
+    correlation = s.portfolio.get_instrument_correlation_matrix().corr_list[-1]
+    print(correlation)
 
 
     # Note - Start ----------------------------------------
-
     a = input("1. Check each instrument if it's Expensive: Cost > 0.01")
     for instrument in s.get_instrument_list():
         print(instrument, ": ", round(s.accounts.get_SR_cost_per_trade_for_instrument(instrument), 4))

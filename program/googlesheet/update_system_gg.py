@@ -65,23 +65,61 @@ def update_portfolio_monitoring(s, sheet_url):
     df = pd.concat([df_1, df_2, df_3, df_4])
 
     # Send data to sheet
-    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", df, start_cell="C21", header=True)
-    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", corr_df, start_cell="D29", header=True)
+    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", df, start_cell="C22", header=True)
+    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", corr_df, start_cell="D30", header=True)
 
 
 def update_accounting_ib(sheet_url, account_summary):
 
     # This will update globally data.
 
-    # # 1. Parquet: Capital data
-    # c1 = capital_data.get_df_of_all_global_capital()
-    # sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", c1, start_cell='F32', header=False)
-    #
+    # 1. Parquet: Capital data
+    c1 = capital_data.get_df_of_all_global_capital()
+    sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", c1, start_cell='F32', header=False)
+
     # # 2. MongoDB: Margin
     m1 = mongo_margin_data.get_series_of_total_margin()
     sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", m1, start_cell='K32', header=False)
 
-    # 3. TWS to csv to google-sheet: tws_data_csv
+    # # 3. TWS to csv to google-sheet: tws_data_csv
+    # selected_tags = [
+    #     'AccruedCash',
+    #     'TotalCashValue',
+    #     'NetLiquidation',
+    #     'GrossPositionValue',
+    #     'AvailableFunds',
+    #     'InitMarginReq'
+    # ]
+    # account_data = {item.tag: item.value for item in account_summary if item.tag in selected_tags}
+    # account_data['Date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # tws_data = pd.DataFrame([account_data])
+    # tws_data = tws_data[['Date'] + selected_tags]
+    #
+    # # Reset index for cleaner view
+    # tws_data = tws_data.reset_index(drop=True)
+    #
+    # # Define CSV path
+    # target_file = os.path.join(csv_path, "tws_data.csv")
+    #
+    # # Ensure the directory exists
+    # os.makedirs(csv_path, exist_ok=True)
+    # last_date_str = pd.to_datetime(tws_data["Date"]).dt.strftime('%Y-%m-%d').values
+    # c1_tail_date = c1.index[-1].strftime('%Y-%m-%d')
+    #
+    # if os.path.exists(target_file):
+    #     existing_data = pd.read_csv(target_file)
+    #     # Check if last date already exists
+    #     existing_date_str = pd.to_datetime(existing_data["Date"].tail(1).values[0]).strftime('%Y-%m-%d')
+    #     if existing_date_str == last_date_str:
+    #         print(f"Skipping append: Data for {last_date_str} already exists in {target_file}")
+    #     else:
+    #         tws_data.to_csv(target_file, mode='a', header=False, index=False)
+    #         print(f"Data appended to {target_file}")
+    # else:
+    #     tws_data.to_csv(target_file, mode='w', header=True, index=False)
+    #     print(f"New file created at {target_file}")
+
+    # 3. TWS to CSV to Google Sheet: tws_data_csv
     selected_tags = [
         'AccruedCash',
         'TotalCashValue',
@@ -103,17 +141,29 @@ def update_accounting_ib(sheet_url, account_summary):
 
     # Ensure the directory exists
     os.makedirs(csv_path, exist_ok=True)
-    last_date_str = pd.to_datetime(tws_data["Date"]).dt.strftime('%Y-%m-%d').values
+
+    # Extract date from tws_data
+    tws_date = pd.to_datetime(tws_data["Date"]).dt.strftime('%Y-%m-%d').values[0]
+
+    # Extract last date from c1
+    c1_tail_date = c1.index[-1].strftime('%Y-%m-%d')
 
     if os.path.exists(target_file):
         existing_data = pd.read_csv(target_file)
-        # Check if last date already exists
-        existing_date_str = pd.to_datetime(existing_data["Date"].tail(1).values[0]).strftime('%Y-%m-%d')
-        if existing_date_str == last_date_str:
-            print(f"Skipping append: Data for {last_date_str} already exists in {target_file}")
+
+        if not existing_data.empty:
+            # Get last existing date in CSV
+            existing_last_date = pd.to_datetime(existing_data["Date"].tail(1).values[0]).strftime('%Y-%m-%d')
+
+            # Append only if the date doesn't exist and matches c1's last date
+            if existing_last_date != tws_date and tws_date == c1_tail_date:
+                tws_data.to_csv(target_file, mode='a', header=False, index=False)
+                print(f"Data appended to {target_file}")
+            else:
+                print(f"Skipping append: Data for {tws_date} already exists or does not match c1's last date")
         else:
-            tws_data.to_csv(target_file, mode='a', header=False, index=False)
-            print(f"Data appended to {target_file}")
+            tws_data.to_csv(target_file, mode='w', header=True, index=False)
+            print(f"New file created at {target_file}")
     else:
         tws_data.to_csv(target_file, mode='w', header=True, index=False)
         print(f"New file created at {target_file}")
