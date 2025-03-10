@@ -10,7 +10,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 
@@ -95,3 +95,28 @@ if __name__ == '__main__':
         "Return": daily_returns.values
     })
     daily_returns.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/daily_returns.csv", index=False)
+
+
+
+"""
+Risk 20%
+Gross: 17.133985029443885
+Cost: -1.4295124216953727
+Net: 15.70447260774851
+RollRisk: 19.86 
+
+2012-12-31   8.936000 -1.536773   7.399227
+2013-12-31  12.363500 -1.796817  10.566683
+2014-12-31  30.646500 -1.692322  28.954178
+2015-12-31  26.988000 -1.430961  25.557039
+2016-12-31  -5.326000 -1.529265  -6.855265
+2017-12-31  35.197500 -1.516347  33.681153
+2018-12-31 -19.422015 -1.456617 -20.878631
+2019-12-31 -23.877534 -1.129593 -25.007127
+2020-12-31  22.748861 -1.806485  20.942376
+2021-12-31  21.462388 -1.670757  19.791630
+2022-12-31  17.251255 -2.001121  15.250134
+2023-12-31 -10.079890 -1.987627 -12.067517
+2024-12-31   3.889012 -0.457183   3.431828
+
+"""

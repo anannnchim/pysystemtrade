@@ -16,10 +16,10 @@ import systems.provided.static_small_system_optimise.optimise_small_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
 
 # Adjust pandas options to display all rows and columns
-# pd.set_option('display.max_columns', None)  # Show all columns
+pd.set_option('display.max_columns', None)  # Show all columns
 # pd.set_option('display.max_rows', None)  # Show all rows
 # pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
@@ -41,6 +41,7 @@ if __name__ == '__main__':
     plt.show()
 
     # IDM
+    print(s.portfolio.get_instrument_diversification_multiplier())
     s.portfolio.get_instrument_diversification_multiplier().plot()
     plt.show()
 
