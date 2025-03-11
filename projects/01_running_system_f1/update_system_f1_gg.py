@@ -21,8 +21,6 @@ if __name__ == '__main__':
     update_market_monitoring(s, SHEET_URL)
     update_portfolio_monitoring(s, SHEET_URL)
     update_system_verification(s, SHEET_URL, start_date)
-    # Optional
-    # run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/verify_system.py"])
 
     # Get buffered position (Optional)
     run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])
