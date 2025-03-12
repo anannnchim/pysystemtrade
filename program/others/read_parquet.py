@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # Adjust pandas options to display all rows and columns
-    # pd.set_option('display.max_columns', None)  # Show all columns
+    pd.set_option('display.max_columns', None)  # Show all columns
     # pd.set_option('display.max_rows', None)  # Show all rows
-    # pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
+    pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/EUR_micro.parquet")
     # a = pd.read_parquet("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/__global_capital.parquet")
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # print(a)
 
     a = pd.read_parquet(
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@BBCOMM#20250300.parquet")
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/EUR_micro.parquet")
     print(a)
 
     # 2256.0/ 16484.0
