@@ -141,7 +141,8 @@ def main():
     client = authenticate_gspread(json_keyfile_path, scope)
 
     # List of worksheets to process
-    worksheets = ['S50', 'USD', 'GF10']
+    worksheets = ['S50', 'USD', 'GF10', "SVF", "JPYTHB", "EURUSD", "USDJPY"] # Note: Mismatch code: JPY, JPYTHB
+
 
     # Process each worksheet
     for sheet_name in worksheets:
@@ -162,7 +163,11 @@ if __name__ == "__main__":
     files = {
         "S50": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/S50.csv",
         "USD": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/USD.csv",
-        "GF10": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/GF10.csv"
+        "GF10": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/GF10.csv",
+        "SVF": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/SVF.csv",
+        "JPYTHB": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/JPYTHB.csv",
+        "EURUSD": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/EURUSD.csv",
+        "USDJPY": "/Users/nanthawat/PycharmProjects/pysystemtrade/data/futures/adjusted_prices_csv/USDJPY.csv"
     }
 
     # Call the function

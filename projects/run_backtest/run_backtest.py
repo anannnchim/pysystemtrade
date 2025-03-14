@@ -10,7 +10,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config_con.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 

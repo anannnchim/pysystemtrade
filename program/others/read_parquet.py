@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # print(a)
 
     a = pd.read_parquet(
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/ETHER-micro.parquet")
+        "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/V2X.parquet")
     print(a)
 
     # 2256.0/ 16484.0

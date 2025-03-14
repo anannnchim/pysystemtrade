@@ -12,6 +12,15 @@ data = csvFuturesSimData()
 s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
+
+    """
+    1. Add data in csv/config.
+    2. XXX 
+    
+    
+    """
+
+
     a = s.rawdata.get_daily_percentage_volatility("EUR_micro") * 16  # Daily % risk or (number%)
     print(a)
 

@@ -81,44 +81,6 @@ def update_accounting_ib(sheet_url, account_summary):
     m1 = mongo_margin_data.get_series_of_total_margin()
     sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", m1, start_cell='K32', header=False)
 
-    # # 3. TWS to csv to google-sheet: tws_data_csv
-    # selected_tags = [
-    #     'AccruedCash',
-    #     'TotalCashValue',
-    #     'NetLiquidation',
-    #     'GrossPositionValue',
-    #     'AvailableFunds',
-    #     'InitMarginReq'
-    # ]
-    # account_data = {item.tag: item.value for item in account_summary if item.tag in selected_tags}
-    # account_data['Date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    # tws_data = pd.DataFrame([account_data])
-    # tws_data = tws_data[['Date'] + selected_tags]
-    #
-    # # Reset index for cleaner view
-    # tws_data = tws_data.reset_index(drop=True)
-    #
-    # # Define CSV path
-    # target_file = os.path.join(csv_path, "tws_data.csv")
-    #
-    # # Ensure the directory exists
-    # os.makedirs(csv_path, exist_ok=True)
-    # last_date_str = pd.to_datetime(tws_data["Date"]).dt.strftime('%Y-%m-%d').values
-    # c1_tail_date = c1.index[-1].strftime('%Y-%m-%d')
-    #
-    # if os.path.exists(target_file):
-    #     existing_data = pd.read_csv(target_file)
-    #     # Check if last date already exists
-    #     existing_date_str = pd.to_datetime(existing_data["Date"].tail(1).values[0]).strftime('%Y-%m-%d')
-    #     if existing_date_str == last_date_str:
-    #         print(f"Skipping append: Data for {last_date_str} already exists in {target_file}")
-    #     else:
-    #         tws_data.to_csv(target_file, mode='a', header=False, index=False)
-    #         print(f"Data appended to {target_file}")
-    # else:
-    #     tws_data.to_csv(target_file, mode='w', header=True, index=False)
-    #     print(f"New file created at {target_file}")
-
     # 3. TWS to CSV to Google Sheet: tws_data_csv
     selected_tags = [
         'AccruedCash',
