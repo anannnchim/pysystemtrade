@@ -21,7 +21,7 @@ AUDJPY-SGX,SGX Australian Dollar in Japanese Yen Futures,25000,JPY,FX,285,0,0,AS
 AUSCASH,30 Day Interbank Cash Rate,2466,AUD,STIR,4.5,0,0,ASIA
 BARLEY,Barley Futures (ASX),20,AUD,Ags,0,0,0,ASIA
 BB3M,Three-Month Bloomberg Short-Term Bank Yield,2500,USD,Bond,2.12,0,0,US
-BBCOMM,Bloomberg Commodity Index,100,USD,Ags,1.87,0,0,US
+BBCOMM,Bloomberg Commodity Index,100,USD,Ags,1.62,0,0,US
 BEL20,BEL 20 Index (BFX@),10,EUR,Equity,4.5,0,0,EMEA
 BITCOIN,Micro Bitcoin,0.1,USD,Metals,3.27,0,0,US
 BITCOIN-BAKKT,Bakkt Bitcoin,1,USD,Metals,0,0,0,US
@@ -86,7 +86,7 @@ COPPER_LME,Grade A Copper - LME,25,USD,Metals,0,0,0,EMEA
 COPPER-micro,Copper micro,2500,USD,Metals,1.47,0,0,US
 COPPER-mini,COMEX MINY Copper,12500,USD,Metals,1.87,0,0,US
 CORN,Corn,50,USD,Ags,2.97,0,0,US
-CORN_mini,Corn mini,10,USD,Ags,1.9,0,0,US
+CORN_mini,Corn mini,10,USD,Ags,1.93,0,0,US
 CORN-EURO,Corn,50,EUR,Ags,2,0,0,US
 CORN-JPN,Corn - Japan,50000,JPY,Ags,0,0,0,ASIA
 CORRA,3 Month CORRA,2500,CAD,STIR,2,0,0,US
