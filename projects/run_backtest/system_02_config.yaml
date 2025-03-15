@@ -58,13 +58,13 @@ forecast_cap: 20.0
 
 ### INPUT -----------------------------------------------------------------
 forecast_weights:
-     CAD_micro:
-        ewmac2_8: 0
-        ewmac4_16: 0.2
-        ewmac8_32: 0.2
-        ewmac16_64: 0.2
-        ewmac32_128: 0.2
-        ewmac64_256: 0.2
+     EUR_micro:
+        ewmac2_8: 0.167
+        ewmac4_16: 0.167
+        ewmac8_32: 0.167
+        ewmac16_64: 0.167
+        ewmac32_128: 0.167
+        ewmac64_256: 0.167
      MUMMY:
         ewmac2_8: 0
         ewmac4_16: 0
@@ -82,7 +82,7 @@ forecast_weights:
      VIX_mini:
        ewmac64_256: 1
 forecast_div_multiplier:
-     CAD_micro: 1.19
+     EUR_micro: 1.19
      MUMMY: 1.13
      CORN_mini: 1.13
      VIX_mini: 1
@@ -90,7 +90,7 @@ forecast_div_multiplier:
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 20000
+notional_trading_capital: 25000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -98,7 +98,7 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    CAD_micro: 0.25
+    EUR_micro: 0.25
     MUMMY: 0.25
     CORN_mini: 0.25
     VIX_mini: 0.25
@@ -123,6 +123,8 @@ style_groups:
         - ewmac_slow
 
 #start_date: "2019-01-01" #"2011-01-01"
+
+start_date: "2018-01-01"
 
 # Buffer
 buffer_trade_to_edge: True
