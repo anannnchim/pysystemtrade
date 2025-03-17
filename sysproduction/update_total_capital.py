@@ -118,9 +118,8 @@ if __name__ == "__main__":
     """
     
     This will append 
-    - (global margin, account value) from IB to __global_capital.parquet
-    - Also, append global margin in mongoDB.
-    
+    - 1. Margin into margin in DB
+    - 2. __global_capital.parquet data 
     - APPEND each time.
     """
     update_total_capital()

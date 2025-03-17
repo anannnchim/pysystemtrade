@@ -571,7 +571,7 @@ USIRS7ERIS,7-Year Eris Swap Futures,1000,USD,Bond,0.85,0,0,US
 V2X,Vol European equity V2X,100,EUR,Vol,2,0,0,EMEA
 VHANG,Hang Seng Volatility Index,5000,HKD,Vol,0,0,0,ASIA
 VIX,Vol US equity VIX,1000,USD,Vol,2.38,0,0,US
-VIX_mini,Vol US equity VIX mini,100,USD,Vol,0.475,0,0,US
+VIX_mini,Vol US equity VIX mini,100,USD,Vol,0.47,0,0,US
 VNKI,Nikkei 225 Volatility Index,10000,JPY,Vol,400,0,0,ASIA
 VOLQ,NASDAQ-100 Volatility Index,100,USD,Vol,0,0,0,US
 WATER-CALI,The Nasdaq Veles California Water Index,10,USD,Weather,0,0,0,US
