@@ -126,9 +126,7 @@ def check_data_validity(files):
     else:
         print("All last DATETIME values are the same: ", last_datetimes)
 
-
 def main():
-
     # Global variables
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     market_data_url = 'https://docs.google.com/spreadsheets/d/19Rj7iW5xWOe6ZJJRsO9VzsZXyLfFu1S_vtClEE_3DEw'
@@ -140,20 +138,26 @@ def main():
     # Authenticate with Google Sheets
     client = authenticate_gspread(json_keyfile_path, scope)
 
-    # List of worksheets to process
-    worksheets = ['S50', 'USD', 'GF10', "SVF", "JPYTHB", "EURUSD", "USDJPY"] # Note: Mismatch code: JPY, JPYTHB
-
+    # Mapping local symbols to actual worksheet names
+    worksheet_mapping = {
+        'S50': 'S50',
+        'USD': 'USD',
+        'GF10': 'GF10',
+        'SVF': 'SVF',
+        'JPYTHB': 'JPY',  # Note - Key change is here.
+        'EURUSD': 'EURUSD',
+        'USDJPY': 'USDJPY'
+    }
 
     # Process each worksheet
-    for sheet_name in worksheets:
-        print(f"\nProcessing worksheet: {sheet_name}")
+    for local_name, sheet_name in worksheet_mapping.items():
+        print(f"\nProcessing worksheet: {sheet_name} (local: {local_name})")
         df = get_worksheet_data(client, market_data_url, sheet_name)
         if df is not None:
             df_processed = process_data(df)
             if df_processed is not None:
-                csv_filename = f"{sheet_name}.csv"
+                csv_filename = f"{local_name}.csv"
                 save_to_csv(df_processed, csv_filename, output_dir)
-
 
 if __name__ == "__main__":
     # Update data from googlesheet
