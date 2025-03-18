@@ -5,14 +5,14 @@ from sysdata.data_blob import dataBlob
 from sysproduction.data.capital import dataCapital
 
 pd.set_option('display.max_columns', None)
-# pd.set_option('display.max_rows', None)
+pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
 
     # Note - Print data
 
-    # # Global capital
+    # Global capital
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/__global_capital.parquet"
     # a = pd.read_parquet(path)
     # print(a)
@@ -23,9 +23,19 @@ if __name__ == '__main__':
     # print(a)
 
     # Optimal position
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/VIX_mini.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/VIX_mini.parquet"
+    # a = pd.read_parquet(path)
+    # print(a)
+
+    # Contract price
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@MILLWHEAT#20250500.parquet"
     a = pd.read_parquet(path)
     print(a)
+
+    # Multiple price
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/VIX_mini.parquet"
+    # a = pd.read_parquet(path)
+    # print(a)
 
     # # # Note - Delete some row
     # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 EUR_micro.parquet"

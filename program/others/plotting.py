@@ -15,11 +15,12 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.pyplot as plt
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 
-# data = dbFuturesSimData()
-data = csvFuturesSimData()
+data = dbFuturesSimData()
+# data = csvFuturesSimData()
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml"
-CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
+# CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
+CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml"
 config = Config(CONFIG_PATH)
 s = futures_system(config=config, data=data)
 start_date = "2021-01-01"
@@ -39,30 +40,30 @@ if __name__ == '__main__':
     #     plt.tight_layout()
     #     plt.show()
 
-    # Note - Performance of portfolio
-
-    prices = s.accounts.portfolio().percent.curve()
-    prices = prices.loc[start_date:]
-    plt.figure(figsize=(12, 6))
-    prices.plot(title=f"Portfolio TWR")
-    plt.xlabel("Date")
-    plt.ylabel("Price")
-    plt.grid(True)
-    plt.legend(["%Return"])
-    plt.tight_layout()
-    plt.show()
+    # # Note - Performance of portfolio
+    #
+    # prices = s.accounts.portfolio().percent.curve()
+    # prices = prices.loc[start_date:]
+    # plt.figure(figsize=(12, 6))
+    # prices.plot(title=f"Portfolio TWR")
+    # plt.xlabel("Date")
+    # plt.ylabel("Price")
+    # plt.grid(True)
+    # plt.legend(["%Return"])
+    # plt.tight_layout()
+    # plt.show()
 
 
     # Note - Check individual performance
-    # for instru in s.get_instrument_list():
-    #     prices = s.accounts.portfolio()[instru].percent.curve()
-    #     prices = prices.loc[start_date:]
-    #     plt.figure(figsize=(12, 6))
-    #     prices.plot(title=f"Daily Prices for {instru}")
-    #     plt.xlabel("Date")
-    #     plt.ylabel("Price")
-    #     plt.grid(True)
-    #     plt.legend([instru])
-    #     plt.tight_layout()
-    #     plt.show()
+    for instru in s.get_instrument_list():
+        prices = s.accounts.portfolio()[instru].percent.curve()
+        prices = prices.loc[start_date:]
+        plt.figure(figsize=(12, 6))
+        prices.plot(title=f"Daily Prices for {instru}")
+        plt.xlabel("Date")
+        plt.ylabel("Price")
+        plt.grid(True)
+        plt.legend([instru])
+        plt.tight_layout()
+        plt.show()
 
