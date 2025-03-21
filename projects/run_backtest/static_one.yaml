@@ -15,10 +15,17 @@ capital_multiplier:
 #
 # Portfolio creation
 #
+Sorted:
+
 instrument_weights:
-    WHEAT_mini: 0.3
-    SOYBEAN_mini: 0.3
-    MILLWHEAT: 0.3
+    EU-BANKS: 0.142
+    EU-REALESTATE: 0.142
+    EUR_micro: 0.142
+    KOSDAQ: 0.142
+    MUMMY: 0.142
+    TOPIX: 0.142
+    V2X: 0.142
+
 
 
 use_instrument_div_mult_estimates: True

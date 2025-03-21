@@ -10,13 +10,22 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 
 s = futures_system(config=config, data=data)
 
 
 if __name__ == '__main__':
+
+    input("Check if it's too safe to trade: vol < 5%?")
+    for instrument in s.get_instrument_list():
+        average_annual_risk = s.rawdata.get_daily_percentage_volatility(instrument).mean() * 16
+        print(instrument, ": ", round(average_annual_risk, 4))
+    print(s.portfolio.get_stdev_df())
 
     a = input("Check expensive instrument: Cost > 0.01")
     for instrument in s.get_instrument_list():
