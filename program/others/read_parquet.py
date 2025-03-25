@@ -5,7 +5,7 @@ from sysdata.data_blob import dataBlob
 from sysproduction.data.capital import dataCapital
 
 pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
+# pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
@@ -28,9 +28,29 @@ if __name__ == '__main__':
     # print(a)
 
     # Contract price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 VIX_mini.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EUR_micro.parquet"
     a = pd.read_parquet(path)
     print(a)
+
+    """
+    2025-03-24 20:00:00     NaN   1.0851  1.0851       20250300         20250600       20250600
+    2025-03-24 23:00:00     NaN   1.0857  1.0857       20250300         20250600       20250600
+    
+    
+    2009-06-12 02:00:00  1.6184
+    2009-06-12 03:00:00  1.6194
+    2009-06-12 04:00:00  1.6151
+    2009-06-12 05:00:00  1.6084
+    2009-06-12 06:00:00  1.6185
+    ...                     ...
+    2025-03-24 17:00:00  1.0881
+    2025-03-24 18:00:00  1.0881
+    2025-03-24 19:00:00  1.0881
+    2025-03-24 20:00:00  1.0881
+    2025-03-24 23:00:00  1.0881
+    
+    [92458 rows x 1 columns]
+    """
 
     # Multiple price
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/VIX_mini.parquet"
