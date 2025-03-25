@@ -29,18 +29,20 @@ s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
 
+    df = pd.read_csv()
+
     # # Note - Check adjusted price
-    for instru in s.get_instrument_list():
-        prices = data.daily_prices(instru)
-        # prices = prices.loc[start_date:]
-        plt.figure(figsize=(12, 6))
-        prices.plot(title=f"Daily Prices for {instru}")
-        plt.xlabel("Date")
-        plt.ylabel("Price")
-        plt.grid(True)
-        plt.legend([instru])
-        plt.tight_layout()
-        plt.show()
+    # for instru in s.get_instrument_list():
+    #     prices = data.daily_prices(instru)
+    #     # prices = prices.loc[start_date:]
+    #     plt.figure(figsize=(12, 6))
+    #     prices.plot(title=f"Daily Prices for {instru}")
+    #     plt.xlabel("Date")
+    #     plt.ylabel("Price")
+    #     plt.grid(True)
+    #     plt.legend([instru])
+    #     plt.tight_layout()
+    #     plt.show()
 
     # # Note - Performance of portfolio
     #
@@ -57,15 +59,15 @@ if __name__ == '__main__':
 
 
     # Note - Check individual performance
-    for instru in s.get_instrument_list():
-        prices = s.accounts.portfolio()[instru].percent.curve()
-        # prices = prices.loc[start_date:]
-        plt.figure(figsize=(12, 6))
-        prices.plot(title=f"Daily Prices for {instru}")
-        plt.xlabel("Date")
-        plt.ylabel("Price")
-        plt.grid(True)
-        plt.legend([instru])
-        plt.tight_layout()
-        plt.show()
+    # for instru in s.get_instrument_list():
+    #     prices = s.accounts.portfolio()[instru].percent.curve()
+    #     # prices = prices.loc[start_date:]
+    #     plt.figure(figsize=(12, 6))
+    #     prices.plot(title=f"Daily Prices for {instru}")
+    #     plt.xlabel("Date")
+    #     plt.ylabel("Price")
+    #     plt.grid(True)
+    #     plt.legend([instru])
+    #     plt.tight_layout()
+    #     plt.show()
 
