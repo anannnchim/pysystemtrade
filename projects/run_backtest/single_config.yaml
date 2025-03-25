@@ -8,7 +8,7 @@
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 10000
+notional_trading_capital: 600000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding

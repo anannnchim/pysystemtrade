@@ -87,7 +87,7 @@ forecast_div_multiplier:
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 600000
+notional_trading_capital: 1050000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding

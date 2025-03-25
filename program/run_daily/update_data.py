@@ -12,7 +12,8 @@ if __name__ == '__main__':
     # 1. Update futures related data
     scripts = [
         "/Users/nanthawat/PycharmProjects/pysystemtrade/program/run_daily/run_startup.py",
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_fx_prices.py",
+        "/Users/nanthawat/PycharmProjects/pysy"
+        "stemtrade/sysproduction/update_fx_prices.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_sampled_contracts.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_historical_prices.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_multiple_adjusted_prices.py"
