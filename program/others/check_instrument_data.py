@@ -19,5 +19,6 @@ data = csvFuturesSimData()
 
 if __name__ == '__main__':
     a = data.daily_prices("JP-REALESTATE")
+
     a.plot()
     plt.show()

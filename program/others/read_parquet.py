@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # print(a)
 
     # Contract price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EUR_micro.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EUR_micro#20250600.parquet"
     a = pd.read_parquet(path)
     print(a)
 

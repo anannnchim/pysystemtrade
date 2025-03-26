@@ -83,9 +83,9 @@ COCOA_LDN,Cocoa London,10,GBP,Ags,1,0,0,EMEA
 COFFEE,Coffee,375,USD,Ags,2.97,0,0,US
 COPPER,Copper,25000,USD,Metals,2.47,0,0,US
 COPPER_LME,Grade A Copper - LME,25,USD,Metals,0,0,0,EMEA
-COPPER-micro,Copper micro,2500,USD,Metals,1.47,0,0,US
+COPPER-micro,Copper micro,2500,USD,Metals,0.87,0,0,US
 COPPER-mini,COMEX MINY Copper,12500,USD,Metals,1.87,0,0,US
-CORN,Corn,50,USD,Ags,2.97,0,0,US
+CORN,Corn,50,USD,Ags,3,0,0,US
 CORN_mini,Corn mini,10,USD,Ags,1.93,0,0,US
 CORN-EURO,Corn,50,EUR,Ags,2,0,0,US
 CORN-JPN,Corn - Japan,50000,JPY,Ags,0,0,0,ASIA
