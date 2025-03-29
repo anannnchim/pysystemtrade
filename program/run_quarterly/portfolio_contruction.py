@@ -20,7 +20,7 @@ config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_bac
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/static_one.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
 
 # Adjust pandas options to display all rows and columns

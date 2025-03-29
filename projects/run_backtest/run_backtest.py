@@ -15,7 +15,7 @@ data = csvFuturesSimData()
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 
 s = futures_system(config=config, data=data)
 

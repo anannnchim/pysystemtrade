@@ -7,7 +7,7 @@
 #
 # Capital correction
 #
-percentage_vol_target: 20
+percentage_vol_target: 10
 notional_trading_capital: 600000
 base_currency: "USD"
 capital_multiplier:
@@ -16,9 +16,7 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    WHEAT_mini: 0.3
-    SOYBEAN_mini: 0.3
-    MILLWHEAT: 0.3
+    VIX_mini: 1
 
 
 use_instrument_div_mult_estimates: True
@@ -29,15 +27,16 @@ use_instrument_div_mult_estimates: True
 #
 forecast_weights:
 
+## Expensive
+#  ewmac2_8: 0.16
+#  ewmac4_16: 0.16
+#  ewmac8_32: 0.16
+#  ewmac16_64: 0.16
+#  ewmac32_128: 0.16
+#  ewmac64_256: 0.16
 # Expensive
-  ewmac2_8: 0.16
-  ewmac4_16: 0.16
-  ewmac8_32: 0.16
-  ewmac16_64: 0.16
-  ewmac32_128: 0.16
-  ewmac64_256: 0.16
-
-forecast_div_multiplier: 1.26
+  ewmac64_256: 1
+forecast_div_multiplier: 1
 #
 # DEFAULT ZONE ---------------------------------
 #

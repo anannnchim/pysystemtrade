@@ -80,3 +80,8 @@ forecast_weights:
         ewmac32_128: 0.25
         ewmac64_256: 0.25
 ```
+
+
+## 3. Third version (April 2025):
+
+- Modify EMA forecast_scalar in config to match with AFTS book and google-sheet config

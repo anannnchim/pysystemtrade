@@ -1,5 +1,5 @@
 from program.googlesheet.update_system_gg import update_market_monitoring, update_portfolio_monitoring, \
-    update_system_verification
+    update_system_verification, update_system_diagnostic
 from program.helper.run_scripts import run_scripts
 from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
@@ -16,11 +16,14 @@ start_date = "2025-02-03"
 if __name__ == '__main__':
 
     # Update data
-    run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/update_data_gg.py"])
+    # run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/update_data_gg.py"])
 
-    update_market_monitoring(s, SHEET_URL)
-    update_portfolio_monitoring(s, SHEET_URL)
-    update_system_verification(s, SHEET_URL, start_date)
+    # update_market_monitoring(s, SHEET_URL)
+    # update_portfolio_monitoring(s, SHEET_URL)
+    # update_system_verification(s, SHEET_URL, start_date)
+    # update_system_diagnostic(s, SHEET_URL, "S50")
 
     # Get buffered position (Optional)
     run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])
+
+
