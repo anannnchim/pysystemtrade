@@ -16,7 +16,7 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    VIX_mini: 1
+    CORN_mini: 1
 
 
 use_instrument_div_mult_estimates: True

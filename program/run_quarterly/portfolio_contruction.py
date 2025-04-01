@@ -13,8 +13,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import systems.provided.static_small_system_optimise.optimise_small_system
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_02_config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
@@ -22,6 +22,7 @@ config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_bac
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/static_one.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
 
 # Adjust pandas options to display all rows and columns
 pd.set_option('display.max_columns', None)  # Show all columns

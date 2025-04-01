@@ -15,21 +15,40 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.pyplot as plt
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 
-# data = dbFuturesSimData()
-data = csvFuturesSimData()
+data = dbFuturesSimData()
+# data = csvFuturesSimData()
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml"
-CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
+# CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
+CONFIG_PATH = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
 
 config = Config(CONFIG_PATH)
 s = futures_system(config=config, data=data)
-# start_date = "2021-01-01"
+# start_date = "2011-01-01"
 
 if __name__ == '__main__':
 
-    df = pd.read_csv()
+    input("This is stats in percentage.")
+    print(s.accounts.portfolio().percent.stats())
+
+    input("This is Annual data table")
+    df = pd.DataFrame({
+        "Gross": s.accounts.portfolio().gross.annual.percent,
+        "Costs": s.accounts.portfolio().costs.annual.percent,
+        "Net": s.accounts.portfolio().net.annual.percent
+    }); print(df)
+
+    df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/csv/return.csv")
+
+    # input("This is annual average return and costs")
+    # print(df['Gross'].mean())
+    # print(df['Costs'].mean())
+    # print(df['Net'].mean())
+
+
+    # df = pd.read_csv()
 
     # # Note - Check adjusted price
     # for instru in s.get_instrument_list():
@@ -43,11 +62,11 @@ if __name__ == '__main__':
     #     plt.legend([instru])
     #     plt.tight_layout()
     #     plt.show()
-
-    # # Note - Performance of portfolio
     #
+    # # # Note - Performance of portfolio
+    # #
     # prices = s.accounts.portfolio().percent.curve()
-    # prices = prices.loc[start_date:]
+    # # prices = prices.loc[start_date:]
     # plt.figure(figsize=(12, 6))
     # prices.plot(title=f"Portfolio TWR")
     # plt.xlabel("Date")
@@ -56,9 +75,9 @@ if __name__ == '__main__':
     # plt.legend(["%Return"])
     # plt.tight_layout()
     # plt.show()
-
-
-    # Note - Check individual performance
+    #
+    #
+    # # Note - Check individual performance
     # for instru in s.get_instrument_list():
     #     prices = s.accounts.portfolio()[instru].percent.curve()
     #     # prices = prices.loc[start_date:]
@@ -70,4 +89,4 @@ if __name__ == '__main__':
     #     plt.legend([instru])
     #     plt.tight_layout()
     #     plt.show()
-
+    #
