@@ -149,7 +149,7 @@ forecast_div_multiplier:
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 55000
+notional_trading_capital: 54128.50
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -170,7 +170,7 @@ instrument_weights:
     CRUDE_W_micro: 0.143
     COPPER-micro: 0.143
     CAD10: 0.143
-#instrument_div_multiplier: 1.56
+#instrument_div_multiplier: 2.1
 use_instrument_div_mult_estimates: True
 
 rule_groups:
@@ -189,10 +189,10 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "1992-01-01" #"2011-01-01"
+#start_date: "2020-01-01" #"2011-01-01"
 
 # Buffer
 buffer_trade_to_edge: True
 buffer_method: forecast
 buffer_size: 0.10
-vol_normalise_currency_costs: True # Need to set to false for System F1
+#vol_normalise_currency_costs: True # Need to set to false for System F1

@@ -24,31 +24,32 @@ def update_market_monitoring(s, sheet_url):
     })
 
     df = df.tail(252)  # Keep last 252 rows (1 year of trading days)
-    print(df)
-    # Replace NaN values with empty strings or zeros to prevent JSON issues
-    df = df.fillna("")  # Use "" (empty string) to keep the format clean; alternatively, use df.fillna(0) for zeroes
+
+    # Remove NA (in case we update data late, Japan already have new data but US doesn't)
+    df = df.dropna()
 
     sheet_access.write_dataframe_to_sheet(sheet_url, "A-Forecast", df, start_cell="B21", header=True)
 
 
 def update_portfolio_monitoring(s, sheet_url):
 
-    # 1. Target position
+    # 1. Target position # FIXME (This should get actual position)
     df_1 = {}
     for instr in s.get_instrument_list():
         df_1[instr] = s.accounts.get_buffered_position(instr)  # which one to use?
-    df_1 = pd.DataFrame(df_1).tail(1)
+    df_1 = pd.DataFrame(df_1).dropna().tail(1)
 
     # 2. % Annual Risk
     df_2 = s.portfolio.get_stdev_df().tail(1)
 
-    # 3. Notional Exposure
+    # 3. Notional Exposure # FIXME Need to reflect acutal pos
     df_3 = {}
     for instr in s.get_instrument_list():
         value_per_cont = s.portfolio.get_baseccy_value_per_contract(instr)
         num_of_holdings = s.accounts.get_buffered_position(instr)
         df_3[instr] = abs(value_per_cont * num_of_holdings)
-    df_3 = pd.DataFrame(df_3).tail(1)
+    df_3 = pd.DataFrame(df_3).dropna().tail(1)
+
 
     # 4. Correlation matrix
     corr_df = s.portfolio.get_instrument_correlation_matrix().corr_list[-1].values
@@ -59,7 +60,7 @@ def update_portfolio_monitoring(s, sheet_url):
     df_4 = {}
     for instr in s.get_instrument_list():
         df_4[instr] = s.rawdata.get_daily_prices(instr)  # which one to use?
-    df_4 = pd.DataFrame(df_4).tail(1)
+    df_4 = pd.DataFrame(df_4).dropna().tail(1)
 
     # Combine
     df = pd.concat([df_1, df_2, df_3, df_4])

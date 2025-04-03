@@ -22,7 +22,7 @@ data = dbFuturesSimData()
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml"
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml"
-CONFIG_PATH = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
+CONFIG_PATH = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
 
 config = Config(CONFIG_PATH)
 s = futures_system(config=config, data=data)
@@ -30,17 +30,32 @@ s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
 
-    input("This is stats in percentage.")
-    print(s.accounts.portfolio().percent.stats())
+    # for instrument in s.get_instrument_list():
+    #     a = s.accounts.get_buffered_position(instrument).tail(5)
+    #     print(a)
 
-    input("This is Annual data table")
-    df = pd.DataFrame({
-        "Gross": s.accounts.portfolio().gross.annual.percent,
-        "Costs": s.accounts.portfolio().costs.annual.percent,
-        "Net": s.accounts.portfolio().net.annual.percent
-    }); print(df)
+    print(s.accounts.portfolio())
+    # print(s.config.get_element("capital_multiplier"))
+    # s.config.capital_multiplier = {
+    #     "func": "syscore.capital.fixed_capital"
+    # }
+    # print(s.config.get_element("capital_multiplier"))
+    # # Output: {'func': 'syscore.capital.fixed_capital'}
 
-    df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/csv/return.csv")
+    # s.config.start_date = "2023-06-01"
+    # print(s.config.get_element("start_date"))
+
+    # input("This is stats in percentage.")
+    # print(s.accounts.portfolio().percent.stats())
+    #
+    # input("This is Annual data table")
+    # df = pd.DataFrame({
+    #     "Gross": s.accounts.portfolio().gross.annual.percent,
+    #     "Costs": s.accounts.portfolio().costs.annual.percent,
+    #     "Net": s.accounts.portfolio().net.annual.percent
+    # }); print(df)
+    #
+    # df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/csv/return.csv")
 
     # input("This is annual average return and costs")
     # print(df['Gross'].mean())
@@ -63,8 +78,8 @@ if __name__ == '__main__':
     #     plt.tight_layout()
     #     plt.show()
     #
-    # # # Note - Performance of portfolio
-    # #
+    # # Note - Performance of portfolio
+    #
     # prices = s.accounts.portfolio().percent.curve()
     # # prices = prices.loc[start_date:]
     # plt.figure(figsize=(12, 6))

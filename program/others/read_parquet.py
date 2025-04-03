@@ -28,7 +28,8 @@ if __name__ == '__main__':
     # print(a)
 
     # Contract price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/CORN_mini.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/system_01.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/COPPER-micro.parquet"
     a = pd.read_parquet(path)
     print(a)
 
@@ -58,9 +59,9 @@ if __name__ == '__main__':
     # print(a)
 
     # # # Note - Delete some row
-    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 EUR_micro.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/__global_capital.parquet"
     # df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
-    # df = df.drop(df.index[-1]) # Delete second last row
+    # df = df.drop(df.index[-2]) # Delete second last row
     # df.to_parquet(file_path, index=True, engine="pyarrow")
     # print(df)
 

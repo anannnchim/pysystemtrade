@@ -84,7 +84,7 @@ forecast_div_multiplier:
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 571585.61
+notional_trading_capital: 1771400.31 # 571585.61
 base_currency: "USD"
 
 capital_multiplier:
@@ -123,3 +123,6 @@ vol_normalise_currency_costs: False # Need to set to false for System F1
 
 # IDM
 use_instrument_div_mult_estimates: False
+
+
+#start_date: "2025-04-01"
