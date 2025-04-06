@@ -23,13 +23,13 @@ if __name__ == '__main__':
     # print(a)
 
     # Optimal position
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/VIX_mini.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 VIX_mini.parquet"
     # a = pd.read_parquet(path)
     # print(a)
 
     # Contract price
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/system_01.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/COPPER-micro.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/CAD10.parquet"
     a = pd.read_parquet(path)
     print(a)
 

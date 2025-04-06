@@ -72,13 +72,6 @@ forecast_weights:
         ewmac16_64: 0.2
         ewmac32_128: 0.2
         ewmac64_256: 0.2
-     COPPER-micro:
-        ewmac2_8: 0.167
-        ewmac4_16: 0.167
-        ewmac8_32: 0.167
-        ewmac16_64: 0.167
-        ewmac32_128: 0.167
-        ewmac64_256: 0.167
      CORN_mini:
        ewmac2_8: 0
        ewmac4_16: 0
@@ -86,28 +79,6 @@ forecast_weights:
        ewmac16_64: 0.33
        ewmac32_128: 0.33
        ewmac64_256: 0.33
-     CRUDE_W_micro:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-     MUMMY:
-        ewmac2_8: 0
-        ewmac4_16: 0
-        ewmac8_32: 0.25
-        ewmac16_64: 0.25
-        ewmac32_128: 0.25
-        ewmac64_256: 0.25
-     VIX_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0
-       ewmac32_128: 0
-       ewmac64_256: 1
-
      CAD_micro:
        ewmac2_8: 0
        ewmac4_16: 0.2
@@ -115,13 +86,6 @@ forecast_weights:
        ewmac16_64: 0.2
        ewmac32_128: 0.2
        ewmac64_256: 0.2
-     RUSSELL:
-       ewmac2_8: 0.167
-       ewmac4_16: 0.167
-       ewmac8_32: 0.167
-       ewmac16_64: 0.167
-       ewmac32_128: 0.167
-       ewmac64_256: 0.167
      BBCOMM:
        ewmac2_8: 0
        ewmac4_16: 0
@@ -133,16 +97,8 @@ forecast_div_multiplier:
 
      EUR_micro: 1.19
      CAD_micro: 1.19
-
-     MUMMY: 1.13
-     RUSSELL: 1.26
-
      CORN_mini: 1.08
      BBCOMM: 1.03
-
-     VIX_mini: 1
-     CRUDE_W_micro: 1.19
-     COPPER-micro: 1.26
      CAD10: 1.26
 
 #
@@ -157,21 +113,13 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    EUR_micro: 0.071
-    CAD_micro: 0.071
-
-    MUMMY: 0.071
-    RUSSELL: 0.071
-
-    CORN_mini: 0.071
-    BBCOMM: 0.071
-
-    VIX_mini: 0.143
-    CRUDE_W_micro: 0.143
-    COPPER-micro: 0.143
-    CAD10: 0.143
-#instrument_div_multiplier: 2.1
-use_instrument_div_mult_estimates: True
+    EUR_micro: 0.2
+    CAD_micro: 0.2
+    CORN_mini: 0.2
+    BBCOMM: 0.2
+    CAD10: 0.2
+instrument_div_multiplier: 1.7
+#use_instrument_div_mult_estimates: True
 
 rule_groups:
     ewmac_fast:
@@ -189,7 +137,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "2000-01-01" #"2011-01-01"
+start_date: "2013-01-01" #"2011-01-01"
 
 # Buffer
 buffer_trade_to_edge: True

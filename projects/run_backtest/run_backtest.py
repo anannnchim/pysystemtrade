@@ -7,15 +7,10 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/diversified_program_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/single_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -108,24 +103,53 @@ if __name__ == '__main__':
 
 
 """
-Risk 20%
-Gross: 17.133985029443885
-Cost: -1.4295124216953727
-Net: 15.70447260774851
-RollRisk: 19.86 
+CSV
+                Gross     Costs        Net
+2013-12-31   0.619322  0.000000   0.619322
+2014-12-31  35.035229 -1.467480  33.567749
+2015-12-31  47.394364 -1.406130  45.988234
+2016-12-31 -14.939903 -1.307464 -16.247368
+2017-12-31  -7.918356 -0.967374  -8.885730
+2018-12-31   2.557889 -1.036171   1.521719
+2019-12-31 -17.935246 -0.998671 -18.933917
+2020-12-31  14.485599 -1.506260  12.979339
+2021-12-31  26.089170 -1.620194  24.468977
+2022-12-31  26.666150 -1.736659  24.929491
+2023-12-31 -13.934901 -1.355026 -15.289926
+2024-12-31  -1.412704 -0.254365  -1.667069
+This is annual average return and costs
+8.058884499276603
+-1.1379828021792038
+6.9209016970974
 
-2012-12-31   8.936000 -1.536773   7.399227
-2013-12-31  12.363500 -1.796817  10.566683
-2014-12-31  30.646500 -1.692322  28.954178
-2015-12-31  26.988000 -1.430961  25.557039
-2016-12-31  -5.326000 -1.529265  -6.855265
-2017-12-31  35.197500 -1.516347  33.681153
-2018-12-31 -19.422015 -1.456617 -20.878631
-2019-12-31 -23.877534 -1.129593 -25.007127
-2020-12-31  22.748861 -1.806485  20.942376
-2021-12-31  21.462388 -1.670757  19.791630
-2022-12-31  17.251255 -2.001121  15.250134
-2023-12-31 -10.079890 -1.987627 -12.067517
-2024-12-31   3.889012 -0.457183   3.431828
+Total Return      Sharpe  CAGR    Max Drawdown
+--------------  --------  ------  --------------
+83.36%              0.37  5.55%   -51.83%
+
+
+Total Return      Sharpe  CAGR    Max Drawdown
+--------------  --------  ------  --------------
+63.09%              0.29  4.07%   -49.85%
+
+DB
+              Gross     Costs        Net
+2013-12-31   0.805453  0.000000   0.805453
+2014-12-31  32.946219 -1.441686  31.504533
+2015-12-31  50.394365 -1.269489  49.124876
+2016-12-31 -14.746860 -1.318935 -16.065794
+2017-12-31  -5.571092 -1.007490  -6.578582
+2018-12-31   2.789566 -1.028714   1.760852
+2019-12-31 -15.518965 -0.989369 -16.508334
+2020-12-31  13.419844 -1.464531  11.955313
+2021-12-31  30.649724 -1.659034  28.990691
+2022-12-31  27.077941 -1.708257  25.369684
+2023-12-31  -8.930448 -1.303943 -10.234391
+2024-12-31  -5.460004 -1.137335  -6.597338
+2025-12-31 -13.922166 -0.306116 -14.228282
+This is annual average return and costs
+7.225659848962722
+-1.1257613663616541
+6.099898482601067
+
 
 """

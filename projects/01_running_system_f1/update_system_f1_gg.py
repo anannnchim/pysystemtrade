@@ -15,24 +15,24 @@ start_date = "2025-02-03"
 
 if __name__ == '__main__':
 
-    # Update data
-    run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/update_data_gg.py"])
+    # # Update data
+    # run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/update_data_gg.py"])
+    #
+    # update_market_monitoring(s, SHEET_URL)
+    #
+    # # Might not accurate (since we hold differently)
+    # update_portfolio_monitoring(s, SHEET_URL)
+    #
+    # s.config.capital_multiplier = {
+    #     "func": "syscore.capital.fixed_capital"
+    #     # Or syscore.capital.full_compounding
+    #     # "syscore.capital.fixed_capital"
+    # }
+    # update_system_verification(s, SHEET_URL, start_date)
 
-    update_market_monitoring(s, SHEET_URL)
+    update_system_diagnostic(s, SHEET_URL, "S50")
 
-    # Might not accurate (since we hold differently)
-    update_portfolio_monitoring(s, SHEET_URL)
-
-    s.config.capital_multiplier = {
-        "func": "syscore.capital.fixed_capital"
-        # Or syscore.capital.full_compounding
-        # "syscore.capital.fixed_capital"
-    }
-    update_system_verification(s, SHEET_URL, start_date)
-
-    update_system_diagnostic(s, SHEET_URL, "USD")
-
-    # Get buffered position (Look at bounds)
-    run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])
+    # # Get buffered position (Look at bounds)
+    # run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])
 
 
