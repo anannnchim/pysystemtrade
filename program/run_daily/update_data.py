@@ -9,6 +9,7 @@ if __name__ == '__main__':
     4. Update by appending data in Adjusted & Multiple parquet
     """
 
+
     # 1. Update futures related data
     scripts = [
         "/Users/nanthawat/PycharmProjects/pysystemtrade/program/run_daily/run_startup.py",

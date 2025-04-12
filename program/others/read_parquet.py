@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # Contract price
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/system_01.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/CAD10.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 VIX_mini.parquet"
     a = pd.read_parquet(path)
     print(a)
 
