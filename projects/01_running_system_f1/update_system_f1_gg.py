@@ -30,7 +30,7 @@ if __name__ == '__main__':
     }
     update_system_verification(s, SHEET_URL, start_date)
 
-    update_system_diagnostic(s, SHEET_URL, "USD")
+    update_system_diagnostic(s, SHEET_URL, "GF10")
 
     # Get buffered position (Look at bounds)
     run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])
