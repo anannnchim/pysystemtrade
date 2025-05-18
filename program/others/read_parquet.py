@@ -54,7 +54,7 @@ if __name__ == '__main__':
     """
 
     # Multiple price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/VIX_mini.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/MUMMY.parquet"
     a = pd.read_parquet(path)
     print(a)
 
