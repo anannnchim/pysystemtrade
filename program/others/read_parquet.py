@@ -54,14 +54,14 @@ if __name__ == '__main__':
     """
 
     # Multiple price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/MUMMY.parquet"
-    a = pd.read_parquet(path)
-    print(a)
+    # path = "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/system_01 BBCOMM.parquet"
+    # a = pd.read_parquet(path)
+    # print(a)
 
     # # # # Note - Delete some row
-    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 RUSSELL.parquet"
-    # df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
-    # df = df.drop(df.index[-6]) # Delete second last row
+    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 CAD_micro.parquet"
+    df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
+    # df = df.drop(df.index[-1]) # Delete second last row
     # df.to_parquet(file_path, index=True, engine="pyarrow")
-    # print(df)
+    print(df)
 

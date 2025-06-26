@@ -85,3 +85,7 @@ forecast_weights:
 ## 3. Third version (April 2025):
 
 - Modify EMA forecast_scalar in config to match with AFTS book and google-sheet config
+
+## 4. Fourth version (July 2025):
+
+- Add more market after automation. 
