@@ -17,6 +17,7 @@ data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
 
 # Adjust pandas options to display all rows and columns
 pd.set_option('display.max_columns', None)  # Show all columns
@@ -77,7 +78,7 @@ if __name__ == '__main__':
             print(instrument, " PASS")
 
 
-    input("4. Check average position: should be > 2")
+    input("4. Check average position: should be > 2 (It's compounded number)")
     vol_scalar = {}
     for instrument in s.get_instrument_list():
         vol_scalar[instrument] = s.positionSize.get_average_position_at_subsystem_level(instrument).mean()
