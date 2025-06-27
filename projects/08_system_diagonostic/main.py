@@ -10,6 +10,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = csvFuturesSimData()
 
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
 
 s = futures_system(config=config, data=data)
 
