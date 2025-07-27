@@ -39,3 +39,6 @@ data/.DS_Store
 
 # Env path
 project_env.sh
+
+# private log email
+private.email_logs

@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from sysdata.data_blob import dataBlob
 from sysproduction.data.capital import dataCapital
+from sysproduction.data.positions import diagPositions
 
 pd.set_option('display.max_columns', None)
 # pd.set_option('display.max_rows', None)
@@ -54,14 +55,15 @@ if __name__ == '__main__':
     """
 
     # Multiple price
-    # path = "/Users/nanthawat/PycharmProjects/private-pysystemtrade/data/parquet/optimal_positions/system_01 BBCOMM.parquet"
-    # a = pd.read_parquet(path)
-    # print(a)
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/CAD_micro.parquet" # 0.0015, 0.001 , 0.0015(0.0001)
+    a = pd.read_parquet(path)
+    print(a)
 
-    # # # # Note - Delete some row
-    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 CAD_micro.parquet"
-    df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
-    # df = df.drop(df.index[-1]) # Delete second last row
-    # df.to_parquet(file_path, index=True, engine="pyarrow")
-    print(df)
-
+    # # # # # Note - Delete some row
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 CAD10.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EUR_micro.parquet"
+    # df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
+    # # df = df.drop(df.index[-2]) # Delete second last row
+    # # df.to_parquet(file_path, index=True, engine="pyarrow")
+    # print(df)
+    #

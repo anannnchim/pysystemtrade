@@ -56,35 +56,65 @@ trading_rules:
 
 forecast_cap: 20.0
 
+
 ### INPUT -----------------------------------------------------------------
 forecast_weights:
      S50:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0.25 # Form this
         ewmac16_64: 0.25
         ewmac32_128: 0.25
         ewmac64_256: 0.25
      USD:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0
         ewmac16_64: 0.33 # From this
         ewmac32_128: 0.33
         ewmac64_256: 0.33
      GF10:
         ewmac2_8: 0
+        ewmac4_16: 0
         ewmac8_32: 0.25 # From this
         ewmac16_64: 0.25
         ewmac32_128: 0.25
         ewmac64_256: 0.25
+     EURUSD:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0
+       ewmac32_128: 0.5
+       ewmac64_256: 0.5
+     SVF:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+     USDJPY:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+
+
 forecast_div_multiplier:
      S50: 1.13
      USD: 1.08
      GF10: 1.13
+     EURUSD: 1.03
+     SVF: 1.08
+     USDJPY: 1.08
 #
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 1771400.31 # 571585.61
+notional_trading_capital: 2495652.2
 base_currency: "USD"
 
 capital_multiplier:
@@ -94,9 +124,11 @@ capital_multiplier:
 #
 instrument_weights:
     S50: 0.33
-    USD: 0.33
-    GF10: 0.33
-
+    GF10: 0.165
+    USD: 0.11
+    EURUSD: 0.11
+    SVF: 0.165
+    USDJPY: 0.11
 instrument_div_multiplier: 1.48
 
 rule_groups:

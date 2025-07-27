@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+
 from program.googlesheet.update_system_gg import update_market_monitoring, update_portfolio_monitoring, \
     update_system_verification, update_system_diagnostic
 from program.helper.run_scripts import run_scripts
@@ -15,6 +17,10 @@ start_date = "2025-02-03"
 
 if __name__ == '__main__':
 
+    # for ins in s.get_instrument_list():
+    #     data.get_backadjusted_futures_price(ins).plot()
+    #     plt.show()
+
     # Update data
     run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/update_data_gg.py"])
 
@@ -30,7 +36,7 @@ if __name__ == '__main__':
     }
     update_system_verification(s, SHEET_URL, start_date)
 
-    update_system_diagnostic(s, SHEET_URL, "S50")
+    update_system_diagnostic(s, SHEET_URL, "SVF")
 
     # Get buffered position (Look at bounds)
     run_scripts(["/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/run_system.py"])

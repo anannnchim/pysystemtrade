@@ -86,18 +86,36 @@ forecast_weights:
        ewmac16_64: 0
        ewmac32_128: 0.5
        ewmac64_256: 0.5
+     SVF:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+     USDJPY:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+
 
 forecast_div_multiplier:
      S50: 1.13
      USD: 1.08
      GF10: 1.13
      EURUSD: 1.03
+     SVF: 1.08
+     USDJPY: 1.08
+
 
 #
 # Capital correction
 #
 percentage_vol_target: 14
-notional_trading_capital: 2400000
+notional_trading_capital: 2495652.2
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -106,11 +124,13 @@ capital_multiplier:
 #
 instrument_weights:
     S50: 0.33
-    GF10: 0.33
-    USD: 0.165
-    EURUSD: 0.165
+    GF10: 0.165
+    USD: 0.11
+    EURUSD: 0.11
+    SVF: 0.165
+    USDJPY: 0.11
 
-instrument_div_multiplier: 1.62 # From estimated
+instrument_div_multiplier: 1.48
 #use_instrument_div_mult_estimates: True
 
 rule_groups:
@@ -129,7 +149,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "2025-01-01"#"2011-01-01"
+#start_date: "2024-07-01" #"2011-01-01"
 
 # Buffer
 buffer_trade_to_edge: True

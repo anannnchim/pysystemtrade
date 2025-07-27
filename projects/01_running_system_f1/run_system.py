@@ -14,7 +14,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # Configuration
 CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
 SHEET_URL = "https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1742643022#gid=1742643022"
-INSTRUMENTS = ["S50", "USD", "GF10"]
+INSTRUMENTS = ["S50", "USD", "GF10", "EURUSD", "SVF", "USDJPY"]
 
 # Initialize system
 config = Config(CONFIG_PATH)
@@ -144,7 +144,7 @@ def main():
 
     # Interactive instrument lookup
     while True:
-        instrument = input("\nEnter instrument code (S50, USD, GF10) or press Enter to exit: ").strip().upper()
+        instrument = input("\nEnter instrument code (S50, USD, GF10, EURUSD) or press Enter to exit: ").strip().upper()
 
         if instrument == "":
             print("Exiting program.")
@@ -153,7 +153,7 @@ def main():
         if instrument in INSTRUMENTS:
             get_instrument_target_position(instrument)
         else:
-            print("Invalid instrument code. Please enter a valid instrument (S50, USD, GF10).")
+            print("Invalid instrument code. Please enter a valid instrument (S50, USD, GF10, EURUSD).")
 
 
 if __name__ == "__main__":
