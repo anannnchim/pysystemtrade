@@ -55,15 +55,27 @@ if __name__ == '__main__':
     """
 
     # Multiple price
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/CAD_micro.parquet" # 0.0015, 0.001 , 0.0015(0.0001)
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/COPPER-micro#20250900.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/COPPER-micro.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/COPPER-micro.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 COPPER-micro.parquet"
+
     a = pd.read_parquet(path)
     print(a)
 
+    '''
+    Spread 
+    1. Config: 0.064 (Rob change to 0.048)
+    2. Parquet min: 0.07 
+    3. Live (21.43): AUG,SEP = 0.02,0.04 19.44
+    
+ 
+    '''
+
     # # # # # Note - Delete some row
-    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 CAD10.parquet"
-    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EUR_micro.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/optimal_positions/system_01 VIX_mini.parquet"
     # df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
-    # # df = df.drop(df.index[-2]) # Delete second last row
-    # # df.to_parquet(file_path, index=True, engine="pyarrow")
+    # df = df.iloc[:-2] # Delete the last two rows
+    # df.to_parquet(file_path, index=True, engine="pyarrow")
     # print(df)
-    #
+

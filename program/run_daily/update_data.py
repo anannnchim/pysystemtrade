@@ -17,8 +17,15 @@ if __name__ == '__main__':
         "stemtrade/sysproduction/update_fx_prices.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_sampled_contracts.py",
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_historical_prices.py",
+
+    ]
+    run_scripts(scripts)
+
+    input("Check if there is a spiked or not: If spiked then interactive before update multiple,adj price")
+
+    scripts_2 = [
         "/Users/nanthawat/PycharmProjects/pysystemtrade/sysproduction/update_multiple_adjusted_prices.py"
     ]
 
     # Run the scripts
-    run_scripts(scripts)
+    run_scripts(scripts_2)

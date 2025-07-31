@@ -152,7 +152,7 @@ percentage_vol_target: 20
 notional_trading_capital: 54128.50
 base_currency: "USD"
 capital_multiplier:
-   func: syscore.capital.fixed_capital
+   func: syscore.capital.full_compounding
 #
 # Portfolio creation
 #
@@ -189,7 +189,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-#start_date: "2000-01-01" #"2011-01-01"
+start_date: "2021-01-01" # "2000-01-01" #"2011-01-01"
 
 # Buffer
 buffer_trade_to_edge: True
