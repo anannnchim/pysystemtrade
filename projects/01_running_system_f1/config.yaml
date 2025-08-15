@@ -157,4 +157,4 @@ vol_normalise_currency_costs: False # Need to set to false for System F1
 use_instrument_div_mult_estimates: False
 
 
-#start_date: "2010-01-01"
+#start_date: "2024-07-01"

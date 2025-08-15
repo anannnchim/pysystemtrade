@@ -9,12 +9,16 @@ import pandas as pd
 
 # INPUT: Select data and system
 data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/diversified_program/config.yaml")
 pd.set_option('display.max_columns', None)  # Show all columns
 
 s = futures_system(config=config, data=data)
+
+
 
 if __name__ == '__main__':
 
@@ -23,7 +27,7 @@ if __name__ == '__main__':
     plt.figure(figsize=(12, 6))  # Optional: Set the chart size
 
     for instr in s.get_instrument_list():
-        curve = s.accounts.pandl_for_instrument(instr).percent.curve()
+        curve = s.accounts.pandl_for_instrument(instr).percent.curve() # .tail(300)
         plt.plot(curve, label=instr)
 
     plt.title("P&L Percentage Curve by Instrument")
@@ -32,6 +36,11 @@ if __name__ == '__main__':
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
+    plt.show()
+
+    # Plot performance
+
+    s.accounts.portfolio().net.percent.curve().plot()
     plt.show()
 
     # 2. Get Annualised risk
@@ -64,4 +73,5 @@ if __name__ == '__main__':
     # 4. Get risk
     print(s.portfolio.get_stdev_df()*100)
 
-    s.accounts.get_SR_cost_given_turnover("S50", 5)
+    # s.accounts.get_SR_cost_given_turnover("S50", 5)
+

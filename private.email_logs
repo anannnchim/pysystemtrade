@@ -1180,3 +1180,33 @@ Email stored not sent on 2025-07-31 08:34:06.127555: Price Spike IRON
 Spike found in prices for IRON/20251200: need to manually check by running interactive_manual_check_historical_prices
 ********************************************************************************
 
+********************************************************************************
+Email stored not sent on 2025-08-01 09:10:33.913884: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260100: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-08 08:29:52.020289: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260200: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-08 08:30:03.508064: Price Spike COPPER-micro
+
+To reduce email load, won't send any more emails with this subject today. Use 'interactive_diagnostics', 'Emails' to see stored messages
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-08 08:30:03.780090: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260300: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-08 08:30:06.579475: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260400: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
