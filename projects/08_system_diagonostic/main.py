@@ -11,9 +11,9 @@ import pandas as pd
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/run_backtest/system_f1_new_config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/diversified_program/config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/diversified_program/config.yaml")
 pd.set_option('display.max_columns', None)  # Show all columns
 
 s = futures_system(config=config, data=data)
