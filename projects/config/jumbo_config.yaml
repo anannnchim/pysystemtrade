@@ -1,0 +1,126 @@
+trading_rules:
+  ewmac2_8: # name of the rule
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 2
+         Lslow: 8
+     forecast_scalar: 12.1
+  ewmac4_16:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 4
+         Lslow: 16
+     forecast_scalar: 8.53
+  ewmac8_32:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 8
+         Lslow: 32
+     forecast_scalar: 5.95
+  ewmac16_64:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 16
+         Lslow: 64
+     forecast_scalar: 4.1
+  ewmac32_128:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 32
+         Lslow: 128
+     forecast_scalar: 2.79
+  ewmac64_256:
+     function: systems.provided.rules.ewmac.ewmac
+     data:
+         - "rawdata.get_daily_prices"
+         - "rawdata.daily_returns_volatility"
+     other_args:
+         Lfast: 64
+         Lslow: 256
+     forecast_scalar: 1.91
+
+forecast_scalar_estimate:
+  pool_instruments: True
+
+# Cap individual rule forecasts
+forecast_cap: 20.0
+
+#
+# Forecast combination — equal weights for the 6 rules
+#
+forecast_weights:
+  ewmac2_8:   0.1667
+  ewmac4_16:  0.1667
+  ewmac8_32:  0.1667
+  ewmac16_64: 0.1667
+  ewmac32_128: 0.1667
+  ewmac64_256: 0.1667
+# Leave diversification multiplier at default (or tune later if you like)
+# forecast_div_multiplier: 1.0
+
+#
+# Capital / accounting
+#
+percentage_vol_target: 20.0
+notional_trading_capital: 1000000
+base_currency: "USD"
+# Optional: lock the backtest start date if you want to align data windows
+#start_date: "2020-01-01"
+#end_date: "2024-01-01"
+#
+# Portfolio — equal instrument weights
+#
+instrument_weights:
+  BBCOMM:         0.0556
+  MILLWHEAT:      0.0556
+  VIX_mini:       0.0556
+  CAD_micro:      0.0556
+  CORN:           0.0556
+  V2X:            0.0556
+  RUSSELL:        0.0556
+  COPPER-micro:   0.0556
+  IRON:           0.0556
+  CAD10:          0.0556
+  CRUDE_W_micro:  0.0556
+  CANOLA:         0.0556
+  CORN_mini:      0.0556
+  ETHER-micro:    0.0556
+  CAD2:           0.0556
+  EUR_micro:      0.0556
+  US10:           0.0556
+  MUMMY:          0.0548   # adjusted so weights ~sum to 1.00
+
+# (Optional, but commonly used) Use estimated diversification across instruments
+use_instrument_div_mult_estimates: True
+
+# Rule/style groups (handy for reporting)
+rule_groups:
+  ewmac_fast:
+    - ewmac2_8
+    - ewmac4_16
+  ewmac_medium:
+    - ewmac8_32
+    - ewmac16_64
+  ewmac_slow:
+    - ewmac32_128
+    - ewmac64_256
+style_groups:
+  trend:
+    - ewmac_fast
+    - ewmac_medium
+    - ewmac_slow

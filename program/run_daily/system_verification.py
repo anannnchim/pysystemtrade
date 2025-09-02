@@ -125,8 +125,8 @@ if __name__ == '__main__':
     # accountCosts & Turnover
     s.accounts.get_SR_cost_per_trade_for_instrument(c1)  # SR cost per trade
     s.accounts.forecast_turnover(c1, "ewmac16_64")  # AnnualisedtTurnover for each instrument & rule
-    s.rawdata.rolls_per_year(c1) * 2  # Holding turnover
-    s.accounts.get_SR_holding_cost_only(c1)
+    s.rawdata.rolls_per_year(c1)  # Holding turnover
+    s.accounts.get_SR_holding_cost_only(c1) # (SR * roll per year) x 2
     s.accounts.get_SR_transaction_cost_for_instrument_forecast(c1, "ewmac16_64")  # Transaction cost in SR
     s.accounts.get_SR_cost_for_instrument_forecast(c1, "ewmac16_64")  # [hold+trans]turnover * SR cost
     s.accounts.get_SR_cost_given_turnover(c1, 5)  ## includes both holding and trading costs for a turnover of 10

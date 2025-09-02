@@ -1210,3 +1210,33 @@ Email stored not sent on 2025-08-08 08:30:06.579475: Price Spike COPPER-micro
 Spike found in prices for COPPER-micro/20260400: need to manually check by running interactive_manual_check_historical_prices
 ********************************************************************************
 
+********************************************************************************
+Email stored not sent on 2025-08-25 07:57:21.311302: Price Spike RUSSELL
+
+Spike found in prices for RUSSELL/20250900: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-25 07:57:33.000650: Price Spike RUSSELL
+
+To reduce email load, won't send any more emails with this subject today. Use 'interactive_diagnostics', 'Emails' to see stored messages
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-25 07:57:33.255553: Price Spike RUSSELL
+
+Spike found in prices for RUSSELL/20251200: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-25 07:59:24.418191: Price Spike ETHER-micro
+
+Spike found in prices for ETHER-micro/20250800: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-08-25 08:00:07.741831: Price Spike EUR_micro
+
+Spike found in prices for EUR_micro/20250900: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
