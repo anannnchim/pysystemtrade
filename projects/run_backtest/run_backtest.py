@@ -11,7 +11,9 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/AFTS_four.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
 
 s = futures_system(config=config, data=data)
 
