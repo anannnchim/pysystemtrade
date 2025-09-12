@@ -7,7 +7,6 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 
-# Note: 1. Select db/csv and config
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
@@ -34,7 +33,6 @@ if __name__ == '__main__':
     print(f"Average drawdown: {drawdowns.mean():.2f}%")
     drawdowns.plot(title="Portfolio Drawdown (%)", ylabel="Drawdown")
     plt.show()
-
 
     input("Performance based on market")
     plt.figure(figsize=(12, 6))
@@ -145,7 +143,6 @@ if __name__ == '__main__':
     }); print(df)
     df.plot()
     plt.show()
-
 
     input("IDM")
     a = s.portfolio.get_instrument_diversification_multiplier() # Estimated IDM
