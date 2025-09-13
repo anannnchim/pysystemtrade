@@ -2,11 +2,25 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
+from systems.provided.futures_chapter15.basesystem import futures_system
+from sysdata.config.configdata import Config
+from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
+
+data = csvFuturesSimData()
+s = futures_system(config=config, data=data)
+
 if __name__ == '__main__':
-    data = dbFuturesSimData()
-    instruments = data.get_instrument_list()
+    # 1. From database
+    # data = dbFuturesSimData()
+    # instruments = data.get_instrument_list()
+
+    # 2. From system.
+    instruments = s.get_instrument_list()
+
     print(instruments)
 
     start_dates = {}
