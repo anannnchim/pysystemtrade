@@ -3,8 +3,9 @@ from sysinit.futures.adjustedprices_from_db_multiple_to_db import process_adjust
 from sysinit.futures.contract_prices_from_split_freq_csv_to_db import init_db_with_split_freq_csv_prices_for_code
 from sysinit.futures.multipleprices_from_db_prices_and_csv_calendars_to_db import process_multiple_prices_all_instruments
 from sysinit.futures.rollcalendars_from_db_prices_to_csv import build_and_write_roll_calendar
-
-
+"""
+Do not use this one. Just a file that show the whole process of initialize new data.
+"""
 if __name__ == '__main__':
 
     instrument = "EUR_micro"
