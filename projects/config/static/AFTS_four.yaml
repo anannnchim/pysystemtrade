@@ -3,7 +3,7 @@
 #
 
 # This will affect capital by portfolio multiplier
-#start_date: '2020-01-01'
+start_date: '2020-01-01'
 #
 # Capital correction
 #

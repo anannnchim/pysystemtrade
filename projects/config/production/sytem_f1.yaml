@@ -129,8 +129,8 @@ instrument_weights:
     EURUSD: 0.11
     SVF: 0.165
     USDJPY: 0.11
-instrument_div_multiplier: 1.48
-#use_instrument_div_mult_estimates: True  #TEMP
+#instrument_div_multiplier: 1.48
+use_instrument_div_mult_estimates: True  #TEMP
 
 rule_groups:
     ewmac_fast:

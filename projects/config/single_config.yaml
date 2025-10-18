@@ -3,20 +3,20 @@
 #
 
 # Note: Date
-#start_date: '2012-01-01'
+#start_date: '2020-01-01'
 #end_date: '2024-01-01'
 
 # Note: Capital
 # Capital correction
 #
-percentage_vol_target: 10
+percentage_vol_target: 14
 notional_trading_capital: 100000
 
 # Note: Weight
 # Portfolio creation
 #
 instrument_weights:
-    VIX_mini: 1
+    JGB-SGX-mini: 1
 
 #use_instrument_div_mult_estimates: True
 instrument_div_multiplier: 1
@@ -25,12 +25,12 @@ instrument_div_multiplier: 1
 # forecast combination
 #
 forecast_weights:
-  ewmac2_8: 0
-  ewmac4_16: 0
-  ewmac8_32: 0
-  ewmac16_64: 0
-  ewmac32_128: 0
-  ewmac64_256: 1
+  ewmac2_8: 0.167
+  ewmac4_16: 0.167
+  ewmac8_32: 0.167
+  ewmac16_64: 0.167
+  ewmac32_128: 0.167
+  ewmac64_256: 0.167
 
 forecast_div_multiplier: 1
 

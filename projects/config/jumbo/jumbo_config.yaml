@@ -60,16 +60,23 @@ forecast_scalar_estimate:
 # Cap individual rule forecasts
 forecast_cap: 20.0
 
-#
+
 # Forecast combination — equal weights for the 6 rules
-#
+
+#forecast_weights:
+#  ewmac2_8:   0.1667
+#  ewmac4_16:  0.1667
+#  ewmac8_32:  0.1667
+#  ewmac16_64: 0.1667
+#  ewmac32_128: 0.1667
+#  ewmac64_256: 0.1667
 forecast_weights:
-  ewmac2_8:   0.1667
-  ewmac4_16:  0.1667
-  ewmac8_32:  0.1667
-  ewmac16_64: 0.1667
-  ewmac32_128: 0.1667
-  ewmac64_256: 0.1667
+  ewmac2_8:   0
+  ewmac4_16:  0
+  ewmac8_32:  0
+  ewmac16_64: 0.33
+  ewmac32_128: 0.33
+  ewmac64_256: 0.33
 # Leave diversification multiplier at default (or tune later if you like)
 # forecast_div_multiplier: 1.0
 

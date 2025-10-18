@@ -3,11 +3,11 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2020-01-01'
+#start_date: '2020-01-01'
 #
 # Capital correction
 #
-percentage_vol_target: 25
+percentage_vol_target: 20
 notional_trading_capital: 50000
 base_currency: "USD"
 capital_multiplier:

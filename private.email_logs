@@ -1240,3 +1240,33 @@ Email stored not sent on 2025-08-25 08:00:07.741831: Price Spike EUR_micro
 Spike found in prices for EUR_micro/20250900: need to manually check by running interactive_manual_check_historical_prices
 ********************************************************************************
 
+********************************************************************************
+Email stored not sent on 2025-10-13 08:05:38.740825: Price Spike VIX_mini
+
+Spike found in prices for VIX_mini/20251000: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-10-13 08:06:46.010845: Price Spike V2X
+
+Spike found in prices for V2X/20251000: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-10-15 07:49:40.742345: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260500: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-10-15 07:49:52.207769: Price Spike COPPER-micro
+
+To reduce email load, won't send any more emails with this subject today. Use 'interactive_diagnostics', 'Emails' to see stored messages
+********************************************************************************
+
+********************************************************************************
+Email stored not sent on 2025-10-15 07:49:52.471010: Price Spike COPPER-micro
+
+Spike found in prices for COPPER-micro/20260600: need to manually check by running interactive_manual_check_historical_prices
+********************************************************************************
+

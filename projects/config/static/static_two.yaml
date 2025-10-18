@@ -8,7 +8,7 @@ start_date: '2020-01-01'
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 50000
+notional_trading_capital: 45000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -40,14 +40,14 @@ use_instrument_div_mult_estimates: True
 forecast_weights:
 
 # Expensive
-  ewmac2_8: 0.16
-  ewmac4_16: 0.16
-  ewmac8_32: 0.16
-  ewmac16_64: 0.16
-  ewmac32_128: 0.16
-  ewmac64_256: 0.16
+  ewmac2_8: 0
+  ewmac4_16: 0
+  ewmac8_32: 0
+  ewmac16_64: 0.33
+  ewmac32_128: 0.33
+  ewmac64_256: 0.33
 
-forecast_div_multiplier: 1.26
+forecast_div_multiplier: 1
 #
 # DEFAULT ZONE ---------------------------------
 #

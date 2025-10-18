@@ -1,0 +1,11 @@
+﻿Instrument,Annual Risk / Contract (base ccy),Daily Risk / Contract (base ccy),Contract Value (base ccy),Annual Risk % of Contract Value
+RUSSELL,572.69,35.79,12390.5,4.622
+MUMMY,216.31,13.52,4754.68,4.549
+CORN_mini,76.42,4.78,4218.75,1.811
+CRUDE_W_micro,19.73,1.23,5682.0,0.347
+BBCOMM,12.37,0.77,10619.0,0.116
+VIX_mini,11.45,0.72,2250.0,0.509
+CAD10,5.71,0.36,87797.17,0.006
+COPPER-micro,1.71,0.11,12646.25,0.014
+EUR_micro,0.08,0.0,14656.25,0.001
+CAD_micro,0.03,0.0,7137.0,0.0

@@ -5,12 +5,12 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2015-01-01'
+start_date: '2020-01-01'
 #
 # Capital correction
 #
-percentage_vol_target: 20
-notional_trading_capital: 1000000
+percentage_vol_target: 14
+notional_trading_capital: 10000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -20,13 +20,18 @@ capital_multiplier:
 Sorted:
 
 instrument_weights:
-    EU-BANKS: 0.142
-    EU-REALESTATE: 0.142
-    EUR_micro: 0.142
-    KOSDAQ: 0.142
-    MUMMY: 0.142
-    TOPIX: 0.142
-    V2X: 0.142
+    # Equity
+    EU-BANKS: 0.07
+    EU-REALESTATE: 0.07
+    MUMMY: 0.07
+    TOPIX: 0.07
+    KOSDAQ: 0.07
+
+    # FX
+    EUR_micro: 0.33
+
+    # Vol
+    V2X: 0.33
 
 
 
@@ -39,14 +44,14 @@ use_instrument_div_mult_estimates: True
 forecast_weights:
 
 # Expensive
-  ewmac2_8: 0.16
-  ewmac4_16: 0.16
-  ewmac8_32: 0.16
-  ewmac16_64: 0.16
-  ewmac32_128: 0.16
-  ewmac64_256: 0.16
+  ewmac2_8: 0
+  ewmac4_16: 0
+  ewmac8_32: 0
+  ewmac16_64: 0.33
+  ewmac32_128: 0.33
+  ewmac64_256: 0.33
 
-forecast_div_multiplier: 1.26
+forecast_div_multiplier: 1
 #
 # DEFAULT ZONE ---------------------------------
 #

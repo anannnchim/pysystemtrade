@@ -3,46 +3,40 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2021-04-01'
+#start_date: '2020-01-01'
 #
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 50000
+notional_trading_capital: 46000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
-#
-# Portfolio creation
-#
+
 instrument_weights:
 
   # FX
-  KRWUSD_mini: 0.087
-  CAD_micro: 0.029
-  AUD_micro: 0.029
-  GBP_micro: 0.029
+  KRWUSD_mini: 0.083
+  CAD_micro: 0.028
+  AUD_micro: 0.028
+  GBP_micro: 0.028
 
   # Ags
-  CORN_mini: 0.087
-  BBCOMM: 0.087
+  CORN_mini: 0.083
+  MILLWHEAT: 0.083
 
   # Oil & Gas
-  CRUDE_W_micro: 0.176
+  CRUDE_W_micro: 0.083
+  GAS_US_mini: 0.083
 
   # Metals
-  IRON: 0.176
+  IRON: 0.17
 
   # Bond
-  CAD10: 0.176
+  KR10: 0.17
 
   # Equity
-  MUMMY: 0.087
-  RUSSELL: 0.087
-
-  # Vol
-  VIX_mini: 0.176
-
+  EU-BANKS: 0.17
 
 use_instrument_div_mult_estimates: True
 #instrument_div_multiplier: 2.1
@@ -50,17 +44,110 @@ use_instrument_div_mult_estimates: True
 #
 # forecast combination
 #
+
 forecast_weights:
+     AUD_micro:
+        ewmac2_8: 0
+        ewmac4_16: 0.2
+        ewmac8_32: 0.2
+        ewmac16_64: 0.2
+        ewmac32_128: 0.2
+        ewmac64_256: 0.2
+     CAD_micro:
+        ewmac2_8: 0
+        ewmac4_16: 0.2
+        ewmac8_32: 0.2
+        ewmac16_64: 0.2
+        ewmac32_128: 0.2
+        ewmac64_256: 0.2
+     CORN_mini:
+        ewmac2_8: 0
+        ewmac4_16: 0
+        ewmac8_32: 0.25
+        ewmac16_64: 0.25
+        ewmac32_128: 0.25
+        ewmac64_256: 0.25
+     CRUDE_W_micro:
+        ewmac2_8: 0.167
+        ewmac4_16: 0.167
+        ewmac8_32: 0.167
+        ewmac16_64: 0.167
+        ewmac32_128: 0.167
+        ewmac64_256: 0.167
+     EU-BANKS:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+     GAS_US_mini:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+     GBP_micro:
+       ewmac2_8: 0
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+     IRON:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+     KR10:
+       ewmac2_8: 0
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+     KRWUSD_mini:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+     MILLWHEAT:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
 
-# Expensive
-  ewmac2_8: 0
-  ewmac4_16: 0
-  ewmac8_32: 0
-  ewmac16_64: 0.3
-  ewmac32_128: 0.3
-  ewmac64_256: 0.3
+forecast_div_multiplier:
+    # FX
+    KRWUSD_mini: 1.08
+    CAD_micro: 1.19
+    AUD_micro: 1.19
+    GBP_micro: 1.19
 
-forecast_div_multiplier: 1.08
+    # Ags
+    CORN_mini: 1.13
+    MILLWHEAT: 1.13
+
+    # Oil & Gas
+    CRUDE_W_micro: 1.26
+    GAS_US_mini: 1.13
+
+    # Metals
+    IRON: 1.13
+
+    # Bond
+    KR10: 1.19
+
+    # Equity
+    EU-BANKS: 1.13
+
 #
 # DEFAULT ZONE ---------------------------------
 #
