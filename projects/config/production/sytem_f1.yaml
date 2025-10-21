@@ -113,8 +113,8 @@ forecast_div_multiplier:
 #
 # Capital correction
 #
-percentage_vol_target: 14
-notional_trading_capital: 2495652.2
+percentage_vol_target: 20
+notional_trading_capital: 3300000
 base_currency: "USD"
 
 capital_multiplier:
@@ -123,12 +123,19 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
+    # Equity
     S50: 0.33
+
+    # Metals
     GF10: 0.165
-    USD: 0.11
-    EURUSD: 0.11
     SVF: 0.165
-    USDJPY: 0.11
+
+    # FX
+    USD: 0.165 # EM
+
+    EURUSD: 0.0825 # DEV
+    USDJPY: 0.0825 # DEV
+
 #instrument_div_multiplier: 1.48
 use_instrument_div_mult_estimates: True  #TEMP
 

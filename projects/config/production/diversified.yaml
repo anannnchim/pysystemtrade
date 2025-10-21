@@ -172,8 +172,8 @@ instrument_weights:
     COPPER-micro: 0.143
     CAD10: 0.143
 
-instrument_div_multiplier: 2.1
-#use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.1
+use_instrument_div_mult_estimates: True
 rule_groups:
     ewmac_fast:
        - ewmac2_8
@@ -190,7 +190,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-start_date: "2020-01-01" #"2011-01-01" # Need to skip
+#start_date: "2020-01-01" #"2011-01-01" # Need to skip
 
 # Buffer
 buffer_trade_to_edge: True

@@ -12,7 +12,9 @@ data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/AFTS_four.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/sytem_f1.yaml")
 
 s = futures_system(config=config, data=data)
 
