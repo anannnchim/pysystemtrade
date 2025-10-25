@@ -129,5 +129,7 @@ if __name__ == "__main__":
     # instrument_code = get_valid_instrument_code_from_user(source="single")
 
     ## MODIFY DATAPATH IF REQUIRED
+    # 1. Verify rollconfig.csv that our file and file in github master are matched.
+
     output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
-    build_and_write_roll_calendar("AUD_micro", output_datapath=output_path)
+    build_and_write_roll_calendar("WHEAT_mini", output_datapath=output_path)

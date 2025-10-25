@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # Note 1. Convert single instrument
     # # Import prices for a single instrument (CORN)
     init_db_with_split_freq_csv_prices_for_code(
-        "AUD_micro",
+        "WHEAT_mini",
         datapath=datapath,
         csv_config=BARCHART_CONFIG,
         ignore_duplication=True)  # Muse be false: since we want to add older data.
