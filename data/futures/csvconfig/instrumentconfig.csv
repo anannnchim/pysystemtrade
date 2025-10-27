@@ -421,7 +421,7 @@ SONIA,Sterling Overnight Index Average,2500,GBP,STIR,0,0,0,US
 SONIA1,One Month SONIA,2500,GBP,Bond,0,0,0,EMEA
 SONIA3,Three Month SONIA,2500,GBP,Bond,0,0,0,EMEA
 SOYBEAN,Soybean,50,USD,Ags,2.97,0,0,US
-SOYBEAN_mini,Soybean mini,10,USD,Ags,1.9,0,0,US
+SOYBEAN_mini,Soybean mini,10,USD,Ags,1.93,0,0,US
 SOYMEAL,Soybean Meal,100,USD,Ags,2.97,0,0,US
 SOYOIL,Soybean oil,600,USD,Ags,2.97,0,0,US
 SP400,E-mini S&P Midcap 400 Futures,100,USD,Equity,2.25,0,0,US
@@ -577,7 +577,7 @@ VOLQ,NASDAQ-100 Volatility Index,100,USD,Vol,0,0,0,US
 WATER-CALI,The Nasdaq Veles California Water Index,10,USD,Weather,0,0,0,US
 WHEAT,Wheat,50,USD,Ags,2.97,0,0,US
 WHEAT_ICE,Wheat ICE,100,GBP,Ags,0,0,0,EMEA
-WHEAT_mini,Wheat mini,10,USD,Ags,1.9,0,0,US
+WHEAT_mini,Wheat mini,10,USD,Ags,1.93,0,0,US
 WHEAT-ASX,WHEAT FUTURES,20,AUD,Ags,0,0,0,ASIA
 WHEY,CME DRY WHEY INDEX,440,USD,Ags,2.97,0,0,US
 WTI_small,Small US Crude Oil,100,USD,OilGas,2.85,0,0,US
