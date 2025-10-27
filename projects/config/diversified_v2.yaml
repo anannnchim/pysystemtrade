@@ -3,12 +3,12 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2014-01-01'
+start_date: '2019-12-01'
 #
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 46000
+notional_trading_capital: 460000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -30,6 +30,8 @@ instrument_weights:
 
   # 4. Metals: Industrial
   IRON: 0.167
+#  IRON: 0.08
+#  GOLD_micro: 0.16
 
   # 5. Bond: Asia
   JGB-SGX-mini: 0.167
@@ -37,7 +39,7 @@ instrument_weights:
   # 6. Equity: Asia
   FTSECHINAA: 0.167
 
-#use_instrument_div_mult_estimates: True
+use_instrument_div_mult_estimates: True
 instrument_div_multiplier: 2.1
 
 #
@@ -106,6 +108,14 @@ forecast_weights:
        ewmac16_64: 0.25
        ewmac32_128: 0.25
        ewmac64_256: 0.25
+#
+#     GOLD_micro:
+#       ewmac2_8: 0
+#       ewmac4_16: 0
+#       ewmac8_32: 0.25
+#       ewmac16_64: 0.25
+#       ewmac32_128: 0.25
+#       ewmac64_256: 0.25
 
      JGB-SGX-mini:
        ewmac2_8: 0
@@ -140,6 +150,7 @@ forecast_div_multiplier:
 
     # Metals
     IRON: 1.13
+#    GOLD_micro: 1.13
 
     # Bond
     JGB-SGX-mini: 1.13

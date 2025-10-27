@@ -113,7 +113,7 @@ forecast_div_multiplier:
 #
 # Capital correction
 #
-percentage_vol_target: 20
+percentage_vol_target: 14
 notional_trading_capital: 3300000
 base_currency: "USD"
 
@@ -136,8 +136,8 @@ instrument_weights:
     EURUSD: 0.0825 # DEV
     USDJPY: 0.0825 # DEV
 
-#instrument_div_multiplier: 1.48
-use_instrument_div_mult_estimates: True  #TEMP
+instrument_div_multiplier: 1.48
+#use_instrument_div_mult_estimates: True  #TEMP
 
 rule_groups:
     ewmac_fast:
@@ -163,4 +163,4 @@ vol_normalise_currency_costs: False # Need to set to false for System F1
 
 
 
-#start_date: "2020-01-01"
+start_date: "2019-12-01"

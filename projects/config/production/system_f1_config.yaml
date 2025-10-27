@@ -56,123 +56,82 @@ trading_rules:
 
 forecast_cap: 20.0
 
+
 ### INPUT -----------------------------------------------------------------
 forecast_weights:
-     CAD10:
-        ewmac2_8: 0.167
-        ewmac4_16: 0.167
-        ewmac8_32: 0.167
-        ewmac16_64: 0.167
-        ewmac32_128: 0.167
-        ewmac64_256: 0.167
-     EUR_micro:
-        ewmac2_8: 0
-        ewmac4_16: 0.2
-        ewmac8_32: 0.2
-        ewmac16_64: 0.2
-        ewmac32_128: 0.2
-        ewmac64_256: 0.2
-     COPPER-micro:
-        ewmac2_8: 0.167
-        ewmac4_16: 0.167
-        ewmac8_32: 0.167
-        ewmac16_64: 0.167
-        ewmac32_128: 0.167
-        ewmac64_256: 0.167
-     CORN_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0.33
-       ewmac32_128: 0.33
-       ewmac64_256: 0.33
-     CRUDE_W_micro:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-     MUMMY:
+     S50:
         ewmac2_8: 0
         ewmac4_16: 0
-        ewmac8_32: 0.25
+        ewmac8_32: 0.25 # Form this
         ewmac16_64: 0.25
         ewmac32_128: 0.25
         ewmac64_256: 0.25
-     VIX_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0
-       ewmac32_128: 0
-       ewmac64_256: 1
-
-     CAD_micro:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-     RUSSELL:
-       ewmac2_8: 0.167
-       ewmac4_16: 0.167
-       ewmac8_32: 0.167
-       ewmac16_64: 0.167
-       ewmac32_128: 0.167
-       ewmac64_256: 0.167
-     BBCOMM:
+     USD:
+        ewmac2_8: 0
+        ewmac4_16: 0
+        ewmac8_32: 0
+        ewmac16_64: 0.33 # From this
+        ewmac32_128: 0.33
+        ewmac64_256: 0.33
+     GF10:
+        ewmac2_8: 0
+        ewmac4_16: 0
+        ewmac8_32: 0.25 # From this
+        ewmac16_64: 0.25
+        ewmac32_128: 0.25
+        ewmac64_256: 0.25
+     EURUSD:
        ewmac2_8: 0
        ewmac4_16: 0
        ewmac8_32: 0
        ewmac16_64: 0
        ewmac32_128: 0.5
        ewmac64_256: 0.5
+     SVF:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+     USDJPY:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
+
+
 forecast_div_multiplier:
-
-     EUR_micro: 1.19
-     CAD_micro: 1.19
-
-     MUMMY: 1.13
-     RUSSELL: 1.26
-
-     CORN_mini: 1.08
-     BBCOMM: 1.03
-
-     VIX_mini: 1
-     CRUDE_W_micro: 1.19
-     COPPER-micro: 1.26
-     CAD10: 1.26
-
+     S50: 1.13
+     USD: 1.08
+     GF10: 1.13
+     EURUSD: 1.03
+     SVF: 1.08
+     USDJPY: 1.08
 #
 # Capital correction
 #
-percentage_vol_target: 20
-notional_trading_capital: 54130.41
+percentage_vol_target: 14
+notional_trading_capital: 2495652.2
 base_currency: "USD"
+
 capital_multiplier:
    func: syscore.capital.full_compounding
-
+#
 # Portfolio creation
-
+#
 instrument_weights:
-    EUR_micro: 0.071
-    CAD_micro: 0.071
+    S50: 0.33
+    GF10: 0.165
+    USD: 0.11
+    EURUSD: 0.11
+    SVF: 0.165
+    USDJPY: 0.11
+instrument_div_multiplier: 1.48
+#use_instrument_div_mult_estimates: True  #TEMP
 
-    MUMMY: 0.071
-    RUSSELL: 0.071
-
-    CORN_mini: 0.071
-    BBCOMM: 0.071
-
-    VIX_mini: 0.143
-    CRUDE_W_micro: 0.143
-    COPPER-micro: 0.143
-    CAD10: 0.143
-
-instrument_div_multiplier: 2.1
-#use_instrument_div_mult_estimates: True
 rule_groups:
     ewmac_fast:
        - ewmac2_8
@@ -189,9 +148,12 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-start_date: "2019-12-01" #"2011-01-01" # Need to skip
-
 # Buffer
 buffer_trade_to_edge: True
 buffer_method: forecast
-buffer_size: 0.10
+buffer_size: 0.1
+vol_normalise_currency_costs: False # Need to set to false for System F1
+
+
+
+start_date: "2019-12-01"
