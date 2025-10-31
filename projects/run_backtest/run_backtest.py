@@ -9,10 +9,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/sytem_f1.yaml")
-
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
 s = futures_system(config=config, data=data)
 
 
@@ -20,6 +18,7 @@ if __name__ == '__main__':
 
     input("1. System Performance")
     s.accounts.portfolio().net.percent.curve().plot(title="System Net % Performance")
+    s.accounts.portfolio_with_multiplier().net.percent.curve().plot(title="System Net % Performance")
     plt.xlabel("Date");
     plt.ylabel("%")
     plt.grid(True);

@@ -129,6 +129,13 @@ forecast_weights:
        ewmac16_64: 0
        ewmac32_128: 0.5
        ewmac64_256: 0.5
+     GOLD_micro:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
 forecast_div_multiplier:
 
      EUR_micro: 1.19
@@ -145,11 +152,13 @@ forecast_div_multiplier:
      COPPER-micro: 1.26
      CAD10: 1.26
 
+     GOLD_micro: 1.13
+
 #
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 46000
+notional_trading_capital: 100000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -168,7 +177,8 @@ instrument_weights:
 
     VIX_mini: 0.143
     CRUDE_W_micro: 0.143
-    COPPER-micro: 0.143
+    COPPER-micro: 0.07
+    GOLD_micro: 0.07
     CAD10: 0.143
 
 instrument_div_multiplier: 2.1
@@ -189,7 +199,7 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-start_date: "2024-06-01" #"2011-01-01" # Need to skip
+start_date: "2024-12-01" #"2011-01-01" # Need to skip
 
 # Buffer
 buffer_trade_to_edge: True

@@ -8,13 +8,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/AFTS_four.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/sytem_f1.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
 
 s = futures_system(config=config, data=data)
 

@@ -123,14 +123,21 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
+
+    # Equity
     S50: 0.33
+
+    # Metals
     GF10: 0.165
-    USD: 0.11
-    EURUSD: 0.11
     SVF: 0.165
-    USDJPY: 0.11
-instrument_div_multiplier: 1.48
-#use_instrument_div_mult_estimates: True  #TEMP
+
+    # FX
+    USD: 0.11 # EM
+    EURUSD: 0.11 # DEV
+    USDJPY: 0.11 # DEV
+
+#instrument_div_multiplier: 1.48
+use_instrument_div_mult_estimates: True  #TEMP
 
 rule_groups:
     ewmac_fast:
@@ -156,4 +163,4 @@ vol_normalise_currency_costs: False # Need to set to false for System F1
 
 
 
-start_date: "2019-12-01"
+start_date: "2015-12-01"

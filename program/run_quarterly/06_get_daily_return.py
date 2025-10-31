@@ -11,9 +11,10 @@ import matplotlib.pyplot as plt
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/new_sytem_f1.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -31,21 +32,25 @@ pd.set_option('display.expand_frame_repr', False)
 if __name__ == '__main__':
 
     # # 1. Statistic
-    # stats_output = s.accounts.portfolio().percent.stats()
-    # metrics = stats_output[0]
-    # df = pd.DataFrame(metrics, columns=["Metric", "Value"])
-    # print(df.to_string(index=False))
-    #
-    # 2. Equity curve
-    s.accounts.portfolio().net.percent.curve().plot(title="System Net % Performance")
+    stats_output = s.accounts.portfolio().percent.stats()
+    metrics = stats_output[0]
+    df = pd.DataFrame(metrics, columns=["Metric", "Value"])
+    print(df.to_string(index=False))
+
+
+    # INPUT: Select type of return
+    system_return = s.accounts.portfolio_with_multiplier().percent
+    # system_return = s.accounts.portfolio().percent
+
+    # Plot
+    system_return.curve().plot(title="System Net % Performance")
     plt.xlabel("Date");
     plt.ylabel("%")
     plt.grid(True);
     plt.tight_layout()
     plt.show()
 
-
-    ri = s.accounts.portfolio_with_multiplier().percent
-    print(ri)
-    df = pd.DataFrame(ri/100)
+    # Print
+    print(system_return)
+    df = pd.DataFrame(system_return/100)
     df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/run_quarterly/ri.csv")

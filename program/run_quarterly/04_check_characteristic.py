@@ -4,6 +4,8 @@ import pandas as pd
 from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 import matplotlib.pyplot as plt
+
+from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 # from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.dates as mdates  # (kept in case you use it later)
@@ -12,11 +14,8 @@ import matplotlib.dates as mdates  # (kept in case you use it later)
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/jumbo/jumbo_config_check_cor.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/sytem_f1.yaml")
-
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
 s = futures_system(config=config, data=data)
 
 pd.set_option('display.max_columns', None)

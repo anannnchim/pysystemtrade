@@ -11,10 +11,10 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # =========================
 # CONFIG / DATA SELECTION
 # =========================
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/diversified_v2.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
 
 s = futures_system(config=config, data=data)
 

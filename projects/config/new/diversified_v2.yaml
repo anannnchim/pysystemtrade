@@ -3,12 +3,12 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2019-12-01'
-#
+start_date: "2019-12-01" #"2011-01-01" # Need to skip#
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 460000
+notional_trading_capital: 46000000
+
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -30,8 +30,6 @@ instrument_weights:
 
   # 4. Metals: Industrial
   IRON: 0.167
-#  IRON: 0.08
-#  GOLD_micro: 0.16
 
   # 5. Bond: Asia
   JGB-SGX-mini: 0.167
@@ -39,7 +37,7 @@ instrument_weights:
   # 6. Equity: Asia
   FTSECHINAA: 0.167
 
-use_instrument_div_mult_estimates: True
+#use_instrument_div_mult_estimates: True
 instrument_div_multiplier: 2.1
 
 #
@@ -74,17 +72,17 @@ forecast_weights:
      CORN_mini:
         ewmac2_8: 0
         ewmac4_16: 0
-        ewmac8_32: 0.25
-        ewmac16_64: 0.25
-        ewmac32_128: 0.25
-        ewmac64_256: 0.25
+        ewmac8_32: 0
+        ewmac16_64: 0.33
+        ewmac32_128: 0.33
+        ewmac64_256: 0.33
      WHEAT_mini:
        ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
 
      CRUDE_W_micro:
         ewmac2_8: 0.167
@@ -95,35 +93,27 @@ forecast_weights:
         ewmac64_256: 0.167
      GAS_US_mini:
        ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0.25
-       ewmac16_64: 0.25
-       ewmac32_128: 0.25
-       ewmac64_256: 0.25
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
 
      IRON:
        ewmac2_8: 0
        ewmac4_16: 0
-       ewmac8_32: 0.25
-       ewmac16_64: 0.25
-       ewmac32_128: 0.25
-       ewmac64_256: 0.25
-#
-#     GOLD_micro:
-#       ewmac2_8: 0
-#       ewmac4_16: 0
-#       ewmac8_32: 0.25
-#       ewmac16_64: 0.25
-#       ewmac32_128: 0.25
-#       ewmac64_256: 0.25
+       ewmac8_32: 0
+       ewmac16_64: 0
+       ewmac32_128: 0.5
+       ewmac64_256: 0.5
 
      JGB-SGX-mini:
        ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0.25
-       ewmac16_64: 0.25
-       ewmac32_128: 0.25
-       ewmac64_256: 0.25
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
 
      FTSECHINAA:
        ewmac2_8: 0
@@ -141,19 +131,18 @@ forecast_div_multiplier:
     GBP_micro: 1.19
 
     # Ags
-    CORN_mini: 1.13
-    WHEAT_mini: 1.19
+    CORN_mini: 1.08
+    WHEAT_mini: 1.13
 
     # Oil & Gas
     CRUDE_W_micro: 1.26
-    GAS_US_mini: 1.13
+    GAS_US_mini: 1.19
 
     # Metals
-    IRON: 1.13
-#    GOLD_micro: 1.13
+    IRON: 1.03
 
     # Bond
-    JGB-SGX-mini: 1.13
+    JGB-SGX-mini: 1.19
 
     # Equity
     FTSECHINAA: 1.19
