@@ -3,11 +3,11 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: "2019-12-01" #"2011-01-01" # Need to skip#
+#start_date: "2019-12-01" #"2011-01-01" # Need to skip#
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 46000000
+notional_trading_capital: 40000
 
 base_currency: "USD"
 capital_multiplier:
@@ -25,9 +25,9 @@ instrument_weights:
   WHEAT_mini: 0.083
 
   # 3. OilGas: Oil,Gas
-  CRUDE_W_micro: 0.083
-  GAS_US_mini: 0.083
-
+  CRUDE_W_micro: 0.167
+#  GAS_US_mini: 0.083
+ 
   # 4. Metals: Industrial
   IRON: 0.167
 
@@ -35,10 +35,12 @@ instrument_weights:
   JGB-SGX-mini: 0.167
 
   # 6. Equity: Asia
-  FTSECHINAA: 0.167
+#  FTSECHINAA: 0.167
+#  MUMMY: 0.167
+  EU-BANKS: 0.167
 
-#use_instrument_div_mult_estimates: True
-instrument_div_multiplier: 2.1
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.1
 
 #
 # forecast combination
@@ -103,9 +105,9 @@ forecast_weights:
        ewmac2_8: 0
        ewmac4_16: 0
        ewmac8_32: 0
-       ewmac16_64: 0
-       ewmac32_128: 0.5
-       ewmac64_256: 0.5
+       ewmac16_64: 0.33
+       ewmac32_128: 0.33
+       ewmac64_256: 0.33
 
      JGB-SGX-mini:
        ewmac2_8: 0
@@ -122,7 +124,20 @@ forecast_weights:
        ewmac16_64: 0.20
        ewmac32_128: 0.20
        ewmac64_256: 0.20
-
+     MUMMY:
+       ewmac2_8: 0
+       ewmac4_16: 0.20
+       ewmac8_32: 0.20
+       ewmac16_64: 0.20
+       ewmac32_128: 0.20
+       ewmac64_256: 0.20
+     EU-BANKS:
+       ewmac2_8: 0
+       ewmac4_16: 0.20
+       ewmac8_32: 0.20
+       ewmac16_64: 0.20
+       ewmac32_128: 0.20
+       ewmac64_256: 0.20
 forecast_div_multiplier:
 
     # FX
@@ -139,13 +154,13 @@ forecast_div_multiplier:
     GAS_US_mini: 1.19
 
     # Metals
-    IRON: 1.03
+    IRON: 1.08
 
     # Bond
     JGB-SGX-mini: 1.19
 
     # Equity
-    FTSECHINAA: 1.19
+    EU-BANKS: 1.19
 
 #
 # DEFAULT ZONE ---------------------------------
