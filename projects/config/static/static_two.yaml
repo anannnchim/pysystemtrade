@@ -3,12 +3,12 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2020-01-01'
+start_date: '2000-01-01'
 #
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 45000
+notional_trading_capital: 100000
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
@@ -16,19 +16,35 @@ capital_multiplier:
 # Portfolio creation
 #
 instrument_weights:
-    GOLD_micro: 0.083
-    KOSPI_mini: 0.083
-    SHATZ: 0.083
-    US2: 0.083
-    V2X: 0.083
-    KR3: 0.083
-    GAS_US_mini: 0.083
-    LEANHOG: 0.083
-    BITCOIN: 0.083
-    JPY: 0.083
-    BOBL: 0.083
-    MXP: 0.083
-    EU-DIV30: 0.083
+
+    # Metals
+    GOLD_micro: 0.06
+
+    # Equity
+    KOSPI_mini: 0.06
+    NASDAQ_micro: 0.06
+
+    # Bond
+    SHATZ: 0.06
+    US2: 0.06
+    KR3: 0.06
+    BTP: 0.06
+    KR10: 0.06
+
+    # FX
+    NZD: 0.06
+    JPY: 0.06
+    MXP: 0.06
+    GBP: 0.06
+    # Ags
+    LEANHOG: 0.06
+
+    # OilGas
+    GAS_US_mini: 0.06
+    CRUDE_W_mini: 0.06
+
+    # Vol
+    V2X: 0.06
 
 
 use_instrument_div_mult_estimates: True

@@ -1,57 +1,64 @@
-#https://github.com/robcarver17/reports/blob/master/Static_selection_of_instruments
-
 #
 # >>> INPUT ZONE ---------------------------------
 #
 
 # This will affect capital by portfolio multiplier
-start_date: '2000-12-01'
-#
+start_date: "2019-12-01" #"2011-01-01" # Need to skip#
 # Capital correction
 #
-percentage_vol_target: 14
-notional_trading_capital: 10000
+percentage_vol_target: 20
+notional_trading_capital: 100000
+
 base_currency: "USD"
 capital_multiplier:
    func: syscore.capital.full_compounding
-#
-# Portfolio creation
-#
-Sorted:
 
 instrument_weights:
-    # Equity
-    EU-BANKS: 0.07
-    EU-REALESTATE: 0.07
-    MUMMY: 0.07
-    TOPIX: 0.07
-    KOSDAQ: 0.07
 
-    # FX
-    EUR_micro: 0.33
+  # 1. FX
+  MXP: 0.04 # EM
+  KRWUSD_mini: 0.04
+  GBP_micro: 0.04   # DEV
+  AUD_micro: 0.04
 
-    # Vol
-    V2X: 0.33
+  # 2. Ags: Grain
+  CORN_mini: 0.083 # Grain
+  WHEAT_mini: 0.083
+#  LEANHOG: 0.083
 
+  # 3. OilGas: Oil,Gas
+  CRUDE_W_micro: 0.083
+  GAS_US_mini: 0.083
 
+  # 4. Metals: Industrial
+  GOLD_micro: 0.083 # Precious
+  IRON: 0.083 # Industrial
+
+  # 5. Bond: Asia
+  JGB-SGX-mini: 0.083 # Asia
+  US10: 0.083 # US
+
+  # 6. Equity: Asia
+  EU-BANKS: 0.041 # Europe
+  FTSECHINAA: 0.041 #  Asia
+  MUMMY: 0.041 #  Asia
+  RUSSELL: 0.041 # US
 
 use_instrument_div_mult_estimates: True
-#instrument_div_multiplier: 1
+#instrument_div_multiplier: 2.1
+forecast_weights:
+  ewmac2_8:   0
+  ewmac4_16:  0
+  ewmac8_32:  0
+  ewmac16_64: 0.33
+  ewmac32_128: 0.33
+  ewmac64_256: 0.33
+forecast_div_multiplier: 1.08
 
 #
 # forecast combination
 #
-forecast_weights:
 
-# Expensive
-  ewmac2_8: 0
-  ewmac4_16: 0
-  ewmac8_32: 0
-  ewmac16_64: 0.33
-  ewmac32_128: 0.33
-  ewmac64_256: 0.33
-
-forecast_div_multiplier: 1
 #
 # DEFAULT ZONE ---------------------------------
 #

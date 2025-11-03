@@ -163,4 +163,4 @@ vol_normalise_currency_costs: False # Need to set to false for System F1
 
 
 
-start_date: "2002-12-01" #"2011-01-01" # Need to skip
+#start_date: "2024-06-01" #"2011-01-01" # Need to skip

@@ -7,7 +7,7 @@ start_date: '2020-01-01'
 #
 # Capital correction
 #
-percentage_vol_target: 20
+percentage_vol_target: 25
 notional_trading_capital: 100000
 base_currency: "USD"
 capital_multiplier:
@@ -17,26 +17,21 @@ capital_multiplier:
 #
 instrument_weights:
 
-  KOSPI_mini: 0.083
-  NASDAQ_micro: 0.083
-
-  GOLD_micro: 0.166
-
-  KR3: 0.033
-  KR10: 0.033
-  US2: 0.033
-  SHATZ: 0.033
-  BTP: 0.033
-
-  LEANHOG: 0.16
-
-  JPY: 0.042
-  MXP: 0.042
-  GBP: 0.042
-  NZD: 0.042
-
-  GAS_US_mini: 0.083
-  CRUDE_W_micro: 0.083
+  KOSPI_mini: 0.07
+  NASDAQ_micro: 0.07
+  GOLD_micro: 0.07
+  KR3: 0.07
+  KR10: 0.07
+  US2: 0.07
+  SHATZ: 0.07
+  BTP: 0.07
+  LEANHOG: 0.07
+  JPY: 0.07
+  MXP: 0.07
+  GBP: 0.07
+  NZD: 0.07
+  GAS_US_mini: 0.07
+  CRUDE_W_micro: 0.07
 
 
 use_instrument_div_mult_estimates: True
