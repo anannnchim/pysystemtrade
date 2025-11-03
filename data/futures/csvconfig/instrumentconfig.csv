@@ -230,7 +230,7 @@ GILT,UK 10 year bonds Long Gilt,1000,GBP,Bond,0,0,0,EMEA
 GILT2,Short gilt,1000,GBP,Bond,0,0,0,EMEA
 GILT5,Medium gilt,1000,GBP,Bond,0,0,0,EMEA
 GOLD,Gold,100,USD,Metals,2.47,0,0,US
-GOLD_micro,Gold micro,10,USD,Metals,0.77,0,0,US
+GOLD_micro,Gold micro,10,USD,Metals,0.87,0,0,US
 GOLD-CHINA,Shanghai Gold Exchange Gold Benchmark PM Price Index - CNH Futures,1000,CNH,Metals,0.85,0,0,US
 GOLD-CHINA-USD,Shanghai Gold Exchange Gold Benchmark PM Price Index - USD Futures,32.15,USD,Metals,0,0,0,US
 GOLD-CN-HK,CNH Gold Futures in HK,1000,CNH,Metals,0,0,0,ASIA
