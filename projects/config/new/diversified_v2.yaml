@@ -3,11 +3,11 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: "2000-12-01"
+#start_date: "2020-12-01"
 # Capital correction
 #
 percentage_vol_target: 20
-notional_trading_capital: 42000
+notional_trading_capital: 44000
 
 base_currency: "USD"
 capital_multiplier:
@@ -38,7 +38,7 @@ instrument_weights:
   MUMMY: 0.083 # Asia
 
 #use_instrument_div_mult_estimates: True
-instrument_div_multiplier: 2.1
+instrument_div_multiplier: 2.2
 
 #
 # forecast combination
