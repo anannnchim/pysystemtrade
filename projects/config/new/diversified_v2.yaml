@@ -3,7 +3,7 @@
 #
 
 # This will affect capital by portfolio multiplier
-#start_date: "2020-12-01"
+start_date: "2024-10-01"
 # Capital correction
 #
 percentage_vol_target: 20
@@ -37,21 +37,9 @@ instrument_weights:
   EU-BANKS: 0.083 # Europe
   MUMMY: 0.083 # Asia
 
-#use_instrument_div_mult_estimates: True
-instrument_div_multiplier: 2.2
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.2
 
-#
-# forecast combination
-#
-#
-#forcast_weights:
-#      ewmac2_8: 0
-#      ewmac4_16: 0
-#      ewmac8_32: 0
-#      ewmac16_64: 0.33
-#      ewmac32_128: 0.33
-#      ewmac64_256: 0.33
-#forecast_div_multiplier: 1.08
 forecast_weights:
 
     # 1. FX
@@ -99,14 +87,6 @@ forecast_weights:
         ewmac16_64: 0.167
         ewmac32_128: 0.167
         ewmac64_256: 0.167
-     GAS_US_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-
      IRON:
        ewmac2_8: 0
        ewmac4_16: 0
@@ -122,14 +102,6 @@ forecast_weights:
        ewmac16_64: 0.2
        ewmac32_128: 0.2
        ewmac64_256: 0.2
-
-     FTSECHINAA:
-       ewmac2_8: 0
-       ewmac4_16: 0.20
-       ewmac8_32: 0.20
-       ewmac16_64: 0.20
-       ewmac32_128: 0.20
-       ewmac64_256: 0.20
      MUMMY:
        ewmac2_8: 0
        ewmac4_16: 0
@@ -157,7 +129,6 @@ forecast_div_multiplier:
 
     # Oil & Gas
     CRUDE_W_micro: 1.26
-    GAS_US_mini: 1.19
 
     # Metals
     IRON: 1.03
