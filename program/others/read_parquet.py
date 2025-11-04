@@ -70,11 +70,11 @@ if __name__ == '__main__':
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/MXP.parquet"
 
 
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/MXP.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/JGB-SGX-mini.parquet"
     a = pd.read_parquet(path)
     print(a)
-    a.plot()
-    plt.show()
+    # a.plot()
+    # plt.show()
 
     '''
     Spread 

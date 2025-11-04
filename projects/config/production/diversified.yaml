@@ -1,5 +1,154 @@
+#
+# >>> INPUT ZONE ---------------------------------
+#
+
+# This will affect capital by portfolio multiplier
+#start_date: "2024-10-01"
+# Capital correction
+#
+percentage_vol_target: 20
+notional_trading_capital: 44000
+
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding
+
+instrument_weights:
+
+  # 1. FX
+  MXP: 0.10 # EM
+  GBP_micro: 0.033   # DEV
+  AUD_micro: 0.033
+
+  # 2. Ags: Grain
+  CORN_mini: 0.083
+  WHEAT_mini: 0.083
+
+  # 3. OilGas: Oil,Gas
+  CRUDE_W_micro: 0.167
+
+  # 4. Metals: Industrial
+  IRON: 0.167
+
+  # 5. Bond: Asia
+  JGB-SGX-mini: 0.167
+
+  # 6. Equity
+  EU-BANKS: 0.083 # Europe
+  MUMMY: 0.083 # Asia
+
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.2
+
+forecast_weights:
+
+    # 1. FX
+     AUD_micro:
+      ewmac2_8: 0
+      ewmac4_16: 0.2
+      ewmac8_32: 0.2
+      ewmac16_64: 0.2
+      ewmac32_128: 0.2
+      ewmac64_256: 0.2
+     GBP_micro:
+       ewmac2_8: 0
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+     MXP:
+       ewmac2_8: 0
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+
+     CORN_mini:
+        ewmac2_8: 0
+        ewmac4_16: 0
+        ewmac8_32: 0
+        ewmac16_64: 0.33
+        ewmac32_128: 0.33
+        ewmac64_256: 0.33
+     WHEAT_mini:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+
+     CRUDE_W_micro:
+        ewmac2_8: 0.167
+        ewmac4_16: 0.167
+        ewmac8_32: 0.167
+        ewmac16_64: 0.167
+        ewmac32_128: 0.167
+        ewmac64_256: 0.167
+     IRON:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0
+       ewmac16_64: 0
+       ewmac32_128: 0.5
+       ewmac64_256: 0.5
+
+     JGB-SGX-mini:
+       ewmac2_8: 0
+       ewmac4_16: 0.2
+       ewmac8_32: 0.2
+       ewmac16_64: 0.2
+       ewmac32_128: 0.2
+       ewmac64_256: 0.2
+     MUMMY:
+       ewmac2_8: 0
+       ewmac4_16: 0
+       ewmac8_32: 0.25
+       ewmac16_64: 0.25
+       ewmac32_128: 0.25
+       ewmac64_256: 0.25
+     EU-BANKS:
+       ewmac2_8: 0
+       ewmac4_16: 0.20
+       ewmac8_32: 0.20
+       ewmac16_64: 0.20
+       ewmac32_128: 0.20
+       ewmac64_256: 0.20
+forecast_div_multiplier:
+
+    # FX
+    MXP: 1.19
+    AUD_micro: 1.19
+    GBP_micro: 1.19
+
+    # Ags
+    CORN_mini: 1.08
+    WHEAT_mini: 1.13
+
+    # Oil & Gas
+    CRUDE_W_micro: 1.26
+
+    # Metals
+    IRON: 1.03
+
+    # Bond
+    JGB-SGX-mini: 1.19
+
+    # Equity
+    EU-BANKS: 1.19
+    MUMMY: 1.13
+
+#
+# DEFAULT ZONE ---------------------------------
+#
+
+#
+# Trading rule
+#
 trading_rules:
-  ewmac2_8: # name of the rule
+  ewmac2_8:
      function: systems.provided.rules.ewmac.ewmac
      data:
          - "rawdata.get_daily_prices"
@@ -7,7 +156,7 @@ trading_rules:
      other_args:
          Lfast: 2
          Lslow: 8
-     forecast_scalar: 12.1
+     forecast_scalar: 10.6
   ewmac4_16:
      function: systems.provided.rules.ewmac.ewmac
      data:
@@ -16,7 +165,7 @@ trading_rules:
      other_args:
          Lfast: 4
          Lslow: 16
-     forecast_scalar: 8.53
+     forecast_scalar: 7.5
   ewmac8_32:
      function: systems.provided.rules.ewmac.ewmac
      data:
@@ -25,7 +174,7 @@ trading_rules:
      other_args:
          Lfast: 8
          Lslow: 32
-     forecast_scalar: 5.95
+     forecast_scalar: 5.3
   ewmac16_64:
      function: systems.provided.rules.ewmac.ewmac
      data:
@@ -34,7 +183,7 @@ trading_rules:
      other_args:
          Lfast: 16
          Lslow: 64
-     forecast_scalar: 4.1
+     forecast_scalar: 3.75
   ewmac32_128:
      function: systems.provided.rules.ewmac.ewmac
      data:
@@ -43,7 +192,7 @@ trading_rules:
      other_args:
          Lfast: 32
          Lslow: 128
-     forecast_scalar: 2.79
+     forecast_scalar: 2.65
   ewmac64_256:
      function: systems.provided.rules.ewmac.ewmac
      data:
@@ -52,127 +201,11 @@ trading_rules:
      other_args:
          Lfast: 64
          Lslow: 256
-     forecast_scalar: 1.91
+     forecast_scalar: 1.87
 
 forecast_cap: 20.0
 
-### INPUT -----------------------------------------------------------------
-forecast_weights:
-     CAD10:
-        ewmac2_8: 0.167
-        ewmac4_16: 0.167
-        ewmac8_32: 0.167
-        ewmac16_64: 0.167
-        ewmac32_128: 0.167
-        ewmac64_256: 0.167
-     EUR_micro:
-        ewmac2_8: 0
-        ewmac4_16: 0.2
-        ewmac8_32: 0.2
-        ewmac16_64: 0.2
-        ewmac32_128: 0.2
-        ewmac64_256: 0.2
-     COPPER-micro:
-        ewmac2_8: 0.167
-        ewmac4_16: 0.167
-        ewmac8_32: 0.167
-        ewmac16_64: 0.167
-        ewmac32_128: 0.167
-        ewmac64_256: 0.167
-     CORN_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0.33
-       ewmac32_128: 0.33
-       ewmac64_256: 0.33
-     CRUDE_W_micro:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-     MUMMY:
-        ewmac2_8: 0
-        ewmac4_16: 0
-        ewmac8_32: 0.25
-        ewmac16_64: 0.25
-        ewmac32_128: 0.25
-        ewmac64_256: 0.25
-     VIX_mini:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0
-       ewmac32_128: 0
-       ewmac64_256: 1
-
-     CAD_micro:
-       ewmac2_8: 0
-       ewmac4_16: 0.2
-       ewmac8_32: 0.2
-       ewmac16_64: 0.2
-       ewmac32_128: 0.2
-       ewmac64_256: 0.2
-     RUSSELL:
-       ewmac2_8: 0.167
-       ewmac4_16: 0.167
-       ewmac8_32: 0.167
-       ewmac16_64: 0.167
-       ewmac32_128: 0.167
-       ewmac64_256: 0.167
-     BBCOMM:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0
-       ewmac32_128: 0.5
-       ewmac64_256: 0.5
-forecast_div_multiplier:
-
-     EUR_micro: 1.19
-     CAD_micro: 1.19
-
-     MUMMY: 1.13
-     RUSSELL: 1.26
-
-     CORN_mini: 1.08
-     BBCOMM: 1.03
-
-     VIX_mini: 1
-     CRUDE_W_micro: 1.19
-     COPPER-micro: 1.26
-     CAD10: 1.26
-
-#
-# Capital correction
-#
-percentage_vol_target: 20
-notional_trading_capital: 42000
-base_currency: "USD"
-capital_multiplier:
-   func: syscore.capital.full_compounding
-
-# Portfolio creation
-
-instrument_weights:
-    EUR_micro: 0.071
-    CAD_micro: 0.071
-
-    MUMMY: 0.071
-    RUSSELL: 0.071
-
-    CORN_mini: 0.071
-    BBCOMM: 0.071
-
-    VIX_mini: 0.143
-    CRUDE_W_micro: 0.143
-    COPPER-micro: 0.143
-    CAD10: 0.143
-
-instrument_div_multiplier: 2.1
-#use_instrument_div_mult_estimates: True
+# Rule grouping
 rule_groups:
     ewmac_fast:
        - ewmac2_8
@@ -189,9 +222,8 @@ style_groups:
         - ewmac_medium
         - ewmac_slow
 
-start_date: "2000-12-01"
-
 # Buffer
 buffer_trade_to_edge: True
 buffer_method: forecast
 buffer_size: 0.10
+
