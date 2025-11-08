@@ -1,0 +1,62 @@
+FX:
+  Em:
+    - MXP
+    - KRWUSD_mini
+  Dev:
+    - GBP_micro
+    - AUD_micro
+    - EUR_micro
+    - CAD_micro
+  # Cross
+
+Ags:
+  Grain:
+    - CORN
+    - CORN_mini
+    - WHEAT_mini
+    - CANOLA
+    - SOYBEAN_mini
+  Soft:
+    - MILLWHEAT
+  #Meat: LEANHOG
+  Index:
+    - BBCOMM # GICS
+
+OilGas:
+  Oil:
+    - CRUDE_W_micro
+  Gas:
+    - GAS_US_mini
+  #Product
+Metals:
+  Industrial:
+    - IRON
+    - COPPER-micro
+  Precious:
+    - GOLD_micro
+  Crypto:
+    - ETHER-micro
+
+Bonds: # (Region based), (Type: Gov, Corp, STIR, Swap)
+  US:
+    - US10
+    - CAD10
+    - CAD2
+  Asia:
+    - JGB-SGX-mini
+
+Equity: # (Region based), (Type Largecap, Midcap, Smallcap
+  EU:
+    - EU-BANKS # Financial
+  US:
+    - RUSSELL  # Midcap, Beta
+  Asia:
+    - MUMMY # Midcap, Tech
+    - FTSECHINAA # Largecap, Beta
+
+Vol:
+  US:
+    - VIX_mini
+  EU:
+    - V2X
+  #  Asia

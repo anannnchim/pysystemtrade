@@ -1,0 +1,115 @@
+
+# ===== INPUT ZONE =====
+start_date: "2024-10-01"
+percentage_vol_target: 20
+notional_trading_capital: 10000000
+
+# Full universe here (the script will subset per class and set equal weights)
+instrument_weights:
+  AUD_micro: 1
+  BBCOMM: 1
+  CAD2: 1
+  CAD10: 1
+  CAD_micro: 1
+  CANOLA: 1
+  COPPER-micro: 1
+  CORN: 1
+  CORN_mini: 1
+  CRUDE_W_micro: 1
+  ETHER-micro: 1
+  EU-BANKS: 1
+  EUR_micro: 1
+  FTSECHINAA: 1
+  GAS_US_mini: 1
+  GBP_micro: 1
+  GOLD_micro: 1
+  IRON: 1
+  JGB-SGX-mini: 1
+  KRWUSD_mini: 1
+  MILLWHEAT: 1
+  MUMMY: 1
+  MXP: 1
+  RUSSELL: 1
+  SOYBEAN_mini: 1
+  US10: 1
+  V2X: 1
+  VIX_mini: 1
+  WHEAT_mini: 1
+
+
+
+
+# ===== DEFAULT ZONE =====
+use_instrument_div_mult_estimates: true
+forecast_weights:
+    ewmac2_8: 0
+    ewmac4_16: 0
+    ewmac8_32: 0
+    ewmac16_64: 0.33
+    ewmac32_128: 0.33
+    ewmac64_256: 0.33
+forecast_div_multiplier: 1.08
+base_currency: "USD"
+capital_multiplier:
+  func: syscore.capital.full_compounding
+
+trading_rules:
+  ewmac2_8:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 2, Lslow: 8 }
+    forecast_scalar: 10.6
+  ewmac4_16:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 4, Lslow: 16 }
+    forecast_scalar: 7.5
+  ewmac8_32:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 8, Lslow: 32 }
+    forecast_scalar: 5.3
+  ewmac16_64:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 16, Lslow: 64 }
+    forecast_scalar: 3.75
+  ewmac32_128:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 32, Lslow: 128 }
+    forecast_scalar: 2.65
+  ewmac64_256:
+    function: systems.provided.rules.ewmac.ewmac
+    data:
+      - "rawdata.get_daily_prices"
+      - "rawdata.daily_returns_volatility"
+    other_args: { Lfast: 64, Lslow: 256 }
+    forecast_scalar: 1.87
+
+forecast_cap: 20.0
+
+rule_groups:
+  ewmac_fast:   [ewmac2_8,  ewmac4_16]
+  ewmac_medium: [ewmac8_32, ewmac16_64]
+  ewmac_slow:   [ewmac32_128, ewmac64_256]
+
+style_groups:
+  trend:
+    - ewmac_fast
+    - ewmac_medium
+    - ewmac_slow
+
+buffer_trade_to_edge: true
+buffer_method: forecast
+buffer_size: 0.10
