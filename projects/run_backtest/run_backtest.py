@@ -9,8 +9,9 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/tactical.yaml")
+config = Config("//Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
 s = futures_system(config=config, data=data)
 
 
