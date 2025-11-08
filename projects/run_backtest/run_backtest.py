@@ -6,18 +6,18 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/static_two.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
 s = futures_system(config=config, data=data)
 
 
 if __name__ == '__main__':
 
     input("1. System Performance")
-    s.accounts.portfolio().net.percent.curve().plot(title="System Net % Performance")
+    # s.accounts.portfolio().net.percent.curve().plot(title="System Net % Performance")
     s.accounts.portfolio_with_multiplier().net.percent.curve().plot(title="System Net % Performance")
     plt.xlabel("Date");
     plt.ylabel("%")

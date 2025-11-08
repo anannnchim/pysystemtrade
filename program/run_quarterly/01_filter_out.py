@@ -10,7 +10,7 @@ import matplotlib.dates as mdates
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
 
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2_add.yaml")

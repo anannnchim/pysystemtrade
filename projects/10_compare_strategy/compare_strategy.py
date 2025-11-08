@@ -13,10 +13,10 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml"
-DEFAULT_LABEL1  = "New"
-DEFAULT_LABEL2  = "Old"
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml"
+DEFAULT_LABEL1  = "Diversified"
+DEFAULT_LABEL2  = "F1"
 DEFAULT_USE_DB  = False  # switch to True if you prefer DB by default
 
 # ===== Builders & helpers =====
