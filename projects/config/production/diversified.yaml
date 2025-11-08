@@ -3,7 +3,7 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: "2024-10-01"
+start_date: "2000-10-01"
 # Capital correction
 #
 percentage_vol_target: 20
