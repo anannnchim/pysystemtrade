@@ -11,7 +11,7 @@ notional_trading_capital: 44000
 
 base_currency: "USD"
 capital_multiplier:
-   func: syscore.capital.full_compounding
+   func: syscore.capital.fixed_capital
 
 instrument_weights:
 
@@ -37,8 +37,8 @@ instrument_weights:
   EU-BANKS: 0.083 # Europe
   MUMMY: 0.083 # Asia
 
-use_instrument_div_mult_estimates: True
-#instrument_div_multiplier: 2.2
+#use_instrument_div_mult_estimates: True
+instrument_div_multiplier: 2.2
 
 forecast_weights:
 

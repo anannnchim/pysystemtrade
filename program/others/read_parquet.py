@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/MXP.parquet"
 
 
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/JGB-SGX-mini.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 EU-BANKS.parquet"
     a = pd.read_parquet(path)
     print(a)
     # a.plot()
