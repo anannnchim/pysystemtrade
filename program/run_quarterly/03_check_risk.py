@@ -11,10 +11,11 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # =========================
 # CONFIG / DATA SELECTION
 # =========================
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -143,8 +144,18 @@ def plot_risk_comparison(realised_obj, static_value, abs_sum_obj):
 # MAIN
 # =========================
 if __name__ == '__main__':
+
+    # 0) LT average risk (Should be the same as risk target)
+    perc_daily_return = s.accounts.portfolio().percent
+    print(f"LT-Risk (Risk Target): {perc_daily_return.std() * 16}")
+
     # 1) Realised risk: 2-month rolling (%)
+    # Method 1
     realised_obj = s.accounts.portfolio().percent.rolling_ann_std()
+
+    # Method 2
+    # realised_obj = perc_daily_return.rolling(21).std() * 16
+
     print_stats(realised_obj, "Realised Risk (2m rolling)")
     plot_series(realised_obj, "Realised Risk (2-Month Rolling)", "Annualised Std (%)")
 
