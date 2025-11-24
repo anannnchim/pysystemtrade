@@ -40,9 +40,6 @@ Report
 
 import pandas as pd
 from matplotlib import pyplot as plt
-from program.googlesheet.update_system_gg import update_market_monitoring, update_portfolio_monitoring, \
-    update_system_verification, update_system_diagnostic
-from program.helper.run_scripts import run_scripts
 from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
@@ -56,69 +53,148 @@ config = Config(CONFIG_PATH)
 data = dbFuturesSimData()
 
 s = futures_system(config=config, data=data)
-N = 252
+
+# If you set N to None or comment this out, the helper will plot full series
+# N = 252
+
+
+def plot_maybe_tail(series, label=None, title=None):
+    """
+    Plot last N points if N is defined and not None, otherwise plot full series/DataFrame.
+    Uses global N so you don't have to change each plot call.
+    """
+    try:
+        n = N
+    except NameError:
+        n = None
+
+    if n is not None:
+        data = series.tail(n)
+    else:
+        data = series
+
+    data.plot(label=label)
+    if label is not None:
+        plt.legend()
+    if title is not None:
+        plt.title(title)
+    plt.show()
+
+
 if __name__ == '__main__':
+
+    risk_overlay_cfg = s.config.get_element("risk_overlay")
+    percentage_vol_target = s.config.get_element("percentage_vol_target")
+
+    ### A) GETTING DATA ------------------------------------------------------------------------
+
     # A) Realised Risk
 
     # 1. Static value: should be aligned with risk in stats()
     perc_daily_return = s.accounts.portfolio().percent
-    print(f"LT-Risk (Risk Target): {perc_daily_return.std() * 16}")
 
     # 2. 2M-Rolling value: 2 Methods
-    a = s.accounts.portfolio().percent.rolling_ann_std()  # 2 Month
-    a.tail(N).plot(label="Rolling 2M Realised Risk")
-    plt.legend()
-    plt.show()
-
+    rolling_2m_risk = s.accounts.portfolio().percent.rolling_ann_std()  # 2 Month
+    rolling_2m_risk = rolling_2m_risk.rename(
+        columns={rolling_2m_risk.columns[0]: "Rolling 2M Realised Risk"}
+    )
     # OR b = perc_daily_return.rolling(40).std() * 16 # 2 month
 
     # B) Estimated Risk (Risk overlay)
     normal_risk = s.portfolio.get_portfolio_risk_for_original_positions() * 100
-    shocked_vol_risk = s.portfolio.get_portfolio_risk_for_original_positions_with_shocked_vol() * 100
-    sum_abs_risk = s.portfolio.get_sum_annualised_risk_for_original_positions() * 100
+    shocked_vol_risk = (
+        s.portfolio.get_portfolio_risk_for_original_positions_with_shocked_vol() * 100
+    )
+    sum_abs_risk = (
+        s.portfolio.get_sum_annualised_risk_for_original_positions() * 100
+    )
     leverage = s.portfolio.get_leverage_for_original_position()
 
     # OR
-    normal_risk_by_IDM = s.portfolio.get_sum_annualised_risk_for_original_positions() * 100 / 1.48
+    normal_risk_by_IDM = (
+        s.portfolio.get_sum_annualised_risk_for_original_positions()
+        * 100
+        / s.portfolio.get_instrument_diversification_multiplier()
+    )
 
-    print(f'Normal: {normal_risk.tail(1)}')
-    print(f'shocked_vol_risk: {shocked_vol_risk.tail(1)}')
-    print(f'sum_abs_risk: {sum_abs_risk.tail(1)}')
-    print(f'leverage: {leverage.tail(1)}')
-    print(f'normal_risk_by_IDM: {normal_risk_by_IDM.tail(1)}')
+    # C) Risk scalar
+    risk_scalar = s.portfolio.get_risk_scalar()
 
-    # Plot each series separately (keeping your structure)
-    normal_risk.tail(N).plot(label="Normal")
-    plt.legend()
-    plt.show()
+    # number of days where risk overlay is effective (scalar != 1)
+    effective_days = (risk_scalar != 1).sum()
+    total_days = risk_scalar.shape[0]
+    effective_days = (risk_scalar != 1).sum()
+    effective_pct = effective_days / total_days * 100
 
-    shocked_vol_risk.tail(N).plot(label="shocked_vol_risk")
-    plt.legend()
-    plt.show()
 
-    sum_abs_risk.tail(N).plot(label="sum_abs_risk")
-    plt.legend()
-    plt.show()
 
-    leverage.tail(N).plot(label="leverage")
-    plt.legend()
-    plt.show()
+    ### STRUCTURE DATA ------------------------------------------------------------------------
 
-    normal_risk_by_IDM.tail(N).plot(label="normal_risk_by_IDM")
-    plt.legend()
-    plt.show()
+    risk_table = pd.DataFrame(
+        {
+            "value": [
+                normal_risk.iloc[-1],
+                shocked_vol_risk.iloc[-1],
+                sum_abs_risk.iloc[-1],
+                leverage.iloc[-1],
+                normal_risk_by_IDM.iloc[-1],
+            ],
+            "config_limit": [
+                risk_overlay_cfg["max_risk_fraction_normal_risk"]
+                * percentage_vol_target,  # Normal risk
+                risk_overlay_cfg["max_risk_fraction_stdev_risk"]
+                * percentage_vol_target,  # Shock vol risk
+                risk_overlay_cfg["max_risk_limit_sum_abs_risk"]
+                * percentage_vol_target,  # Sum abs risk
+                risk_overlay_cfg["max_risk_leverage"],  # Leverage - limit
+                None,  # Normal risk / IDM - none
+            ],
+        },
+        index=[
+            "Normal risk",
+            "Shocked vol risk",
+            "Sum abs risk",
+            "Leverage",
+            "Normal risk / IDM",
+        ],
+    )
 
-    # DO NOT TOUCH BELOW
-    # # Additional: Risk multiplier
-    # risk_overlay_config = s.portfolio.config.get_element("risk_overlay")
-    # percentage_vol_target = s.portfolio.get_percentage_vol_target()
-    #
-    # risk_scalar = get_risk_multiplier(
-    #     risk_overlay_config=risk_overlay_config,
-    #     normal_risk=normal_risk,
-    #     shocked_vol_risk=shocked_vol_risk,
-    #     sum_abs_risk=sum_abs_risk,
-    #     leverage=leverage,
-    #     percentage_vol_target=percentage_vol_target,
-    # )
-    # s.portfolio.get_risk_scalar()
+    ### B) PRINTING ------------------------------------------------------------------------
+
+    print("1. REALISED RISK --------------------")
+    print(f"LT-Risk (Risk Target): {perc_daily_return.std() * 16}")
+    print("\n")
+
+    print("2. ESTIMATED RISK --------------------")
+    print("\nRisk overlay check:")
+    print(risk_table.to_string())
+    print("\n")
+
+    print("3. Risk scalar --------------------")
+    print(risk_scalar.tail(1))
+    print("\n")
+    print(f"Total days                 : {total_days}")
+    print(f"Effective days (scalar≠1)  : {effective_days}")
+    print(f"Effective percentage       : {effective_pct:.2f}%")
+
+    ### C) PLOTTING ------------------------------------------------------------------------
+
+    # Realised risk
+    plot_maybe_tail(
+        rolling_2m_risk,
+        title="Realised Risk: Rolling 2 months",
+    )
+
+    # Estimated risk components
+    plot_maybe_tail(normal_risk, label="Normal", title="Estimated Risk: Normal")
+    plot_maybe_tail(shocked_vol_risk, label="shocked_vol_risk", title="Estimated Risk: Shocked vol risk")
+    plot_maybe_tail(sum_abs_risk, label="sum_abs_risk", title="Estimated Risk: Sum abs risk")
+    plot_maybe_tail(leverage, label="leverage", title="Estimated Risk: Leverage")
+    plot_maybe_tail(
+        normal_risk_by_IDM,
+        label="normal_risk_by_IDM",
+        title="Estimated Risk: Normal risk / IDM",
+    )
+
+    # Risk scalar
+    plot_maybe_tail(risk_scalar, label="Risk scalar", title="Risk scalar")

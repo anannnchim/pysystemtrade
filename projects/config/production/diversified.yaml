@@ -227,25 +227,9 @@ buffer_trade_to_edge: True
 buffer_method: forecast
 buffer_size: 0.10
 
-
-# Risk overlay example 1
-
-#percentage_vol_target: 25.0
-#notional_trading_capital: 500000
-#base_currency: "USD"
-##
-## Portfolio creation
-##
-#instrument_div_multiplier: 2.75
-#risk_overlay:
-#  max_risk_fraction_normal_risk: 1.75
-#  max_risk_fraction_stdev_risk: 4.0
-#  max_risk_limit_sum_abs_risk: 4.0
-#  max_risk_leverage: 20.0
-
-# AFTS
-#risk_overlay:
-#  max_risk_fraction_normal_risk: 1.5
-#  max_risk_fraction_stdev_risk: 3.75
-#  max_risk_limit_sum_abs_risk: 3.25
-#  max_risk_leverage: 20.0
+# Risk ovarlay (IDM of 2.2/ CSV since 2018)
+risk_overlay:
+  max_risk_fraction_normal_risk: 1.5 # Or 30%
+  max_risk_fraction_stdev_risk: 3.75 # Or 75%
+  max_risk_limit_sum_abs_risk: 3.25 # Or 65%
+  max_risk_leverage: 12 # From backtest
