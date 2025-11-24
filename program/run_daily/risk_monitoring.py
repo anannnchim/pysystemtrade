@@ -55,7 +55,7 @@ data = dbFuturesSimData()
 s = futures_system(config=config, data=data)
 
 # If you set N to None or comment this out, the helper will plot full series
-# N = 252
+N = 252
 
 
 def plot_maybe_tail(series, label=None, title=None):
@@ -163,7 +163,10 @@ if __name__ == '__main__':
 
     print("1. REALISED RISK --------------------")
     print(f"LT-Risk (Risk Target): {perc_daily_return.std() * 16}")
+    print(f"Last EMA 2M Realised Risk: " )
+    print(rolling_2m_risk.tail(1))
     print("\n")
+
 
     print("2. ESTIMATED RISK --------------------")
     print("\nRisk overlay check:")

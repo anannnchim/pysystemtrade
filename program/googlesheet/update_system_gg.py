@@ -23,10 +23,12 @@ def update_market_monitoring(s, sheet_url):
         for instrument in s.get_instrument_list()
     })
 
-    df = df.tail(252)  # Keep last 252 rows (1 year of trading days)
-
     # Remove NA (in case we update data late, Japan already have new data but US doesn't)
     df = df.dropna()
+
+
+    df = df.tail(252)  # Keep last 252 rows (1 year of trading days)
+
 
     sheet_access.write_dataframe_to_sheet(sheet_url, "A-Forecast", df, start_cell="B21", header=True)
 
