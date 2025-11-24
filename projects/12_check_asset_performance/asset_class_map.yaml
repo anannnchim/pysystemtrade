@@ -34,6 +34,7 @@ Metals:
     - COPPER-micro
   Precious:
     - GOLD_micro
+    - SILVER
   Crypto:
     - ETHER-micro
 
