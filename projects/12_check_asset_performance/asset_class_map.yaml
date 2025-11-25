@@ -2,6 +2,7 @@ FX:
   Em:
     - MXP
     - KRWUSD_mini
+    - BRE
   Dev:
     - GBP_micro
     - AUD_micro
@@ -16,11 +17,15 @@ Ags:
     - WHEAT_mini
     - CANOLA
     - SOYBEAN_mini
+    - RICE
   Soft:
     - MILLWHEAT
-  #Meat: LEANHOG
+  Meat:
+    - LEANHOG # Pigs
+    - LIVECOW # Cows
   Index:
-    - BBCOMM # GICS
+    - BBCOMM
+#    - GICS
 
 OilGas:
   Oil:
@@ -35,10 +40,13 @@ Metals:
   Precious:
     - GOLD_micro
     - SILVER
+    - PLAT
   Crypto:
     - ETHER-micro
 
 Bonds: # (Region based), (Type: Gov, Corp, STIR, Swap)
+  EU:
+    - OAT
   US:
     - US10
     - CAD10
@@ -51,6 +59,7 @@ Equity: # (Region based), (Type Largecap, Midcap, Smallcap
     - EU-BANKS # Financial
   US:
     - RUSSELL  # Midcap, Beta
+    - NASDAQ_micro # Largecap, Tech
   Asia:
     - MUMMY # Midcap, Tech
     - FTSECHINAA # Largecap, Beta
