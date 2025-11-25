@@ -8,6 +8,7 @@ notional_trading_capital: 10000000
 instrument_weights:
   AUD_micro: 1
   BBCOMM: 1
+  BRE: 1
   CAD2: 1
   CAD10: 1
   CAD_micro: 1
@@ -35,7 +36,13 @@ instrument_weights:
   V2X: 1
   VIX_mini: 1
   WHEAT_mini: 1
-
+  LEANHOG: 1
+  LIVECOW: 1
+  RICE: 1
+  PLAT: 1
+  SILVER: 1
+  OAT: 1
+  NASDAQ_micro: 1
 
 
 
