@@ -1,0 +1,6 @@
+Instrument,IBCode,BarchartCode,TVCode,Exchange,Underlying,AssetClass,SubClass,Currency
+RICE,ZR,ZR,,CBOT,Rough Rice,Ags,Grain,USD
+LIVECOW,LE,LE,,CME,Live cattle,Ags,Meats,USD
+BRE,BRE,L6,,CME,BREUSD currency,FX,EM,USD
+OAT,OAT,FN,,EUREX,French 10 year bond OAT,Bond,Gov,EUR
+PLAT,PL,PL,,NYMEX,Platinum,Metals,Precious,USD

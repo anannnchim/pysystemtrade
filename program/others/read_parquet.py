@@ -6,7 +6,7 @@ from sysproduction.data.capital import dataCapital
 from sysproduction.data.positions import diagPositions
 
 pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
+# pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
@@ -34,45 +34,10 @@ if __name__ == '__main__':
     # a = pd.read_parquet(path)
     # print(a)
 
-    """
-    2025-03-24 20:00:00     NaN   1.0851  1.0851       20250300         20250600       20250600
-    2025-03-24 23:00:00     NaN   1.0857  1.0857       20250300         20250600       20250600
-    
-    
-    2009-06-12 02:00:00  1.6184
-    2009-06-12 03:00:00  1.6194
-    2009-06-12 04:00:00  1.6151
-    2009-06-12 05:00:00  1.6084
-    2009-06-12 06:00:00  1.6185
-    ...                     ...
-    2025-03-24 17:00:00  1.0881
-    2025-03-24 18:00:00  1.0881
-    2025-03-24 19:00:00  1.0881
-    2025-03-24 20:00:00  1.0881
-    2025-03-24 23:00:00  1.0881
-    
-    [92458 rows x 1 columns]
-    """
-
-    # Multiple price
-
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/GBP_micro.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/GBP_micro.parquet"
-
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/AUD_micro.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/AUD_micro.parquet"
-
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/KRWUSD_mini.parquet"
-
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/SOYBEAN_mini.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SOYBEAN_mini#20251100.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/MXP.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/MXP.parquet"
-
 
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SILVER.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/SILVER.parquet"
-    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SILVER#20250900.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/BRE.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/LIVECOW.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SILVER#20260300.parquet"
     a = pd.read_parquet(path)
     print(a)

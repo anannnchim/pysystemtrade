@@ -8,7 +8,7 @@ FX:
     - EUR_micro
     - CAD_micro
   # Cross
-
+#    - YENEUR
 Ags:
   Grain:
     - CORN
