@@ -15,6 +15,7 @@ data = dbFuturesSimData()
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/new_sytem_f1.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/static_two.yaml")
 config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
 
 s = futures_system(config=config, data=data)
 

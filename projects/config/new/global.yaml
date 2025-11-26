@@ -3,7 +3,9 @@
 #
 
 # This will affect capital by portfolio multiplier
-start_date: "2019-10-01" #"2011-01-01" # Need to skip#
+#start_date: "2019-10-01" #"2011-01-01" # Need to skip#
+#start_date: "2024-10-01"
+start_date: "2000-10-01"
 # Capital correction
 #
 percentage_vol_target: 20
@@ -16,33 +18,79 @@ capital_multiplier:
 instrument_weights:
 
   # 1. FX
-  MXP: 0.04 # EM
-  KRWUSD_mini: 0.04
-  GBP_micro: 0.04   # DEV
-  AUD_micro: 0.04
 
-  # 2. Ags: Grain
-  CORN_mini: 0.083 # Grain
-  WHEAT_mini: 0.083
-#  LEANHOG: 0.083
+  # EM
+  MXP: 0.03
+  KRWUSD_mini: 0.03
+  BRE: 0.03
 
-  # 3. OilGas: Oil,Gas
+  # DEV
+  GBP_micro: 0.02
+  AUD_micro: 0.02
+  EUR_micro: 0.02
+  CAD_micro: 0.02
+
+  # 2. Ags:
+
+  # Grain
+  CORN_mini: 0.008
+  WHEAT_mini: 0.008
+  CANOLA: 0.008
+  SOYBEAN_mini: 0.008
+  RICE: 0.008
+
+  # Soft
+  MILLWHEAT: 0.04
+
+  # Meats
+  LEANHOG: 0.02
+  LIVECOW: 0.02
+
+  # Index
+  BBCOMM: 0.04
+
+  # 3. OilGas: Oil,Gas, Product
   CRUDE_W_micro: 0.083
   GAS_US_mini: 0.083
 
   # 4. Metals: Industrial
-  GOLD_micro: 0.083 # Precious
-  IRON: 0.083 # Industrial
+
+  # Precious
+  GOLD_micro: 0.03
+  SILVER: 0.03
+  PLAT: 0.03
+
+  # Industrial
+  IRON: 0.03
+  COPPER-micro: 0.03
+
+  # Crypto
+  ETHER-micro: 0.06
+
 
   # 5. Bond: Asia
-  JGB-SGX-mini: 0.083 # Asia
-  US10: 0.083 # US
+
+  # EU
+  OAT: 0.06
+  # US
+  US10: 0.06
+
+  # Asia
+  JGB-SGX-mini: 0.06
 
   # 6. Equity: Asia
-  EU-BANKS: 0.041 # Europe
-  FTSECHINAA: 0.041 #  Asia
-  MUMMY: 0.041 #  Asia
-  RUSSELL: 0.041 # US
+
+  # EU
+  EU-BANKS: 0.06
+
+  # US
+  RUSSELL: 0.03
+  NASDAQ_micro: 0.03
+
+  # Asia
+  MUMMY: 0.03
+  FTSECHINAA: 0.033
+
 
 use_instrument_div_mult_estimates: True
 #instrument_div_multiplier: 2.1

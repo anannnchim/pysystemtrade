@@ -14,11 +14,12 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
 DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml"
+# DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/12_check_asset_performance/asset_class.yaml"
 DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml"
 DEFAULT_LABEL1  = "GLOBAL"
 DEFAULT_LABEL2  = "Diversified Program"
-DEFAULT_DATA1   = "csv"   # "csv" or "db"
-DEFAULT_DATA2   = "csv"   # "csv" or "db"
+DEFAULT_DATA1   = "db"   # "csv" or "db"
+DEFAULT_DATA2   = "db"   # "csv" or "db"
 
 # ===== Builders & helpers =====
 def make_data(source: str):

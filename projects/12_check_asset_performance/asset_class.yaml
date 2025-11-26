@@ -1,6 +1,8 @@
 
 # ===== INPUT ZONE =====
+#start_date: "2019-10-01"
 start_date: "2024-10-01"
+#start_date: "2000-10-01"
 percentage_vol_target: 20
 notional_trading_capital: 10000000
 
