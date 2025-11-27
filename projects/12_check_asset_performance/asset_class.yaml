@@ -45,6 +45,12 @@ instrument_weights:
   SILVER: 1
   OAT: 1
   NASDAQ_micro: 1
+  US5: 1
+  SOYMEAL: 1
+  ZAR: 1
+  NZD: 1
+  US2: 1
+  SP500_micro: 1
 
 
 

@@ -3,11 +3,13 @@ FX:
     - MXP
     - KRWUSD_mini
     - BRE
+    - ZAR
   Dev:
     - GBP_micro
     - AUD_micro
     - EUR_micro
     - CAD_micro
+    - NZD
   # Cross
 #    - YENEUR
 Ags:
@@ -18,6 +20,7 @@ Ags:
     - CANOLA
     - SOYBEAN_mini
     - RICE
+    - SOYMEAL
   Soft:
     - MILLWHEAT
   Meat:
@@ -48,6 +51,8 @@ Bonds: # (Region based), (Type: Gov, Corp, STIR, Swap)
   EU:
     - OAT
   US:
+    - US2
+    - US5
     - US10
     - CAD10
     - CAD2
@@ -60,6 +65,7 @@ Equity: # (Region based), (Type Largecap, Midcap, Smallcap
   US:
     - RUSSELL  # Midcap, Beta
     - NASDAQ_micro # Largecap, Tech
+    - SP500_micro # Largecap
   Asia:
     - MUMMY # Midcap, Tech
     - FTSECHINAA # Largecap, Beta
