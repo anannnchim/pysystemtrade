@@ -21,7 +21,7 @@ Ags:
     - SOYBEAN_mini
     - RICE
     - SOYMEAL
-  Soft:
+  Soft: # COCO, COFFEE etc
     - MILLWHEAT
   Meat:
     - LEANHOG # Pigs
