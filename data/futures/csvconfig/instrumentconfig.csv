@@ -422,7 +422,7 @@ SONIA1,One Month SONIA,2500,GBP,Bond,0,0,0,EMEA
 SONIA3,Three Month SONIA,2500,GBP,Bond,0,0,0,EMEA
 SOYBEAN,Soybean,50,USD,Ags,2.97,0,0,US
 SOYBEAN_mini,Soybean mini,10,USD,Ags,1.93,0,0,US
-SOYMEAL,Soybean Meal,100,USD,Ags,2.97,0,0,US
+SOYMEAL,Soybean Meal,100,USD,Ags,3,0,0,US
 SOYOIL,Soybean oil,600,USD,Ags,2.97,0,0,US
 SP400,E-mini S&P Midcap 400 Futures,100,USD,Equity,2.25,0,0,US
 SP500,US equity index S&P500,50,USD,Equity,2.25,0,0,US
@@ -531,7 +531,7 @@ US10,US 10 year bond note,1000,USD,Bond,1.67,0,0,US
 US10U,Ultra 10-Year US Treasury Note,1000,USD,Bond,1.67,0,0,US
 US10Y_micro,10 Year Micro Treasury Yield,1000,USD,Bond,0,0,0,US
 US10Y_small,Small 10YR US Treasury Yield,100,USD,Bond,0,0,0,US
-US2,US 2 year bond note,2000,USD,Bond,1.51,0,0,US
+US2,US 2 year bond note,2000,USD,Bond,1.52,0,0,US
 US20,US 20 year bond,1000,USD,Bond,1.74,0,0,US
 US20-new,Ultra 20-Year U.S. Treasury Bond,1000,USD,Bond,0,0,0,US
 US2Y_micro,2 Year Micro Treasury Yield,1000,USD,Bond,0,0,0,US
@@ -540,7 +540,7 @@ US3,US 3 year bond note,2000,USD,Bond,1.52,0,0,US
 US30,Ultra Treasury Bond,1000,USD,Bond,1.82,0,0,US
 US30Y_micro,30 Year Micro Treasury Yield,1000,USD,Bond,0,0,0,US
 US30Y_small,Small 30YR US Treasury Yield,100,USD,Bond,0,0,0,US
-US5,US 5 year bond note,1000,USD,Bond,1.51,0,0,US
+US5,US 5 year bond note,1000,USD,Bond,1.52,0,0,US
 US5Y_micro,5 Year Micro Treasury Yield,1000,USD,Bond,0,0,0,US
 USD_small,Small US dollar,100,USD,FX,0,0,0,US
 USDCAD_micro,USDCAD_micro,10000,CAD,FX,0,0,0,US
