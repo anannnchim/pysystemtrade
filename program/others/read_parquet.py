@@ -6,7 +6,7 @@ from sysproduction.data.capital import dataCapital
 from sysproduction.data.positions import diagPositions
 
 pd.set_option('display.max_columns', None)
-# pd.set_option('display.max_rows', None)
+pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SILVER.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SOYMEAL.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@US5#20251200.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EU-BANKS.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SILVER#20260300.parquet"
     a = pd.read_parquet(path)
     print(a)
