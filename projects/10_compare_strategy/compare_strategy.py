@@ -1,7 +1,7 @@
 # compare_strategy.py
 import argparse
 from pathlib import Path
-from typing import Dict, Optional, Any
+from typing import Dict, Optional, Any, List
 
 import numpy as np
 import pandas as pd
@@ -13,13 +13,14 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml"
-# DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/12_check_asset_performance/asset_class.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml"
-DEFAULT_LABEL1  = "GLOBAL"
-DEFAULT_LABEL2  = "Diversified Program"
-DEFAULT_DATA1   = "db"   # "csv" or "db"
-DEFAULT_DATA2   = "db"   # "csv" or "db"
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1__bo_config.yaml"
+
+DEFAULT_LABEL1  = "EMA"
+DEFAULT_LABEL2  = "Breakout"
+
+DEFAULT_DATA1   = "csv"   # "csv" or "db"
+DEFAULT_DATA2   = "csv"   # "csv" or "db"
 
 # ===== Builders & helpers =====
 def make_data(source: str):
@@ -85,11 +86,12 @@ def returns_from_curve_pct(curve_pct: pd.Series) -> pd.Series:
 def blend_curve_pct_equal_weight(c1: pd.Series, c2: pd.Series) -> pd.Series:
     """
     Equal-weight blend of DAILY RETURNS of two systems, then re-cumulated to a curve %.
-    This represents a 50/50 portfolio rebalanced daily.
+    This represents an equally-weighted portfolio rebalanced daily.
     """
     r1 = returns_from_curve_pct(c1)
     r2 = returns_from_curve_pct(c2)
-    blended_rets = pd.concat([r1, r2], axis=1).mean(axis=1, skipna=True)
+    df = pd.concat([r1, r2], axis=1)
+    blended_rets = df.mean(axis=1, skipna=True)
     blended_idx = (1.0 + blended_rets).cumprod()
     blended_curve_pct = (blended_idx - 1.0) * 100.0
     return blended_curve_pct
@@ -174,15 +176,18 @@ def _format_metric_value(metric: str, x: float) -> str:
         return f"{x:.2f}"
     return f"{x:.4f}"
 
-def print_stats_comparison(label1: str, s1: Optional[pd.Series],
-                           label2: str, s2: Optional[pd.Series]) -> None:
-    if s1 is None and s2 is None:
+def print_stats_comparison_multi(stats_dict: Dict[str, Optional[pd.Series]]) -> None:
+    """Compare percent.stats() for multiple systems (columns = systems)."""
+    non_empty = {label: s for label, s in stats_dict.items() if s is not None}
+    if not non_empty:
         print("\n(percent.stats() not available in this build)")
         return
-    df = pd.DataFrame({label1: s1, label2: s2})
+
+    df = pd.DataFrame(non_empty)
     known = [m for m in _METRIC_ORDER if m in df.index]
     extras = [m for m in df.index if m not in known]
     df = df.loc[known + sorted(extras)]
+
     shown = df.copy()
     for m in shown.index:
         for col in shown.columns:
@@ -190,6 +195,7 @@ def print_stats_comparison(label1: str, s1: Optional[pd.Series],
                 shown.loc[m, col] = _format_metric_value(m, float(shown.loc[m, col]))
             except Exception:
                 pass
+
     print("\n== percent.stats() (comparison) ==")
     print(shown.to_string())
 
@@ -223,8 +229,10 @@ def parse_args():
     p = argparse.ArgumentParser(description="Compare two pysystemtrade configurations.")
     p.add_argument("--config1", default=DEFAULT_CONFIG1, help="Path to YAML for system 1")
     p.add_argument("--config2", default=DEFAULT_CONFIG2, help="Path to YAML for system 2")
+
     p.add_argument("--label1",  default=DEFAULT_LABEL1,  help="Label for system 1")
     p.add_argument("--label2",  default=DEFAULT_LABEL2,  help="Label for system 2")
+
     p.add_argument("--data1",   default=DEFAULT_DATA1,   choices=["csv", "db"], help="Data source for system 1")
     p.add_argument("--data2",   default=DEFAULT_DATA2,   choices=["csv", "db"], help="Data source for system 2")
     return p.parse_args()
@@ -238,7 +246,7 @@ def main():
         print("WARNING: Missing config(s):")
         for m in missing:
             print(" -", m)
-        print("Update DEFAULT_CONFIG* or pass --config1/--config2 in Run Configuration.")
+        print("Update DEFAULT_CONFIG* or pass --config* in Run Configuration.")
 
     print(f"\nBuilding systems:")
     print(f" - {args.label1}: config={args.config1}  data={args.data1}")
@@ -252,27 +260,40 @@ def main():
     c1 = get_equity_percent_curve(s1)
     c2 = get_equity_percent_curve(s2)
 
-    # === New: blended equity (equal-weight DAILY returns) ===
-    blend_label = "Avg (50/50 daily returns)"
+    # Blended equity (equal-weight DAILY returns of both)
+    blend_label = "Avg (equal-weight 2 systems)"
     c_blend = blend_curve_pct_equal_weight(c1, c2)
 
     # 1) Equity (growth index) & Drawdown plots — include blend
-    plot_equities({args.label1: c1, args.label2: c2, blend_label: c_blend})
-    plot_drawdowns({args.label1: c1, args.label2: c2, blend_label: c_blend})
+    plot_equities({
+        args.label1: c1,
+        args.label2: c2,
+        blend_label: c_blend,
+    })
+    plot_drawdowns({
+        args.label1: c1,
+        args.label2: c2,
+        blend_label: c_blend,
+    })
 
     # 2) Summary metrics table (include blend)
     m1 = summarize(to_index(c1))
     m2 = summarize(to_index(c2))
     mB = summarize(to_index(c_blend))
+
     metrics_df = pd.DataFrame.from_dict(
-        {args.label1: m1, args.label2: m2, blend_label: mB},
+        {
+            args.label1: m1,
+            args.label2: m2,
+            blend_label: mB,
+        },
         orient="index"
     )
     fmt_pct = lambda x: f"{x:.2%}" if pd.notna(x) else "—"
     printable = metrics_df.copy()
     printable["CAGR"]   = printable["CAGR"].map(fmt_pct)
     printable["Vol"]    = printable["Vol"].map(fmt_pct)
-    printable["MaxDD"]  = printable["MaxDD"].map(fmt_pct)  # already negative
+    printable["MaxDD"]  = printable["MaxDD"].map(fmt_pct)
     printable["Sharpe"] = printable["Sharpe"].map(lambda x: f"{x:.2f}" if pd.notna(x) else "—")
     print("\n== Summary metrics ==")
     print(printable.to_string())
@@ -281,16 +302,25 @@ def main():
     r1 = rolling_realised_risk(s1, window_days=42)
     r2 = rolling_realised_risk(s2, window_days=42)
     rB = rolling_realised_risk_from_returns(returns_from_curve_pct(c_blend), window_days=42)
-    plot_rolling_risk({args.label1: r1, args.label2: r2, blend_label: rB})
+
+    plot_rolling_risk({
+        args.label1: r1,
+        args.label2: r2,
+        blend_label: rB,
+    })
+
     print("\n== Avg. 2-Month Realised Risk (annualised) ==")
     print(f"{args.label1}: {r1.mean():.2%}")
     print(f"{args.label2}: {r2.mean():.2%}")
     print(f"{blend_label}: {rB.mean():.2%}")
 
-    # 4) percent.stats() tidy comparison (systems only, since blend is synthetic)
+    # 4) percent.stats() tidy comparison (2 systems; blend omitted)
     s1_stats_ser = get_percent_stats_series(s1)
     s2_stats_ser = get_percent_stats_series(s2)
-    print_stats_comparison(args.label1, s1_stats_ser, args.label2, s2_stats_ser)
+    print_stats_comparison_multi({
+        args.label1: args.label1 and s1_stats_ser,
+        args.label2: args.label2 and s2_stats_ser,
+    })
 
 if __name__ == "__main__":
     main()

@@ -7,14 +7,10 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 # INPUT: Select data and system
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-
-
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/diversified_v2_add.yaml")
-
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1__bo_config.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -40,15 +36,40 @@ if __name__ == '__main__':
     for instr in instruments:
         cost = round(s.accounts.get_SR_cost_per_trade_for_instrument(instr), 4)
         status = "Remove (Too expensive)" if cost > 0.01 else "PASS"
-        rows.append({"Instrument": instr, "SR Cost/Trade": cost, "Rule": "Cost > 0.01", "Status": status})
+        rows.append({
+            "Instrument": instr,
+            "SR Cost/Trade": cost,
+            "Rule": "Cost > 0.01",
+            "Status": status
+        })
     cost_df = pd.DataFrame(rows).sort_values("SR Cost/Trade", ascending=False)
     print(cost_df.to_string(index=False))
 
     # ──────────────────────────────────────────────────────────────────────────────
+    # Extra table: SR cost per trade, rolls per year, SR holding cost only
+    # ──────────────────────────────────────────────────────────────────────────────
+
+    input("\n2. Show cost, turnover, and holding-cost (SR terms) per instrument")
+    rows_detail = []
+    for instr in instruments:
+        sr_cost_trade = s.accounts.get_SR_cost_per_trade_for_instrument(instr)
+        rolls_year = s.rawdata.rolls_per_year(instr)
+        sr_holding_cost = s.accounts.get_SR_holding_cost_only(instr)
+
+        rows_detail.append({
+            "Instrument": instr,
+            "SR Cost/Trade": round(sr_cost_trade, 4),
+            "Rolls/Year": round(rolls_year, 2),
+            "SR Holding Cost Only": round(sr_holding_cost, 4)
+        })
+
+    detail_df = pd.DataFrame(rows_detail).sort_values("SR Cost/Trade", ascending=False)
+    print(detail_df.to_string(index=False))
+    # ──────────────────────────────────────────────────────────────────────────────
     # Note 1.1) Cheap trading rules post-processing (table)
     # ──────────────────────────────────────────────────────────────────────────────
 
-    input("1.1 Check each rule if it's cheap enough to trade: Cost in SR < 0.13")
+    input("1.1 Check each rule if it's cheap enough to trade: Cost in SR < 0.15")
 
     def stringify_rules(x):
         if x is None:
@@ -68,7 +89,7 @@ if __name__ == '__main__':
     rule_rows = []
     for instr in instruments:
         rules = s.combForecast.cheap_trading_rules_post_processing(instr)
-        rule_rows.append({"Instrument": instr, "Cheap Rules (<0.13 SR cost)": stringify_rules(rules)})
+        rule_rows.append({"Instrument": instr, "Cheap Rules (<0.15 SR cost)": stringify_rules(rules)})
     rules_df = pd.DataFrame(rule_rows)
     print(rules_df.to_string(index=False))
 

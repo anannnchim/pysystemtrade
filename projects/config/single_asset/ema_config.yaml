@@ -2,56 +2,77 @@
 # >>> INPUT ZONE ---------------------------------
 #
 
-# This will affect capital by portfolio multiplier
-#start_date: '2020-01-01'
-#
-# Capital correction
-#
+# Note: Date
+start_date: "2015-10-01"
+#start_date: "2019-10-01"
+#start_date: "2024-10-01"
+#end_date: '2024-01-01'
+
+# Note: Capital
 percentage_vol_target: 20
-notional_trading_capital: 46000
-base_currency: "USD"
-capital_multiplier:
-   func: syscore.capital.full_compounding
+notional_trading_capital: 100000000
 
+# Note: Weight
 instrument_weights:
+  AUD_micro: 1
+  BBCOMM: 1
+  BRE: 1
+  CAD2: 1
+  CAD10: 1
+  CAD_micro: 1
+  CANOLA: 1
+  COPPER-micro: 1
+  CORN: 1
+  CORN_mini: 1
+  CRUDE_W_micro: 1
+  ETHER-micro: 1
+  EU-BANKS: 1
+  EUR_micro: 1
+  FTSECHINAA: 1
+  GAS_US_mini: 1
+  GBP_micro: 1
+  GOLD_micro: 1
+  IRON: 1
+  JGB-SGX-mini: 1
+  KRWUSD_mini: 1
+  MILLWHEAT: 1
+  MUMMY: 1
+  MXP: 1
+  RUSSELL: 1
+  SOYBEAN_mini: 1
+  US10: 1
+  V2X: 1
+  VIX_mini: 1
+  WHEAT_mini: 1
+  LEANHOG: 1
+  LIVECOW: 1
+  RICE: 1
+  PLAT: 1
+  SILVER: 1
+  OAT: 1
+  NASDAQ_micro: 1
+  US5: 1
+  SOYMEAL: 1
+  ZAR: 1
+  NZD: 1
+  US2: 1
+  SP500_micro: 1
+#use_instrument_div_mult_estimates: True
+instrument_div_multiplier: 1
 
-  # 1. FX
-
-  # EM
-  KRWUSD_mini: 0.028 # 0.083
-  MXP: 0.028
-  EUR_micro: 0.028
-  ZAR: 0.01
-
-  # DEV
-  CAD_micro: 0.028
-  AUD_micro: 0.028
-  GBP_micro: 0.028
-
-
-use_instrument_div_mult_estimates: True
-#instrument_div_multiplier: 1.9
-
-#
-# forecast combination
-#
-
+# Note: Forecast
 forecast_weights:
-       ewmac2_8: 0
-       ewmac4_16: 0
-       ewmac8_32: 0
-       ewmac16_64: 0.33
-       ewmac32_128: 0.33
-       ewmac64_256: 0.33
+  ewmac2_8:   0
+  ewmac4_16:  0
+  ewmac8_32:  0
+  ewmac16_64: 0.33
+  ewmac32_128: 0.33
+  ewmac64_256: 0.33
 
 forecast_div_multiplier: 1.08
 
 #
 # DEFAULT ZONE ---------------------------------
-#
-
-#
-# Trading rule
 #
 trading_rules:
   ewmac2_8:
@@ -111,25 +132,12 @@ trading_rules:
 
 forecast_cap: 20.0
 
-# Rule grouping
-rule_groups:
-    ewmac_fast:
-       - ewmac2_8
-       - ewmac4_16
-    ewmac_medium:
-       - ewmac8_32
-       - ewmac16_64
-    ewmac_slow:
-       - ewmac32_128
-       - ewmac64_256
-style_groups:
-    trend:
-        - ewmac_fast
-        - ewmac_medium
-        - ewmac_slow
-
 # Buffer
 buffer_trade_to_edge: True
 buffer_method: forecast
 buffer_size: 0.10
 
+# Capital
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding
