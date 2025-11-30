@@ -13,14 +13,21 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1__bo_config.yaml"
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/ema_config.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/bo_config.yaml"
+DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/carry_config.yaml"
+DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/comb_config.yaml"  # optional 4th system; empty means "not used"
+# DEFAULT_CONFIG5 = ""  # optional 4th system; empty means "not used"
 
 DEFAULT_LABEL1  = "EMA"
 DEFAULT_LABEL2  = "Breakout"
+DEFAULT_LABEL3  = "Carry"
+DEFAULT_LABEL4  = "Combine"
 
 DEFAULT_DATA1   = "csv"   # "csv" or "db"
-DEFAULT_DATA2   = "csv"   # "csv" or "db"
+DEFAULT_DATA2   = "csv"
+DEFAULT_DATA3   = "csv"
+DEFAULT_DATA4   = "csv"
 
 # ===== Builders & helpers =====
 def make_data(source: str):
@@ -83,15 +90,24 @@ def returns_from_curve_pct(curve_pct: pd.Series) -> pd.Series:
     idx = to_index(curve_pct)
     return idx.pct_change().dropna()
 
-def blend_curve_pct_equal_weight(c1: pd.Series, c2: pd.Series) -> pd.Series:
+def blend_curve_pct_equal_weight(*curves: pd.Series) -> pd.Series:
     """
-    Equal-weight blend of DAILY RETURNS of two systems, then re-cumulated to a curve %.
+    Equal-weight blend of DAILY RETURNS of N systems, then re-cumulated to a curve %.
     This represents an equally-weighted portfolio rebalanced daily.
     """
-    r1 = returns_from_curve_pct(c1)
-    r2 = returns_from_curve_pct(c2)
-    df = pd.concat([r1, r2], axis=1)
-    blended_rets = df.mean(axis=1, skipna=True)
+    rets_list: List[pd.Series] = []
+    for c in curves:
+        if c is None:
+            continue
+        r = returns_from_curve_pct(c)
+        if not r.empty:
+            rets_list.append(r)
+
+    if not rets_list:
+        return pd.Series(dtype=float)
+
+    df_rets = pd.concat(rets_list, axis=1)
+    blended_rets = df_rets.mean(axis=1, skipna=True)
     blended_idx = (1.0 + blended_rets).cumprod()
     blended_curve_pct = (blended_idx - 1.0) * 100.0
     return blended_curve_pct
@@ -226,101 +242,110 @@ def plot_rolling_risk(series_map: Dict[str, pd.Series]):
 
 # ===== CLI (with defaults so click-run works) =====
 def parse_args():
-    p = argparse.ArgumentParser(description="Compare two pysystemtrade configurations.")
+    p = argparse.ArgumentParser(description="Compare 2–4 pysystemtrade configurations.")
     p.add_argument("--config1", default=DEFAULT_CONFIG1, help="Path to YAML for system 1")
     p.add_argument("--config2", default=DEFAULT_CONFIG2, help="Path to YAML for system 2")
+    p.add_argument("--config3", default=DEFAULT_CONFIG3, help="Path to YAML for system 3 (optional)")
+    p.add_argument("--config4", default=DEFAULT_CONFIG4, help="Path to YAML for system 4 (optional)")
 
     p.add_argument("--label1",  default=DEFAULT_LABEL1,  help="Label for system 1")
     p.add_argument("--label2",  default=DEFAULT_LABEL2,  help="Label for system 2")
+    p.add_argument("--label3",  default=DEFAULT_LABEL3,  help="Label for system 3")
+    p.add_argument("--label4",  default=DEFAULT_LABEL4,  help="Label for system 4")
 
     p.add_argument("--data1",   default=DEFAULT_DATA1,   choices=["csv", "db"], help="Data source for system 1")
     p.add_argument("--data2",   default=DEFAULT_DATA2,   choices=["csv", "db"], help="Data source for system 2")
+    p.add_argument("--data3",   default=DEFAULT_DATA3,   choices=["csv", "db"], help="Data source for system 3")
+    p.add_argument("--data4",   default=DEFAULT_DATA4,   choices=["csv", "db"], help="Data source for system 4")
     return p.parse_args()
 
 def main():
     args = parse_args()
 
-    # Warn if defaults not found, but continue to avoid crashing click-run
-    missing = [p for p in [args.config1, args.config2] if not Path(p).exists()]
-    if missing:
-        print("WARNING: Missing config(s):")
-        for m in missing:
-            print(" -", m)
-        print("Update DEFAULT_CONFIG* or pass --config* in Run Configuration.")
+    # Collect configs / labels / data into lists
+    config_paths = [args.config1, args.config2, args.config3, args.config4]
+    labels       = [args.label1,  args.label2,  args.label3,  args.label4]
+    data_srcs    = [args.data1,   args.data2,   args.data3,   args.data4]
 
-    print(f"\nBuilding systems:")
-    print(f" - {args.label1}: config={args.config1}  data={args.data1}")
-    print(f" - {args.label2}: config={args.config2}  data={args.data2}")
+    systems = []
+    curves  = []
+    used_labels = []
 
-    # Build systems with per-system data sources
-    s1 = build_system(args.config1, data_source=args.data1)
-    s2 = build_system(args.config2, data_source=args.data2)
+    print("\nBuilding systems:")
 
-    # Curves
-    c1 = get_equity_percent_curve(s1)
-    c2 = get_equity_percent_curve(s2)
+    for cfg_path, label, data_src in zip(config_paths, labels, data_srcs):
+        if not cfg_path:  # empty string -> skip
+            continue
 
-    # Blended equity (equal-weight DAILY returns of both)
-    blend_label = "Avg (equal-weight 2 systems)"
-    c_blend = blend_curve_pct_equal_weight(c1, c2)
+        path_obj = Path(cfg_path)
+        if not path_obj.exists():
+            print(f" - {label}: config={cfg_path}  data={data_src}  [SKIP: file not found]")
+            continue
+
+        print(f" - {label}: config={cfg_path}  data={data_src}")
+        sys_obj = build_system(cfg_path, data_source=data_src)
+        curve_pct = get_equity_percent_curve(sys_obj)
+
+        systems.append(sys_obj)
+        curves.append(curve_pct)
+        used_labels.append(label)
+
+    if len(systems) < 2:
+        print("\nERROR: Need at least 2 valid systems (configs found and built).")
+        print("Check your --config* paths or DEFAULT_CONFIG*.")
+        return
+
+    # Blended equity (equal-weight DAILY returns of all provided systems)
+    blend_label = f"Avg (equal-weight {len(systems)} systems)"
+    c_blend = blend_curve_pct_equal_weight(*curves)
 
     # 1) Equity (growth index) & Drawdown plots — include blend
-    plot_equities({
-        args.label1: c1,
-        args.label2: c2,
-        blend_label: c_blend,
-    })
-    plot_drawdowns({
-        args.label1: c1,
-        args.label2: c2,
-        blend_label: c_blend,
-    })
+    curve_map = {label: c for label, c in zip(used_labels, curves)}
+    curve_map[blend_label] = c_blend
+
+    plot_equities(curve_map)
+    plot_drawdowns(curve_map)
 
     # 2) Summary metrics table (include blend)
-    m1 = summarize(to_index(c1))
-    m2 = summarize(to_index(c2))
-    mB = summarize(to_index(c_blend))
+    metrics_map = {}
+    for label, c in zip(used_labels, curves):
+        metrics_map[label] = summarize(to_index(c))
+    metrics_map[blend_label] = summarize(to_index(c_blend))
 
-    metrics_df = pd.DataFrame.from_dict(
-        {
-            args.label1: m1,
-            args.label2: m2,
-            blend_label: mB,
-        },
-        orient="index"
-    )
+    metrics_df = pd.DataFrame.from_dict(metrics_map, orient="index")
     fmt_pct = lambda x: f"{x:.2%}" if pd.notna(x) else "—"
     printable = metrics_df.copy()
     printable["CAGR"]   = printable["CAGR"].map(fmt_pct)
     printable["Vol"]    = printable["Vol"].map(fmt_pct)
     printable["MaxDD"]  = printable["MaxDD"].map(fmt_pct)
     printable["Sharpe"] = printable["Sharpe"].map(lambda x: f"{x:.2f}" if pd.notna(x) else "—")
+
     print("\n== Summary metrics ==")
     print(printable.to_string())
 
     # 3) Rolling 2-M realised risk (≈42 trading days), chart + averages (include blend)
-    r1 = rolling_realised_risk(s1, window_days=42)
-    r2 = rolling_realised_risk(s2, window_days=42)
-    rB = rolling_realised_risk_from_returns(returns_from_curve_pct(c_blend), window_days=42)
+    risk_map = {}
+    for label, sys_obj in zip(used_labels, systems):
+        risk_map[label] = rolling_realised_risk(sys_obj, window_days=42)
 
-    plot_rolling_risk({
-        args.label1: r1,
-        args.label2: r2,
-        blend_label: rB,
-    })
+    r_blend = rolling_realised_risk_from_returns(
+        returns_from_curve_pct(c_blend),
+        window_days=42
+    )
+    risk_map[blend_label] = r_blend
+
+    plot_rolling_risk(risk_map)
 
     print("\n== Avg. 2-Month Realised Risk (annualised) ==")
-    print(f"{args.label1}: {r1.mean():.2%}")
-    print(f"{args.label2}: {r2.mean():.2%}")
-    print(f"{blend_label}: {rB.mean():.2%}")
+    for label, ser in risk_map.items():
+        print(f"{label}: {ser.mean():.2%}")
 
-    # 4) percent.stats() tidy comparison (2 systems; blend omitted)
-    s1_stats_ser = get_percent_stats_series(s1)
-    s2_stats_ser = get_percent_stats_series(s2)
-    print_stats_comparison_multi({
-        args.label1: args.label1 and s1_stats_ser,
-        args.label2: args.label2 and s2_stats_ser,
-    })
+    # 4) percent.stats() tidy comparison (only real systems; blend omitted)
+    stats_map = {}
+    for label, sys_obj in zip(used_labels, systems):
+        stats_map[label] = get_percent_stats_series(sys_obj)
+
+    print_stats_comparison_multi(stats_map)
 
 if __name__ == "__main__":
     main()

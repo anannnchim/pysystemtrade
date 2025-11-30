@@ -3,10 +3,10 @@
 #
 
 # Note: Date
-start_date: "2015-10-01"
-#start_date: "2019-10-01"
+#start_date: "2000-10-01"
+#start_date: "2015-10-01"
+start_date: "2019-10-01"
 #start_date: "2024-10-01"
-#end_date: '2024-01-01'
 
 # Note: Capital
 percentage_vol_target: 20
@@ -57,19 +57,19 @@ instrument_weights:
   NZD: 1
   US2: 1
   SP500_micro: 1
-#use_instrument_div_mult_estimates: True
-instrument_div_multiplier: 1
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.5
 
 # Note: Forecast
 forecast_weights:
   ewmac2_8:   0
   ewmac4_16:  0
-  ewmac8_32:  0
-  ewmac16_64: 0.33
-  ewmac32_128: 0.33
-  ewmac64_256: 0.33
+  ewmac8_32:  0.25
+  ewmac16_64: 0.25
+  ewmac32_128: 0.25
+  ewmac64_256: 0.25
 
-forecast_div_multiplier: 1.08
+forecast_div_multiplier: 1.13
 
 #
 # DEFAULT ZONE ---------------------------------

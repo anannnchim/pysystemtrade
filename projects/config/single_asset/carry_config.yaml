@@ -3,9 +3,9 @@
 #
 
 # Note: Date
-start_date: "2015-10-01"
+start_date: "2000-10-01"
+#start_date: "2015-10-01"
 #start_date: "2019-10-01"
-#end_date: '2024-01-01'
 #start_date: "2024-10-01"
 
 # Note: Capital
@@ -57,14 +57,17 @@ instrument_weights:
   NZD: 1
   US2: 1
   SP500_micro: 1
-#use_instrument_div_mult_estimates: True
-instrument_div_multiplier: 1
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 1
 
 # Note: Forecast
 forecast_weights:
-  carry: 1
+  carry5: 0
+  carry20: 0.33
+  carry60: 0.33
+  carry120: 0.33
 
-forecast_div_multiplier: 1
+forecast_div_multiplier: 1.04
 
 
 
@@ -73,13 +76,39 @@ forecast_div_multiplier: 1
 #
 
 trading_rules:
-  carry:
-     function: systems.provided.rules.carry.carry
-     data:
-         - "rawdata.raw_carry"
-     other_args:
-         smooth_days: 90
-     forecast_scalar: 30
+
+  carry5:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 5
+    forecast_scalar: 30
+
+  carry20:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 20
+    forecast_scalar: 30
+
+  carry60:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 60
+    forecast_scalar: 30
+
+  carry120:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 120
+    forecast_scalar: 30
+
 forecast_cap: 20.0
 
 # Buffer
