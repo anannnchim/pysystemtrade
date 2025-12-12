@@ -4,8 +4,9 @@
 
 # This will affect capital by portfolio multiplier
 #start_date: "2019-10-01"
-#start_date: "2024-10-01"
+start_date: "2024-10-01"
 #start_date: "2000-10-01"
+#start_date: "2010-10-01"
 # Capital correction
 #
 percentage_vol_target: 20
@@ -230,8 +231,8 @@ buffer_method: forecast
 buffer_size: 0.10
 
 # Risk ovarlay (IDM of 2.2/ CSV since 2018)
-#risk_overlay:
-#  max_risk_fraction_normal_risk: 1.5 # Or 30%
-#  max_risk_fraction_stdev_risk: 3.75 # Or 75%
-#  max_risk_limit_sum_abs_risk: 3.25 # Or 65%
-#  max_risk_leverage: 12 # From backtest
+risk_overlay:
+  max_risk_fraction_normal_risk: 1.5 # Or 30%
+  max_risk_fraction_stdev_risk: 3.75 # Or 75%
+  max_risk_limit_sum_abs_risk: 3.25 # Or 65%
+  max_risk_leverage: 12 # From backtest

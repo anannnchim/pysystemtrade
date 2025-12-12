@@ -1,7 +1,7 @@
 #
 # >>> INPUT ZONE ---------------------------------
 #
-
+# THIS IS 80% Trend, 20% Carry
 # This will affect capital by portfolio multiplier
 #start_date: "2019-10-01"
 start_date: "2024-10-01"
@@ -45,105 +45,152 @@ instrument_weights:
 instrument_div_multiplier: 2.2
 #forecast_div_multiplier: 1
 
+
 forecast_weights:
 
     # 1. FX
      AUD_micro:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      GBP_micro:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      MXP:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
 
      CORN_mini:
       breakout10: 0
       breakout20: 0
       breakout40: 0
-      breakout80: 0.33
-      breakout160: 0.33
-      breakout320: 0.33
+      breakout80: 0.267
+      breakout160: 0.267
+      breakout320: 0.267
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      WHEAT_mini:
       breakout10: 0
       breakout20: 0
-      breakout40: 0.25
-      breakout80: 0.25
-      breakout160: 0.25
-      breakout320: 0.25
+      breakout40: 0.20
+      breakout80: 0.20
+      breakout160: 0.20
+      breakout320: 0.20
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
 
      CRUDE_W_micro:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      IRON:
       breakout10: 0
       breakout20: 0
       breakout40: 0
-      breakout80: 0.33
-      breakout160: 0.33
-      breakout320: 0.33
+      breakout80: 0.267
+      breakout160: 0.267
+      breakout320: 0.267
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
 
      JGB-SGX-mini:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      MUMMY:
       breakout10: 0
       breakout20: 0
-      breakout40: 0.25
-      breakout80: 0.25
-      breakout160: 0.25
-      breakout320: 0.25
+      breakout40: 0.20
+      breakout80: 0.20
+      breakout160: 0.20
+      breakout320: 0.20
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
+
      EU-BANKS:
       breakout10: 0
-      breakout20: 0.2
-      breakout40: 0.2
-      breakout80: 0.2
-      breakout160: 0.2
-      breakout320: 0.2
+      breakout20: 0.16
+      breakout40: 0.16
+      breakout80: 0.16
+      breakout160: 0.16
+      breakout320: 0.16
+      carry5: 0.05
+      carry20: 0.05
+      carry60: 0.05
+      carry120: 0.05
 forecast_div_multiplier:
 
     # FX
-    MXP: 1.17
-    AUD_micro: 1.24
-    GBP_micro: 1.24
+    MXP: 1.34
+    AUD_micro: 1.34
+    GBP_micro: 1.34
 
     # Ags
-    CORN_mini: 1.10
-    WHEAT_mini: 1.17
+    CORN_mini: 1.29
+    WHEAT_mini: 1.32
 
     # Oil & Gas
-    CRUDE_W_micro: 1.24
+    CRUDE_W_micro: 1.34
 
     # Metals
-    IRON: 1.07
+    IRON: 1.29
 
     # Bond
-    JGB-SGX-mini: 1.24
+    JGB-SGX-mini: 1.34
 
     # Equity
-    EU-BANKS: 1.24
-    MUMMY: 1.17
+    EU-BANKS: 1.34
+    MUMMY: 1.32
 
 #
 # DEFAULT ZONE ---------------------------------
@@ -195,6 +242,38 @@ trading_rules:
      other_args:
        lookback: 320
      forecast_scalars: 0.74
+
+  carry5:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 5
+    forecast_scalar: 30
+
+  carry20:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 20
+    forecast_scalar: 30
+
+  carry60:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 60
+    forecast_scalar: 30
+
+  carry120:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 120
+    forecast_scalar: 30
 
 forecast_cap: 20.0
 

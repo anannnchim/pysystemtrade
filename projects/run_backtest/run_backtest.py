@@ -6,13 +6,14 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/tactical.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_carry_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_comb_ema.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/old/config_v3.yaml")
 s = futures_system(config=config, data=data)
 
 

@@ -13,21 +13,23 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/ema_config.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/bo_config.yaml"
-DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/carry_config.yaml"
-DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/single_asset/comb_config.yaml"  # optional 4th system; empty means "not used"
-# DEFAULT_CONFIG5 = ""  # optional 4th system; empty means "not used"
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_bo.yaml"
+DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_carry.yaml"
+DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_comb.yaml"
+DEFAULT_CONFIG5 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_comb_ema.yaml"
 
 DEFAULT_LABEL1  = "EMA"
 DEFAULT_LABEL2  = "Breakout"
 DEFAULT_LABEL3  = "Carry"
-DEFAULT_LABEL4  = "Combine"
+DEFAULT_LABEL4  = "BreakoutCarry"
+DEFAULT_LABEL5  = "BreakoutEMACarry"
 
-DEFAULT_DATA1   = "csv"   # "csv" or "db"
-DEFAULT_DATA2   = "csv"
-DEFAULT_DATA3   = "csv"
-DEFAULT_DATA4   = "csv"
+DEFAULT_DATA1   = "db"   # "csv" or "db"
+DEFAULT_DATA2   = "db"
+DEFAULT_DATA3   = "db"
+DEFAULT_DATA4   = "db"
+DEFAULT_DATA5   = "db"
 
 # ===== Builders & helpers =====
 def make_data(source: str):
@@ -242,30 +244,33 @@ def plot_rolling_risk(series_map: Dict[str, pd.Series]):
 
 # ===== CLI (with defaults so click-run works) =====
 def parse_args():
-    p = argparse.ArgumentParser(description="Compare 2–4 pysystemtrade configurations.")
+    p = argparse.ArgumentParser(description="Compare 2–5 pysystemtrade configurations.")
     p.add_argument("--config1", default=DEFAULT_CONFIG1, help="Path to YAML for system 1")
     p.add_argument("--config2", default=DEFAULT_CONFIG2, help="Path to YAML for system 2")
     p.add_argument("--config3", default=DEFAULT_CONFIG3, help="Path to YAML for system 3 (optional)")
     p.add_argument("--config4", default=DEFAULT_CONFIG4, help="Path to YAML for system 4 (optional)")
+    p.add_argument("--config5", default=DEFAULT_CONFIG5, help="Path to YAML for system 5 (optional)")
 
     p.add_argument("--label1",  default=DEFAULT_LABEL1,  help="Label for system 1")
     p.add_argument("--label2",  default=DEFAULT_LABEL2,  help="Label for system 2")
     p.add_argument("--label3",  default=DEFAULT_LABEL3,  help="Label for system 3")
     p.add_argument("--label4",  default=DEFAULT_LABEL4,  help="Label for system 4")
+    p.add_argument("--label5",  default=DEFAULT_LABEL5,  help="Label for system 5")
 
     p.add_argument("--data1",   default=DEFAULT_DATA1,   choices=["csv", "db"], help="Data source for system 1")
     p.add_argument("--data2",   default=DEFAULT_DATA2,   choices=["csv", "db"], help="Data source for system 2")
     p.add_argument("--data3",   default=DEFAULT_DATA3,   choices=["csv", "db"], help="Data source for system 3")
     p.add_argument("--data4",   default=DEFAULT_DATA4,   choices=["csv", "db"], help="Data source for system 4")
+    p.add_argument("--data5",   default=DEFAULT_DATA5,   choices=["csv", "db"], help="Data source for system 5")
     return p.parse_args()
 
 def main():
     args = parse_args()
 
-    # Collect configs / labels / data into lists
-    config_paths = [args.config1, args.config2, args.config3, args.config4]
-    labels       = [args.label1,  args.label2,  args.label3,  args.label4]
-    data_srcs    = [args.data1,   args.data2,   args.data3,   args.data4]
+    # Collect configs / labels / data into lists  ← FIXED to include system 5
+    config_paths = [args.config1, args.config2, args.config3, args.config4, args.config5]
+    labels       = [args.label1,  args.label2,  args.label3,  args.label4,  args.label5]
+    data_srcs    = [args.data1,   args.data2,   args.data3,   args.data4,   args.data5]
 
     systems = []
     curves  = []

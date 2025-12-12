@@ -37,7 +37,10 @@ if __name__ == '__main__':
 
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SILVER.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SOYMEAL.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/EU-BANKS.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 JGB-SGX-mini.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/JGB-SGX-mini#20251200.parquet"
+    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/EU-BANKS#20251200.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/JGB-SGX-mini#20260300.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SILVER#20260300.parquet"
     a = pd.read_parquet(path)
     print(a)

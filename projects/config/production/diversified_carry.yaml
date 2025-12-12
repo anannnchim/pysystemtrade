@@ -4,8 +4,9 @@
 
 # This will affect capital by portfolio multiplier
 #start_date: "2019-10-01"
-#start_date: "2024-10-01"
+start_date: "2024-10-01"
 #start_date: "2000-10-01"
+#start_date: "2010-10-01"
 # Capital correction
 #
 percentage_vol_target: 20
@@ -46,58 +47,58 @@ forecast_weights:
 
     # 1. FX
      AUD_micro:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      GBP_micro:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      MXP:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
 
      CORN_mini:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      WHEAT_mini:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
 
      CRUDE_W_micro:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      IRON:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
 
      JGB-SGX-mini:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      MUMMY:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
      EU-BANKS:
-      carry5: 0
-      carry20: 0.33
-      carry60: 0.33
-      carry120: 0.33
+      carry5: 0.25
+      carry20: 0.25
+      carry60: 0.25
+      carry120: 0.25
 forecast_div_multiplier:
 
     # FX
