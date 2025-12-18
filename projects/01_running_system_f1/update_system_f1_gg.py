@@ -7,7 +7,7 @@ from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
-CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
+CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_f1/private_config.yaml"
 SHEET_URL = "https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1522926356#gid=1522926356"
 config = Config(CONFIG_PATH)
 data = csvFuturesSimData()

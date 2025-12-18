@@ -12,7 +12,7 @@ from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # Configuration
-CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
+CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_f1/private_config.yaml"
 SHEET_URL = "https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1742643022#gid=1742643022"
 INSTRUMENTS = ["S50", "USD", "GF10", "EURUSD", "SVF", "USDJPY"]
 
