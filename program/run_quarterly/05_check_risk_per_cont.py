@@ -12,7 +12,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # === CONFIGURATION ===
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/sytem_f1.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_f1/private_config.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -65,14 +65,22 @@ if __name__ == '__main__':
             daily_risk = latest_scalar(daily_risk_ts)
             cont_value = latest_scalar(cont_value_ts)
 
-            risk_pct = (ann_risk / cont_value * 100.0
-                        if pd.notna(ann_risk) and pd.notna(cont_value) and cont_value != 0
+            # ✅ multiplier (base ccy per block move)
+            multiplier = latest_scalar(s.rawdata.get_value_of_block_price_move(instr))
+
+            # ✅ scale risks by multiplier
+            ann_risk_adj = ann_risk * multiplier if pd.notna(ann_risk) and pd.notna(multiplier) else np.nan
+            daily_risk_adj = daily_risk * multiplier if pd.notna(daily_risk) and pd.notna(multiplier) else np.nan
+
+            risk_pct = (ann_risk_adj / cont_value * 100.0
+                        if pd.notna(ann_risk_adj) and pd.notna(cont_value) and cont_value != 0
                         else np.nan)
 
             rows.append({
                 "Instrument": instr,
-                "Annual Risk / Contract (base ccy)": round(ann_risk, 2) if pd.notna(ann_risk) else None,
-                "Daily Risk / Contract (base ccy)": round(daily_risk, 2) if pd.notna(daily_risk) else None,
+                "Multiplier (block move value, base ccy)": round(multiplier, 6) if pd.notna(multiplier) else None,
+                "Annual Risk / Contract (base ccy)": round(ann_risk_adj, 2) if pd.notna(ann_risk_adj) else None,
+                "Daily Risk / Contract (base ccy)": round(daily_risk_adj, 2) if pd.notna(daily_risk_adj) else None,
                 "Contract Value (base ccy)": round(cont_value, 2) if pd.notna(cont_value) else None,
                 "Annual Risk % of Contract Value": round(risk_pct, 3) if pd.notna(risk_pct) else None,
             })
