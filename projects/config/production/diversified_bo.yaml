@@ -210,3 +210,4 @@ buffer_size: 0.10
 #  max_risk_fraction_stdev_risk: 3.75 # Or 75%
 #  max_risk_limit_sum_abs_risk: 3.25 # Or 65%
 #  max_risk_leverage: 12 # From backtest
+
