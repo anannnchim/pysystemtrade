@@ -41,9 +41,12 @@ instrument_weights:
   SOYBEAN_mini: 0.0069
   RICE: 0.0069
   SOYMEAL: 0.0069
+  OATIES: 1
 
   # Soft
   MILLWHEAT: 0.04
+  RUBBER: 1
+  LUMBER-new: 1
 
   # Meats
   LEANHOG: 0.02
@@ -75,9 +78,11 @@ instrument_weights:
 
   # EU
   OAT: 0.06
+  BTP3: 1
 
   # US
   US2: 0.0111
+  US3: 1
   US5: 0.0111
   US10: 0.0111
   CAD2: 0.0111
@@ -90,15 +95,18 @@ instrument_weights:
 
   # EU
   EU-BANKS: 0.06
+  DAX: 1
 
   # US
   RUSSELL: 0.02
   NASDAQ_micro: 0.02
   SP500_micro: 0.02
+  DOW: 1
 
   # Asia
   MUMMY: 0.033
   FTSECHINAA: 0.033
+  TOPIX: 1
 
 
 use_instrument_div_mult_estimates: True

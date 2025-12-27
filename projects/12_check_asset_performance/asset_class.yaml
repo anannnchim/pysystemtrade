@@ -51,7 +51,14 @@ instrument_weights:
   NZD: 1
   US2: 1
   SP500_micro: 1
-
+  US3: 1
+  RUBBER: 1
+  LUMBER-new: 1
+  OATIES: 1
+  BTP3: 1
+  TOPIX: 1
+  DAX: 1
+  DOW: 1
 
 
 # ===== DEFAULT ZONE =====
