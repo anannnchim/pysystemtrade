@@ -14,8 +14,8 @@ data = csvFuturesSimData()
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/new_sytem_f1.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/static_two.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
 
 s = futures_system(config=config, data=data)
 

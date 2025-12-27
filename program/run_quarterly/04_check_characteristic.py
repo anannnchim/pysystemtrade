@@ -14,8 +14,9 @@ import matplotlib.dates as mdates  # (kept in case you use it later)
 data = csvFuturesSimData()
 # data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
+# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml")
 s = futures_system(config=config, data=data)
 
 pd.set_option('display.max_columns', None)
