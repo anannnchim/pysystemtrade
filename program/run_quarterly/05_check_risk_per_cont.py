@@ -10,9 +10,9 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # === CONFIGURATION ===
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_f1/private_config.yaml")
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml")
 
 s = futures_system(config=config, data=data)
 

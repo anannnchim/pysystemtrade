@@ -11,10 +11,7 @@ import matplotlib.pyplot as plt
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/new_sytem_f1.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml")
 
 s = futures_system(config=config, data=data)
 

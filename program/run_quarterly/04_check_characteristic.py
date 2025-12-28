@@ -11,8 +11,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.dates as mdates  # (kept in case you use it later)
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")

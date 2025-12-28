@@ -50,9 +50,9 @@ Metals:
   Crypto:
     - ETHER-micro
 
-Bonds: # (Region based), (Type: Gov, Corp, STIR, Swap)
+Bonds: # (Region based), (Or Type: Gov, Corp, STIR, Swap)
   EU:
-    - OAT # French
+    - OAT # 10French
     - BTP3 # Italian
   US:
     - US2

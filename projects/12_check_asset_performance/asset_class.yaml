@@ -1,10 +1,10 @@
 
 # ===== INPUT ZONE =====
-#start_date: "2019-10-01"
-start_date: "2024-10-01"
+start_date: "2019-10-01"
+#start_date: "2024-10-01"
 #start_date: "2000-10-01"
 percentage_vol_target: 20
-notional_trading_capital: 10000000
+notional_trading_capital: 100000000000
 
 # Full universe here (the script will subset per class and set equal weights)
 instrument_weights:
@@ -67,10 +67,16 @@ forecast_weights:
     ewmac2_8: 0
     ewmac4_16: 0
     ewmac8_32: 0
-    ewmac16_64: 0.33
-    ewmac32_128: 0.33
-    ewmac64_256: 0.33
-forecast_div_multiplier: 1.08
+    ewmac16_64: 0.17
+    ewmac32_128: 0.17
+    ewmac64_256: 0.17
+    breakout10: 0
+    breakout20: 0
+    breakout40: 0
+    breakout80: 0.17
+    breakout160: 0.17
+    breakout320: 0.17
+forecast_div_multiplier: 1.27
 base_currency: "USD"
 capital_multiplier:
   func: syscore.capital.full_compounding
@@ -118,6 +124,48 @@ trading_rules:
       - "rawdata.daily_returns_volatility"
     other_args: { Lfast: 64, Lslow: 256 }
     forecast_scalar: 1.87
+  breakout10:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 10
+    forecast_scalars: 0.60
+  breakout20:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 20
+    forecast_scalars: 0.67
+  breakout40:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 40
+    forecast_scalars: 0.70
+  breakout80:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 80
+    forecast_scalars: 0.73
+  breakout160:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 160
+    forecast_scalars: 0.74
+  breakout320:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 320
+    forecast_scalars: 0.74
 
 forecast_cap: 20.0
 

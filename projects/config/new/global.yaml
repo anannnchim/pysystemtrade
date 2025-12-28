@@ -5,6 +5,7 @@
 # This will affect capital by portfolio multiplier
 #start_date: "2015-10-01"
 #start_date: "2024-10-01"
+start_date: "2019-10-01"
 #start_date: "2000-10-01"
 # Capital correction
 #
@@ -35,18 +36,18 @@ instrument_weights:
   # 2. Ags:
 
   # Grain
-  CORN_mini: 0.0069
-  WHEAT_mini: 0.0069
-  CANOLA: 0.0069
-  SOYBEAN_mini: 0.0069
-  RICE: 0.0069
-  SOYMEAL: 0.0069
-  OATIES: 1
+  CORN_mini: 0.0059
+  WHEAT_mini: 0.0059
+  CANOLA: 0.0059
+  SOYBEAN_mini: 0.0059
+  RICE: 0.0059
+  SOYMEAL: 0.0059
+  OATIES: 0.0059
 
   # Soft
-  MILLWHEAT: 0.04
-  RUBBER: 1
-  LUMBER-new: 1
+  MILLWHEAT: 0.0138
+  RUBBER: 0.0138
+  LUMBER-new: 0.0138
 
   # Meats
   LEANHOG: 0.02
@@ -77,36 +78,36 @@ instrument_weights:
   # 5. Bond: Asia
 
   # EU
-  OAT: 0.06
-  BTP3: 1
+  OAT: 0.0027
+  BTP3: 0.0027
 
   # US
-  US2: 0.0111
-  US3: 1
-  US5: 0.0111
-  US10: 0.0111
-  CAD2: 0.0111
-  CAD10: 0.0111
+  US2: 0.009
+  US3: 0.009
+  US5: 0.009
+  US10: 0.009
+  CAD2: 0.009
+  CAD10: 0.009
 
   # Asia
-  JGB-SGX-mini: 0.06
+  JGB-SGX-mini: 0.055
 
   # 6. Equity: Asia
 
   # EU
-  EU-BANKS: 0.06
-  DAX: 1
+  EU-BANKS: 0.027
+  DAX: 0.027
 
   # US
-  RUSSELL: 0.02
-  NASDAQ_micro: 0.02
-  SP500_micro: 0.02
-  DOW: 1
+  RUSSELL: 0.0138
+  NASDAQ_micro: 0.0138
+  SP500_micro: 0.0138
+  DOW: 0.0138
 
   # Asia
-  MUMMY: 0.033
-  FTSECHINAA: 0.033
-  TOPIX: 1
+  MUMMY: 0.0185
+  FTSECHINAA: 0.0185
+  TOPIX: 0.0185
 
 
 use_instrument_div_mult_estimates: True

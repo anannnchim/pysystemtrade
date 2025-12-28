@@ -6,14 +6,15 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/tactical.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified_comb_ema.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v2.yaml"
+DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml"
+DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v4.yaml"
+
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml")
 s = futures_system(config=config, data=data)
 
 
