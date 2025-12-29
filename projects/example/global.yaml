@@ -1,0 +1,202 @@
+start_date: "2024-10-01"
+#start_date: "2019-10-01"
+#start_date: "2015-10-01"
+#start_date: "2000-10-01"
+
+# Capital correction
+#
+percentage_vol_target: 25
+notional_trading_capital: 100000000
+
+instrument_weights:
+
+  # =========================
+  # 1. FX (2 sub-classes)
+  # =========================
+  # Total FX risk = 0.1667
+  # Each sub = 0.08335
+
+  # EM (4)
+  MXP: 0.02084
+  KRWUSD_mini: 0.02084
+  BRE: 0.02084
+  ZAR: 0.02084
+
+  # DEV (5)
+  GBP_micro: 0.01667
+  AUD_micro: 0.01667
+  EUR_micro: 0.01667
+  CAD_micro: 0.01667
+  NZD: 0.01667
+
+
+  # =========================
+  # 2. Ags (4 sub-classes)
+  # =========================
+  # Each sub = 0.04167
+
+  # Grain (7)
+  CORN_mini: 0.00595
+  WHEAT_mini: 0.00595
+  CANOLA: 0.00595
+  SOYBEAN_mini: 0.00595
+  RICE: 0.00595
+  SOYMEAL: 0.00595
+  OATIES: 0.00595
+
+  # Soft (3)
+  MILLWHEAT: 0.01389
+  RUBBER: 0.01389
+  LUMBER-new: 0.01389
+
+  # Meats (2)
+  LEANHOG: 0.02083
+  LIVECOW: 0.02083
+
+  # Index (1)
+  BBCOMM: 0.04167
+
+
+  # =========================
+  # 3. Oil & Gas (2 sub-classes)
+  # =========================
+  # Each = 0.08335
+
+  CRUDE_W_micro: 0.08335
+  GAS_US_mini: 0.08335
+
+
+  # =========================
+  # 4. Metals (3 sub-classes)
+  # =========================
+  # Each = 0.05556
+
+  # Precious (3)
+  GOLD_micro: 0.01852
+  SILVER: 0.01852
+  PLAT: 0.01852
+
+  # Industrial (2)
+  IRON: 0.02778
+  COPPER-micro: 0.02778
+
+  # Crypto (1)
+  ETHER-micro: 0.05556
+
+
+  # =========================
+  # 5. Bonds (3 regions)
+  # =========================
+  # Each = 0.05556
+
+  # EU (2)
+  OAT: 0.02778
+  BTP3: 0.02778
+
+  # US (6)
+  US2: 0.00926
+  US3: 0.00926
+  US5: 0.00926
+  US10: 0.00926
+  CAD2: 0.00926
+  CAD10: 0.00926
+
+  # Asia (1)
+  JGB-SGX-mini: 0.05556
+
+
+  # =========================
+  # 6. Equity (3 regions)
+  # =========================
+  # Each = 0.05556
+
+  # EU (2)
+  EU-BANKS: 0.02778
+  DAX: 0.02778
+
+  # US (4)
+  RUSSELL: 0.01389
+  NASDAQ_micro: 0.01389
+  SP500_micro: 0.01389
+  DOW: 0.01389
+
+  # Asia (3)
+  MUMMY: 0.01852
+  FTSECHINAA: 0.01852
+  TOPIX: 0.01852
+
+
+
+use_instrument_div_mult_estimates: True
+#instrument_div_multiplier: 2.1
+forecast_weights:
+  breakout10: 0
+  breakout20: 0
+  breakout40: 0.25
+  breakout80: 0.25
+  breakout160: 0.25
+  breakout320: 0.25
+forecast_div_multiplier: 1.17
+
+#
+# forecast combination
+#
+
+
+# DEFAULT ZONE ---------------------------------
+
+trading_rules:
+  breakout10:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 10
+    forecast_scalars: 0.60
+  breakout20:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 20
+    forecast_scalars: 0.67
+  breakout40:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 40
+    forecast_scalars: 0.70
+  breakout80:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 80
+    forecast_scalars: 0.73
+  breakout160:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 160
+    forecast_scalars: 0.74
+  breakout320:
+    function: systems.provided.rules.breakout.breakout
+    data:
+      - "rawdata.get_daily_prices"
+    other_args:
+      lookback: 320
+    forecast_scalars: 0.74
+
+forecast_cap: 20.0
+
+# Buffer
+buffer_trade_to_edge: True
+buffer_method: forecast
+buffer_size: 0.10
+
+# Capital
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding

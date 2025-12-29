@@ -13,22 +13,22 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults so it runs directly from PyCharm "Run" =====
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v2.yaml"
-DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml"
-DEFAULT_CONFIG4 = ""
+DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml"
+DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_carry.yaml"
+DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_ema.yaml"
+DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"
 DEFAULT_CONFIG5 = ""
 
-DEFAULT_LABEL1  = "Comb"
-DEFAULT_LABEL2  = "EMA"
-DEFAULT_LABEL3  = "BO"
-DEFAULT_LABEL4  = "10X"
+DEFAULT_LABEL1  = "BO"
+DEFAULT_LABEL2  = "Carry"
+DEFAULT_LABEL3  = "EMA"
+DEFAULT_LABEL4  = "Combo"
 DEFAULT_LABEL5  = "BreakoutEMACarry"
 
 DEFAULT_DATA1   = "db"   # "csv" or "db"
 DEFAULT_DATA2   = "db"
 DEFAULT_DATA3   = "db"
-DEFAULT_DATA4   = "csv"
+DEFAULT_DATA4   = "db"
 DEFAULT_DATA5   = "db"
 
 # ===== Builders & helpers =====

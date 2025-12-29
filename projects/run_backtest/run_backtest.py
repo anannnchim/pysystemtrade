@@ -9,12 +9,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-DEFAULT_CONFIG1 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml"
-DEFAULT_CONFIG2 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v2.yaml"
-DEFAULT_CONFIG3 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml"
-DEFAULT_CONFIG4 = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v4.yaml"
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml")
 s = futures_system(config=config, data=data)
 
 
