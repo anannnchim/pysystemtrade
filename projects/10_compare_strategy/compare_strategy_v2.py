@@ -2,69 +2,102 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sysdata.config.configdata import Config
-from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # ====== DATA SOURCE ======
-# data = csvFuturesSimData()
 data = dbFuturesSimData()
 
 
-# ====== CONFIG FILES ======
-CONFIG1 = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml")
-CONFIG2 = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_carry.yaml")
+# ====== STRATEGY DEFINITIONS ======
+STRATEGIES = [
+    ("GLOBAL",    "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml"),
+    ("BO_NEW",   "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/diversified/config_bo.yaml"),
+    # ("Carry", "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_carry.yaml"),
+    # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
+]
+
+# STRATEGIES = [
+#     ("BO",    "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml"),
+#     ("EMA",   "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_ema.yaml"),
+#     # ("Carry", "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_carry.yaml"),
+#     # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
+# ]
 
 
-# ====== BUILD SYSTEMS ======
-s1 = futures_system(config=CONFIG1, data=data)
-s2 = futures_system(config=CONFIG2, data=data)
-
-# ====== LABEL NAMES ======
-s1_name = "Global"
-s2_name = "Equally Weighted"
-
-
+# ==============================
+# HELPERS
+# ==============================
 def stats_to_series(stats_obj):
     """Convert percent.stats() output to pandas Series"""
-
-    tuples_list = stats_obj[0]  # only first element contains stats
-    d = {k: float(v) for k, v in tuples_list}
-    return pd.Series(d)
+    tuples_list = stats_obj[0]
+    return pd.Series({k: float(v) for k, v in tuples_list})
 
 
-if __name__ == '__main__':
+def build_systems(strategies, data):
+    systems = {}
+    for name, path in strategies:
+        cfg = Config(path)
+        systems[name] = futures_system(config=cfg, data=data)
+    return systems
+
+
+def format_stats_table(df):
+    """Make stats table human-readable"""
+
+    pct_rows = {
+        "min", "max", "median", "mean", "std",
+        "ann_mean", "ann_std", "avg_drawdown", "time_in_drawdown"
+    }
+
+    ratio_rows = {"sharpe", "sortino", "calmar", "skew"}
+
+    formatted = df.copy()
+
+    for row in formatted.index:
+        if row in pct_rows:
+            formatted.loc[row] = formatted.loc[row].map(lambda x: f"{x:,.2f}%")
+        elif row in ratio_rows:
+            formatted.loc[row] = formatted.loc[row].map(lambda x: f"{x:.2f}")
+        else:
+            formatted.loc[row] = formatted.loc[row].map(lambda x: f"{x:,.0f}")
+
+    return formatted
+
+
+# ==============================
+# MAIN
+# ==============================
+if __name__ == "__main__":
+
+    # 0) BUILD SYSTEMS
+    systems = build_systems(STRATEGIES, data)
 
     # ==============================
     # 1) SUMMARY STATS COMPARISON
     # ==============================
-    raw_stats1 = s1.accounts.portfolio().percent.stats()
-    raw_stats2 = s2.accounts.portfolio().percent.stats()
+    stats_table = {}
 
-    stats1 = stats_to_series(raw_stats1)
-    stats2 = stats_to_series(raw_stats2)
+    for name, sys in systems.items():
+        raw_stats = sys.accounts.portfolio().percent.stats()
+        stats_table[name] = stats_to_series(raw_stats)
 
-    comparison_table = pd.concat(
-        {
-            s1_name: stats1,
-            s2_name: stats2
-        },
-        axis=1
-    )
+    comparison_table = pd.concat(stats_table, axis=1)
+    comparison_table_fmt = format_stats_table(comparison_table)
 
     print("\n==== PERFORMANCE STATISTICS COMPARISON ====\n")
-    print(comparison_table)
+    print(comparison_table_fmt)
 
     # ==============================
     # 2) PERFORMANCE CURVE COMPARISON
     # ==============================
-    curve1 = s1.accounts.portfolio_with_multiplier().net.percent.curve()
-    curve2 = s2.accounts.portfolio_with_multiplier().net.percent.curve()
-
     plt.figure(figsize=(11, 6))
-    plt.plot(curve1, label=s1_name)
-    plt.plot(curve2, label=s2_name)
+
+    for name, sys in systems.items():
+        curve = sys.accounts.portfolio_with_multiplier().net.percent.curve()
+        plt.plot(curve, label=name)
+
     plt.title("Net % Performance Comparison")
     plt.xlabel("Date")
     plt.ylabel("Net %")
@@ -74,17 +107,18 @@ if __name__ == '__main__':
     plt.show()
 
     # ==============================
-    # 3) DRAWDOWN SERIES COMPARISON
+    # 3) DRAWDOWN STATISTICS
     # ==============================
-    dd1 = s1.accounts.portfolio().percent.drawdown()
-    dd2 = s2.accounts.portfolio().percent.drawdown()
+    dd_stats = {}
 
-    dd_table = pd.DataFrame({
-        f"{s1_name} MaxDD": [dd1.min()],
-        f"{s2_name} MaxDD": [dd2.min()],
-        f"{s1_name} AvgDD": [dd1.mean()],
-        f"{s2_name} AvgDD": [dd2.mean()],
-    })
+    for name, sys in systems.items():
+        dd = sys.accounts.portfolio().percent.drawdown()
+        dd_stats[name] = {
+            "Max Drawdown (%)": f"{dd.min():,.2f}%",
+            "Avg Drawdown (%)": f"{dd.mean():,.2f}%",
+        }
+
+    dd_table = pd.DataFrame(dd_stats).T
 
     print("\n==== DRAWDOWN STATISTICS ====\n")
     print(dd_table)
@@ -93,8 +127,11 @@ if __name__ == '__main__':
     # 4) DRAWDOWN CURVE PLOT
     # ==============================
     plt.figure(figsize=(11, 6))
-    plt.plot(dd1, label=f"{s1_name} Drawdown")
-    plt.plot(dd2, label=f"{s2_name} Drawdown")
+
+    for name, sys in systems.items():
+        dd = sys.accounts.portfolio().percent.drawdown()
+        plt.plot(dd, label=f"{name} Drawdown")
+
     plt.title("Portfolio Drawdown (%)")
     plt.xlabel("Date")
     plt.ylabel("Drawdown %")

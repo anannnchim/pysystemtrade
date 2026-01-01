@@ -38,7 +38,7 @@ OilGas:
     - CRUDE_W_micro
   Gas:
     - GAS_US_mini
-  #Product
+  #Product (ETHANOL, HEATING OIL)
 Metals:
   Industrial:
     - IRON
@@ -50,7 +50,7 @@ Metals:
   Crypto:
     - ETHER-micro
 
-Bonds: # (Region based), (Or Type: Gov, Corp, STIR, Swap)
+Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
   EU:
     - OAT # 10French
     - BTP3 # Italian
