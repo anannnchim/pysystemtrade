@@ -10,7 +10,7 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = dbFuturesSimData()
 
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml")
+config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
 s = futures_system(config=config, data=data)
 
 
