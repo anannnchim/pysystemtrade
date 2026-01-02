@@ -13,10 +13,10 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 from systems.risk_overlay import get_risk_multiplier
 
 # CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml"
-CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml"
+CONFIG_PATH = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/diversified/config_bo.yaml"
 config = Config(CONFIG_PATH)
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
 s = futures_system(config=config, data=data)
 
