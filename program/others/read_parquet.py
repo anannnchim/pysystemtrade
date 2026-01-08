@@ -6,7 +6,7 @@ from sysproduction.data.capital import dataCapital
 from sysproduction.data.positions import diagPositions
 
 pd.set_option('display.max_columns', None)
-# pd.set_option('display.max_rows', None)
+pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
@@ -39,11 +39,11 @@ if __name__ == '__main__':
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/SOYMEAL.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/strategy_positions/system_01 JGB-SGX-mini.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/JGB-SGX-mini#20251200.parquet"
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/BTP3.parquet"
+    # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/BTP3.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/contract_positions/JGB-SGX-mini#20260300.parquet"
     # path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@SILVER#20260300.parquet"
-    a = pd.read_parquet(path).tail(20)
-    print(a)
+    # a = pd.read_parquet(path).tail(20)
+    # print(a)
     # a.plot()
     # plt.show()
 
@@ -64,8 +64,10 @@ if __name__ == '__main__':
     # print(df)
 
     # Note - Delate second last row in capital
-    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/capital/system_01.parquet"
+    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/GOLD_micro.parquet"
     df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
     # df = df.drop(df.index[-2])
     # df.to_parquet(file_path, index=True, engine="pyarrow")
     print(df)
+    df.plot()
+    plt.show()

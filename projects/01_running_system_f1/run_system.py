@@ -142,18 +142,24 @@ def main():
     target_position_df = calculate_target_positions()
     print(target_position_df.tail(5))
 
-    # Interactive instrument lookup
-    while True:
-        instrument = input("\nEnter instrument code (S50, USD, GF10, EURUSD) or press Enter to exit: ").strip().upper()
+    # # Interactive instrument lookup
+    # while True:
+    #     instrument = input("\nEnter instrument code (S50, USD, GF10, EURUSD) or press Enter to exit: ").strip().upper()
+    #
+    #     if instrument == "":
+    #         print("Exiting program.")
+    #         break  # Exit the loop if Enter is pressed
+    #
+    #     if instrument in INSTRUMENTS:
+    #         get_instrument_target_position(instrument)
+    #     else:
+    #         print("Invalid instrument code. Please enter a valid instrument (S50, USD, GF10, EURUSD).")
+    # Process all instruments automatically
+    for instrument in INSTRUMENTS:
+        print(instrument)
+        get_instrument_target_position(instrument)
 
-        if instrument == "":
-            print("Exiting program.")
-            break  # Exit the loop if Enter is pressed
-
-        if instrument in INSTRUMENTS:
-            get_instrument_target_position(instrument)
-        else:
-            print("Invalid instrument code. Please enter a valid instrument (S50, USD, GF10, EURUSD).")
+    print("Completed processing all instruments.")
 
 
 if __name__ == "__main__":
