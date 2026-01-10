@@ -7,14 +7,14 @@
 
 # Note: B) Program for running tasks: Monday to Friday (11 - 11:30).
 # 1) Update Database
-# 00 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
-# 05 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_price_updates  >> $ECHO_PATH/run_daily_price_updates.txt 2>&1
-# 10 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_update_multiple_adjusted_prices  >> $ECHO_PATH/run_daily_update_multiple_adjusted_prices.txt 2>&1
+# 30 07  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_fx_and_contract_updates  >> $ECHO_PATH/run_daily_fx_and_contract_updates.txt 2>&1
+# 50 07  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_price_updates  >> $ECHO_PATH/run_daily_price_updates.txt 2>&1
+# 28 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_daily_update_multiple_adjusted_prices  >> $ECHO_PATH/run_daily_update_multiple_adjusted_prices.txt 2>&1
 
 # 2) Update System
-# 13 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_capital_update  >> $ECHO_PATH/run_capital_update.txt 2>&1
-# 16 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_systems  >> $ECHO_PATH/run_systems.txt 2>&1
-# 19 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_strategy_order_generator  >> $ECHO_PATH/run_strategy_order_generator.txt 2>&1
+# 35 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_capital_update  >> $ECHO_PATH/run_capital_update.txt 2>&1
+# 37 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_systems  >> $ECHO_PATH/run_systems.txt 2>&1
+# 40 08  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_strategy_order_generator  >> $ECHO_PATH/run_strategy_order_generator.txt 2>&1
 
 # 3) Clean up and report: Or run after run stack?
 # 22 11  * * 1-5     source /Users/nanthawat/PycharmProjects/pysystemtrade/project_env.sh; $SCRIPT_PATH/run_cleaners  >> $ECHO_PATH/run_cleaners.txt 2>&1
@@ -32,3 +32,4 @@
 # NOTE: NOT USE
 # 1. Run system checking everyday
 # 0,15,30,45 * * * * export DISPLAY=:10 && /bin/bash /Users/nanthawat/Desktop/IBCMacos-3.21.1/twsstartmacos.sh >> ~/ibc/logs/cron.log 2>&1
+# 2. Run start_up to reboot, need to set it at the beginning of script
