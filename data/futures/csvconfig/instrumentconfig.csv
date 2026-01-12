@@ -394,8 +394,8 @@ RAPESEED,European Rapeseed Future,50,EUR,Ags,2,0,0,EMEA
 REDWHEAT,Hard Red Winter Wheat -KCBOT-,50,USD,Ags,2.97,0,0,US
 RICE,Rough Rice,2000,USD,Ags,3,0,0,US
 ROBUSTA,Robusta Coffee,10,USD,Ags,3,0,0,EMEA
-RUBBER,TSR 20 Rubber,50,USD,Other,2.85,0,0,ASIA
-RUBBER-RSS,Ribbed Smoked Sheet (RSS) No.3 Rubber,5000,JPY,Other,0,0,0,ASIA
+RUBBER,TSR 20 Rubber,50,USD,Ags,2.85,0,0,ASIA
+RUBBER-RSS,Ribbed Smoked Sheet (RSS) No.3 Rubber,5000,JPY,Ags,0,0,0,ASIA
 RUR,RURUSD currency,2500000,USD,FX,2.47,0,0,US
 RUSSELL,Micro E-Mini Russell 2000 Index,5,USD,Equity,0.62,0,0,US
 RUSSELL_mini,E-Mini Russell 2000 Index,50,USD,Equity,2.2,0,0,US
