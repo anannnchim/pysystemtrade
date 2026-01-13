@@ -64,7 +64,7 @@ if __name__ == '__main__':
     # print(df)
 
     # Note - Delate second last row in capital
-    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads/GOLD_micro.parquet"
+    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN_mini.parquet"
     df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
     # df = df.drop(df.index[-2])
     # df.to_parquet(file_path, index=True, engine="pyarrow")
