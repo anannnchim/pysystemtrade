@@ -6,7 +6,7 @@ from sysproduction.data.capital import dataCapital
 from sysproduction.data.positions import diagPositions
 
 pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
+# pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 if __name__ == '__main__':
@@ -64,7 +64,15 @@ if __name__ == '__main__':
     # print(df)
 
     # Note - Delate second last row in capital
-    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_multiple_prices/CORN_mini.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@MXP#20260300.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@WHEAT_mini#20260300.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@CRUDE_W_micro#20260400.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@GOLD_micro#20260400.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@EU-BANKS#20260300.parquet"
+    file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@WHEAT_mini#20260300.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_adjusted_prices/MUMMY.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@MUMMY#20260300.parquet"
+    # file_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/futures_contract_prices/Day@IRON#20260400.parquet"
     df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
     # df = df.drop(df.index[-2])
     # df.to_parquet(file_path, index=True, engine="pyarrow")
