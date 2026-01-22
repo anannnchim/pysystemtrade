@@ -4,23 +4,23 @@ from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
-# INPUT
-config = Config("private/systems/old/config_v1.yaml")
-
-# Init objects
-db_data = dbFuturesSimData()
-csv_data = csvFuturesSimData()
-
-s = futures_system(config=config, data=db_data)
-
 
 if __name__ == '__main__':
 
-    input("Check csv data")
+    input("1. Check csv data")
+    csv_data = csvFuturesSimData()
     print(f'Instrument List', csv_data)
 
+    input("2. Check db data")
+    db_data = dbFuturesSimData()
+    print(f'Instrument List', db_data)
 
-    input("Checking DB & Private config")
+    input("3. Check private path")
+    config = Config("private/systems/old/config_v1.yaml")
+    print(config)
+
+    input("4. Check backtesting")
+    s = futures_system(config=config, data=db_data)
     s.accounts.portfolio().net.percent.curve().plot(title="System Net % Performance")
     plt.xlabel("Date");
     plt.ylabel("%")
