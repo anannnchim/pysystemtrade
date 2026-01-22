@@ -10,6 +10,8 @@ if __name__ == '__main__':
     input("1. Check csv data")
     csv_data = csvFuturesSimData()
     print(f'Instrument List', csv_data)
+    print(f'Instrument List', csv_data.get_raw_cost_data("MXP"))
+    print(f'Instrument List', csv_data.get_instrument_currency("MXP"))
 
     input("2. Check db data")
     db_data = dbFuturesSimData()
