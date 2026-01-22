@@ -7,7 +7,11 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 # === CONFIG ===
-BASE_DIR = Path("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet/spreads")
+# This file is somewhere inside pysystemtrade/
+# We resolve the project root dynamically
+PROJECT_ROOT = Path(__file__).resolve().parents[2]  # adjust if script depth changes
+BASE_DIR = PROJECT_ROOT / "data" / "parquet" / "spreads"
+
 PARQUET_ENGINE = "pyarrow"
 
 
