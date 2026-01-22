@@ -1,5 +1,0 @@
-Instrument,IBCode,BarchartCode,TVCode,Exchange,Underlying,AssetClass,SubClass,Currency
-US3,Z3N,ZE,,CBOT,US 3 year bond note,Bond,Gov,USD
-RUBBER,TSR20,W2,,SGX,TSR 20 Rubber,Ags,Soft,USD
-LUMBER-new,LBR,LB,,CME,Random Length Lumber - mini,,,USD
-OATIES,ZO,ZO,,CBOT,Oat Futures,Ags,Grain,USD
