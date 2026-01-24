@@ -1,18 +1,11 @@
-"""
-This one will be used to work with Google sheet
-
-FYI
-1. Sheet must be shared to manager@automated-system-f1-th.iam.gserviceaccount.com
-"""
-
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
+from oauth2client.service_account import ServiceAccountCredentials
+from private.gg_config_path import JSON_KEYFILE_PATH
+
 
 SCOPE = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-
-JSON_KEYFILE_PATH = '/Users/nanthawat/Desktop/key/google/system-f1-th/automated-system-f1-th-key.json'
 
 
 class GoogleSheetAccess:
@@ -155,22 +148,3 @@ def convert_to_numeric(value_list):
     :return: List of floats.
     """
     return [float(row[0].replace(',', '')) for row in value_list if row]
-
-
-# Usage example
-if __name__ == "__main__":
-
-    # Global variables
-    sheet_url = 'https://docs.google.com/spreadsheets/d/13-e4A7HPIZipIGnpYDSyrtFWX6q9fQLPV3kPzsiIxXQ/edit?gid=501859678#gid=501859678'
-
-    # Initialize the class
-    sheet_access = GoogleSheetAccess()
-
-    # Data
-    df = pd.DataFrame({
-        "Time": [1,2]
-    })
-    print(df)
-
-    # Write to the sheet.
-    sheet_access.write_dataframe_to_sheet(sheet_url, "Sheet19", df, start_cell='A1')

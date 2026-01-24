@@ -5,13 +5,14 @@ from program.googlesheet.googlesheet_access import GoogleSheetAccess
 from sysdata.mongodb.mongo_margin import mongoMarginData
 from sysdata.parquet.parquet_access import ParquetAccess
 from sysdata.parquet.parquet_capital import parquetCapitalData
+from private.gg_config_path import csv_gg_path, parquet_store
 
 
 sheet_access = GoogleSheetAccess()
-parquet_access = ParquetAccess("/Users/nanthawat/PycharmProjects/pysystemtrade/data/parquet")
+parquet_access = ParquetAccess(parquet_store)
 capital_data = parquetCapitalData(parquet_access)
 mongo_margin_data = mongoMarginData()
-csv_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/private/csv"
+
 
 
 def update_market_monitoring(s, sheet_url):
@@ -102,10 +103,10 @@ def update_accounting_ib(sheet_url, account_summary):
     tws_data = tws_data.reset_index(drop=True)
 
     # Define CSV path
-    target_file = os.path.join(csv_path, "tws_data.csv")
+    target_file = os.path.join(csv_gg_path, "tws_data.csv")
 
     # Ensure the directory exists
-    os.makedirs(csv_path, exist_ok=True)
+    os.makedirs(csv_gg_path, exist_ok=True)
 
     # Extract date from tws_data
     tws_date = pd.to_datetime(tws_data["Date"]).dt.strftime('%Y-%m-%d').values[0]

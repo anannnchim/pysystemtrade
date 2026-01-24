@@ -1,23 +1,19 @@
-"""
-Objective: Verify backtest vs live trading equity curve
-System: System F1
-"""
 import pandas as pd
+from private.gg_config_path import SYSTEM_F1_SHEET_URL
 from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 
-# INPUT
-sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1248180211#gid=1248180211'
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+
+config = Config("private/systems/system_f1/private_config.yaml")
+sheet_url = SYSTEM_F1_SHEET_URL
 start_date = "2025-02-03"
 
 data = csvFuturesSimData()
 s = futures_system(config=config, data=data)
-
-# Initialize data source
 sheet_access = GoogleSheetAccess()
+
 
 if __name__ == '__main__':
 

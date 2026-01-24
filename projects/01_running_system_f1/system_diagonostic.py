@@ -1,19 +1,17 @@
-"""
-Objective: Access system data.
-
-"""
 import pandas as pd
+from private.gg_config_path import SYSTEM_F1_SHEET_URL
 from sysdata.config.configdata import Config
 from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.pyplot as plt
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
-from systems.risk import Risk
+
 
 # INPUT
-sheet_url = 'https://docs.google.com/spreadsheets/d/17MCh8REdbM1F9J1MOSt_AxWCPZwpntowubivCWTRv94/edit?gid=1248180211#gid=1248180211'
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/01_running_system_f1/config.yaml")
+sheet_url = SYSTEM_F1_SHEET_URL
+config = Config("private/systems/system_f1/private_config.yaml")
 c1 = "GF10"
+
 
 data = csvFuturesSimData()
 s = futures_system(config=config, data=data)
