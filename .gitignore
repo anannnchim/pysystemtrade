@@ -42,3 +42,5 @@ project_env.sh
 
 # private log email
 private.email_logs
+
+sysproduction/data/futures
