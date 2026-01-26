@@ -1,0 +1,9 @@
+######################################################################
+# THIS IS FOR GOOGLESHEET CONNECTION
+# Enter .venv then python -m pip install -r requirements-extra.txt
+######################################################################
+
+google-api-python-client==2.188.0
+gspread>=6.2.1
+oauth2client==4.1.3
+# pyyaml>=6.0
