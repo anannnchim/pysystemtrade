@@ -1,5 +1,6 @@
 from syscore.interactive.input import true_if_answer_is_yes
 from syscore.constants import arg_not_supplied
+from sysdata.config.production_config import get_production_config
 
 from sysobjects.rolls import rollParameters
 from sysobjects.roll_calendars import rollCalendar
@@ -130,6 +131,7 @@ if __name__ == "__main__":
 
     ## MODIFY DATAPATH IF REQUIRED
     # 1. Verify rollconfig.csv that our file and file in github master are matched.
+    output_path = get_production_config().get_element("temp_data_path") + "/roll_calendars"
 
-    output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
-    build_and_write_roll_calendar("PLAT", output_datapath=output_path)
+    # output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
+    build_and_write_roll_calendar("WHEAT", output_datapath=output_path)

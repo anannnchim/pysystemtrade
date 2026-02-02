@@ -26,12 +26,13 @@ if __name__ == '__main__':
     """
     Convert contract price (csv) into parquet for an instrument. 
     """
-    datapath = '/Users/nanthawat/PycharmProjects/bc-utils/data'
+
+    datapath = get_production_config().get_element("temp_data_path")
 
     # Note 1. Convert single instrument
     # # Import prices for a single instrument (CORN)
     init_db_with_split_freq_csv_prices_for_code(
-        "BTP3",
+        "WHEAT",
         datapath=datapath,
         csv_config=BARCHART_CONFIG,
         ignore_duplication=True)  # Muse be false: since we want to add older data.

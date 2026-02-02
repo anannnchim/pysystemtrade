@@ -10,6 +10,7 @@ We then store those multiple prices in: (depending on options)
 - .csv
 """
 from syscore.constants import arg_not_supplied
+from sysdata.config.production_config import get_production_config
 from sysobjects.dict_of_futures_per_contract_prices import (
     dictFuturesContractFinalPrices,
 )
@@ -204,10 +205,10 @@ if __name__ == "__main__":
 
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # change if you want to write elsewhere
-    csv_multiple_data_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/multiple_prices"
+    csv_multiple_data_path = get_production_config().get_element("temp_data_path") + "/multiple_prices"
 
     # Roll calendars
-    csv_roll_data_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
+    csv_roll_data_path = get_production_config().get_element("temp_data_path") + "/roll_calendars"
 
     # modify flags as required
     process_multiple_prices_all_instruments(

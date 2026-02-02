@@ -5,6 +5,7 @@ We then store those adjusted prices in database and/or csv
 
 """
 from syscore.constants import arg_not_supplied
+from sysdata.config.production_config import get_production_config
 from sysdata.csv.csv_adjusted_prices import csvFuturesAdjustedPricesData
 
 from sysobjects.adjusted_prices import futuresAdjustedPrices
@@ -76,7 +77,7 @@ if __name__ == "__main__":
     input("Will overwrite existing prices are you sure?! CTL-C to abort")
     # modify flags and datapath as required
     # path to adjusted price csv:
-    path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/adjusted_prices"
+    path = get_production_config().get_element("temp_data_path") + "/adjusted_prices"
 
 
     process_adjusted_prices_all_instruments(
