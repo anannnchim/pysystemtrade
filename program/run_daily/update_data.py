@@ -24,10 +24,10 @@ if __name__ == "__main__":
     # --------------------------------------------------
 
     scripts = [
-        # ROOT_DIR / "program/run_daily/run_startup.py",
-        # ROOT_DIR / "sysproduction/update_fx_prices.py",
-        # ROOT_DIR / "sysproduction/update_sampled_contracts.py",
-        # ROOT_DIR / "sysproduction/update_historical_prices.py",
+        ROOT_DIR / "program/run_daily/run_startup.py",
+        ROOT_DIR / "sysproduction/update_fx_prices.py",
+        ROOT_DIR / "sysproduction/update_sampled_contracts.py",
+        ROOT_DIR / "sysproduction/update_historical_prices.py",
     ]
 
     run_scripts([str(p) for p in scripts])
