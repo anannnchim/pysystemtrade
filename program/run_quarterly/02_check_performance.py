@@ -7,15 +7,12 @@ import matplotlib.dates as mdates
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# INPUT: Select data and system
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+# INPUT
+config = Config("private/systems/new/diversified/config.yaml")
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/global.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/new/new_sytem_f1.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/static/static_two.yaml")
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/diversified.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
+# Init objects
+data = dbFuturesSimData()
+# data = csvFuturesSimData()
 
 s = futures_system(config=config, data=data)
 
