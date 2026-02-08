@@ -59,6 +59,9 @@ instrument_weights:
   TOPIX: 1
   DAX: 1
   DOW: 1
+  FTSETAIWAN: 1
+  EU-REALESTATE: 1
+  HIGHYIELD: 1
 
 
 # ===== DEFAULT ZONE =====
