@@ -16,8 +16,8 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 # ===== Defaults (edit for click-to-run) =====
-DEFAULT_CONFIG = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/12_check_asset_performance/asset_class.yaml"
-DEFAULT_ASSET_MAP = "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/12_check_asset_performance/asset_class_map.yaml"
+DEFAULT_CONFIG = "/home/anan/AnanProjects/pysystemtrade/projects/12_check_asset_performance/asset_class.yaml"
+DEFAULT_ASSET_MAP = "/home/anan/AnanProjects/pysystemtrade/projects/12_check_asset_performance/asset_class_map.yaml"
 DEFAULT_DATA = "db"          # "csv" or "db"
 DEFAULT_PLOT = True          # plot by default
 DEFAULT_INTERACTIVE = True   # ask questions when click-running in PyCharm

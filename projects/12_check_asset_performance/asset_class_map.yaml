@@ -67,7 +67,6 @@ Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
     - HIGHYIELD
 #    - IG
 
-
   Asia:
     - JGB-SGX-mini
 

@@ -11,12 +11,12 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.dates as mdates  # (kept in case you use it later)
 
 # INPUT: Select data and system
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 s = futures_system(config=config, data=data)
 
 pd.set_option('display.max_columns', None)
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     corr_df = pd.DataFrame(corr_arr, index=labels, columns=labels)
 
     # Save to CSV
-    out_dir = "/Users/nanthawat/PycharmProjects/pysystemtrade/output"
+    out_dir = "/home/anan/AnanProjects/pysystemtrade/output"
     os.makedirs(out_dir, exist_ok=True)
     ts = datetime.now().strftime("%Y-%m-%d_%H%M%S")
     out_path = os.path.join(out_dir, f"correlation_matrix_{ts}.csv")
