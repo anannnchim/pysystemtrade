@@ -27,7 +27,7 @@ if __name__ == '__main__':
     Convert contract price (csv) into parquet for an instrument. 
     """
 
-    datapath = get_production_config().get_element("temp_data_path")
+    datapath = get_production_config().get_element("barchart_path")
 
     # Note 1. Convert single instrument
     # # Import prices for a single instrument (CORN)
