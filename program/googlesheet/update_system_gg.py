@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 from datetime import datetime
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 from sysdata.mongodb.mongo_margin import mongoMarginData
@@ -24,12 +25,7 @@ def update_market_monitoring(s, sheet_url):
         for instrument in s.get_instrument_list()
     })
 
-    # Remove NA (in case we update data late, Japan already have new data but US doesn't)
-    df = df.dropna()
-
-
     df = df.tail(252)  # Keep last 252 rows (1 year of trading days)
-
 
     sheet_access.write_dataframe_to_sheet(sheet_url, "A-Forecast", df, start_cell="B21", header=True)
 
@@ -39,7 +35,7 @@ def update_portfolio_monitoring(s, sheet_url):
     # 1. Target position # FIXME (This should get actual position)
     df_1 = {}
     for instr in s.get_instrument_list():
-        df_1[instr] = s.accounts.get_buffered_position(instr)  # which one to use?
+        df_1[instr] = s.accounts.get_buffered_position(instr)
     df_1 = pd.DataFrame(df_1).dropna().tail(1)
 
     # 2. % Annual Risk
@@ -58,6 +54,7 @@ def update_portfolio_monitoring(s, sheet_url):
     corr_df = s.portfolio.get_instrument_correlation_matrix().corr_list[-1].values
     labels = s.get_instrument_list()
     corr_df = pd.DataFrame(corr_df, index=labels, columns=labels)
+    np.fill_diagonal(corr_df.values, np.nan)
 
     # 5. Last updated price
     df_4 = {}
@@ -68,9 +65,65 @@ def update_portfolio_monitoring(s, sheet_url):
     # Combine
     df = pd.concat([df_1, df_2, df_3, df_4])
 
+    # Reshape
+    df = df.transpose()
+
+    # Extract update date from columns (all identical)
+    update_date = df.columns[0]
+    if isinstance(update_date, pd.Timestamp):
+        update_date = update_date.strftime("%Y-%m-%d")
+
+    # Prepare for Google Sheets
+    df_to_write = df.copy().reset_index()
+    df_to_write.rename(columns={"index": "Instrument"}, inplace=True)
+
+    # Insert Updated At column (same value for all rows)
+    df_to_write.insert(1, "Updated At", update_date)
+
+    # Rename duplicated date columns to proper metric names
+    df_to_write.columns = [
+        "Instrument",
+        "Updated At",
+        "Position",
+        "Risk (%)",
+        "Not.Value",
+        "Price",
+    ]
+
+
+    ## Add Risk overlay
+
+    # B) Estimated Risk (Risk overlay)
+    normal_risk = s.portfolio.get_portfolio_risk_for_original_positions()
+    shocked_vol_risk = (
+        s.portfolio.get_portfolio_risk_for_original_positions_with_shocked_vol()
+    )
+    sum_abs_risk = (
+        s.portfolio.get_sum_annualised_risk_for_original_positions()
+    )
+    leverage = s.portfolio.get_leverage_for_original_position()
+
+    risk_table = pd.DataFrame(
+        {
+            "value": [
+                normal_risk.iloc[-1],
+                shocked_vol_risk.iloc[-1],
+                sum_abs_risk.iloc[-1],
+                leverage.iloc[-1]
+            ]
+        },
+        index=[
+            "Normal risk",
+            "Shocked vol risk",
+            "Sum abs risk",
+            "Leverage",
+        ],
+    )
     # Send data to sheet
-    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", df, start_cell="C22", header=True)
-    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", corr_df, start_cell="D30", header=True)
+    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", df_to_write, start_cell="B22", header=True)
+    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", corr_df, start_cell="S22", header=True)
+    sheet_access.write_dataframe_to_sheet(sheet_url, "B-Monitoring", risk_table, start_cell="G5", header=True)
+
 
 
 def update_accounting_ib(sheet_url, account_summary):
