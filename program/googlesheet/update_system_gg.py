@@ -32,7 +32,7 @@ def update_market_monitoring(s, sheet_url):
 
 def update_portfolio_monitoring(s, sheet_url):
 
-    # 1. Target position # FIXME (This should get actual position)
+    # 1. Target position
     df_1 = {}
     for instr in s.get_instrument_list():
         df_1[instr] = s.accounts.get_buffered_position(instr)
@@ -41,7 +41,7 @@ def update_portfolio_monitoring(s, sheet_url):
     # 2. % Annual Risk
     df_2 = s.portfolio.get_stdev_df().tail(1)
 
-    # 3. Notional Exposure # FIXME Need to reflect acutal pos
+    # 3. Notional Exposure
     df_3 = {}
     for instr in s.get_instrument_list():
         value_per_cont = s.portfolio.get_baseccy_value_per_contract(instr)
@@ -267,16 +267,11 @@ def update_system_diagnostic(s, sheet_url, symbol):
 
 def update_system_verification(s, sheet_url, start_date):
 
-    df = pd.DataFrame({
-        "ActualCapital": s.accounts.get_actual_capital(),
-        "PNL": s.accounts.portfolio_with_multiplier(),
-    })
-
-    df_subset = df.loc[start_date:]
-    df_subset.fillna("")
+    system_ri = s.accounts.portfolio().percent / 100
+    system_ri = system_ri.loc[start_date:]
 
     sheet_access.write_dataframe_to_sheet(
         sheet_url,
         "E-Verifying",
-        df_subset, "B12",
+        system_ri, "B11",
         header=False)
