@@ -8,7 +8,6 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # Configuration
 CONFIG_PATH = "private/systems/system_f1/private_config.yaml"
 SHEET_URL = SYSTEM_F1_SHEET_URL
-INSTRUMENTS = ["S50", "USD", "GF10", "EURUSD", "SVF", "USDJPY"]
 
 # Initialize system
 config = Config(CONFIG_PATH)
@@ -21,140 +20,127 @@ pd.set_option('display.max_columns', None)  # Show all columns
 pd.set_option('display.max_rows', None)  # Show all rows
 pd.set_option('display.expand_frame_repr', False)  # Prevent wrapping to new lines
 
-
-def update_market_monitoring():
+def get_instrument_target_position(instrument_code, account_value):
     """
-    Updates market monitoring data in Google Sheets.
-    """
-    df = pd.DataFrame({
-        instrument: s.combForecast.get_combined_forecast(instrument)
-        for instrument in INSTRUMENTS
-    })
+    Compute target position for a given instrument.
 
-    df = df.tail(252)  # Keep last 252 rows (1 year of trading days)
-    sheet_access.write_dataframe_to_sheet(SHEET_URL, "01-Market-monitor", df, start_cell="B11", header=False)
-
-
-def calculate_target_positions():
+    :param instrument_code: e.g. "S50", "USD", "GF10"
+    :param account_value: current trading capital
+    :return: DataFrame with top_pos, bot_pos, target
     """
-    Calculates target positions for all instruments based on capital adjustment.
-    :return: DataFrame containing target positions.
-    """
+
     try:
-        # Get latest account value from Google Sheets
-        equity_list = sheet_access.get_cell_data(SHEET_URL, "Accounting", "C11:C")
-        equity_list = convert_to_numeric(equity_list)
-        account_value = equity_list[-1]
-        print("Account_value: ", account_value)
+        # -------------------------------
+        # 1. Validate capital input
+        # -------------------------------
+        if account_value is None:
+            raise ValueError("account_value is None")
 
-        # Replace notional with my actual current capital
-        config.notional_trading_capital = account_value
+        if config.notional_trading_capital == 0:
+            raise ValueError("config.notional_trading_capital is 0")
 
-        # Compute target positions
-        target_positions = {}
-        for instrument in INSTRUMENTS:
-            df = pd.DataFrame({
-                "top_pos": round(s.accounts.get_buffers_for_position(instrument).iloc[:, 0] , 0),
-                "bot_pos": round(s.accounts.get_buffers_for_position(instrument).iloc[:, 1], 0),
-            })
+        multiplier = account_value / config.notional_trading_capital
 
-            # Initialize target column with NaN
-            df["target"] = None
+        # -------------------------------
+        # 2. Get buffers
+        # -------------------------------
+        buffers = s.accounts.get_buffers_for_position(instrument_code)
 
-            # Set first row's target to 0
-            df.iloc[0, df.columns.get_loc("target")] = 0
-
-            # Iterate over DataFrame row by row for correct computation
-            for i in range(1, len(df)):
-                prev_target = df.iloc[i - 1]["target"]
-                top_pos = df.iloc[i]["top_pos"]
-                bot_pos = df.iloc[i]["bot_pos"]
-
-                # Apply correct constraint logic
-                df.iloc[i, df.columns.get_loc("target")] = min(max(prev_target, bot_pos), top_pos)
-
-            target_positions[instrument] = df["target"]
-
-        return pd.DataFrame(target_positions)
-
-    except Exception as e:
-        print(f"Error calculating target positions: {e}")
-        return pd.DataFrame()
-
-
-def get_instrument_target_position(instrument_code):
-    """
-    Retrieves and computes the target position for a given instrument.
-
-    :param instrument_code: The instrument code (e.g., "S50", "USD", "GF10").
-    :return: DataFrame with top_pos, bot_pos, and target columns.
-    """
-    try:
-        # Retrieve account value and capital multiplier
-        equity_list = sheet_access.get_cell_data(SHEET_URL, "Accounting", "C11:C")
-        equity_list = convert_to_numeric(equity_list)
-        account_value = equity_list[-1]
-
-        # Replace notional with my actual current capital
-        config.notional_trading_capital = account_value
-
-        # Fetch top and bottom position values
         df = pd.DataFrame({
-            "top_pos": round(s.accounts.get_buffers_for_position(instrument_code).iloc[:, 0], 0),
-            "bot_pos": round(s.accounts.get_buffers_for_position(instrument_code).iloc[:, 1], 0),
+            "top_pos": buffers.iloc[:, 0],
+            "bot_pos": buffers.iloc[:, 1],
         })
 
-        # Initialize target column
-        df["target"] = None
+        # -------------------------------
+        # 3. Apply capital scaling
+        # -------------------------------
+        df["top_pos"] = df["top_pos"] * multiplier
+        df["bot_pos"] = df["bot_pos"] * multiplier
 
-        # Set first row's target to 0
-        df.iloc[0, df.columns.get_loc("target")] = 0
+        # Optional: round after scaling
+        df["top_pos"] = df["top_pos"].round(0)
+        df["bot_pos"] = df["bot_pos"].round(0)
 
-        # Compute target positions iteratively
+        # -------------------------------
+        # 4. Compute target
+        # -------------------------------
+        df["target"] = 0.0   # numeric dtype (important)
+
         for i in range(1, len(df)):
             prev_target = df.iloc[i - 1]["target"]
             top_pos = df.iloc[i]["top_pos"]
             bot_pos = df.iloc[i]["bot_pos"]
 
-            df.iloc[i, df.columns.get_loc("target")] = min(max(prev_target, bot_pos), top_pos)
+            df.iloc[i, df.columns.get_loc("target")] = \
+                min(max(prev_target, bot_pos), top_pos)
 
-        print(df.tail(5))  # Show the last 5 rows for quick verification
+        print(df.tail(5).round(0))
         return df
 
     except Exception as e:
         print(f"Error retrieving data for {instrument_code}: {e}")
         return pd.DataFrame()
 
+
 def main():
-    """
-    Main execution function to update market monitoring and target positions.
-    """
-    print("Updating market monitoring data...")
-    update_market_monitoring()
+    print("\n=== Calculating Target Positions ===")
 
-    print("\nCalculating target positions...")
-    target_position_df = calculate_target_positions()
-    print(target_position_df.tail(5))
+    try:
+        # ---------------------------------
+        # 1. Retrieve capital from Google Sheet
+        # ---------------------------------
+        equity_list = sheet_access.get_cell_data(
+            SHEET_URL,
+            "Accounting",
+            "C11:C"
+        )
 
-    # # Interactive instrument lookup
-    # while True:
-    #     instrument = input("\nEnter instrument code (S50, USD, GF10, EURUSD) or press Enter to exit: ").strip().upper()
-    #
-    #     if instrument == "":
-    #         print("Exiting program.")
-    #         break  # Exit the loop if Enter is pressed
-    #
-    #     if instrument in INSTRUMENTS:
-    #         get_instrument_target_position(instrument)
-    #     else:
-    #         print("Invalid instrument code. Please enter a valid instrument (S50, USD, GF10, EURUSD).")
-    # Process all instruments automatically
-    for instrument in INSTRUMENTS:
-        print(instrument)
-        get_instrument_target_position(instrument)
+        equity_list = convert_to_numeric(equity_list)
 
-    print("Completed processing all instruments.")
+        if not equity_list:
+            raise ValueError("No equity data found in sheet")
 
+        account_value = equity_list[-1]
+
+        if account_value is None:
+            raise ValueError("Latest account value is None")
+
+        # ---------------------------------
+        # 2. Process all instruments
+        # ---------------------------------
+        all_targets = {}
+
+        instrument_list = s.get_instrument_list()
+
+        for instrument in instrument_list:
+            print(f"Processing {instrument} =====================")
+
+            df = get_instrument_target_position(
+                instrument,
+                account_value
+            )
+
+            if not df.empty:
+                all_targets[instrument] = df["target"]
+
+        # ---------------------------------
+        # 3. Combine into portfolio DataFrame
+        # ---------------------------------
+        if not all_targets:
+            raise ValueError("No target positions calculated")
+
+        target_df = pd.DataFrame(all_targets)
+
+        print("\n=== Latest Target Snapshot ===")
+        print(target_df.tail(5).round(0))
+
+        print(f"Account value: {account_value}")
+
+        return target_df
+
+    except Exception as e:
+        print(f"Error in main(): {e}")
+        return pd.DataFrame()
 
 if __name__ == "__main__":
     main()
