@@ -132,11 +132,26 @@ def update_accounting_ib(sheet_url, account_summary):
 
     # 1. Parquet: Capital data
     c1 = capital_data.get_df_of_all_global_capital()
-    sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", c1, start_cell='F32', header=False)
+
+    # Avoid duplicated data in the same day
+    c1_daily = (
+        c1
+        .sort_index()  # ensure chronological order
+        .loc[~c1.index.normalize().duplicated()]
+    )
+
+    sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", c1_daily, start_cell='F32', header=False)
 
     # # 2. MongoDB: Margin
     m1 = mongo_margin_data.get_series_of_total_margin()
-    sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", m1, start_cell='K32', header=False)
+
+    m1_daily = (
+        m1
+        .sort_index()
+        .loc[~m1.index.normalize().duplicated()]
+    )
+
+    sheet_access.write_dataframe_to_sheet(sheet_url, "C-Accounting", m1_daily, start_cell='K32', header=False)
 
     # 3. TWS to CSV to Google Sheet: tws_data_csv
     selected_tags = [
