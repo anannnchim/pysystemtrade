@@ -20,7 +20,8 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.expand_frame_repr', False)
 
 """
-1. Check Cost in Sharpe ( Need to < 0.01 ) and cheap rules
+1. Check Cost in Sharpe ( Need to < 0.01 ) and cheap rules [Run Long term]
+- Depend on start date (since vol has changed) 
 2. Remove too low vol
 3. Check Avg. position & Buffered position
 """

@@ -11,8 +11,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.dates as mdates  # (kept in case you use it later)
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/private_config.yaml")
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/projects/config/production/system_f1_config.yaml")
@@ -24,6 +24,15 @@ pd.set_option('display.expand_frame_repr', False)
 
 """
 1. Check IDM overtime
+use_instrument_div_mult_estimates: True
+
+
+Dependency
+- start_date: "2020-10-01" # Need to set to Long term 
+- notional_trading_capital: 1200000000
+- Rules selection
+- (weight is not related) 
+
 2. Correlation matrix -> CSV
 """
 if __name__ == '__main__':

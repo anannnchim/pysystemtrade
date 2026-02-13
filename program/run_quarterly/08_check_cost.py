@@ -7,11 +7,11 @@ from sysproduction.reporting.report_configs import slippage_report_config
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/temp/config_v1.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
