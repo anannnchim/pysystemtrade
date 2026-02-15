@@ -2,6 +2,7 @@ import requests
 import yaml
 from requests.auth import HTTPDigestAuth
 from pathlib import Path
+from datetime import datetime
 
 
 # ==============================
@@ -61,21 +62,28 @@ def add_ip(ip):
 # MAIN
 # ==============================
 
+
+def log(message):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"{now} | {message}")
+
+
 if __name__ == "__main__":
 
     current_ip = get_current_ip()
     current_cidr = f"{current_ip}/32"
 
-    print(f"\nCurrent IP: {current_ip}")
+    log("Starting MongoDB Atlas IP check")
+    log(f"Current public IP: {current_ip}")
 
     access_list = get_access_list()
     existing_ips = [entry["cidrBlock"] for entry in access_list]
 
     if current_cidr in existing_ips:
-        print("IP already exists in Atlas. Nothing to do.")
+        log("IP already exists in Atlas. Nothing to do.")
     else:
-        print("IP not found. Adding to Atlas...")
+        log("IP not found. Adding to Atlas...")
         add_ip(current_ip)
-        print("IP successfully added.")
+        log("IP successfully added.")
 
-    print("\nDone.")
+    log("Process finished.")
