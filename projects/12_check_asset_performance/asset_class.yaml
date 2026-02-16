@@ -62,6 +62,9 @@ instrument_weights:
   FTSETAIWAN: 1
   EU-REALESTATE: 1
   HIGHYIELD: 1
+  WHEAT: 1
+  GBPEUR: 1
+  IG: 1
 
 
 # ===== DEFAULT ZONE =====

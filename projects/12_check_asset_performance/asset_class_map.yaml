@@ -10,13 +10,14 @@ FX:
     - EUR_micro
     - CAD_micro
     - NZD
-  # Cross
+  Cross:
+    - GBPEUR
 #    - YENEUR
 Ags:
   Grain:
     - CORN
     - CORN_mini
-    - WHEAT_mini
+    - WHEAT # (wheat_mini)
     - CANOLA
     - SOYBEAN_mini
     - RICE
@@ -65,7 +66,7 @@ Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
 
     # Corp
     - HIGHYIELD
-#    - IG
+    - IG
 
   Asia:
     - JGB-SGX-mini
