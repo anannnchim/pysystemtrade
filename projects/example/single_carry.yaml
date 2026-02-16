@@ -1,0 +1,75 @@
+#start_date: "2024-10-01"
+#start_date: "2019-10-01"
+#start_date: "2009-10-01"
+start_date: "2025-11-01"
+
+# Capital correction
+#
+percentage_vol_target: 25
+notional_trading_capital: 100000000
+
+instrument_weights:
+
+  MXP: 1
+
+use_instrument_div_mult_estimates: True
+
+forecast_weights:
+  carry5: 0.25
+  carry20: 0.25
+  carry60: 0.25
+  carry120: 0.25
+
+forecast_div_multiplier: 1.04
+
+#
+# forecast combination
+#
+
+
+# DEFAULT ZONE ---------------------------------
+
+trading_rules:
+  carry5:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 5
+    forecast_scalar: 30
+
+  carry20:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 20
+    forecast_scalar: 30
+
+  carry60:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 60
+    forecast_scalar: 30
+
+  carry120:
+    function: systems.provided.rules.carry.carry
+    data:
+      - "rawdata.raw_carry"
+    other_args:
+      smooth_days: 120
+    forecast_scalar: 30
+
+forecast_cap: 20.0
+
+# Buffer
+buffer_trade_to_edge: True
+buffer_method: forecast
+buffer_size: 0.10
+
+# Capital
+base_currency: "USD"
+capital_multiplier:
+   func: syscore.capital.full_compounding
