@@ -1,7 +1,7 @@
 #start_date: "2024-10-01"
 #start_date: "2019-10-01"
 #start_date: "2009-10-01"
-start_date: "2025-11-01"
+start_date: "2024-11-01"
 
 # Capital correction
 #
@@ -11,8 +11,8 @@ notional_trading_capital: 100000000
 instrument_weights:
 
   MXP: 1
-
-use_instrument_div_mult_estimates: True
+instrument_div_multiplier: 1
+#use_instrument_div_mult_estimates: True
 
 forecast_weights:
   carry5: 0.25
