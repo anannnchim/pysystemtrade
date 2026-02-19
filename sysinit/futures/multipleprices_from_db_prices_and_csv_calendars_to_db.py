@@ -213,9 +213,17 @@ if __name__ == "__main__":
     csv_roll_data_path = get_production_config().get_element("temp_data_path") + "/roll_calendars"
 
     # modify flags as required
-    process_multiple_prices_all_instruments(
+    # process_multiple_prices_all_instruments(
+    #     csv_multiple_data_path=csv_multiple_data_path,
+    #     csv_roll_data_path=csv_roll_data_path,
+    #     ADD_TO_DB=True,
+    #     ADD_TO_CSV=True,  # IF true it will add csv to temp/multiple path
+    # )
+
+    process_multiple_prices_single_instrument(
+        instrument_code="EURIBOR",
         csv_multiple_data_path=csv_multiple_data_path,
         csv_roll_data_path=csv_roll_data_path,
         ADD_TO_DB=True,
-        ADD_TO_CSV=True,  # IF true it will add csv to temp/multiple path
+        ADD_TO_CSV=True,
     )
