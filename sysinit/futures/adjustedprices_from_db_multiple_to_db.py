@@ -80,6 +80,10 @@ if __name__ == "__main__":
     path = get_production_config().get_element("temp_data_path") + "/adjusted_prices"
 
 
-    process_adjusted_prices_all_instruments(
-        csv_adj_data_path=path, ADD_TO_DB=True, ADD_TO_CSV=True
+    # process_adjusted_prices_all_instruments(
+    #     csv_adj_data_path=path, ADD_TO_DB=True, ADD_TO_CSV=True
+    # )
+
+    process_adjusted_prices_single_instrument(
+        instrument_code="EURIBOR", ADD_TO_DB=True, ADD_TO_CSV=True,csv_adj_data_path=path
     )
