@@ -139,6 +139,18 @@ class GoogleSheetAccess:
             print(f"Error retrieving cell data from '{worksheet_name}' in range '{cell_range}': {e}")
             return None
 
+    def clear_sheet(self, sheet_url, worksheet_name):
+        """
+        Clear all content in a worksheet.
+        """
+        try:
+            sheet = self.client.open_by_url(sheet_url)
+            worksheet = sheet.worksheet(worksheet_name)
+            worksheet.clear()
+            print(f"Worksheet '{worksheet_name}' cleared successfully.")
+        except Exception as e:
+            print(f"Error clearing worksheet '{worksheet_name}': {e}")
+
 
 def convert_to_numeric(value_list):
     """
