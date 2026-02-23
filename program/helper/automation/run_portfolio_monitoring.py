@@ -249,7 +249,7 @@ def push_to_google_sheet(df_positions, net_liq, margin, margin_usage, risk):
 
     sheet_access.write_dataframe_to_sheet(
         SHEET_URL, SHEET_NAME,
-        pd.DataFrame({"A": ["ANAN CAPITAL – LIVE PORTFOLIO"]}),
+        pd.DataFrame({"A": ["LIVE PORTFOLIO"]}),
         start_cell="A1", header=False
     )
 
