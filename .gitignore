@@ -46,3 +46,4 @@ private.email_logs
 sysproduction/data/futures
 /program/helper/automation/portfolio_monitor_state.json
 /program/helper/automation/portfolio_monitor_email_state.json
+/data/parquet-v2/
