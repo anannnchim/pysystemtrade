@@ -24,3 +24,4 @@ start_date = "2021-01-01"
 if __name__ == '__main__':
     a = data.get_rolls_per_year("CRUDE_W")
     print(a)
+    # sample
