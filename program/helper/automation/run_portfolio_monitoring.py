@@ -46,7 +46,7 @@ EMAIL_STATE_FILE = "portfolio_monitor_email_state.json"
 
 CAPITAL_THRESHOLD_PCT = 3
 MARGIN_THRESHOLD_PCT = 10
-MARGIN_USAGE_LIMIT = 40
+MARGIN_USAGE_LIMIT = 50
 
 
 # ==================================================
