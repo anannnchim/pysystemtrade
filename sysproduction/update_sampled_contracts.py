@@ -452,9 +452,12 @@ def has_contract_expired(
 if __name__ == "__main__":
     """
     Get instruments from contract prices parquet folder, and sampling only active contract.
-    - Also, it gets data from temp multiple price csv, if we adjust temp roll calendar, we must updatet multiple price again 
+    Input: 
     
-    It will add contract data in mongoDB
+    - Instrument source: Multiple price (parquet)
+
+    Output: 
+    - Adding futures_contracts (MongoDB)
     
     """
     update_sampled_contracts()
