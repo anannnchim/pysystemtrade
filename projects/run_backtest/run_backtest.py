@@ -6,18 +6,21 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/temp/config_v1.yaml")
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/live/config.yaml")
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/example/single_carry.yaml")
+# config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/live/config.yaml")
+# config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+# config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/sample_carry.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/single_carry.yaml")
 s = futures_system(config=config, data=data)
 
 
 if __name__ == '__main__':
+
+
 
     input("0. This is stats in percentage.")
     print(s.accounts.portfolio().percent.stats())
