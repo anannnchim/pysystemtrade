@@ -7,11 +7,11 @@ from sysproduction.reporting.report_configs import slippage_report_config
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
 
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/single_carry.yaml")
 s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
         rolls_per_year = s.rawdata.rolls_per_year(instr)
         sr_holding_cost = s.accounts.get_SR_holding_cost_only(instr)
-        turnover = s.accounts.forecast_turnover(instr, "ewmac64_256")
+        turnover = s.accounts.forecast_turnover(instr, "breakout320")
         sr_trading_cost = cost_in_sharpe * turnover
         total_sharpe_cost = sr_holding_cost + sr_trading_cost
         vol_target = s.config.get_element("percentage_vol_target")

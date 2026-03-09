@@ -11,12 +11,10 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 # =========================
 # CONFIG / DATA SELECTION
 # =========================
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
-# config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config.yaml")
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/system_01/config.yaml")
-
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/single_carry.yaml")
 s = futures_system(config=config, data=data)
 
 pd.set_option('display.max_columns', None)

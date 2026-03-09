@@ -8,11 +8,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # INPUT
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/example/single_carry.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/single_carry.yaml")
 
 # Init objects
-data = dbFuturesSimData()
-# data = csvFuturesSimData()
+# data = dbFuturesSimData()
+data = csvFuturesSimData()
 
 s = futures_system(config=config, data=data)
 
