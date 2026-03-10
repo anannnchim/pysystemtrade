@@ -2,19 +2,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sysdata.config.configdata import Config
+from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # ====== DATA SOURCE ======
 data = dbFuturesSimData()
+# data = csvFuturesSimData()
 
 
 # ====== STRATEGY DEFINITIONS ======
 STRATEGIES = [
-    ("GLOBAL",    "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_bo.yaml"),
-    ("BO_NEW",   "/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/diversified/config_bo.yaml"),
-    # ("Carry", "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_carry.yaml"),
+    ("Breakout",    "/home/anan/AnanProjects/pysystemtrade/projects/example/global_bo.yaml"),
+    ("Carry",   "/home/anan/AnanProjects/pysystemtrade/projects/example/global_carry.yaml"),
+    ("Comb", "/home/anan/AnanProjects/pysystemtrade/projects/example/global_comb.yaml"),
     # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
 ]
 
