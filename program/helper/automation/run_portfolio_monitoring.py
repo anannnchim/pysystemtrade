@@ -67,11 +67,26 @@ PRIVATE_CONFIG_PATH = PROJECT_ROOT / "private" / "private_config.yaml"
 # ==================================================
 # IB Connection
 # ==================================================
+#def connect_ib() -> IB:
+#    ib = IB()
+#    ib.connect(HOST, PORT, clientId=CLIENT_ID)
+#    return ib
+#
+#
+
 def connect_ib() -> IB:
     ib = IB()
-    ib.connect(HOST, PORT, clientId=CLIENT_ID)
-    return ib
 
+    for i in range(5):
+        try:
+            ib.connect(HOST, PORT, clientId=CLIENT_ID)
+            ib.sleep(2)
+            if ib.isConnected():
+                return ib
+        except Exception:
+            pass
+
+    raise RuntimeError("Cannot connect to IB")
 
 # ==================================================
 # Positions
