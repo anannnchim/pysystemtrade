@@ -26,7 +26,7 @@ import smtplib
 from email.message import EmailMessage
 from pathlib import Path
 import yaml
-
+from ib_insync import IB
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 from private.gg_config_path import DIVERSIFIED_SHEET_URL
 
@@ -67,27 +67,40 @@ PRIVATE_CONFIG_PATH = PROJECT_ROOT / "private" / "private_config.yaml"
 # ==================================================
 # IB Connection
 # ==================================================
+
+# V1
 #def connect_ib() -> IB:
 #    ib = IB()
 #    ib.connect(HOST, PORT, clientId=CLIENT_ID)
 #    return ib
 #
-#
 
+# V3
 def connect_ib() -> IB:
     ib = IB()
 
     for i in range(5):
         try:
+            print(f"Connect attempt {i+1}")
+
             ib.connect(HOST, PORT, clientId=CLIENT_ID)
-            ib.sleep(2)
-            if ib.isConnected():
-                return ib
+
+            if not ib.isConnected():
+                continue
+
+            # wait for gateway ready
+            for _ in range(5):
+                ib.sleep(1)
+                if ib.accountValues():
+                    return ib
+
+            print("Connected but no account data, retry")
+            ib.disconnect()
+
         except Exception:
-            pass
+            ib.disconnect()
 
     raise RuntimeError("Cannot connect to IB")
-
 # ==================================================
 # Positions
 # ==================================================
@@ -326,7 +339,8 @@ def push_to_google_sheet(df_positions, net_liq, margin, margin_usage, risk):
 # ==================================================
 if __name__ == "__main__":
 
-    print("\n=== Connecting to IB Gateway ===")
+    print(f"\n{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} === START: Connecting to IB Gateway ===")
+
     ib = connect_ib()
 
     print("Connected:", ib.isConnected())
