@@ -373,7 +373,7 @@ NOK,NOKUSD currency,2000000,USD,FX,2.47,0,0,US
 NZD,NZDUSD currency,100000,USD,FX,2.47,0,0,US
 OAT,French 10 year bond OAT,1000,EUR,Bond,2,0,0,EMEA
 OAT5,Mid-Term Euro-OAT,1000,EUR,Bond,0,0,0,EMEA
-OATIES,Oat Futures,50,USD,Ags,3,0,0,US
+OATIES,Oat Futures,50,USD,Ags,2.97,0,0,US
 OJ,Orange Juice (FCOJ-A),150,USD,Ags,2.97,0,0,US
 OMX,OMX Helsinki 25 Index,10,EUR,Equity,2,0,0,EMEA
 OMX-SWE,OMX Index [Sweden],100,SEK,Equity,0,0,0,EMEA
