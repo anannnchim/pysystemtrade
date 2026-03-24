@@ -11,10 +11,10 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 import matplotlib.dates as mdates  # (kept in case you use it later)
 
 # INPUT: Select data and system
-data = csvFuturesSimData()
-# data = dbFuturesSimData()
+# data = csvFuturesSimData()
+data = dbFuturesSimData()
 
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/single_carry.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 s = futures_system(config=config, data=data)
 
 pd.set_option('display.max_columns', None)
