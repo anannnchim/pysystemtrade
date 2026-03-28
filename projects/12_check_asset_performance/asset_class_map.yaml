@@ -4,6 +4,7 @@ FX:
     - KRWUSD_mini
     - BRE
     - ZAR
+    - CNH
   Dev:
     - GBP_micro
     - AUD_micro

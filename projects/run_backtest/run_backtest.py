@@ -16,7 +16,7 @@ data = dbFuturesSimData()
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/sample_carry.yaml")
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/config-2-2026-bo.yaml")
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/strategies/carry.yaml")
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/strategies/bo.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 s = futures_system(config=config, data=data)
 
 
