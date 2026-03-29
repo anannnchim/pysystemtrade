@@ -56,6 +56,7 @@ Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
   EU:
     - OAT # 10French
     - BTP3 # Italian
+    - BOBL # 5Year Germ
   US:
     # Gov
     - US2
@@ -77,6 +78,7 @@ Equity: # (Region based), (Type Largecap, Midcap, Smallcap
     - EU-BANKS # Financial, Price
     - DAX # Germany: Large, TotalReturn
     - EU-REALESTATE # Property, Price
+    - EU-OIL # Energy, Price
 
   US:
     - RUSSELL  # Midcap, Beta

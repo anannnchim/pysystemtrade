@@ -67,6 +67,8 @@ instrument_weights:
   IG: 1
   FED: 1
   CNH: 1
+  EU-OIL: 1
+  BOBL: 1
 
 # ===== DEFAULT ZONE =====
 use_instrument_div_mult_estimates: true
