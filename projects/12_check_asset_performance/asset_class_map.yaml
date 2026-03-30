@@ -70,14 +70,14 @@ Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
     - US10
     - CAD2
     - CAD10
-
     # Corp
     - HIGHYIELD
     - IG
-
-
+    - FED
   Asia:
     - JGB-SGX-mini
+
+
 
 Equity: # (Region based), (Type Largecap, Midcap, Smallcap
   EU:
