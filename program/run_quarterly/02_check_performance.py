@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # INPUT
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/strategies/carry.yaml")
 
 # Init objects
 data = dbFuturesSimData()
