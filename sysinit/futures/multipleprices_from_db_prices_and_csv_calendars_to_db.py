@@ -221,7 +221,7 @@ if __name__ == "__main__":
     # )
 
     process_multiple_prices_single_instrument(
-        instrument_code="EURCHF",
+        instrument_code="MSCISING",
         csv_multiple_data_path=csv_multiple_data_path,
         csv_roll_data_path=csv_roll_data_path,
         ADD_TO_DB=True,
