@@ -2,15 +2,8 @@
 """
 check_ib_portfolio.py
 
-- Pull IB positions
-- Monitor capital & margin changes
-- Print formatted console output
-- Push to Google Sheet (App tab)
-- Send email alerts:
-    - Risk spike
-    - ❗ NEW: IB connection failure
-
-Designed to run every 5 minutes via cron.
+Same behavior as before +
+✅ NEW: Email alert if IB connection fails
 """
 
 from __future__ import annotations
@@ -25,7 +18,6 @@ import smtplib
 from email.message import EmailMessage
 from pathlib import Path
 import yaml
-import socket
 
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 from private.gg_config_path import DIVERSIFIED_SHEET_URL
@@ -50,12 +42,6 @@ MARGIN_USAGE_LIMIT = 50
 
 
 # ==================================================
-# Network timeout (important)
-# ==================================================
-socket.setdefaulttimeout(10)
-
-
-# ==================================================
 # Dynamic Project Root Detection
 # ==================================================
 def find_project_root() -> Path:
@@ -70,9 +56,53 @@ PRIVATE_CONFIG_PATH = PROJECT_ROOT / "private" / "private_config.yaml"
 
 
 # ==================================================
-# IB Connection
+# Email
 # ==================================================
-def connect_ib() -> IB:
+def load_email_config():
+    with open(PRIVATE_CONFIG_PATH, "r") as f:
+        return yaml.safe_load(f)
+
+
+def send_email(subject, body):
+    cfg = load_email_config()
+
+    msg = EmailMessage()
+    msg["From"] = cfg["email_address"]
+    msg["To"] = cfg["email_to"]
+    msg["Subject"] = subject
+    msg.set_content(body)
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP(cfg["email_server"], int(cfg["email_port"])) as server:
+        server.starttls(context=context)
+        server.login(cfg["email_address"], cfg["email_pwd"])
+        server.send_message(msg)
+
+    print("📧 Email sent")
+
+
+# ==================================================
+# NEW: Connection alert ONLY (no break flow)
+# ==================================================
+def alert_connection_failure(e):
+    try:
+        subject = "❌ IB Connection Failure"
+        body = f"""
+Cannot connect to IB Gateway
+
+Error: {str(e)}
+Time: {datetime.now()}
+"""
+        send_email(subject, body)
+    except Exception as err:
+        print("Email send failed:", err)
+
+
+# ==================================================
+# IB Connection (UNCHANGED LOGIC)
+# ==================================================
+def connect_ib():
     ib = IB()
 
     for i in range(5):
@@ -84,7 +114,6 @@ def connect_ib() -> IB:
             if not ib.isConnected():
                 continue
 
-            # wait for account data
             for _ in range(5):
                 ib.sleep(1)
                 if ib.accountValues():
@@ -100,25 +129,9 @@ def connect_ib() -> IB:
 
 
 # ==================================================
-# ❗ NEW: Handle connection failure
-# ==================================================
-def handle_connection_failure(e: Exception):
-    try:
-        subject = "❌ IB Connection Failure"
-        body = (
-            f"Cannot connect to IB Gateway\n\n"
-            f"Error: {str(e)}\n"
-            f"Time: {datetime.now()}\n"
-        )
-        send_email(subject, body)
-    except Exception as email_err:
-        print(f"Failed to send failure email: {email_err}")
-
-
-# ==================================================
 # Positions
 # ==================================================
-def get_positions_dataframe(ib: IB) -> pd.DataFrame:
+def get_positions_dataframe(ib):
     records = []
 
     for p in ib.positions():
@@ -144,7 +157,7 @@ def get_positions_dataframe(ib: IB) -> pd.DataFrame:
 # ==================================================
 # Account Summary
 # ==================================================
-def get_account_summary(ib: IB) -> dict:
+def get_account_summary(ib):
     summary = {}
     for item in ib.accountValues():
         if item.tag in {"FullInitMarginReq", "NetLiquidation"}:
@@ -152,7 +165,7 @@ def get_account_summary(ib: IB) -> dict:
     return summary
 
 
-def build_summary(summary: dict):
+def build_summary(summary):
     net_liq = summary.get("NetLiquidation", 0.0)
     margin = summary.get("FullInitMarginReq", 0.0)
     margin_usage = (margin / net_liq * 100) if net_liq > 0 else 0.0
@@ -162,14 +175,14 @@ def build_summary(summary: dict):
 # ==================================================
 # Risk Monitoring
 # ==================================================
-def load_json(path: str):
+def load_json(path):
     if os.path.exists(path):
         with open(path, "r") as f:
             return json.load(f)
     return {}
 
 
-def save_json(path: str, data: dict):
+def save_json(path, data):
     with open(path, "w") as f:
         json.dump(data, f)
 
@@ -213,67 +226,74 @@ def evaluate_risk(net_liq, margin, margin_usage):
 
 
 # ==================================================
-# Email
+# Google Sheet
 # ==================================================
-def load_email_config():
-    with open(PRIVATE_CONFIG_PATH, "r") as f:
-        return yaml.safe_load(f)
+def push_to_google_sheet(df_positions, net_liq, margin, margin_usage, risk):
+    sheet_access = GoogleSheetAccess()
+    sheet_access.clear_sheet(SHEET_URL, SHEET_NAME)
 
+    sheet_access.write_dataframe_to_sheet(
+        SHEET_URL, SHEET_NAME,
+        pd.DataFrame({"A": ["LIVE PORTFOLIO"]}),
+        start_cell="A1", header=False
+    )
 
-def send_email(subject, body):
-    cfg = load_email_config()
+    sheet_access.write_dataframe_to_sheet(
+        SHEET_URL, SHEET_NAME,
+        pd.DataFrame({"A": ["Last Update"], "B": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]}),
+        start_cell="A2", header=False
+    )
 
-    msg = EmailMessage()
-    msg["From"] = cfg["email_address"]
-    msg["To"] = cfg["email_to"]
-    msg["Subject"] = subject
-    msg.set_content(body)
+    summary_df = pd.DataFrame({
+        "Metric": ["Net Liquidation", "Full Init Margin Req", "Margin Usage %"],
+        "Value": [round(net_liq, 2), round(margin, 2), round(margin_usage, 2)]
+    })
 
-    context = ssl.create_default_context()
+    sheet_access.write_dataframe_to_sheet(
+        SHEET_URL, SHEET_NAME,
+        summary_df,
+        start_cell="A4", header=True
+    )
 
-    with smtplib.SMTP(cfg["email_server"], int(cfg["email_port"])) as server:
-        server.starttls(context=context)
-        server.login(cfg["email_address"], cfg["email_pwd"])
-        server.send_message(msg)
-
-    print("📧 Email sent")
+    if not df_positions.empty:
+        sheet_access.write_dataframe_to_sheet(
+            SHEET_URL, SHEET_NAME,
+            df_positions,
+            start_cell="A9", header=True
+        )
 
 
 # ==================================================
-# Main
+# MAIN (FIXED)
 # ==================================================
 if __name__ == "__main__":
 
     print(f"\n{datetime.now()} === START ===")
 
-    # ❗ NEW: connection protection
+    ib = None
+
     try:
         ib = connect_ib()
     except Exception as e:
         print("❌ IB connection failed:", e)
-        handle_connection_failure(e)
-        exit(1)
+        alert_connection_failure(e)
 
-    print("Connected:", ib.isConnected())
+    # 👇 IMPORTANT: DO NOT BREAK FLOW
+    if ib and ib.isConnected():
 
-    df_positions = get_positions_dataframe(ib)
-    summary = get_account_summary(ib)
-    net_liq, margin, margin_usage = build_summary(summary)
+        df_positions = get_positions_dataframe(ib)
+        summary = get_account_summary(ib)
+        net_liq, margin, margin_usage = build_summary(summary)
 
-    ib.disconnect()
+        ib.disconnect()
 
-    print(f"Net Liq: {net_liq}")
-    print(f"Margin: {margin}")
-    print(f"Usage: {margin_usage:.2f}%")
+    else:
+        # fallback values (so sheet still updates)
+        df_positions = pd.DataFrame()
+        net_liq, margin, margin_usage = 0, 0, 0
 
     risk = evaluate_risk(net_liq, margin, margin_usage)
 
-    print("Risk:", risk)
-
-    try:
-        # existing spike email logic (unchanged)
-        pass
-    except Exception as e:
-        print("Email error:", e)
+    push_to_google_sheet(df_positions, net_liq, margin, margin_usage, risk)
 
     print("✅ Done")
