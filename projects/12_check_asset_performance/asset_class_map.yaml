@@ -26,8 +26,8 @@ Ags:
     - SOYMEAL
     - OATIES
     - SOYOIL
-  Soft: # COCO, COFFEE etc
     - MILLWHEAT
+  Soft: # COCO, COFFEE etc
     - LUMBER-new # Wood
     - RUBBER # Rubber
   Meat:
