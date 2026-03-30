@@ -69,6 +69,14 @@ instrument_weights:
   CNH: 1
   EU-OIL: 1
   BOBL: 1
+  SOYOIL: 1
+  SONIA3: 1
+  BUND: 1
+  BITCOIN: 1
+  NIKKEI: 1
+  EURCHF: 1
+  MSCISING: 1
+
 
 # ===== DEFAULT ZONE =====
 use_instrument_div_mult_estimates: true

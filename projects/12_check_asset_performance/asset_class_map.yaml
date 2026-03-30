@@ -14,6 +14,7 @@ FX:
   Cross:
     - GBPEUR
 #    - YENEUR
+    - EURCHF
 Ags:
   Grain:
     - CORN
@@ -24,6 +25,7 @@ Ags:
     - RICE
     - SOYMEAL
     - OATIES
+    - SOYOIL
   Soft: # COCO, COFFEE etc
     - MILLWHEAT
     - LUMBER-new # Wood
@@ -51,12 +53,15 @@ Metals:
     - PLAT
   Crypto:
     - ETHER-micro
+    - BITCOIN
 
 Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
   EU:
     - OAT # 10French
     - BTP3 # Italian
     - BOBL # 5Year Germ
+    - SONIA3 # Three Month SONIA GBP
+    - BUND # 10Y Germ
   US:
     # Gov
     - US2
@@ -69,6 +74,7 @@ Bonds: # (Region based), (Or Type: Gov, Corp, STIR: EURODollar, Swap)
     # Corp
     - HIGHYIELD
     - IG
+
 
   Asia:
     - JGB-SGX-mini
@@ -90,6 +96,8 @@ Equity: # (Region based), (Type Largecap, Midcap, Smallcap
     - FTSECHINAA # Largecap, Beta
     - TOPIX # Large
     - FTSETAIWAN # Large, Beta
+    - NIKKEI # Large. Beta
+    - MSCISING # Large, Beta
 
 
 Vol:
