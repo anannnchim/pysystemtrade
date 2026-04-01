@@ -14,10 +14,22 @@ data = dbFuturesSimData()
 
 # ====== STRATEGY DEFINITIONS ======
 STRATEGIES = [
-    ("Breakout",    "/home/anan/AnanProjects/pysystemtrade/projects/example/global_bo.yaml"),
-    ("Carry",   "/home/anan/AnanProjects/pysystemtrade/projects/example/global_carry.yaml"),
-    ("Comb", "/home/anan/AnanProjects/pysystemtrade/projects/example/global_comb.yaml"),
-    # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
+    ("Breakout",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
+    ("Carry",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-carry.yaml"),
+    ("Comb", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),
+     ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
+
+]
+
+STRATEGIES = [
+    ("LT",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-LT.yaml"),
+    ("ST",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-ST.yaml"),
+    ("AVG", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-AVG.yaml"),
+    ("Fitted", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
+
+    #("Comb", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),
+   #  ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
+
 ]
 
 # STRATEGIES = [

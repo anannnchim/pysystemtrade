@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # data = csvFuturesSimData()
 data = dbFuturesSimData()
 
-config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/new/config_v3.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 
 s = futures_system(config=config, data=data)
 
@@ -50,4 +50,4 @@ if __name__ == '__main__':
     # Print
     print(system_return)
     df = pd.DataFrame(system_return/100)
-    df.to_csv("/Users/nanthawat/PycharmProjects/pysystemtrade/program/run_quarterly/ri.csv")
+    df.to_csv("/home/anan/AnanProjects/pysystemtrade/program/run_quarterly/ri.csv")
