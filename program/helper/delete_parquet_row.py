@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Safely delete the SECOND LAST row of a parquet file with manual confirmation.
+Safely delete the LAST or SECOND LAST row of a parquet file with manual confirmation.
 
 Process:
 1. Load current parquet
-2. Show the target row to be deleted
-3. Show tail of modified dataframe
-4. Ask user to confirm replacement
+2. Ask user which row to delete (last / second_last)
+3. Show the target row
+4. Show tail of modified dataframe
+5. Ask user to confirm replacement
 """
 
 import sys
@@ -18,8 +19,13 @@ pd.set_option("display.max_rows", None)
 pd.set_option("display.expand_frame_repr", False)
 
 
-def delete_second_last_row(parquet_path: str) -> None:
-    parquet_path = Path(parquet_path)
+# --------------------------------------------------
+# Resolve project root dynamically
+# --------------------------------------------------
+ROOT_DIR = Path(__file__).resolve().parents[2]
+
+
+def delete_row(parquet_path: Path) -> None:
 
     if not parquet_path.exists():
         print(f"❌ File not found: {parquet_path}")
@@ -28,19 +34,40 @@ def delete_second_last_row(parquet_path: str) -> None:
     print("\n=== LOAD CURRENT PARQUET ===")
     df = pd.read_parquet(parquet_path, engine="pyarrow")
 
-    if len(df) < 2:
-        print("❌ DataFrame has fewer than 2 rows. Cannot delete second last row.")
+    if len(df) < 1:
+        print("❌ DataFrame is empty.")
         sys.exit(1)
 
     print(f"Total rows BEFORE : {len(df)}")
 
     # --------------------------------------------------
-    # Identify row to delete
+    # Ask user which row to delete
     # --------------------------------------------------
-    target_index = df.index[-2]
+    print("\nSelect row to delete:")
+    print("1 → LAST row")
+    print("2 → SECOND LAST row")
+
+    choice = input("Enter choice (1 or 2): ").strip()
+
+    if choice == "1":
+        target_index = df.index[-1]
+        label = "LAST ROW"
+    elif choice == "2":
+        if len(df) < 2:
+            print("❌ Not enough rows for second last deletion.")
+            sys.exit(1)
+        target_index = df.index[-2]
+        label = "SECOND LAST ROW"
+    else:
+        print("❌ Invalid choice.")
+        sys.exit(1)
+
+    # --------------------------------------------------
+    # Show row to delete
+    # --------------------------------------------------
     target_row = df.loc[[target_index]]
 
-    print("\n=== ROW TO BE DELETED (SECOND LAST ROW) ===")
+    print(f"\n=== ROW TO BE DELETED ({label}) ===")
     print(target_row)
 
     # --------------------------------------------------
@@ -74,12 +101,13 @@ def delete_second_last_row(parquet_path: str) -> None:
 
 if __name__ == "__main__":
 
-    # --------------------------------------------------
-    # EDIT FILE PATH HERE
-    # --------------------------------------------------
     FILE_PATH = (
-        "/Users/nanthawat/PycharmProjects/pysystemtrade/"
-        "data/parquet/capital/__global_capital.parquet"
+        ROOT_DIR
+        / "data"
+        / "parquet"
+        / "capital"
+        / "system_01.parquet"
+        # / "__global_capital.parquet"
     )
 
-    delete_second_last_row(FILE_PATH)
+    delete_row(FILE_PATH)
