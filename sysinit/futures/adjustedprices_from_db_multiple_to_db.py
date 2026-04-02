@@ -85,5 +85,5 @@ if __name__ == "__main__":
     # )
 
     process_adjusted_prices_single_instrument(
-        instrument_code="MSCISING", ADD_TO_DB=True, ADD_TO_CSV=True,csv_adj_data_path=path
+        instrument_code="MILK", ADD_TO_DB=True, ADD_TO_CSV=True,csv_adj_data_path=path
     )

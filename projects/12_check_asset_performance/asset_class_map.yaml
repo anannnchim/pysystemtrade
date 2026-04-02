@@ -13,7 +13,7 @@ FX:
     - NZD
   Cross:
     - GBPEUR
-#    - YENEUR
+    - YENEUR
     - EURCHF
 Ags:
   Grain:
@@ -30,6 +30,7 @@ Ags:
   Soft: # COCO, COFFEE etc
     - LUMBER-new # Wood
     - RUBBER # Rubber
+    - MILK
   Meat:
     - LEANHOG # Pigs
     - LIVECOW # Cows

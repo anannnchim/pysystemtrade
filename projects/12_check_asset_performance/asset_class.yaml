@@ -76,6 +76,9 @@ instrument_weights:
   NIKKEI: 1
   EURCHF: 1
   MSCISING: 1
+  YENEUR: 1
+  MILK: 1
+
 
 
 # ===== DEFAULT ZONE =====
