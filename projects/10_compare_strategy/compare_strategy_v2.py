@@ -8,8 +8,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # ====== DATA SOURCE ======
-# data = dbFuturesSimData()
-data = csvFuturesSimData()
+data = dbFuturesSimData()
+# data = csvFuturesSimData()
 
 
 # ====== STRATEGY DEFINITIONS ======
@@ -25,7 +25,7 @@ STRATEGIES = [
     ("LT",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-LT.yaml"),
     ("ST",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-ST.yaml"),
     ("AVG", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-AVG.yaml"),
-    ("Fitted", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
+    # ("Fitted", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
 
     #("Comb", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),
    #  ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
@@ -39,10 +39,10 @@ STRATEGIES = [
 #     # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
 # ]
 
-STRATEGIES = [
-    ("New",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml"),
-    ("Old",   "/home/anan/AnanProjects/pysystemtrade/private/systems/system_f1/private_config.yaml"),
-]
+# STRATEGIES = [
+#     ("New",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml"),
+#     ("Old",   "/home/anan/AnanProjects/pysystemtrade/private/systems/system_f1/private_config.yaml"),
+# ]
 
 # ==============================
 # HELPERS
