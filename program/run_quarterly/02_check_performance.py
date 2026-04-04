@@ -8,11 +8,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # INPUT
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml")
 
 # Init objects
-data = dbFuturesSimData()
-#data = csvFuturesSimData()
+# data = dbFuturesSimData()
+data = csvFuturesSimData()
 
 s = futures_system(config=config, data=data)
 

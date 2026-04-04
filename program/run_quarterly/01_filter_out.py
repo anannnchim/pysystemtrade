@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 # INPUT: Select data and system
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml")
 
 s = futures_system(config=config, data=data)
 

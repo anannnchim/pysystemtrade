@@ -6,8 +6,8 @@ from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
 
-# data = csvFuturesSimData()
-data = dbFuturesSimData()
+data = csvFuturesSimData()
+# data = dbFuturesSimData()
 
 
 # config = Config("/Users/nanthawat/PycharmProjects/pysystemtrade/private/systems/temp/config_v1.yaml")
@@ -16,7 +16,7 @@ data = dbFuturesSimData()
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/f1_carry/sample_carry.yaml")
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/config-2-2026-bo.yaml")
 # config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/strategies/carry.yaml")
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml")
 s = futures_system(config=config, data=data)
 
 

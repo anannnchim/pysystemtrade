@@ -8,8 +8,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # ====== DATA SOURCE ======
-data = dbFuturesSimData()
-# data = csvFuturesSimData()
+# data = dbFuturesSimData()
+data = csvFuturesSimData()
 
 
 # ====== STRATEGY DEFINITIONS ======
@@ -39,6 +39,10 @@ STRATEGIES = [
 #     # ("Comb",  "/Users/nanthawat/PycharmProjects/pysystemtrade/projects/example/global_comb.yaml"),
 # ]
 
+STRATEGIES = [
+    ("New",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/private_config-new.yaml"),
+    ("Old",   "/home/anan/AnanProjects/pysystemtrade/private/systems/system_f1/private_config.yaml"),
+]
 
 # ==============================
 # HELPERS
