@@ -21,13 +21,16 @@ import yaml
 
 from program.googlesheet.googlesheet_access import GoogleSheetAccess
 from private.gg_config_path import DIVERSIFIED_SHEET_URL
-
+from sysdata.config.production_config import get_production_config
 
 # ==================================================
 # Configuration
 # ==================================================
-HOST = "127.0.0.1"
-PORT = 4001
+# HOST = "127.0.0.1"
+HOST = get_production_config().get_element('ib_ipaddress')
+
+# PORT = 7496 #4001
+PORT = get_production_config().get_element('ib_port')
 CLIENT_ID = 100
 
 SHEET_URL = DIVERSIFIED_SHEET_URL
