@@ -22,9 +22,9 @@ STRATEGIES = [
 ]
 
 STRATEGIES = [
-    ("LT",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-LT.yaml"),
-    ("ST",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-ST.yaml"),
-    ("AVG", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-AVG.yaml"),
+    ("Trend",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-LT.yaml"),
+    ("Carry",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-carry.yaml"),
+    ("Comb", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),
     # ("Fitted", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
 
     #("Comb", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),

@@ -8,7 +8,8 @@ import pandas as pd
 # === INIT SYSTEM ===
 data = dbFuturesSimData()
 
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/system_01/config.yaml")
+# config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml")
 s = futures_system(config=config, data=data)
 
 
