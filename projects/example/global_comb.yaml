@@ -1,7 +1,7 @@
 #start_date: "2024-10-01"
-#start_date: "2019-10-01"
+start_date: "2019-10-01"
 #start_date: "2009-10-01"
-start_date: "2005-10-01"
+#start_date: "2005-10-01"
 
 # Capital correction
 #
@@ -133,24 +133,24 @@ instrument_weights:
 use_instrument_div_mult_estimates: True
 #instrument_div_multiplier: 2.1
 forecast_weights:
-  carry5: 0
-  carry20: 0.09
-  carry60: 0.09
-  carry120: 0.09
+  carry5: 0.05
+  carry20: 0.05
+  carry60: 0.05
+  carry120: 0.05
 
   ewmac2_8: 0
   ewmac4_16: 0
-  ewmac8_32: 0.09
-  ewmac16_64: 0.09
-  ewmac32_128: 0.09
-  ewmac64_256: 0.09
+  ewmac8_32: 0.1
+  ewmac16_64: 0.1
+  ewmac32_128: 0.1
+  ewmac64_256: 0.1
 
   breakout10: 0
   breakout20: 0
-  breakout40: 0.09
-  breakout80: 0.09
-  breakout160: 0.09
-  breakout320: 0.09
+  breakout40: 0.1
+  breakout80: 0.1
+  breakout160: 0.1
+  breakout320: 0.1
 
 forecast_div_multiplier: 1.36
 
