@@ -8,15 +8,15 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 
 
 # ====== DATA SOURCE ======
-# data = dbFuturesSimData()
-data = csvFuturesSimData()
+data = dbFuturesSimData()
+# data = csvFuturesSimData()
 
 
 # ====== STRATEGY DEFINITIONS ======
 STRATEGIES = [
-    ("Breakout",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/config-2-2026-bo.yaml"),
-    ("Carry",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/config-2-2026-carry.yaml"),
-    ("Combined", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/system_f1/config-2-2026-comb.yaml"),
+    ("Normal",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
+    ("Normal + Remove BO10",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower.yaml"),
+    ("Normal + Reduce all", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower-all.yaml"),
     #  ("Skew",  "/home/anan/AnanProjects/pysystemtrade/projects/example/global_skew.yaml"),
      # ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
 
