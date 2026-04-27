@@ -107,7 +107,7 @@ def load_and_plot(instrument_code):
 
     show_spread_stats(df, col)
 
-    plot_spread(df, col, instrument_code)
+    # plot_spread(df, col, instrument_code)
 
 
 def main():
