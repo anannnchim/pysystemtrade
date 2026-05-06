@@ -6,6 +6,10 @@ from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 from sysdata.sim.db_futures_sim_data import dbFuturesSimData
 from systems.provided.futures_chapter15.basesystem import futures_system
 
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+pd.set_option('display.expand_frame_repr', False)
+
 
 # ====== DATA SOURCE ======
 data = dbFuturesSimData()
@@ -17,6 +21,7 @@ STRATEGIES = [
     ("Normal",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
     ("Normal + Remove BO10",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower.yaml"),
     ("Normal + Reduce all", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower-all.yaml"),
+    ("Normal + V2", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-v2.yaml"),
     #  ("Skew",  "/home/anan/AnanProjects/pysystemtrade/projects/example/global_skew.yaml"),
      # ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
 

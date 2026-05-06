@@ -11,7 +11,8 @@ from systems.provided.futures_chapter15.basesystem import futures_system
 data = dbFuturesSimData()
 
 
-config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower-all.yaml")
+config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-v2.yaml")
+# config = Config("/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml")
 s = futures_system(config=config, data=data)
 
 if __name__ == '__main__':
