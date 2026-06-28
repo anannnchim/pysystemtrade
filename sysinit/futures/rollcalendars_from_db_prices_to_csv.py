@@ -135,4 +135,4 @@ if __name__ == "__main__":
     print(output_path)
 
     # output_path = "/Users/nanthawat/PycharmProjects/pysystemtrade/data/temp/roll_calendars"
-    build_and_write_roll_calendar("HIGHYIELD", output_datapath=output_path)
+    build_and_write_roll_calendar("HANGENT_mini", output_datapath=output_path)

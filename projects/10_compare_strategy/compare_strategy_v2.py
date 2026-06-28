@@ -18,10 +18,10 @@ data = dbFuturesSimData()
 
 # ====== STRATEGY DEFINITIONS ======
 STRATEGIES = [
-    ("Normal",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026.yaml"),
-    ("Normal + Remove BO10",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower.yaml"),
-    ("Normal + Reduce all", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower-all.yaml"),
-    ("Normal + V2", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-v2.yaml"),
+    ("Normal",    "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-LT.yaml"),
+    ("TF Carry",   "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb.yaml"),
+    # ("Normal + Reduce all", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-slower-all.yaml"),
+    # ("Normal + V2", "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-v2.yaml"),
     #  ("Skew",  "/home/anan/AnanProjects/pysystemtrade/projects/example/global_skew.yaml"),
      # ("Comb-all",  "/home/anan/AnanProjects/pysystemtrade/private/systems/new/diversified/config-2-2026-comb-all.yaml"),
 

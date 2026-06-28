@@ -99,6 +99,7 @@ Equity: # (Region based), (Type Largecap, Midcap, Smallcap
     - FTSETAIWAN # Large, Beta
     - NIKKEI # Large. Beta
     - MSCISING # Large, Beta
+    - HANGENT_mini # Large, Beta
 
 
 Vol:
