@@ -19,8 +19,7 @@ if __name__ == '__main__':
     # multiple_price
     file_path = "/home/anan/AnanProjects/pysystemtrade/data/parquet/futures_multiple_prices/JGB-SGX-mini.parquet"
     file_path = "/home/anan/AnanProjects/pysystemtrade/data/parquet/contract_positions/IRON#20260500.parquet"
-    file_path =  "/home/anan/AnanProjects/pysystemtrade/data/parquet/futures_multiple_prices/HIGHYIELD.parquet"
-
+    file_path = "/home/anan/AnanProjects/pysystemtrade/data/parquet/contract_positions/CRUDE_W_micro#20261200.parquet"
     df = pd.read_parquet(file_path, engine="pyarrow")  # or engine="fastparquet"
     print(df)
     # df.plot()

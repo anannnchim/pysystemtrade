@@ -93,10 +93,11 @@ def append_contract_position(file_path: str, date_str: str, position: float, all
 
 
 if __name__ == "__main__":
-    file_path = "/home/anan/AnanProjects/pysystemtrade/data/parquet/contract_positions/BITCOIN#20260800.parquet"
+    file_path = "/home/anan/AnanProjects/pysystemtrade/data/parquet/contract_positions/CRUDE_W_micro#20261200.parquet"
+    file_path = "/home/anan/AnanProjects/private-pysystemtrade/data/parquet/strategy_positions/system_01 CRUDE_W_micro.parquet"
 
     # your provided data
-    date = "2026-08-28 21:55:55.555555"
-    position = 0.0
+    date = "2026-09-10 21:56:55.555555"
+    position = 5.0
 
     append_contract_position(file_path, date, position)
